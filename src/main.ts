@@ -8,6 +8,7 @@ import MenuPrincipal from './scenes/View/MenuPrincipal'
 import Tienda from './scenes/View/Tienda'
 import Trivia from './scenes/View/Trivia'
 import Pruebas from './scenes/View/Pruebas'
+import Nivel1 from './scenes/View/Nivel1'
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -19,6 +20,8 @@ const config: Phaser.Types.Core.GameConfig = {
 			gravity: { y: 200 }
 		}
 	},
-	scene: [Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, Trivia, Pruebas]
+	scene: [Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, Trivia, Pruebas, Nivel1]
 }
 export default new Phaser.Game(config)
+
+//npm run start

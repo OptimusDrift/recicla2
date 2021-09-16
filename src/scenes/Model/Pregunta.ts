@@ -18,7 +18,7 @@ export default class Pregunta {
         try {
             this.respuestas = arrayShuffle(this.respuestas);
         } catch (error) {
-            console.error("Error al intentar randomizar las respuestas" + error.message);
+            console.error("Error al intentar randomizar las respuestas" + error);
         }
     }
 

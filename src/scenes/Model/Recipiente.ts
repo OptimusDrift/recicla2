@@ -20,7 +20,7 @@ export default class Recipiente {
                 this.Retroalimentacion(false);
             }
         } catch (error) {
-            console.error("Error al intentar comprar el residuo." + error.message);
+            console.error("Error al intentar comprar el residuo." + error);
         }
     }
 
@@ -40,12 +40,12 @@ export default class Recipiente {
         try {
             this.physics.setX(x);
         } catch (error) {
-            console.error("Error al intentar ingresar la posicion x." + error.message);
+            console.error("Error al intentar ingresar la posicion x." + error);
         }
         try {
             this.physics.setX(y);
         } catch (error) {
-            console.error("Error al intentar ingresar la posicion y." + error.message);
+            console.error("Error al intentar ingresar la posicion y." + error);
         }
     }
 

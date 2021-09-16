@@ -1,3 +1,5 @@
+import Dialogo from '../Model/Dialogo';
+import Pregunta from '../Model/Pregunta';
 export default class Juego extends Phaser.Scene{
     constructor(){
         super("pruebas");
@@ -14,7 +16,8 @@ export default class Juego extends Phaser.Scene{
     create()
     {
         this.add.image(400, 300, 'sky')
-
+        var a = new Dialogo (new Array<String>(), new Array<String>(), new Array<Pregunta>(), new Array<Pregunta>());
+        a.RandomizarRerspuestas();
         const particles = this.add.particles('red')
 
         const emitter = particles.createEmitter({

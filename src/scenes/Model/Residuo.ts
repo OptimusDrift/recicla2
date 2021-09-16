@@ -16,7 +16,7 @@ export default class Residuo {
         try {
             this.physics.setVisible(!this.physics.getVisible());
         } catch (error) {
-            console.error("Error al intentar ocultar el residuo." + error.message);
+            console.error("Error al intentar ocultar el residuo." + error);
         }
     }
 

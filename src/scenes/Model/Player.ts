@@ -30,7 +30,7 @@ export default class Player {
             this.moneda = this.moneda + cantidad
             return true;
         } catch (error) {
-            console.error("Error al intentar hacer cambios en la moneda." + error.message);
+            console.error("Error al intentar hacer cambios en la moneda." + error);
         }
         return false;
     }
@@ -42,7 +42,7 @@ export default class Player {
                 return true;
             }
         } catch (error) {
-            console.error("Error al buscar un cosmetico." + error.message);
+            console.error("Error al buscar un cosmetico." + error);
         }
         return false;
     }
@@ -54,7 +54,7 @@ export default class Player {
             }
             this.gomera = nuevoCosmetico;
         } catch (error) {
-            console.error("Error al intentar equipar el cosmetico." + error.message);
+            console.error("Error al intentar equipar el cosmetico." + error);
         }
     }
 
@@ -65,7 +65,7 @@ export default class Player {
             }
             this.risa = nuevoCosmetico;
         } catch (error) {
-            console.error("Error al intentar equipar el cosmetico." + error.message);
+            console.error("Error al intentar equipar el cosmetico." + error);
         }
     }
 
@@ -76,7 +76,7 @@ export default class Player {
             }
             this.cosmeticos.push(nuevoCosmetico);
         } catch (error) {
-            console.error("Error al intentar agregar el cosmetico." + error.message);
+            console.error("Error al intentar agregar el cosmetico." + error);
         }
     }
 

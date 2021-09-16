@@ -25,7 +25,7 @@ export default class Configuracion {
                 throw new Error();
             }
         } catch (error) {
-            console.error("Error al intentar cambiar el idioma." + error.message);
+            console.error("Error al intentar cambiar el idioma." + error);
         }
     }
 
@@ -37,7 +37,7 @@ export default class Configuracion {
                 throw new Error();
             }
         } catch (error) {
-            console.error("Error al intentar cambiar el volumen." + error.message);
+            console.error("Error al intentar cambiar el volumen." + error);
         }
     }
 
@@ -67,7 +67,7 @@ export default class Configuracion {
             }
             this._idiomaSeleccionado = v;
         } catch (error) {
-            console.error("Error al intentar cambiar el idioma." + error.message);
+            console.error("Error al intentar cambiar el idioma." + error);
         }
     }
 

@@ -17,7 +17,7 @@ export default class Cosmetico {
                 throw new Error();
             }
         } catch (error) {
-            console.error("Error al intentar cambiar el precio, puede que el precio es menor a 0." + error.message);
+            console.error("Error al intentar cambiar el precio, puede que el precio es menor a 0." + error);
         }
     }
 
@@ -27,7 +27,7 @@ export default class Cosmetico {
                 throw new Error();
             }
         } catch (error) {
-            console.error("Error al intentar comprar el cosmetico, puede que el precio no es el correcto." + error.message);
+            console.error("Error al intentar comprar el cosmetico, puede que el precio no es el correcto." + error);
             return false;
         }
         try {
@@ -36,7 +36,7 @@ export default class Cosmetico {
                 return true;
             }
         } catch (error) {
-            console.error("Error al intentar comprar el cosmetico, puede que ya se encuentre en su inventario." + error.message);
+            console.error("Error al intentar comprar el cosmetico, puede que ya se encuentre en su inventario." + error);
         }
         return false;
     }

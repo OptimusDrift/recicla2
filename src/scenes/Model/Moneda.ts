@@ -15,7 +15,7 @@ export default class Moneda {
         try {
             this.physics.setVisible(!this.physics.getVisible());
         } catch (error) {
-            console.error("Error al intentar ocultar la moneda." + error.message);
+            console.error("Error al intentar ocultar la moneda." + error);
         }
     }
 

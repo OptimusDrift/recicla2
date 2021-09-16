@@ -5,6 +5,7 @@ import Recipiente from './Recipiente'
 import Pregunta from './Pregunta'
 import Player from './Player'
 import Dialogo from './Dialogo'
+import Musica from './Musica'
 
 export default class Nivel {
     private _fondo: String;
@@ -16,8 +17,9 @@ export default class Nivel {
     private _player: Player;
     private _dialogos: Array<Dialogo>;
     private _puntajeNecesario: number;
+    private _musica: Musica;
 
-    constructor(fondo: String, residuos: Array<Residuo>, monedas: Array<Moneda>, obstaculos: Array<Obstaculo>, recipientes: Array<Recipiente>, pregunta: Pregunta, player: Player, dialogos: Array<Dialogo>, puntajeNecesario: number){
+    constructor(fondo: String, residuos: Array<Residuo>, monedas: Array<Moneda>, obstaculos: Array<Obstaculo>, recipientes: Array<Recipiente>, pregunta: Pregunta, player: Player, dialogos: Array<Dialogo>, puntajeNecesario: number, musica: Musica){
         this._fondo = fondo;
         this._residuos = residuos;
         this._monedas = monedas;
@@ -26,7 +28,8 @@ export default class Nivel {
         this._pregunta = pregunta;
         this._player = player;
         this._dialogos = dialogos;
-        this._puntajeNecesario = puntajeNecesario; 
+        this._puntajeNecesario = puntajeNecesario;
+        this._musica = musica;
     }
     
     //Getters and setters
@@ -112,4 +115,12 @@ export default class Nivel {
         this._puntajeNecesario = v;
     }
 
+    public get musica() : Musica {
+        return this._musica;
+    }
+    
+    
+    public set musica(v : Musica) {
+        this._musica = v;
+    }
 }
