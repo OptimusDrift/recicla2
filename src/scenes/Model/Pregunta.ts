@@ -6,7 +6,7 @@ export default class Pregunta {
     private _mensajeRespuestaCorrecta: String;
     private _mensajeRespuestaIncorrecta: String;
 
-    constructor(pregunta: String, respuestaCorrecta: String, respuestas: Array<String>, mensajeRespuestaCorrecta: String,mensajeRespuestaIncorrecta:String){
+    constructor(pregunta: String, respuestaCorrecta: String, respuestas: Array<String>, mensajeRespuestaCorrecta: String, mensajeRespuestaIncorrecta:String){
         this._pregunta = pregunta;
         this._respuestaCorrecta = respuestaCorrecta;
         this._respuestas = respuestas;

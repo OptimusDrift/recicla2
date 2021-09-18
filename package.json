@@ -16,6 +16,7 @@
 	},
 	"homepage": "https://github.com/ourcade/phaser3-parcel-template",
 	"devDependencies": {
+		"@types/node": "^16.9.2",
 		"@typescript-eslint/eslint-plugin": "^2.29.0",
 		"@typescript-eslint/parser": "^2.29.0",
 		"eslint": "^6.8.0",
@@ -26,7 +27,10 @@
 	},
 	"dependencies": {
 		"array-shuffle": "^3.0.0",
-		"phaser": "^3.55.2"
+		"asset": "^0.4.13",
+		"csv": "^5.5.3",
+		"phaser": "^3.55.2",
+		"public": "^0.1.5"
 	},
 	"parcelCleanPaths": [
 		"dist"

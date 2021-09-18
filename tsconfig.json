@@ -23,7 +23,9 @@
 		],
 		"types": [
 			"phaser"
-		]
+		],
+		"resolveJsonModule": true,
+		"node": true,
 	},
 	"include": [
 		"src/**/*"

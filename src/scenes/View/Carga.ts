@@ -28,6 +28,7 @@ export default class Carga extends Phaser.Scene{
             loadBar.fillRect(0, this.game.renderer.height / 2, this.game.renderer.width * percent, 50)
             console.log(percent);
         })
+        this.load.image("boton", "assets/Botones/Boton.png");
     }
 
     create()
