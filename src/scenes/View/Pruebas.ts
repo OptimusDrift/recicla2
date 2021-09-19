@@ -16,7 +16,7 @@ export default class Juego extends Phaser.Scene{
     create()
     {
         this.add.image(400, 300, 'sky')
-        var a = new Dialogo (new Array<String>(), new Array<String>(), new Array<Pregunta>(), new Array<Pregunta>());
+        var a = new Dialogo (new Array<string>(), new Array<string>(), new Array<Pregunta>(), new Array<Pregunta>());
         a.RandomizarRerspuestas();
         const particles = this.add.particles('red')
 

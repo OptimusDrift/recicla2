@@ -1,8 +1,8 @@
 export default class Obstaculo {
-    private _sprite: String;
+    private _sprite: string;
     private _physics: any;
 
-    constructor(sprite: String, physics : any){
+    constructor(sprite: string, physics : any){
         this._sprite = sprite;
         this._physics = physics;
         this.physics.add.sprite(-100, -100, this.sprite);
@@ -23,12 +23,12 @@ export default class Obstaculo {
 
     //Getters and setters
     
-    public set sprite(v : String) {
+    public set sprite(v : string) {
         this._sprite = v;
     }
     
     
-    public get sprite() : String {
+    public get sprite() : string {
         return this._sprite;
     }
     

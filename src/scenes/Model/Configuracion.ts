@@ -3,12 +3,12 @@ import Texto from './Texto'
 
 export default class Configuracion {
     private _volumen: number;
-    private _idiomas: Array<String>;
+    private _idiomas: Array<string>;
     private _idiomaSeleccionado: number;
     private _dialogos: Array<Dialogo>;
     private _textos: Array<Texto>;
 
-    constructor(volumen: number, idiomas: Array<String>, idiomaSeleccionado: number, dialogos: Array<Dialogo>, textos: Array<Texto>) {
+    constructor(volumen: number, idiomas: Array<string>, idiomaSeleccionado: number, dialogos: Array<Dialogo>, textos: Array<Texto>) {
         this._volumen = volumen;
         this._idiomas = idiomas;
         this._idiomaSeleccionado = idiomaSeleccionado;
@@ -47,12 +47,12 @@ export default class Configuracion {
         return this._volumen;
     }
     
-    public get idiomas() : Array<String> {
+    public get idiomas() : Array<string> {
         return this._idiomas;
     }
     
     
-    public set idiomas(v : Array<String>) {
+    public set idiomas(v : Array<string>) {
         this._idiomas = v;
     }
 

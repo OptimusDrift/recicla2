@@ -1,11 +1,11 @@
 import Residuo from './Residuo'
 
 export default class Recipiente {
-    private _sprite: String;
+    private _sprite: string;
     private _physics: any;
-    private _tipoRecipiente: String;
+    private _tipoRecipiente: string;
 
-    constructor(sprite : String, physics : any, posicion : any, tipoRecipiente : String) {
+    constructor(sprite : string, physics : any, posicion : any, tipoRecipiente : string) {
         this._sprite = sprite;
         this._physics = physics;
         this._tipoRecipiente = tipoRecipiente;
@@ -50,11 +50,11 @@ export default class Recipiente {
     }
 
     //Getters and setters
-    public get sprite() : String {
+    public get sprite() : string {
         return this._sprite;
     }
 
-    public set sprite(v : String) {
+    public set sprite(v : string) {
         this._sprite = v;
     }
 
@@ -69,12 +69,12 @@ export default class Recipiente {
     }
 
 
-    public get tipoRecipiente() : String {
+    public get tipoRecipiente() : string {
         return this._tipoRecipiente;
     }
     
     
-    public set tipoRecipiente(v : String) {
+    public set tipoRecipiente(v : string) {
         this._tipoRecipiente = v;
     }
 

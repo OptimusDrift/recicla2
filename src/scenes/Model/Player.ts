@@ -2,7 +2,7 @@ import Cosmetico from './Cosmetico'
 import Mejora from './Mejora'
 export default class Player {
     //¿Agregar ID para la bbd?
-    private _nombre: String;
+    private _nombre: string;
     private _cosmeticos: Array<Cosmetico>;
     private _mejoras: Array<Mejora>;
     private _gomera: Cosmetico;
@@ -11,7 +11,7 @@ export default class Player {
     private _nivelActual: number;
     private _puntajeMaximoModoTrivia: number;
 
-    constructor (nombre: String, cosmeticos: Array<Cosmetico>, mejoras: Array<Mejora>, gomera: Cosmetico, risa: Cosmetico, moneda: number, nivelActual: number, puntajeMaximoModoTrivia: number) {
+    constructor (nombre: string, cosmeticos: Array<Cosmetico>, mejoras: Array<Mejora>, gomera: Cosmetico, risa: Cosmetico, moneda: number, nivelActual: number, puntajeMaximoModoTrivia: number) {
         this._nombre = nombre;
         this._cosmeticos = cosmeticos;
         this._mejoras = mejoras;
@@ -85,12 +85,12 @@ export default class Player {
     }
 
     //Getters and setters
-    public get nombre() : String {
+    public get nombre() : string {
         return this._nombre;
     }
     
     
-    public set nombre(v : String) {
+    public set nombre(v : string) {
         this._nombre = v;
     }
 

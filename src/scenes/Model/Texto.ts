@@ -1,13 +1,13 @@
 export default class Texto {
-    private _textosMenuPrincipal: Array<String>;
-    private _textosConfiguracion: Array<String>;
-    private _textosTienda: Array<String>;
-    private _textosCreditos: Array<String>;
-    private _textosTrivia: Array<String>;
-    private _textosTriviaInfinita: Array<String>;
-    private _textosModoHistoria: Array<String>;
+    private _textosMenuPrincipal: Array<string>;
+    private _textosConfiguracion: Array<string>;
+    private _textosTienda: Array<string>;
+    private _textosCreditos: Array<string>;
+    private _textosTrivia: Array<string>;
+    private _textosTriviaInfinita: Array<string>;
+    private _textosModoHistoria: Array<string>;
 
-    constructor(textosMenuPrincipal: Array<String>, textosConfiguracion: Array<String>, textosTienda:Array<String>, textosCreditos:Array<String>, textosTrivia:Array<String>, textosTriviaInfinita:Array<String>, textosModoHistoria:Array<String>){
+    constructor(textosMenuPrincipal: Array<string>, textosConfiguracion: Array<string>, textosTienda:Array<string>, textosCreditos:Array<string>, textosTrivia:Array<string>, textosTriviaInfinita:Array<string>, textosModoHistoria:Array<string>){
         this._textosMenuPrincipal = textosMenuPrincipal;
         this._textosConfiguracion = textosConfiguracion;
         this._textosTienda = textosTienda;
@@ -20,66 +20,66 @@ export default class Texto {
 
 
     //Getters and setters
-    public get textosMenuPrincipal() : Array<String> {
+    public get textosMenuPrincipal() : Array<string> {
         return this._textosMenuPrincipal;
     }
     
     
-    public set textosMenuPrincipal(v : Array<String>) {
+    public set textosMenuPrincipal(v : Array<string>) {
         this._textosMenuPrincipal = v;
     }
 
-    public get textosConfiguracion() : Array<String> {
+    public get textosConfiguracion() : Array<string> {
         return this._textosConfiguracion;
     }
     
     
-    public set textosConfiguracion(v : Array<String>) {
+    public set textosConfiguracion(v : Array<string>) {
         this._textosConfiguracion = v;
     }
 
-    public get textosTienda() : Array<String> {
+    public get textosTienda() : Array<string> {
         return this._textosTienda;
     }
     
     
-    public set textosTienda(v : Array<String>) {
+    public set textosTienda(v : Array<string>) {
         this._textosTienda = v;
     }
 
-    public get textosCreditos() : Array<String> {
+    public get textosCreditos() : Array<string> {
         return this._textosCreditos;
     }
     
     
-    public set textosCreditos(v : Array<String>) {
+    public set textosCreditos(v : Array<string>) {
         this._textosCreditos = v;
     }
 
-    public get textosTrivia() : Array<String> {
+    public get textosTrivia() : Array<string> {
         return this._textosTrivia;
     }
     
     
-    public set textosTrivia(v : Array<String>) {
+    public set textosTrivia(v : Array<string>) {
         this._textosTrivia = v;
     }
 
-    public get textosTriviaInfinita() : Array<String> {
+    public get textosTriviaInfinita() : Array<string> {
         return this._textosTriviaInfinita;
     }
     
     
-    public set textosTriviaInfinita(v : Array<String>) {
+    public set textosTriviaInfinita(v : Array<string>) {
         this._textosTriviaInfinita = v;
     }
 
-    public get textosModoHistoria() : Array<String> {
+    public get textosModoHistoria() : Array<string> {
         return this._textosModoHistoria;
     }
     
     
-    public set textosModoHistoria(v : Array<String>) {
+    public set textosModoHistoria(v : Array<string>) {
         this._textosModoHistoria = v;
     }
 }

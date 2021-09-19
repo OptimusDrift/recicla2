@@ -28,7 +28,7 @@ export default class Boton {
         this.texto.setFontSize(19);
     }
 
-    private PausarBoton(){
+    public PausarBoton(){
         this.boton.setScale(1);
         this.texto.setFontSize(20);
         this.boton.setInteractive(false);

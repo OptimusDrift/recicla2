@@ -1,9 +1,9 @@
 export default class Moneda {
-    private _sprite: String;
+    private _sprite: string;
     private _physics: any;
     private _valor: number;
 
-    constructor(sprite: String, physics : any, valor : number) {
+    constructor(sprite: string, physics : any, valor : number) {
         this._sprite = sprite;
         this._physics = physics;
         this._valor = valor;
@@ -21,12 +21,12 @@ export default class Moneda {
 
     //Getters and setters
     
-    public set sprite(v : String) {
+    public set sprite(v : string) {
         this._sprite = v;
     }
     
     
-    public get sprite() : String {
+    public get sprite() : string {
         return this._sprite;
     }
     

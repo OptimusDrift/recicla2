@@ -2,12 +2,12 @@ import Pregunta from './Pregunta'
 import arrayShuffle from 'array-shuffle';
 
 export default class Dialogo {
-    private _dialogosTutorial: Array<String>;
-    private _dialogosNivel: Array<String>;
+    private _dialogosTutorial: Array<string>;
+    private _dialogosNivel: Array<string>;
     private _preguntasModoHistoria:Array<Pregunta>;
     private _preguntasModoTrivia: Array<Pregunta>;
 
-    constructor(dialogosTutorial: Array<String>, dialogoNivel: Array<String>, preguntasModoHistoria: Array<Pregunta>, preguntasModoTrivia: Array<Pregunta>){
+    constructor(dialogosTutorial: Array<string>, dialogoNivel: Array<string>, preguntasModoHistoria: Array<Pregunta>, preguntasModoTrivia: Array<Pregunta>){
         this._dialogosTutorial = dialogosTutorial;
         this._dialogosNivel = dialogoNivel;
         this._preguntasModoHistoria = preguntasModoHistoria;
@@ -24,22 +24,22 @@ export default class Dialogo {
 
     //Getters and setters
 
-    public set dialogosTutorial(v : Array<String>) {
+    public set dialogosTutorial(v : Array<string>) {
         this._dialogosTutorial = v;
     }
     
     
-    public get dialogosTutorial() : Array<String> {
+    public get dialogosTutorial() : Array<string> {
         return this._dialogosTutorial;
     } 
 
 
-    public set dialogosNivel(v : Array<String>) {
+    public set dialogosNivel(v : Array<string>) {
         this._dialogosNivel = v;
     }
     
     
-    public get dialogosNivel() : Array<String> {
+    public get dialogosNivel() : Array<string> {
         return this._dialogosNivel;
     } 
 

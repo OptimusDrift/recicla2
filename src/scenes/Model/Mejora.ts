@@ -1,9 +1,9 @@
 export default class Mejora {
-    private _nombre: String;
+    private _nombre: string;
     private _precio: number;
     private _cantidad: number;
 
-    constructor(nombre: String, precio: number, cantidad: number) {
+    constructor(nombre: string, precio: number, cantidad: number) {
         this._nombre = nombre;
         this._precio = precio;
         this._cantidad = cantidad;
@@ -14,12 +14,12 @@ export default class Mejora {
     }
 
     //Getters and setters
-    public get nombre() : String {
+    public get nombre() : string {
         return this._nombre;
     }
     
     
-    public set nombre(v : String) {
+    public set nombre(v : string) {
         this._nombre = v;
     }
 

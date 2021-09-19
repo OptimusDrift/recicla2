@@ -1,7 +1,7 @@
 export default class Musica {
-    private _nombre: String;
+    private _nombre: string;
 
-    constructor(nombre: String) {
+    constructor(nombre: string) {
         this._nombre = nombre;
     }
 
@@ -18,11 +18,11 @@ export default class Musica {
     }
 
     //Getters and setters
-    public get nombre(): String {
+    public get nombre(): string {
         return this._nombre;
     }
 
-    public set nombre(value: String) {
+    public set nombre(value: string) {
         this._nombre = value;
     }
 }

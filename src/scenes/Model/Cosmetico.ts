@@ -1,9 +1,9 @@
 export default class Cosmetico {
-    private _sprite: String;
+    private _sprite: string;
     private _precio: number;
     private _estadoDeCompra: boolean;
 
-    constructor(sprite: String, precio: number, estadoDeCompra: boolean) {
+    constructor(sprite: string, precio: number, estadoDeCompra: boolean) {
         this._sprite = sprite;
         this._precio = precio;
         this._estadoDeCompra = estadoDeCompra;
@@ -43,12 +43,12 @@ export default class Cosmetico {
 
     //Getters and setters
     
-    public set sprite(v : String) {
+    public set sprite(v : string) {
         this._sprite = v;
     }
     
     
-    public get sprite() : String {
+    public get sprite() : string {
         return this._sprite;
     }
     

@@ -1,10 +1,10 @@
 export default class Residuo {
-    private _sprite: String;
+    private _sprite: string;
     private _physics: any;
     private _gravedad: number;
-    private _tipo: String;
+    private _tipo: string;
 
-    constructor(sprite: String, physics: any, gravedad:number, tipo: String) {
+    constructor(sprite: string, physics: any, gravedad:number, tipo: string) {
         this._gravedad = gravedad;
         this._physics = physics;
         this._sprite = sprite;
@@ -21,11 +21,11 @@ export default class Residuo {
     }
 
    //Getters and setters
-    public get sprite() : String {
+    public get sprite() : string {
         return this._sprite;
     }
 
-    public set sprite(v : String) {
+    public set sprite(v : string) {
         this._sprite = v;
     }
 
@@ -48,12 +48,12 @@ export default class Residuo {
     }
 
     
-    public get tipo() : String {
+    public get tipo() : string {
         return this._tipo;
     }
     
     
-    public set tipo(v : String) {
+    public set tipo(v : string) {
         this._tipo = v;
     }
     
