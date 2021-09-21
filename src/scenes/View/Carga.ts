@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import Juego from "./Juego";
-import Nivel from "../Model/Nivel";
+import Nivel from "./Nivel";
 import Residuo from "../Model/Residuo";
 import Moneda from "../Model/Moneda";
 import Obstaculo from "../Model/Obstaculo";

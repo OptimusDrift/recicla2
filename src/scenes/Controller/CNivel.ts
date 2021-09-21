@@ -1,12 +1,13 @@
-import Juego from '../View/Juego';
+import Nivel from '../View/Nivel';
+import Residuo from '../Model/Residuo';
 export default class CNivel {
-    private _niveles: Array<Juego>;
+    private _niveles: Array<Nivel>;
     private _nivelActual: number;
     private _puntajeActual: number;
     private _estadoDelNivel: number;
     private _monedasRecogidas: number;
 
-    constructor(niveles: Array<Juego>, nivelActual: number, puntajeActual: number, estadoDelNivel: number, monedasRecogidas: number) {
+    constructor(niveles: Array<Nivel>, nivelActual: number, puntajeActual: number, estadoDelNivel: number, monedasRecogidas: number) {
         this._niveles = niveles;
         this._nivelActual = nivelActual;
         this._puntajeActual = puntajeActual;
@@ -14,17 +15,12 @@ export default class CNivel {
         this._monedasRecogidas = monedasRecogidas;
     }
 
-    private 
-    public LanzarReciduo(){
-        this.niveles[this.nivelActual].game.input.activePointer.isDown;
-    }
-
     //Getters and setters
-    public get niveles(): Array<Juego>{
+    public get niveles(): Array<Nivel>{
         return this._niveles;
     }
 
-    public set niveles(value: Array<Juego>){
+    public set niveles(value: Array<Nivel>){
         this._niveles = value;
     }
 

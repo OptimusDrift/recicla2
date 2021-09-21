@@ -12,8 +12,13 @@ import Nivel1 from './scenes/View/Nivel1'
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
-	width: 800,
-	height: 600,
+	scale: {
+        mode: Phaser.Scale.FIT,
+        parent: 'phaser-example',
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 1920,
+        height: 1080
+    },
 	physics: {
 		default: 'arcade',
 		arcade: {

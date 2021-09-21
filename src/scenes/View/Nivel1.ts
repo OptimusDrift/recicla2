@@ -1,5 +1,4 @@
-import Juego from "./Juego";
-import Nivel from "../Model/Nivel";
+import Nivel from "./Nivel";
 import Residuo from "../Model/Residuo";
 import Moneda from "../Model/Moneda";
 import Obstaculo from "../Model/Obstaculo";
@@ -14,15 +13,17 @@ import Boton from "../Model/Boton";
 import CTrivia from '../Controller/CTrivia';
 
 
-export default class Nivel1 extends Juego{
+export default class Nivel1 extends Nivel{
     private btn: any;
     constructor(){
-        super("lvl1",new Nivel("fondo", new Array<Residuo>(), new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Pregunta("pregunta", "respuestaCorrecta", new Array<string>(), "mensajeRespuestaCorrecta","mensajeRespuestaIncorrecta"), new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0), new Array<Dialogo>(), 0, new Musica("")));
+        super("lvl1", "fondo", new Array<Residuo>(), new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Pregunta("pregunta", "respuestaCorrecta", new Array<string>(), "mensajeRespuestaCorrecta","mensajeRespuestaIncorrecta"), new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0), new Array<Dialogo>(), 0, new Musica(""));
     }
 
     
     create()
     {
+        super.create();
+        this.textures.createCanvas('curve', 1920, 1080);
         const style = { font: "20x Arial", fill: "#fff" };
         //this.btn = new Boton(this.add.text(400,150,"AAAAAAAA",style),this.add.image(400,150,"boton"));
         new CTrivia(this);
@@ -35,7 +36,13 @@ export default class Nivel1 extends Juego{
         //this.add.image(400, 300, "boton");
         //this.add.image(400, 450, "boton");
     }
-    update(){
 
+    update(){
+        super.update();
+        super.PrepararLanzamiento();
+        //super.curve.getPoint(0, new Phaser.Math.Vector2(this.puntoInicialX, this.puntoInicialY));
+        //new Phaser.Geom.Line(this.puntoInicialX,this.puntoInicialY, this.puntoFinalX, this.puntoFinalY); 
+        
+        //console.log(this.puntoInicialX);
     }
 }

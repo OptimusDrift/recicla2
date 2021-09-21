@@ -1,12 +1,10 @@
 import Phaser from "phaser";
-import Nivel from "../Model/Nivel";
+import Nivel from "./Nivel";
 
 export default class Juego extends Phaser.Scene{
-    private _nivel: Nivel;
 
-    constructor(nombreNivel: string, nivel: Nivel) {
+    constructor(nombreNivel: string) {
         super(nombreNivel);
-        this._nivel = nivel;
     }
 
     preload (){
@@ -16,13 +14,20 @@ export default class Juego extends Phaser.Scene{
     create(){
         console.log("as")
     }
-
+    //temp pruebas
+    private a : boolean = false;
     update(){
-        if (this.game.input.activePointer.isDown){
-            //console.log(this.game.input.activePointer.x);
+        if (this.game.input.activePointer.isDown && !this.a){
+            console.log(this.game.input.activePointer.x + ' Apretar X');
+            console.log(-this.game.input.activePointer.y + ' Apretar Y');
+            this.a = true;
         }
-        if(this.game.input.activePointer.leftButtonReleased()){
-            //console.log(this.game.input.activePointer.getDistanceY());
+        if(this.game.input.activePointer.leftButtonReleased() && this.a){
+            console.log(this.game.input.activePointer.getDistanceY() + ' Distancia');
+            console.log(this.game.input.activePointer.x + ' Soltar X');
+            console.log(-this.game.input.activePointer.y + ' Soltar Y');
+            console.log("----------------");
+            this.a = false;
         }
     }
 
@@ -30,15 +35,5 @@ public listener(){
 console.log('asdasdas');
 }
     //Getters and setters
-    
-    public get nivel() : Nivel {
-        return this._nivel;
-    }
-
-    
-    public set nivel(v : Nivel) {
-        this._nivel = v;
-    }
-    
     
 }
