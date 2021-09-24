@@ -26,6 +26,7 @@ export default class CTrivia {
     }
 //Nivel pruebas
 private n:number = 0;
+    //Carga las variables (pregunta y respuestas) desde un JSON del nivel actual.
     public CargarNivel(){
         this.n = Math.floor((Math.random() * (this.pregunta.length)));
         this.pregunta[this.n].RandomizarRerspuestas();
@@ -39,6 +40,7 @@ private n:number = 0;
         });
     }
 
+    //Metodo para definir la funcion del click, en teste caso, consiste en revisar la respuesta y ver si es correcta.
     private PointerUp(btn: Boton) {
         var a = false;
         if(this.pregunta[this.n].respuestaCorrecta == btn.texto.text) {

@@ -25,6 +25,10 @@ export default class Nivel1 extends Nivel{
         super.create();
         this.textures.createCanvas('curve', 1920, 1080);
         const style = { font: "20x Arial", fill: "#fff" };
+        this.residuos.push(new Residuo("boton", this.physics, 0, ""));
+        this.residuos.push(new Residuo("boton", this.physics, 0, ""));
+        this.residuos.push(new Residuo("boton", this.physics, 0, ""));
+        this.residuoSeleccionado = this.residuos.shift();
         //this.btn = new Boton(this.add.text(400,150,"AAAAAAAA",style),this.add.image(400,150,"boton"));
         new CTrivia(this);
         //var btn1 = ;

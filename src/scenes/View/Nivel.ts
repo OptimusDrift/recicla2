@@ -20,7 +20,7 @@ export default class Nivel extends Phaser.Scene{
     private _puntajeNecesario: number;
     private _musica: Musica;
     private _onClick: boolean;
-    private _reciduoSeleccionado: Residuo|undefined;
+    private _residuoSeleccionado: Residuo|undefined;
     private _puntoInicialX: number;
     private _puntoInicialY: number;
     private _puntoFinalX: number;
@@ -41,7 +41,7 @@ export default class Nivel extends Phaser.Scene{
         this._dialogos = dialogos;
         this._puntajeNecesario = puntajeNecesario;
         this._musica = musica;
-        this._reciduoSeleccionado = this.residuos.shift();
+        this._residuoSeleccionado = this.residuos.shift();
         this._onClick = false;
         this._puntoInicialX = 0;
         this._puntoInicialY = 0;
@@ -62,7 +62,7 @@ export default class Nivel extends Phaser.Scene{
     private OnClickPress(){
         if(this.game.input.activePointer.isDown && !this.onClick){
             this.puntoInicialX = this.input.activePointer.x;
-            this.puntoInicialY = -this.input.activePointer.y;
+            this.puntoInicialY = this.input.activePointer.y;
             this.onClick = true;
         }
     }
@@ -73,7 +73,7 @@ export default class Nivel extends Phaser.Scene{
             this.distancia = this.input.activePointer.getDistanceY();
             if(this.distancia > this.DISTANCIA_MINIMA){
                 this.puntoFinalX = this.input.activePointer.x;
-                this.puntoFinalY = -this.input.activePointer.y;
+                this.puntoFinalY = this.input.activePointer.y;
                 return true;
             }
         }
@@ -84,11 +84,21 @@ export default class Nivel extends Phaser.Scene{
     public PrepararLanzamiento(){
         this.OnClickPress();
         if(this.OnClickRelease()){
-            //LanzarReciduo(this.reciduoSeleccionado);
-            console.log("Lanzado");
+            //LanzarReciduo(this.residuoSeleccionado);
+            console.log("Lanzado" + this.puntoFinalX + " " +this.puntoFinalY);
+            this.residuoSeleccionado?.residuo.setX(this.puntoFinalX);
+            this.residuoSeleccionado?.residuo.setY(this.puntoFinalY);
+            //this.residuoSeleccionado?.residuo.setVelocity(0);
+            const dx = (this.puntoInicialX - this.puntoFinalX);
+            const dy = (this.puntoInicialY - this.puntoFinalY);
+            this.residuoSeleccionado?.residuo.setVelocity(dx * 3, dy * 3);
+            //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
+//            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
+            //x.setAcceleration(this.puntoFinalX,this.puntoFinalY);
+            //x.setVelocity(0,this.puntoFinalY);
             //this._graphics.clear();
             this._graphics.lineStyle(6, 0xababab, 1);
-            this._graphics.lineBetween(this.puntoInicialX, -this.puntoInicialY, this.puntoFinalX, -this.puntoFinalY);
+            this._graphics.lineBetween(this.puntoInicialX, this.puntoInicialY, this.puntoFinalX, this.puntoFinalY);
             
             
             this.curve.getPoint(this.path.t, this.path.vec);
@@ -227,12 +237,12 @@ public path;
         this._onClick = value;
     }
 
-    public get reciduoSeleccionado(): Residuo|undefined{
-        return this._reciduoSeleccionado;
+    public get residuoSeleccionado(): Residuo|undefined{
+        return this._residuoSeleccionado;
     }
 
-    public set reciduoSeleccionado(value: Residuo|undefined){
-        this._reciduoSeleccionado = value;
+    public set residuoSeleccionado(value: Residuo|undefined){
+        this._residuoSeleccionado = value;
     }
 
     public get puntoInicialX(): number{

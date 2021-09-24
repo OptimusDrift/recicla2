@@ -3,13 +3,14 @@ export default class Residuo {
     private _physics: any;
     private _gravedad: number;
     private _tipo: string;
+    private _residuo: any;
 
     constructor(sprite: string, physics: any, gravedad:number, tipo: string) {
         this._gravedad = gravedad;
         this._physics = physics;
         this._sprite = sprite;
         this._tipo = tipo;
-        this.physics.add.sprite(-100, -100, this.sprite);
+        this._residuo = this.physics.add.sprite(-100, -100, this.sprite);
     }
     
     public OcultarResiduo() : void {
@@ -55,6 +56,15 @@ export default class Residuo {
     
     public set tipo(v : string) {
         this._tipo = v;
+    }
+
+    public get residuo() : any {
+        return this._residuo;
+    }
+    
+    
+    public set residuo(v : any) {
+        this._residuo = v;
     }
     
 }

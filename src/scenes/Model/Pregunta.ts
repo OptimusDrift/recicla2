@@ -14,6 +14,7 @@ export default class Pregunta {
         this._mensajeRespuestaIncorrecta = mensajeRespuestaIncorrecta;
     }
 
+    //Randomiza las preguntas(?
     public RandomizarRerspuestas(){
         try {
             this.respuestas = arrayShuffle(this.respuestas);

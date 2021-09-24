@@ -13,21 +13,25 @@ export default class Boton {
         this.ResetearBoton();
     }
 
+    //Al pasar el mouse por arriba el boton y el texto se agranda.
     private PointerOver(){
         this.boton.setScale(1.02);
         this.texto.setFontSize(21);
     }
 
+    //Cuando el mouse sale del objeto el botón y el texto vuelve a su escala original.
     private PointerOut(){
         this.boton.setScale(1);
         this.texto.setFontSize(20);
     }
 
+    //Cuando el mouse es precionado el botón y el texto se encogen.
     private PointerDown(){
         this.boton.setScale(0.98);
         this.texto.setFontSize(19);
     }
 
+    //Cuando el botón queda sin una funcionalidad, es pausado, quitando su listener.
     public PausarBoton(){
         this.boton.setScale(1);
         this.texto.setFontSize(20);
@@ -35,6 +39,7 @@ export default class Boton {
         this.boton.removeAllListeners();
     }
 
+    //Si el botón necesita una funcionalidad se le setean los listeners.
     private ResetearBoton(){
         this.boton.setInteractive();
         this.boton.on('pointerover',()=> this.PointerOver());
@@ -42,11 +47,13 @@ export default class Boton {
         this.boton.on('pointerdown',()=> this.PointerDown());
     }
 
+    //El color del botón cambia a verde.
     public BotonCorrecto(){
         this.boton.setTint(0x3A5311);
         this.PausarBoton();
     }
 
+    //El color del botón cambia a rojo.
     public BotonIncorecto(){
         this.boton.setTint(0xd40032);
         this.PausarBoton();
