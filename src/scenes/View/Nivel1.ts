@@ -15,6 +15,7 @@ import CTrivia from '../Controller/CTrivia';
 
 export default class Nivel1 extends Nivel{
     private btn: any;
+    private MusicaJuego: any;
     constructor(){
         super("lvl1", "fondo", new Array<Residuo>(), new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Pregunta("pregunta", "respuestaCorrecta", new Array<string>(), "mensajeRespuestaCorrecta","mensajeRespuestaIncorrecta"), new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0), new Array<Dialogo>(), 0, new Musica(""));
     }
@@ -39,6 +40,9 @@ export default class Nivel1 extends Nivel{
         //btn1.on('pointerup',()=> {console.log("D");});
         //this.add.image(400, 300, "boton");
         //this.add.image(400, 450, "boton");
+
+        this.MusicaJuego= this.sound.add("MusicaJuego", { loop: true });
+        this.MusicaJuego.play();
     }
 
     update(){

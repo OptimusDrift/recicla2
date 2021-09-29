@@ -29,6 +29,17 @@ export default class Carga extends Phaser.Scene{
             console.log(percent);
         })
         this.load.image("boton", "assets/Botones/Boton.png");
+
+        this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
+        this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");
+        this.load.audio("MusicaJuego", "assets/Sonidos/MusicaJuego.mp3");
+        this.load.audio("MusicaMenu", "assets/Sonidos/MusicaMenu.mp3");
+        this.load.audio("MusicaTienda", "assets/Sonidos/MusicaTienda.mp3");
+        this.load.audio("MusicaTrivia", "assets/Sonidos/MusicaTrivia.mp3");
+        this.load.audio("Transicion", "assets/Sonidos/Transicion.mp3");
+        this.load.audio("RespuestaCorrecta", "assets/Sonidos/RespuestaCorrecta.wav");
+        this.load.audio("RespuestaIncorrecta", "assets/Sonidos/RespuestaIncorrecta.wav");
+        this.load.audio("RisaRie", "assets/Sonidos/RisaRie.wav");
     }
 
     create()
