@@ -29,7 +29,7 @@ export default class Carga extends Phaser.Scene{
             console.log(percent);
         })
         this.load.image("boton", "assets/Botones/Boton.png");
-
+        
         this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
         this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");
         this.load.audio("MusicaJuego", "assets/Sonidos/MusicaJuego.mp3");
@@ -40,6 +40,7 @@ export default class Carga extends Phaser.Scene{
         this.load.audio("RespuestaCorrecta", "assets/Sonidos/RespuestaCorrecta.wav");
         this.load.audio("RespuestaIncorrecta", "assets/Sonidos/RespuestaIncorrecta.wav");
         this.load.audio("RisaRie", "assets/Sonidos/RisaRie.wav");
+        this.load.image('estrellitas', 'assets/Particulas/Estrellas.png');
     }
 
     create()

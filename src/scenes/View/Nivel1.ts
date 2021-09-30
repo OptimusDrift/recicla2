@@ -42,9 +42,11 @@ export default class Nivel1 extends Nivel{
         //this.add.image(400, 450, "boton");
 
         this.MusicaJuego= this.sound.add("MusicaJuego", { loop: true });
-        this.MusicaJuego.play();
+        //this.MusicaJuego.play();
     }
-
+private a (){
+    console.log("A");
+}
     update(){
         super.update();
         super.PrepararLanzamiento();
