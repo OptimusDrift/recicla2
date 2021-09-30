@@ -1,15 +1,20 @@
 import Residuo from './Residuo'
+import Particulas from './Particulas'
 
 export default class Recipiente {
     private _sprite: string;
     private _physics: any;
     private _tipoRecipiente: string;
+    private _particulasCorrecto: Particulas;
+    private _particulasIncorrecta: Particulas;
 
-    constructor(sprite : string, physics : any, posicion : any, tipoRecipiente : string) {
+    constructor(sprite : string, physics : any, posicion : any, tipoRecipiente : string, particulasCorrecto: any, particulasIncorrecta: any) {
         this._sprite = sprite;
         this._physics = physics;
         this._tipoRecipiente = tipoRecipiente;
         this.physics.add.sprite(-100, -100, this.sprite);
+        this._particulasCorrecto = particulasCorrecto;
+        this._particulasIncorrecta = particulasIncorrecta;
     }
 
     public CompararRecipiente(residuo : Residuo) : void {
@@ -27,9 +32,9 @@ export default class Recipiente {
     private Retroalimentacion(rta: Boolean){
         try {
             if (rta){
-                //Efecto desde la posicion del recipiente (¿estrellitas verdes?)
+                this.particulasCorrecto.EjecutarParticula();//X e Y necesarios
             }else{
-                //Efecto desde la posicion del recipiente (¿cruzes rojas?)
+                this.particulasIncorrecta.EjecutarParticula();//X e Y necesarios
             }
         } catch (error) {
             
@@ -78,4 +83,19 @@ export default class Recipiente {
         this._tipoRecipiente = v;
     }
 
+    public get particulasCorrecto(): any {
+        return this._particulasCorrecto;
+    }
+
+    public set particulasCorrecto(v :any){
+        this._particulasCorrecto = v;
+    }
+
+    public get particulasIncorrecta(): any {
+        return this._particulasIncorrecta;
+    }
+
+    public set particulasIncorrecta(v :any){
+        this._particulasIncorrecta = v;
+    }
 }

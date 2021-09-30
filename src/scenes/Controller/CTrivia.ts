@@ -32,10 +32,10 @@ private n:number = 0;
         this.n = Math.floor((Math.random() * (this.pregunta.length)));
         this.pregunta[this.n].RandomizarRerspuestas();
         console.log(this.pregunta[this.n].pregunta);
-        this.botones.push(new Boton(this.nivel.add.text(960,200,this.pregunta[this.n].respuestas[0],this.style), this.nivel.add.image(960,200,"boton"), new Particulas(this.nivel.add.particles('estrellitas'), this.nivel.time, 1000), new Particulas(this.nivel.add.particles('cruces'),this.nivel.time, 1000)));
-        this.botones.push(new Boton(this.nivel.add.text(960,400,this.pregunta[this.n].respuestas[1],this.style), this.nivel.add.image(960,400,"boton"), new Particulas(this.nivel.add.particles('estrellitas'), this.nivel.time, 1000), new Particulas(this.nivel.add.particles('cruces'),this.nivel.time, 1000)));
-        this.botones.push(new Boton(this.nivel.add.text(960,600,this.pregunta[this.n].respuestas[2],this.style), this.nivel.add.image(960,600,"boton"), new Particulas(this.nivel.add.particles('estrellitas'), this.nivel.time, 1000), new Particulas(this.nivel.add.particles('cruces'),this.nivel.time, 1000)));
-        this.botones.push(new Boton(this.nivel.add.text(960,800,this.pregunta[this.n].respuestas[3],this.style), this.nivel.add.image(960,800,"boton"), new Particulas(this.nivel.add.particles('estrellitas'), this.nivel.time, 1000), new Particulas(this.nivel.add.particles('cruces'),this.nivel.time, 1000)));
+        this.botones.push(new Boton(this.nivel.add.text(960,200,this.pregunta[this.n].respuestas[0],this.style), this.nivel.add.image(960,200,"boton"), new Particulas(this.nivel.add.particles('estrellitas')), new Particulas(this.nivel.add.particles('cruces'))));
+        this.botones.push(new Boton(this.nivel.add.text(960,400,this.pregunta[this.n].respuestas[1],this.style), this.nivel.add.image(960,400,"boton"), new Particulas(this.nivel.add.particles('estrellitas')), new Particulas(this.nivel.add.particles('cruces'))));
+        this.botones.push(new Boton(this.nivel.add.text(960,600,this.pregunta[this.n].respuestas[2],this.style), this.nivel.add.image(960,600,"boton"), new Particulas(this.nivel.add.particles('estrellitas')), new Particulas(this.nivel.add.particles('cruces'))));
+        this.botones.push(new Boton(this.nivel.add.text(960,800,this.pregunta[this.n].respuestas[3],this.style), this.nivel.add.image(960,800,"boton"), new Particulas(this.nivel.add.particles('estrellitas')), new Particulas(this.nivel.add.particles('cruces'))));
         this.botones.forEach(b => {
             b.boton.on('pointerup',()=> this.PointerUp(b));
         });
