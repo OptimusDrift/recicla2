@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-export default class Trivia extends Phaser.Scene{
+export default class ModoTrivia extends Phaser.Scene{
     constructor(){
         super("trivia");
     }

@@ -6,9 +6,8 @@ import Creditos from './scenes/View/Creditos'
 import Juego from './scenes/View/Juego'
 import MenuPrincipal from './scenes/View/MenuPrincipal'
 import Tienda from './scenes/View/Tienda'
-import Trivia from './scenes/View/Trivia'
+import ModoTrivia from './scenes/View/ModoTrivia'
 import Pruebas from './scenes/View/Pruebas'
-import Nivel1 from './scenes/View/Nivel1'
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -16,16 +15,17 @@ const config: Phaser.Types.Core.GameConfig = {
         mode: Phaser.Scale.FIT,
         parent: 'phaser-example',
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 1920,
+        width: 2920,
         height: 1080
     },
 	physics: {
 		default: 'arcade',
 		arcade: {
-			gravity: { y: 200 }
+			gravity: { y: 700 },
+			debug: true,
 		}
 	},
-	scene: [Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, Trivia, Pruebas, Nivel1]
+	scene: [Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, ModoTrivia, Pruebas]
 }
 export default new Phaser.Game(config)
 
