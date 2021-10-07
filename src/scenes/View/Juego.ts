@@ -10,6 +10,7 @@ export default class Juego extends Phaser.Scene{
 
     preload (){
         console.log("this.physics");
+        
     }
 
     create(){

@@ -9,33 +9,24 @@ export default class HelloWorldScene extends Phaser.Scene
 	}
 
 	preload()
-    {
-        this.load.setBaseURL('http://labs.phaser.io')
+    {   
+	    this.load.image('Atlas-0', 'assets/Atlas-0.png')
 
-        this.load.image('sky', 'assets/skies/space3.png')
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png')
-        this.load.image('red', 'assets/particles/red.png')
+        this.load.tilemapTiledJSON('Nivel1TileMap', 'assets/Nivel1.json')
+
     }
 
     create()
     {
-        this.add.image(400, 300, 'sky')
+	const map = this.make.tilemap({ key: 'Nivel1TileMap' })
 
-        const particles = this.add.particles('red')
-
-        const emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            blendMode: 'ADD'
-        })
-
-        const x = new Residuo('sky', this.physics, 1, "");
-        const logo = this.physics.add.image(400, 100, 'logo')
-
-        logo.setVelocity(100, 200)
-        logo.setBounce(1, 1)
-        logo.setCollideWorldBounds(true)
-
-        emitter.startFollow(logo)
+	const tileset = map.addTilesetImage('Atlas-0', 'Atlas-0')
+	
+	map.createStaticLayer('Capa de patrones 1', tileset)
+    map.createStaticLayer('Capa de patrones 3', tileset)
+	map.createStaticLayer('Capa de patrones 2', tileset)
+    map.createStaticLayer('Capa de patrones 4', tileset)
+    map.createStaticLayer('Capa de patrones 5', tileset)
+    map.createStaticLayer('Capa de patrones 6', tileset)
     }
 }
