@@ -4,16 +4,16 @@ import CNivel from "../Controller/CNivel";
 export default class Juego extends Phaser.Scene{
 
     private _controladorNivel: CNivel;
-    constructor() {
+    constructor(str : string) {
         super("nivel");
     }
 
     preload (){
-        console.log("this.physics");
+        
     }
 
-    create(){
-
+    create(){;
+        this.scene.launch("trivia");
     }
 
     update(){

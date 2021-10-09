@@ -3,11 +3,11 @@ import Player from "../Model/Player";
 import Dialogo from "../Model/Dialogo";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
-import Musica from "../Model/Musica";
+import Juego from "./Juego";
 
-/*export default class Nivel1 extends Nivel{
+export default class Nivel1 extends Juego{
     constructor(){
-        super("lvl1", "fondo", new Pregunta("pregunta", "respuestaCorrecta", new Array<string>(), "mensajeRespuestaCorrecta","mensajeRespuestaIncorrecta"), new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0), new Array<Dialogo>(), 0, new Musica(""));
+        super("trivia");
     }
 
     
@@ -40,11 +40,11 @@ import Musica from "../Model/Musica";
     }
 
     update(){
-        super.update();
+        //super.update();
         //this.MusicaJuego.PrepararLanzamiento();
         //super.curve.getPoint(0, new Phaser.Math.Vector2(this.puntoInicialX, this.puntoInicialY));
         //new Phaser.Geom.Line(this.puntoInicialX,this.puntoInicialY, this.puntoFinalX, this.puntoFinalY); 
         
         //console.log(this.puntoInicialX);
     }
-}*/
+}
