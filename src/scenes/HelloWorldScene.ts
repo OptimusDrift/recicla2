@@ -21,7 +21,7 @@ export default class HelloWorldScene extends Phaser.Scene
 	const map = this.make.tilemap({ key: 'Nivel1TileMap' })
 
 	const tileset = map.addTilesetImage('Atlas-0', 'Atlas-0')
-	
+	//Error de patrones?
 	map.createStaticLayer('Capa de patrones 1', tileset)
     map.createStaticLayer('Capa de patrones 3', tileset)
 	map.createStaticLayer('Capa de patrones 2', tileset)
