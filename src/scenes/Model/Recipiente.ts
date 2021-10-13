@@ -7,38 +7,32 @@ export default class Recipiente {
     private _cuerpo: any;
     private _x: number;
     private _y: number;
-    private _tipoRecipiente: string;
-    private _particulasCorrecto: Particulas;
-    private _particulasIncorrecta: Particulas;
 
-    constructor(sprite : string, physics : any, x : number, y : number, tipoRecipiente : string, particulasCorrecto: any, particulasIncorrecta: any) {
+    constructor(sprite : string, physics : any, x : number, y : number) {
         this._sprite = sprite;
         this._physics = physics;
         this._x = x;
         this._y = y;
-        this._tipoRecipiente = tipoRecipiente;
-        console.log(this.sprite)
         this._cuerpo = this.physics.add.sprite(this.x, this.y, this.sprite);
         this._cuerpo.body.setAllowGravity(false);
-        this._particulasCorrecto = particulasCorrecto;
-        this._particulasIncorrecta = particulasIncorrecta;
+        this._cuerpo.depth = -1;
     }
 
-    public CompararRecipiente() {
-        console.log("AAAAAAAAAAAAAAAAAAA");
-        try {
-            this.Retroalimentacion(residuo.tipo == this._tipoRecipiente);
-        } catch (error) {
-            console.error("Error al intentar comprar el residuo." + error);
-        }
+    public CompararRecipiente(residuo : any, recipiente: any) {
+        residuo.body.x = 500;
+        residuo.body.y = 500;
+        console.log(residuo);
+        residuo.body.setAllowGravity(false);
+        residuo.body.setVelocity(0);
+
     }
 
-    private Retroalimentacion(rta: Boolean){
+    protected Retroalimentacion(rta: Boolean, recipiente: any) {
         try {
             if (rta){
-                this.particulasCorrecto.EjecutarParticula(this.x, this.y);
+                recipiente.scene.particulasCorrecto.EjecutarParticula(recipiente.body.x+100, recipiente.body.y);
             }else{
-                this.particulasIncorrecta.EjecutarParticula(this.x, this.y);
+                recipiente.scene.particulasIncorrecta.EjecutarParticula(recipiente.body.x+100, recipiente.body.y);
             }
         } catch (error) {
             
@@ -101,29 +95,5 @@ export default class Recipiente {
 
     public set y(v :any){
         this._y = v;
-    }
-    public get tipoRecipiente() : string {
-        return this._tipoRecipiente;
-    }
-    
-    
-    public set tipoRecipiente(v : string) {
-        this._tipoRecipiente = v;
-    }
-
-    public get particulasCorrecto(): any {
-        return this._particulasCorrecto;
-    }
-
-    public set particulasCorrecto(v :any){
-        this._particulasCorrecto = v;
-    }
-
-    public get particulasIncorrecta(): any {
-        return this._particulasIncorrecta;
-    }
-
-    public set particulasIncorrecta(v :any){
-        this._particulasIncorrecta = v;
     }
 }

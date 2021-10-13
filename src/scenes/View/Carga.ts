@@ -7,6 +7,8 @@ import Moneda from "../Model/Moneda";
 import Musica from "../Model/Musica";
 import Obstaculo from "../Model/Obstaculo";
 import Recipiente from "../Model/Recipiente";
+import RecipienteVerde from "../Model/RecipienteVerde";
+import RecipienteAzul from "../Model/RecipienteAzul";
 import Pregunta from "../Model/Pregunta";
 import Player from "../Model/Player";
 import Dialogo from "../Model/Dialogo";
@@ -39,7 +41,7 @@ export default class Carga extends Phaser.Scene{
         });
         //---------------Sprites---------------------\\
         this.load.image("boton", "assets/Botones/Boton.png");
-        this.load.image("papel1", "assets/Basura/Papel_1.png");
+        this.load.image("papel", "assets/Basura/Papel.png");
         this.load.image("recipienteAzul", "assets/Recipiente/RecipienteAzul.png");
         this.load.image('estrellitas', 'assets/Particulas/Estrellas.png');
         this.load.image('cruces', 'assets/Particulas/Cruces.png');
@@ -64,15 +66,24 @@ export default class Carga extends Phaser.Scene{
         this.niveles = new Array<Nivel>();
         //console.log(this.scene.manager.scenes[3]);
         this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
-        this.niveles[0].residuos.push(new Residuo("papel1",this.scene.manager.scenes[3].physics,0,"verde"));
-        this.niveles[0].residuos.push(new Residuo("papel1",this.scene.manager.scenes[3].physics,0,"verde"));
-        this.niveles[0].residuos.push(new Residuo("papel1",this.scene.manager.scenes[3].physics,0,"verde"));
 
-        this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,0,0,"verde",new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
+        this.scene.manager.scenes[3].particulasIncorrecta = new Particulas(this.scene.manager.scenes[3].add.particles('cruces'));
+        this.scene.manager.scenes[3].particulasCorrecto = new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas'));
 
-        this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,0,0,"verde",new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
 
-        this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,150,200,"verde",new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0,"verde1"));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0,"verde2"));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0,"verde3"));
+
+        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",this.scene.manager.scenes[3].physics,200,200));
+
+        console.log(this.niveles[0].recipientes[0]);
+
+        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",this.scene.manager.scenes[3].physics,600,300,));
+
+        //this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,150,200,new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
+
+        this.niveles[0].monedas.push(new Moneda("papel1",this.scene.manager.scenes[3].physics,3));
 
         //this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
 

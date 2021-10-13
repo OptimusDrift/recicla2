@@ -52,21 +52,17 @@ import Residuo from '../Model/Residuo';
         this.niveles.forEach(nivel => {
             nivel.residuos.forEach(residuo => {
                 nivel.recipientes.forEach(recipiente => {
-                    //console.log(nivel.pantallaDeJuego.physics);
-                    //console.log(residuo);
-                    //console.log(recipiente);
-                    nivel.pantallaDeJuego.physics.add.overlap(residuo, recipiente, recipiente.CompararRecipiente(), null, nivel.pantallaDeJuego);
+                    nivel.pantallaDeJuego.physics.add.overlap(residuo.cuerpo, recipiente.cuerpo, recipiente.CompararRecipiente, null, nivel.pantallaDeJuego);
                     
                 });
                 nivel.monedas.forEach(moneda => {
-                    nivel.pantallaDeJuego.physics.add.overlap(residuo, moneda, moneda.TomarMoneda, null, nivel.pantallaDeJuego);
+                    console.log(moneda);
+                    nivel.pantallaDeJuego.physics.add.overlap(residuo.cuerpo, moneda.cuerpo, moneda.TomarMoneda, null, nivel.pantallaDeJuego);
                 });
             });
         });
     }
-public a(){
-    console.log("AAAAAAAAAAA");
-}
+
     public CargarControlador(){
         this.niveles.forEach(element => {
             element.pantallaDeJuego.controladorNivel = this;
@@ -110,12 +106,14 @@ public a(){
         if(this.OnClickRelease()){
             //LanzarReciduo(this.residuoSeleccionado);
             //console.log("Lanzado " + this.puntoFinalX + " " +this.puntoFinalY);
-            this.residuoSeleccionado?.residuo.setX(this.puntoFinalX);
-            this.residuoSeleccionado?.residuo.setY(this.puntoFinalY);
+            this.residuoSeleccionado?.cuerpo.setX(this.puntoFinalX);
+            this.residuoSeleccionado?.cuerpo.setY(this.puntoFinalY);
             //this.residuoSeleccionado?.residuo.setVelocity(0);
             const dx = (this.puntoInicialX - this.puntoFinalX);
             const dy = (this.puntoInicialY - this.puntoFinalY);
-            this.residuoSeleccionado?.residuo.setVelocity(dx * 6, dy * 6);
+            console.log(this.residuoSeleccionado?.cuerpo);
+            this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
+            this.residuoSeleccionado?.cuerpo.setVelocity(dx * 6, dy * 6);
             //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
 //            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
             //x.setAcceleration(this.puntoFinalX,this.puntoFinalY);

@@ -6,15 +6,15 @@ export default class Particulas {
     }
     
     public EjecutarParticula(x: number, y: number){
-        this.particula = this.particula.createEmitter();
-        this.particula.setPosition(x,y);
-        this.particula.setGravityY(-200);
-        this.particula.setSpeed(300);
-        this.particula.setAngle({min: 180, max: 360});
-        this.particula.maxParticles = 5;
-        this.particula.setLifespan(200);
-        this.particula.setScale({ min: 0.1, max: .8 });
-        this.particula.setBlendMode(Phaser.BlendModes.ADD);
+        let p = this.particula.createEmitter();
+        p.setPosition(x,y);
+        p.setGravityY(-200);
+        p.setSpeed(300);
+        p.setAngle({min: 180, max: 360});
+        p.maxParticles = 5;
+        p.setLifespan(200);
+        p.setScale({ min: 0.1, max: .8 });
+        p.setBlendMode(Phaser.BlendModes.ADD);
     }
 
     //Getters and setters

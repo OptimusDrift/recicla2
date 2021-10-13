@@ -21,12 +21,12 @@ const config: Phaser.Types.Core.GameConfig = {
 	physics: {
 		default: 'arcade',
 		arcade: {
-			gravity: { y: 700 },
+			gravity: { y: 1200 },
 			debug: true,
 		}
 	},
 	scene: [Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, ModoTrivia, Pruebas]
 }
-export default new Phaser.Game(config)
+export default new Phaser.Game(config);
 
 //npm run start
