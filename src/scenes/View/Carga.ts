@@ -42,10 +42,12 @@ export default class Carga extends Phaser.Scene{
         //---------------Sprites---------------------\\
         this.load.image("boton", "assets/Botones/Boton.png");
         this.load.image("papel", "assets/Basura/Papel.png");
+        this.load.image("moneda", "assets/Moneda/Moneda.png");
         this.load.image("recipienteAzul", "assets/Recipiente/RecipienteAzul.png");
         this.load.image('estrellitas', 'assets/Particulas/Estrellas.png');
         this.load.image('cruces', 'assets/Particulas/Cruces.png');
         this.load.image('mesa', 'assets/Obstaculos/Mesa.png');
+
         //--------------Musica Y FX--------------------\\
         this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
         this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");
@@ -71,20 +73,21 @@ export default class Carga extends Phaser.Scene{
         this.scene.manager.scenes[3].particulasCorrecto = new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas'));
 
 
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0,"verde1"));
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0,"verde2"));
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0,"verde3"));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0));
 
-        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",this.scene.manager.scenes[3].physics,200,200));
+        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[3].physics,0,780,250));
+        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[3].physics,0,650,150));
+        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[3].physics,0,1900,880));
 
-        console.log(this.niveles[0].recipientes[0]);
+        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[3].physics,980,980));
+        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[3].physics,980,780));
 
-        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",this.scene.manager.scenes[3].physics,600,300,));
+        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",this.scene.manager.scenes[3].physics,2500,980));
+        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",this.scene.manager.scenes[3].physics,2000,980));
 
         //this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,150,200,new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
-
-        this.niveles[0].monedas.push(new Moneda("papel1",this.scene.manager.scenes[3].physics,3));
-
         //this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
 
         this.cN = new CNivel(this.niveles, 0);

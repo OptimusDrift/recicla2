@@ -1,6 +1,7 @@
 export default class Obstaculo {
     private _sprite: string;
     private _physics: any;
+    private _grupo: any;
     private _x: number;
     private _y: number;
     private _rotacion: number;
@@ -12,7 +13,8 @@ export default class Obstaculo {
         this._x = x;
         this._y = y;
         this._rotacion = rotacion;
-        this._cuerpo = this.physics.add.sprite(this.x, this.y, this.sprite);
+        this._grupo = this.physics.add.staticGroup();
+        this._cuerpo = this._grupo.create(this.x, this.y, this.sprite);
         this.cuerpo.body.allowGravity = false;
         this.cuerpo.setAngle(this.rotacion);
     }

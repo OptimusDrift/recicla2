@@ -30,9 +30,7 @@ import Residuo from '../Model/Residuo';
         //Pruebas
         //this.niveles[this.nivelActual].residuos.push(new Residuo("papel1", this.niveles[this.nivelActual].pantallaDeJuego.physics,1,""));
         this.CargarColisionesNivel();
-        console.log(this.niveles[this.nivelActual].residuos);
         this._residuoSeleccionado = this.niveles[this.nivelActual].residuos.shift();
-        console.log(this.niveles[this.nivelActual].residuos);
         this._graphics = this.niveles[this.nivelActual].pantallaDeJuego.add.graphics();
         this.curve = new Phaser.Curves.CubicBezier(new Phaser.Math.Vector2(), new Phaser.Math.Vector2(), new Phaser.Math.Vector2(), new Phaser.Math.Vector2());
         this.drawGraphics = this.niveles[this.nivelActual].pantallaDeJuego.add.graphics();
@@ -56,8 +54,10 @@ import Residuo from '../Model/Residuo';
                     
                 });
                 nivel.monedas.forEach(moneda => {
-                    console.log(moneda);
                     nivel.pantallaDeJuego.physics.add.overlap(residuo.cuerpo, moneda.cuerpo, moneda.TomarMoneda, null, nivel.pantallaDeJuego);
+                });
+                nivel.obstaculos.forEach(obstaculo => {
+                    nivel.pantallaDeJuego.physics.add.collider(residuo.cuerpo, obstaculo.cuerpo);
                 });
             });
         });
@@ -111,7 +111,6 @@ import Residuo from '../Model/Residuo';
             //this.residuoSeleccionado?.residuo.setVelocity(0);
             const dx = (this.puntoInicialX - this.puntoFinalX);
             const dy = (this.puntoInicialY - this.puntoFinalY);
-            console.log(this.residuoSeleccionado?.cuerpo);
             this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
             this.residuoSeleccionado?.cuerpo.setVelocity(dx * 6, dy * 6);
             //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
