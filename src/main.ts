@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 //import HelloWorldScene from './scenes/HelloWorldScene';
 import Carga from './scenes/View/Carga'
 import Configuracion from './scenes/View/Configuracion'
+import Cargando from './scenes/View/Cargando'
 import Creditos from './scenes/View/Creditos'
 import Juego from './scenes/View/Juego'
 import MenuPrincipal from './scenes/View/MenuPrincipal'
@@ -25,7 +26,7 @@ const config: Phaser.Types.Core.GameConfig = {
 			debug: true,
 		}
 	},
-	scene: [Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, ModoTrivia, Pruebas]
+	scene: [Cargando, Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, ModoTrivia, Pruebas]
 }
 export default new Phaser.Game(config);
 

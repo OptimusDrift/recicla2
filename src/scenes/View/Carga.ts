@@ -22,6 +22,7 @@ export default class Carga extends Phaser.Scene{
     public cN: CNivel;
     public niveles : Array<Nivel>;
     public player : Player;
+    public p:any;
 
     constructor(){
         super("pantallaDeCarga");
@@ -34,10 +35,10 @@ export default class Carga extends Phaser.Scene{
             fillStyle:{
                 color: 0xffffff
             }
-        })
+        });
         this.load.on("progress", (percent) =>{
-            loadBar.fillRect(0, this.game.renderer.height / 2, this.game.renderer.width * percent, 50)
-            console.log(percent);
+            //loadBar.fillRect(0, this.game.renderer.height / 2, this.game.renderer.width * percent, 50);
+            this.p = parseInt(percent*100)
         });
         //---------------Sprites---------------------\\
         this.load.image("boton", "assets/Botones/Boton.png");
@@ -64,34 +65,34 @@ export default class Carga extends Phaser.Scene{
     create()
     {
         this.player = new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0);
-
         this.niveles = new Array<Nivel>();
         //console.log(this.scene.manager.scenes[3]);
-        this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
+        this.niveles.push(new Nivel(this.scene.manager.scenes[4], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
 
-        this.scene.manager.scenes[3].particulasIncorrecta = new Particulas(this.scene.manager.scenes[3].add.particles('cruces'));
-        this.scene.manager.scenes[3].particulasCorrecto = new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas'));
+        this.scene.manager.scenes[4].particulasIncorrecta = new Particulas(this.scene.manager.scenes[4].add.particles('cruces'));
+        this.scene.manager.scenes[4].particulasCorrecto = new Particulas(this.scene.manager.scenes[4].add.particles('estrellitas'));
 
 
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0));
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0));
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[3].physics,0));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[4].physics,0));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[4].physics,0));
+        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[4].physics,0));
 
-        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[3].physics,0,780,250));
-        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[3].physics,0,650,150));
-        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[3].physics,0,1900,880));
+        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,780,250));
+        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,650,150));
+        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,1900,880));
 
-        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[3].physics,980,980));
-        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[3].physics,980,780));
+        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[4].physics,980,980));
+        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[4].physics,980,780));
 
-        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",this.scene.manager.scenes[3].physics,2500,980));
-        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",this.scene.manager.scenes[3].physics,2000,980));
+        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",this.scene.manager.scenes[4].physics,2500,980));
+        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",this.scene.manager.scenes[4].physics,2000,980));
 
         //this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,150,200,new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
         //this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
 
         this.cN = new CNivel(this.niveles, 0);
         this.cN.CargarControlador();
+        this.scene.stop('cargando');
         this.scene.start("nivel");
     }
 
