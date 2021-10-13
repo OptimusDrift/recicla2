@@ -10,7 +10,7 @@ export default class Residuo {
         this._physics = physics;
         this._sprite = sprite;
         this._tipo = tipo;
-        this._residuo = this.physics.add.sprite(-100, -100, this.sprite);
+        this._residuo = this.physics.add.sprite(100, 100, this.sprite);
     }
     
     public OcultarResiduo() : void {

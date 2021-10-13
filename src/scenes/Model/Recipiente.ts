@@ -17,18 +17,17 @@ export default class Recipiente {
         this._x = x;
         this._y = y;
         this._tipoRecipiente = tipoRecipiente;
+        console.log(this.sprite)
         this._cuerpo = this.physics.add.sprite(this.x, this.y, this.sprite);
+        this._cuerpo.body.setAllowGravity(false);
         this._particulasCorrecto = particulasCorrecto;
         this._particulasIncorrecta = particulasIncorrecta;
     }
 
-    public CompararRecipiente(residuo : Residuo) : void {
+    public CompararRecipiente() {
+        console.log("AAAAAAAAAAAAAAAAAAA");
         try {
-            if (residuo.tipo == this._tipoRecipiente) {
-                this.Retroalimentacion(true);
-            }else{
-                this.Retroalimentacion(false);
-            }
+            this.Retroalimentacion(residuo.tipo == this._tipoRecipiente);
         } catch (error) {
             console.error("Error al intentar comprar el residuo." + error);
         }

@@ -1,8 +1,5 @@
 import Nivel from '../Model/Nivel'
 import Residuo from '../Model/Residuo';
-import Moneda from '../Model/Moneda'
-import Obstaculo from '../Model/Obstaculo'
-import Recipiente from '../Model/Recipiente'
 
  export default class CNivel {
     //Niveles
@@ -31,12 +28,12 @@ import Recipiente from '../Model/Recipiente'
         this._puntoFinalY = 0;
         //PRUEBAS/
         //Pruebas
-        console.log(this.niveles[this.nivelActual].pantallaDeJuego);
-        this.niveles[this.nivelActual].residuos.push(new Residuo("papel1", this.niveles[this.nivelActual].pantallaDeJuego.physics,1,""));
+        //this.niveles[this.nivelActual].residuos.push(new Residuo("papel1", this.niveles[this.nivelActual].pantallaDeJuego.physics,1,""));
+        this.CargarColisionesNivel();
+        console.log(this.niveles[this.nivelActual].residuos);
         this._residuoSeleccionado = this.niveles[this.nivelActual].residuos.shift();
-
+        console.log(this.niveles[this.nivelActual].residuos);
         this._graphics = this.niveles[this.nivelActual].pantallaDeJuego.add.graphics();
-        console.log("this._graphics");
         this.curve = new Phaser.Curves.CubicBezier(new Phaser.Math.Vector2(), new Phaser.Math.Vector2(), new Phaser.Math.Vector2(), new Phaser.Math.Vector2());
         this.drawGraphics = this.niveles[this.nivelActual].pantallaDeJuego.add.graphics();
         this._graphics.lineStyle(6, 0xababab, 1);
@@ -49,9 +46,27 @@ import Recipiente from '../Model/Recipiente'
             yoyo: true,
             repeat: -1
         });
-        console.log("a")
     }
 
+    public CargarColisionesNivel(){
+        this.niveles.forEach(nivel => {
+            nivel.residuos.forEach(residuo => {
+                nivel.recipientes.forEach(recipiente => {
+                    //console.log(nivel.pantallaDeJuego.physics);
+                    //console.log(residuo);
+                    //console.log(recipiente);
+                    nivel.pantallaDeJuego.physics.add.overlap(residuo, recipiente, recipiente.CompararRecipiente(), null, nivel.pantallaDeJuego);
+                    
+                });
+                nivel.monedas.forEach(moneda => {
+                    nivel.pantallaDeJuego.physics.add.overlap(residuo, moneda, moneda.TomarMoneda, null, nivel.pantallaDeJuego);
+                });
+            });
+        });
+    }
+public a(){
+    console.log("AAAAAAAAAAA");
+}
     public CargarControlador(){
         this.niveles.forEach(element => {
             element.pantallaDeJuego.controladorNivel = this;
@@ -79,7 +94,7 @@ import Recipiente from '../Model/Recipiente'
             this.onClick = false;
             this.distancia = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.getDistanceX();
             this.distancia += this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.getDistanceY();
-            console.log(this.distancia);
+            //console.log(this.distancia);
             if(this.distancia > this.DISTANCIA_MINIMA){
                 this.puntoFinalX = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.x;
                 this.puntoFinalY = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y;
@@ -94,7 +109,7 @@ import Recipiente from '../Model/Recipiente'
         this.OnClickPress();
         if(this.OnClickRelease()){
             //LanzarReciduo(this.residuoSeleccionado);
-            console.log("Lanzado " + this.puntoFinalX + " " +this.puntoFinalY);
+            //console.log("Lanzado " + this.puntoFinalX + " " +this.puntoFinalY);
             this.residuoSeleccionado?.residuo.setX(this.puntoFinalX);
             this.residuoSeleccionado?.residuo.setY(this.puntoFinalY);
             //this.residuoSeleccionado?.residuo.setVelocity(0);

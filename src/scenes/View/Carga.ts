@@ -12,6 +12,7 @@ import Player from "../Model/Player";
 import Dialogo from "../Model/Dialogo";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
+import Particulas from "../Model/Particulas";
 
 
 export default class Carga extends Phaser.Scene{
@@ -39,6 +40,7 @@ export default class Carga extends Phaser.Scene{
         //---------------Sprites---------------------\\
         this.load.image("boton", "assets/Botones/Boton.png");
         this.load.image("papel1", "assets/Basura/Papel_1.png");
+        this.load.image("recipienteAzul", "assets/Recipiente/RecipienteAzul.png");
         this.load.image('estrellitas', 'assets/Particulas/Estrellas.png');
         this.load.image('cruces', 'assets/Particulas/Cruces.png');
         this.load.image('mesa', 'assets/Obstaculos/Mesa.png');
@@ -60,9 +62,20 @@ export default class Carga extends Phaser.Scene{
         this.player = new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0);
 
         this.niveles = new Array<Nivel>();
-        console.log(this.scene.manager.scenes[3]);
+        //console.log(this.scene.manager.scenes[3]);
         this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
-        this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
+        this.niveles[0].residuos.push(new Residuo("papel1",this.scene.manager.scenes[3].physics,0,"verde"));
+        this.niveles[0].residuos.push(new Residuo("papel1",this.scene.manager.scenes[3].physics,0,"verde"));
+        this.niveles[0].residuos.push(new Residuo("papel1",this.scene.manager.scenes[3].physics,0,"verde"));
+
+        this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,0,0,"verde",new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
+
+        this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,0,0,"verde",new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
+
+        this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,150,200,"verde",new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
+
+        //this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
+
         this.cN = new CNivel(this.niveles, 0);
         this.cN.CargarControlador();
         this.scene.start("nivel");

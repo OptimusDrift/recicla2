@@ -19,6 +19,10 @@ export default class Moneda {
         }
     }
 
+    public TomarMoneda(){
+        console.log("aaaaaaaaa");
+    }
+
     //Getters and setters
     
     public set sprite(v : string) {
