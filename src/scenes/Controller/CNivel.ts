@@ -154,11 +154,9 @@ import Residuo from '../Model/Residuo';
     private Velocidad(distancia:number):number{
         let porcentaje = 0;
         if (this.DISTANCIA_MAXIMA <= distancia) {
-            console.log(4)
-            return 3;
+            return 6;
         }
-        console.log((((100*distancia)/this.DISTANCIA_MAXIMA)/100)*4)
-        return((((100*distancia)/this.DISTANCIA_MAXIMA)/100)*3);
+        return((((100*distancia)/this.DISTANCIA_MAXIMA)/100)*6);
     }
 //--------------Pruebas de lineas en pantalla----------------------//
     public curve;
