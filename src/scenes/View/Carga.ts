@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import CNivel from "../Controller/CNivel";
+import CTrivia from "../Controller/CTrivia";
 import Nivel from "../Model/Nivel";
 import Juego from "./Juego";
 import Residuo from "../Model/Residuo";
@@ -11,6 +12,7 @@ import RecipienteVerde from "../Model/RecipienteVerde";
 import RecipienteAzul from "../Model/RecipienteAzul";
 import Pregunta from "../Model/Pregunta";
 import Player from "../Model/Player";
+import Boton from "../Model/Boton";
 import Dialogo from "../Model/Dialogo";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
@@ -19,8 +21,9 @@ import ResiduoPapel from "../Model/ResiduoPapel";
 
 
 export default class Carga extends Phaser.Scene{
-    //Controladores pruebas
-    public cN: CNivel;
+    //Controladores
+    public controladorNivel: CNivel;
+    public controladorTrivia: CTrivia;
     public niveles : Array<Nivel>;
     public player : Player;
     public p:any;
@@ -66,35 +69,41 @@ export default class Carga extends Phaser.Scene{
     create()
     {
         this.player = new Player("nombre", new Array<Cosmetico>(), new Array<Mejora>(), new Cosmetico("sprite", 0, false), new Cosmetico("sprite", 0, false), 0, 0, 0);
-        this.niveles = new Array<Nivel>();
         //console.log(this.scene.manager.scenes[3]);
-        this.niveles.push(new Nivel(this.scene.manager.scenes[4], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
+        //-------------NIVELES--------------------//
+        this.niveles = new Array<Nivel>();
+        let nvl1 = this.scene.manager.scenes[9];
 
-        this.scene.manager.scenes[4].particulasIncorrecta = new Particulas(this.scene.manager.scenes[4].add.particles('cruces'));
-        this.scene.manager.scenes[4].particulasCorrecto = new Particulas(this.scene.manager.scenes[4].add.particles('estrellitas'));
+        this.niveles.push(new Nivel(nvl1, "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
 
+        this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics));
+        this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics));
+        this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics));
 
-        this.niveles[0].residuos.push(new ResiduoPapel(this.scene.manager.scenes[4].physics));
-        this.niveles[0].residuos.push(new ResiduoPapel(this.scene.manager.scenes[4].physics));
-        this.niveles[0].residuos.push(new ResiduoPapel(this.scene.manager.scenes[4].physics));
+        this.niveles[0].monedas.push(new Moneda("moneda",nvl1.physics,0,780,250));
+        this.niveles[0].monedas.push(new Moneda("moneda",nvl1.physics,0,650,150));
+        this.niveles[0].monedas.push(new Moneda("moneda",nvl1.physics,0,1900,880));
 
-        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,780,250));
-        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,650,150));
-        this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,1900,880));
+        this.niveles[0].obstaculos.push(new Obstaculo("mesa",nvl1.physics,980,980));
+        this.niveles[0].obstaculos.push(new Obstaculo("mesa",nvl1.physics,980,780));
 
-        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[4].physics,980,980));
-        this.niveles[0].obstaculos.push(new Obstaculo("mesa",this.scene.manager.scenes[4].physics,980,780));
+        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",nvl1.physics,2500,980));
+        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",nvl1.physics,2000,980));
 
-        this.niveles[0].recipientes.push(new RecipienteVerde("recipienteAzul",this.scene.manager.scenes[4].physics,2500,980));
-        this.niveles[0].recipientes.push(new RecipienteAzul("recipienteAzul",this.scene.manager.scenes[4].physics,2000,980));
+        this.controladorNivel = new CNivel(this.niveles, 0);
+
+        this.controladorNivel.CargarControlador();
+
+        //--------------------TRIVIA-----------------------//
+        let tri = this.scene.manager.scenes[7];
 
         //this.niveles[0].recipientes.push(new Recipiente("recipienteAzul",this.scene.manager.scenes[3].physics,150,200,new Particulas(this.scene.manager.scenes[3].add.particles('estrellitas')), new Particulas(this.scene.manager.scenes[3].add.particles('cruces'))));
         //this.niveles.push(new Nivel(this.scene.manager.scenes[3], "fondo", this.player,0, new Array<Moneda>(), new Array<Obstaculo>(), new Array<Recipiente>(), new Array<Residuo>(), 0,0,new Musica("")));
-
-        this.cN = new CNivel(this.niveles, 0);
-        this.cN.CargarControlador();
+        this.controladorTrivia = new CTrivia(tri);
+        
+        this.controladorTrivia.CargarControlador();
         this.scene.stop('cargando');
-        this.scene.start("nivel");
+        this.scene.start("prue");
     }
 
 }

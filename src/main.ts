@@ -7,8 +7,9 @@ import Creditos from './scenes/View/Creditos'
 import Juego from './scenes/View/Juego'
 import MenuPrincipal from './scenes/View/MenuPrincipal'
 import Tienda from './scenes/View/Tienda'
-import ModoTrivia from './scenes/View/ModoTrivia'
+import Trivia from './scenes/View/Trivia'
 import Pruebas from './scenes/View/Pruebas'
+import Nivel1 from './scenes/View/Nivel1'
 
 const config: Phaser.Types.Core.GameConfig = {
 	type: Phaser.AUTO,
@@ -26,7 +27,7 @@ const config: Phaser.Types.Core.GameConfig = {
 			debug: true,
 		}
 	},
-	scene: [Cargando, Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, ModoTrivia, Pruebas]
+	scene: [Cargando, Carga, Configuracion, Creditos, Juego, MenuPrincipal, Tienda, Trivia, Pruebas, Nivel1]
 }
 export default new Phaser.Game(config);
 

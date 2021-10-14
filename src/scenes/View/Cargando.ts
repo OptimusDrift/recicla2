@@ -1,4 +1,4 @@
-export default class Carga extends Phaser.Scene{
+export default class Cargando extends Phaser.Scene{
     private flechas: any;
     constructor(){
         super("cargando");

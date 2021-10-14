@@ -1,4 +1,5 @@
 import arrayShuffle from 'array-shuffle';
+
 export default class Pregunta {
     private _pregunta: string;
     private _respuestaCorrecta: string;

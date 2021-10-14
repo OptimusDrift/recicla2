@@ -1,49 +1,65 @@
-import ModoTrivia from '../View/ModoTrivia';
+import Juego from '../View/Juego';
 import Boton from '../Model/Boton';
 import Pregunta from '../Model/Pregunta';
-import Particulas from '../Model/Particulas';
+import Nivel from '../Model/Nivel';
 import preguntas from "./Preguntas.json";
 
 
 export default class CTrivia {
-    private _trivia: ModoTrivia;
+    //Atributos de la trivia
+    private _escena: any;
     private _botones: Array<Boton>;
-    private _pregunta: Array<Pregunta>;
+    private _preguntas: Array<Pregunta>;
+    private _preguntaActual: number;
+
+    //Constantes de la trivia
+    private BOTON_0_POSICION_X = 200;
+    private BOTON_0_POSICION_Y = 200;
+    private BOTON_1_POSICION_X = 400;
+    private BOTON_1_POSICION_Y = 400;
+    private BOTON_2_POSICION_X = 600;
+    private BOTON_2_POSICION_Y = 600;
+    private BOTON_3_POSICION_X = 800;
+    private BOTON_3_POSICION_Y = 800;
+
+    //Estilo del texto
     private style = { font: "20x Arial", fill: "#fff" };
     
-
-    constructor(trivia: ModoTrivia) {
-        this._trivia = trivia;
+    //Constructor
+    constructor(escena: any) {
+        this._escena = escena;
         this._botones = new Array<Boton>();
-        this._pregunta = new Array<Pregunta>();
+        this._preguntas = new Array<Pregunta>();
+        this._preguntaActual = 0;
         this.CargarPreguntas();
-        this.CargarTrivia();
     }
 
+    //Carga las preguntas desde un JSON
     public CargarPreguntas(){
         preguntas.forEach(p => {
-            this.pregunta.push(new Pregunta(p["Pregunta"],p["RespuestaCorrecta"],new Array<string>(p["RespuestaCorrecta"],p["RespuestaIncorrecta1"],p["RespuestaIncorrecta2"],p["RespuestaIncorrecta3"]),p["RespuestaDeRisaEnCasoDeSerCorrecta"],p["RespuestaDeRisaEnCasoDeSerIncorrecta"]))});
+            this.preguntas.push(new Pregunta(p["Pregunta"],p["RespuestaCorrecta"],new Array<string>(p["RespuestaCorrecta"],p["RespuestaIncorrecta1"],p["RespuestaIncorrecta2"],p["RespuestaIncorrecta3"]),p["RespuestaDeRisaEnCasoDeSerCorrecta"],p["RespuestaDeRisaEnCasoDeSerIncorrecta"]))});
     }
+
 //Nivel pruebas
 private n:number = 0;
     //Carga las variables (pregunta y respuestas) desde un JSON del nivel actual.
     public CargarTrivia(){
-        this.n = Math.floor((Math.random() * (this.pregunta.length)));
-        this.pregunta[this.n].RandomizarRerspuestas();
-        console.log(this.pregunta[this.n].pregunta);
-        this.botones.push(new Boton(this.trivia.add.text(960,200,this.pregunta[this.n].respuestas[0],this.style), this.trivia.add.image(960,200,"boton"), new Particulas(this.trivia.add.particles('estrellitas')), new Particulas(this.trivia.add.particles('cruces'))));
-        this.botones.push(new Boton(this.trivia.add.text(960,400,this.pregunta[this.n].respuestas[1],this.style), this.trivia.add.image(960,400,"boton"), new Particulas(this.trivia.add.particles('estrellitas')), new Particulas(this.trivia.add.particles('cruces'))));
-        this.botones.push(new Boton(this.trivia.add.text(960,600,this.pregunta[this.n].respuestas[2],this.style), this.trivia.add.image(960,600,"boton"), new Particulas(this.trivia.add.particles('estrellitas')), new Particulas(this.trivia.add.particles('cruces'))));
-        this.botones.push(new Boton(this.trivia.add.text(960,800,this.pregunta[this.n].respuestas[3],this.style), this.trivia.add.image(960,800,"boton"), new Particulas(this.trivia.add.particles('estrellitas')), new Particulas(this.trivia.add.particles('cruces'))));
+        this.preguntaActual = Math.floor((Math.random() * (this.preguntas.length))); //PRUEBAS
+        //Prinero randomiza las preguntas
+        this.preguntas[this.preguntaActual].RandomizarRerspuestas();
+        console.log(this.preguntas[this.preguntaActual].pregunta);
+        let i = 0;
         this.botones.forEach(b => {
+            b.texto.text = this.preguntas[this.preguntaActual].respuestas[i];
             b.boton.on('pointerup',()=> this.PointerUp(b));
+            i++;
         });
     }
 
     //Metodo para definir la funcion del click, en teste caso, consiste en revisar la respuesta y ver si es correcta.
     private PointerUp(btn: Boton) {
         var a = false;
-        if(this.pregunta[this.n].respuestaCorrecta == btn.texto.text) {
+        if(this.preguntas[this.preguntaActual].respuestaCorrecta == btn.texto.text) {
             a=true;
         }
         if(a){
@@ -54,13 +70,25 @@ private n:number = 0;
         this.botones.forEach(b => b.PausarBoton());
     }
 
-    //Getters and setters
-    public get trivia(): ModoTrivia {
-        return this._trivia;
+    public CargarBotones(){
+        this.botones.push(new Boton(this.escena.add.text(this.BOTON_0_POSICION_X,this.BOTON_0_POSICION_Y,"",this.style), this.escena.add.image(this.BOTON_0_POSICION_X,this.BOTON_0_POSICION_Y,"boton"), this.escena.particulasCorrecto, this.escena.particulasIncorrecta));
+        this.botones.push(new Boton(this.escena.add.text(this.BOTON_1_POSICION_X,this.BOTON_1_POSICION_Y,"",this.style), this.escena.add.image(this.BOTON_1_POSICION_X,this.BOTON_1_POSICION_Y,"boton"), this.escena.particulasCorrecto, this.escena.particulasIncorrecta));
+        this.botones.push(new Boton(this.escena.add.text(this.BOTON_2_POSICION_X,this.BOTON_2_POSICION_Y,"",this.style), this.escena.add.image(this.BOTON_2_POSICION_X,this.BOTON_2_POSICION_Y,"boton"), this.escena.particulasCorrecto, this.escena.particulasIncorrecta));
+        this.botones.push(new Boton(this.escena.add.text(this.BOTON_3_POSICION_X,this.BOTON_3_POSICION_Y,"",this.style), this.escena.add.image(this.BOTON_3_POSICION_X,this.BOTON_3_POSICION_Y,"boton"), this.escena.particulasCorrecto, this.escena.particulasIncorrecta));
+        this.CargarTrivia();
     }
 
-    public set trivia(v:ModoTrivia) {
-        this._trivia =v;
+    //Getters and setters
+    public get escena(): any {
+        return this._escena;
+    }
+
+    public set escena(v:any) {
+        this._escena =v;
+    }
+
+    public CargarControlador(){
+        this.escena.controladorTrivia = this;
     }
 
     public get botones(): Array<Boton> {
@@ -71,11 +99,19 @@ private n:number = 0;
         this._botones =v;
     }
 
-    public get pregunta(): Array<Pregunta> {
-        return this._pregunta;
+    public get preguntas(): Array<Pregunta> {
+        return this._preguntas;
     }
 
-    public set pregunta(v:Array<Pregunta>) {
-        this._pregunta =v;
+    public set preguntas(v:Array<Pregunta>) {
+        this._preguntas =v;
+    }
+
+    public get preguntaActual(): number {
+        return this._preguntaActual;
+    }
+
+    public set preguntaActual(v:number) {
+        this._preguntaActual =v;
     }
 }

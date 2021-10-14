@@ -30,7 +30,7 @@ import Residuo from '../Model/Residuo';
         this.CargarColisionesNivel();
         //PRUEBAS/
 
-        //PRUEBAS TOMA DE RESIDUO
+        //-------------------PRUEBAS TOMA DE RESIDUO----------------//
         this._residuoSeleccionado = this.niveles[this.nivelActual].residuos.shift();
 
         //PRUEBAS GRAFICOS
@@ -125,7 +125,7 @@ import Residuo from '../Model/Residuo';
             //x.setVelocity(0,this.puntoFinalY);
             //this._graphics.clear();
 
-            //Pruebas de lineas en pantalla
+            //------------------------Pruebas de lineas en pantalla-----------------------//
             this._graphics.lineStyle(6, 0xababab, 1);
             this._graphics.lineBetween(this.puntoInicialX, this.puntoInicialY, this.puntoFinalX, this.puntoFinalY);
             
@@ -144,7 +144,7 @@ import Residuo from '../Model/Residuo';
         }
 
     }
-//Pruebas de lineas en pantalla
+//--------------Pruebas de lineas en pantalla----------------------//
     public curve;
 public drawGraphics;
 public path;

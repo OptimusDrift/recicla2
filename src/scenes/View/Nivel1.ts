@@ -3,16 +3,20 @@ import Player from "../Model/Player";
 import Dialogo from "../Model/Dialogo";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
+import Particulas from "../Model/Particulas";
 import Juego from "./Juego";
 
 export default class Nivel1 extends Juego{
     constructor(){
-        super("trivia");
+        super("prue");
     }
 
     
     create()
     {
+        this.particulasIncorrecta = new Particulas(this.add.particles('cruces'));
+        this.particulasCorrecto = new Particulas(this.add.particles('estrellitas'));
+        this.scene.launch("trivia");
         //super.create();
         //this.textures.createCanvas('curve', 1920, 1080);
         //const style = { font: "20x Arial", fill: "#fff" };
@@ -40,6 +44,7 @@ export default class Nivel1 extends Juego{
     }
 
     update(){
+        this.controladorNivel.PrepararLanzamiento();
         //super.update();
         //this.MusicaJuego.PrepararLanzamiento();
         //super.curve.getPoint(0, new Phaser.Math.Vector2(this.puntoInicialX, this.puntoInicialY));

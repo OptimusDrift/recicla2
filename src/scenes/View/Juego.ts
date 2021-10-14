@@ -8,19 +8,19 @@ export default class Juego extends Phaser.Scene{
     private _particulasIncorrecta: Particulas;
 
     constructor(str : string) {
-        super("nivel");
+        super(str);
     }
 
     preload (){
         
     }
 
-    create(){;
-        this.scene.launch("trivia");
+    create(){
+        
     }
 
     update(){
-        this.controladorNivel.PrepararLanzamiento();
+        
     }
 
     //Getters and setters

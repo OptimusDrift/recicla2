@@ -9,8 +9,9 @@ export default class Boton {
 
     constructor(texto: any, boton: any, particulasCorrecto: any, particulasIncorrecta: any) {
         this._texto = texto;
-        this.texto.setDepth(1);
+        this.texto.setDepth(0);
         this._boton = boton;
+        this.boton.setDepth(-1);
         this.texto.setFontSize(20);
         this.texto.setOrigin(0.5);
         this._particulasCorrecto = particulasCorrecto;
