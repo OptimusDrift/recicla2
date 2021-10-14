@@ -6,7 +6,6 @@ import Residuo from '../Model/Residuo';
     private _niveles: Array<Nivel>;
     private _nivelActual: number;
     //Atributos del nivel
-    private DISTANCIA_MINIMA = 100;
     private _onClick: boolean;
     private _puntoInicialX: number;
     private _puntoInicialY: number;
@@ -18,6 +17,8 @@ import Residuo from '../Model/Residuo';
     //Constantes del nivel
     private PUNTO_INICIAL_X = 300; //Son los puntos desde donde se lanza el residuo
     private PUNTO_INICIAL_Y = 920;
+    private DISTANCIA_MINIMA = 100;
+    private DISTANCIA_MAXIMA = 800;
 
     constructor(niveles: Array<Nivel>, nivelActual: number) {
         //Setea las variables por defecto
@@ -122,7 +123,7 @@ import Residuo from '../Model/Residuo';
             //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a actuvar
             this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
             //Annade la velocidad del residuo seleccionado
-            this.residuoSeleccionado?.cuerpo.setVelocity(dx * 6, dy * 6);
+            this.residuoSeleccionado?.cuerpo.setVelocity(dx * this.Velocidad(this.distancia), dy * this.Velocidad(this.distancia));
 
             //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
 //            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
@@ -148,6 +149,16 @@ import Residuo from '../Model/Residuo';
             this.drawGraphics.generateTexture('curve', 800, 600);
         }
 
+    }
+
+    private Velocidad(distancia:number):number{
+        let porcentaje = 0;
+        if (this.DISTANCIA_MAXIMA <= distancia) {
+            console.log(4)
+            return 3;
+        }
+        console.log((((100*distancia)/this.DISTANCIA_MAXIMA)/100)*4)
+        return((((100*distancia)/this.DISTANCIA_MAXIMA)/100)*3);
     }
 //--------------Pruebas de lineas en pantalla----------------------//
     public curve;
