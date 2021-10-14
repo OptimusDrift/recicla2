@@ -3,13 +3,16 @@ export default class Residuo {
     private _physics: any;
     private _gravedad: number;
     private _cuerpo: any;
+    private _friccion: number;
 
-    constructor(sprite: string, physics: any, gravedad:number) {
+    constructor(sprite: string, physics: any, gravedad:number, friccion:number) {
         this._gravedad = gravedad;
         this._physics = physics;
         this._sprite = sprite;
         this._cuerpo = this.physics.add.sprite(100, 100, this.sprite);
         this._cuerpo.depth = -2;
+        this._cuerpo.setBounce(0.4);
+        this._friccion = friccion;
     }
     
     public OcultarResiduo() : void {
@@ -18,6 +21,10 @@ export default class Residuo {
         } catch (error) {
             console.error("Error al intentar ocultar el residuo." + error);
         }
+    }
+
+    public setFriccion (residuo: any, obstaculo: any) {
+        //Se setea una ficcion
     }
 
    //Getters and setters
@@ -56,4 +63,12 @@ export default class Residuo {
         this._cuerpo = v;
     }
     
+    public get friccion() : number {
+        return this._friccion;
+    }
+    
+    
+    public set friccion(v : number) {
+        this._friccion = v;
+    }
 }

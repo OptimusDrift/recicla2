@@ -37,7 +37,7 @@ export default class Recipiente {
             
         }
     }
-    
+
     public setPosicion(x : number, y : number) {
         try {
             this.x = x;

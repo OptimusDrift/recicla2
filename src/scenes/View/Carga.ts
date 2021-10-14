@@ -15,6 +15,7 @@ import Dialogo from "../Model/Dialogo";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
 import Particulas from "../Model/Particulas";
+import ResiduoPapel from "../Model/ResiduoPapel";
 
 
 export default class Carga extends Phaser.Scene{
@@ -73,9 +74,9 @@ export default class Carga extends Phaser.Scene{
         this.scene.manager.scenes[4].particulasCorrecto = new Particulas(this.scene.manager.scenes[4].add.particles('estrellitas'));
 
 
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[4].physics,0));
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[4].physics,0));
-        this.niveles[0].residuos.push(new Residuo("papel",this.scene.manager.scenes[4].physics,0));
+        this.niveles[0].residuos.push(new ResiduoPapel(this.scene.manager.scenes[4].physics));
+        this.niveles[0].residuos.push(new ResiduoPapel(this.scene.manager.scenes[4].physics));
+        this.niveles[0].residuos.push(new ResiduoPapel(this.scene.manager.scenes[4].physics));
 
         this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,780,250));
         this.niveles[0].monedas.push(new Moneda("moneda",this.scene.manager.scenes[4].physics,0,650,150));
