@@ -13,8 +13,11 @@ import Residuo from '../Model/Residuo';
     private _distancia: number;
     private _puntoFinalX: number;
     private _puntoFinalY: number;
-
     private _residuoSeleccionado: Residuo|undefined;
+
+    //Constantes del nivel
+    private PUNTO_INICIAL_X = 300; //Son los puntos desde donde se lanza el residuo
+    private PUNTO_INICIAL_Y = 920;
 
     constructor(niveles: Array<Nivel>, nivelActual: number) {
         //Setea las variables por defecto
@@ -95,8 +98,10 @@ import Residuo from '../Model/Residuo';
             //Pregunta si la distancia entre el punto inicial y el punto final es una distancia minima
             if(this.distancia > this.DISTANCIA_MINIMA){
                 //Si es verdadero entonces devuelve el valor del punto final
-                this.puntoFinalX = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.x;
-                this.puntoFinalY = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y;
+                this.puntoFinalX = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.x -(this.puntoInicialX - this.PUNTO_INICIAL_X);
+                this.puntoFinalY = this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y -(this.puntoInicialY - this.PUNTO_INICIAL_Y);
+                this.puntoInicialX = this.PUNTO_INICIAL_X;
+                this.puntoInicialY = this.PUNTO_INICIAL_Y;
                 return true;
             }
         }
