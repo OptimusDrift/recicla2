@@ -51,6 +51,8 @@ import Residuo from '../Model/Residuo';
             yoyo: true,
             repeat: -1
         });
+        this.bezierGraphics = this.niveles[0].pantallaDeJuego.add.graphics();
+        this.bezierCurve = new Phaser.Curves.CubicBezier(new Phaser.Math.Vector2(300,900), new Phaser.Math.Vector2(1500,100), new Phaser.Math.Vector2(500,200), new Phaser.Math.Vector2(300,300));
     }
 
     //La clase toma todos los elementos de los niveles y carga las colisiones
@@ -120,6 +122,9 @@ import Residuo from '../Model/Residuo';
             this.residuoSeleccionado?.cuerpo.setVelocity(0);
             const dx = (this.puntoInicialX - this.puntoFinalX);
             const dy = (this.puntoInicialY - this.puntoFinalY);
+            console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
+            console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
+            console.log("pendiente: "+dx/dy);
             //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a actuvar
             this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
             //Annade la velocidad del residuo seleccionado
@@ -132,7 +137,7 @@ import Residuo from '../Model/Residuo';
             //this._graphics.clear();
 
             //------------------------Pruebas de lineas en pantalla-----------------------//
-            this._graphics.lineStyle(6, 0xababab, 1);
+            /*this._graphics.lineStyle(6, 0xababab, 1);
             this._graphics.lineBetween(this.puntoInicialX, this.puntoInicialY, this.puntoFinalX, this.puntoFinalY);
             
             
@@ -146,9 +151,26 @@ import Residuo from '../Model/Residuo';
             this.drawGraphics.fillStyle(0xff0000, 0.1);
             this.drawGraphics.fillCircle(this.path.vec.x, this.path.vec.y, 4);
 
-            this.drawGraphics.generateTexture('curve', 800, 600);
+            this.drawGraphics.generateTexture('curve', 800, 600);*/
+            this.drawBezier(1,1)
         }
 
+    }
+
+    private bezierGraphics;
+    private bezierCurve;
+    private drawBezier(x,y){
+        this.bezierGraphics.clear();
+        this.bezierGraphics.lineStyle(4, 0xffffff);
+        this.bezierCurve.draw(this.bezierGraphics);
+        this.bezierGraphics.lineStyle(2, 0x00ff00);
+        this.bezierGraphics.beginPath();
+        this.bezierGraphics.moveTo(x, y);
+        this.bezierGraphics.lineTo(x+100, y+100);
+        this.bezierGraphics.strokePath();
+        this.bezierGraphics.lineStyle(2, 0xff0000);
+        this.bezierGraphics.beginPath();
+        this.bezierGraphics.strokePath();
     }
 
     private Velocidad(distancia:number):number{

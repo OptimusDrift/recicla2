@@ -52,7 +52,11 @@ export default class Carga extends Phaser.Scene{
         this.load.image('estrellitas', 'assets/Particulas/Estrellas.png');
         this.load.image('cruces', 'assets/Particulas/Cruces.png');
         this.load.image('mesa', 'assets/Obstaculos/Mesa.png');
-
+        this.load.image('cuadroDeDialogo', 'assets/Cuadro/CuadroDeDialogo.png');
+        //-------------RISA----------------\\
+        this.load.image("risaPregunta", "assets/Risa/RisaPregunta.png");
+        //------------FONDOS------------\\
+        this.load.image("fondoTrivia", "assets/Pantallas/FondoTrivia.png");
         //--------------Musica Y FX--------------------\\
         this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
         this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");

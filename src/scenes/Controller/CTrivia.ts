@@ -13,14 +13,14 @@ export default class CTrivia {
     private _preguntaActual: number;
 
     //Constantes de la trivia
-    private BOTON_0_POSICION_X = 200;
-    private BOTON_0_POSICION_Y = 200;
-    private BOTON_1_POSICION_X = 400;
-    private BOTON_1_POSICION_Y = 400;
-    private BOTON_2_POSICION_X = 600;
-    private BOTON_2_POSICION_Y = 600;
-    private BOTON_3_POSICION_X = 800;
-    private BOTON_3_POSICION_Y = 800;
+    private BOTON_0_POSICION_X = 478;
+    private BOTON_0_POSICION_Y = 628;
+    private BOTON_1_POSICION_X = 478;
+    private BOTON_1_POSICION_Y = 824;
+    private BOTON_2_POSICION_X = 1078;
+    private BOTON_2_POSICION_Y = 628;
+    private BOTON_3_POSICION_X = 1078;
+    private BOTON_3_POSICION_Y = 824;
 
     //Estilo del texto
     private style = { font: "20x Arial", fill: "#fff" };
@@ -28,6 +28,9 @@ export default class CTrivia {
     //Constructor
     constructor(escena: any) {
         this._escena = escena;
+        this.escena.add.image(1920/2, 1080/2, "fondoTrivia").setDepth(-20);
+        this.escena.add.image(225+556, 100+205, "cuadroDeDialogo");
+        this.escena.add.image(1410+206, 100+434, "risaPregunta");
         this._botones = new Array<Boton>();
         this._preguntas = new Array<Pregunta>();
         this._preguntaActual = 0;

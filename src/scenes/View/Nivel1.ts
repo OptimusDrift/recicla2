@@ -16,7 +16,7 @@ export default class Nivel1 extends Juego{
     {
         this.particulasIncorrecta = new Particulas(this.add.particles('cruces'));
         this.particulasCorrecto = new Particulas(this.add.particles('estrellitas'));
-        this.scene.launch("trivia");
+        //this.scene.launch("trivia");
         //super.create();
         //this.textures.createCanvas('curve', 1920, 1080);
         //const style = { font: "20x Arial", fill: "#fff" };
