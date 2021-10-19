@@ -107,7 +107,7 @@ export default class Carga extends Phaser.Scene{
         
         this.controladorTrivia.CargarControlador();
         this.scene.stop('cargando');
-        this.scene.start("prue");
+        this.scene.start("Nivel1");
     }
 
 }

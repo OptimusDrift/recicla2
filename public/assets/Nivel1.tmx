@@ -4,7 +4,7 @@
   <export target="Juego..json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" name="Atlas-0" tilewidth="16" tileheight="15" tilecount="28994" columns="218">
-  <image source="Atlas-0.png" width="3500" height="2000"/>
+  <image source="Atlas.png" width="3500" height="2000"/>
  </tileset>
  <group id="12" name="Grupo 1">
   <layer id="4" name="Capa de patrones 1" width="120" height="72">

@@ -8,14 +8,31 @@ import Juego from "./Juego";
 
 export default class Nivel1 extends Juego{
     constructor(){
-        super("prue");
+        super("Nivel1");
     }
+	preload()
+    {   
+	    this.load.image('Atlas', 'assets/Atlas-0.png')
 
+        this.load.tilemapTiledJSON('Nivel1TileMap', 'assets/Nivel1.json')
+
+    }
     
     create()
     {
         this.particulasIncorrecta = new Particulas(this.add.particles('cruces'));
         this.particulasCorrecto = new Particulas(this.add.particles('estrellitas'));
+
+        const map = this.make.tilemap({ key: 'Nivel1TileMap' })
+
+        const tileset = map.addTilesetImage('Atlas-0', 'Atlas')
+        //Error de patrones?
+        map.createStaticLayer('Capa de patrones 1', tileset)
+        map.createStaticLayer('Capa de patrones 3', tileset)
+        map.createStaticLayer('Capa de patrones 2', tileset)
+        map.createStaticLayer('Capa de patrones 4', tileset)
+        map.createStaticLayer('Capa de patrones 5', tileset)
+        map.createStaticLayer('Capa de patrones 6', tileset)
         //this.scene.launch("trivia");
         //super.create();
         //this.textures.createCanvas('curve', 1920, 1080);
@@ -41,6 +58,7 @@ export default class Nivel1 extends Juego{
 
         //this.MusicaJuego= this.sound.add("MusicaJuego", { loop: true });
         //this.MusicaJuego.play();
+        
     }
 
     update(){
