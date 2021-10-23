@@ -1,18 +1,12 @@
 import Phaser from "phaser";
-export default class Tienda extends Phaser.Scene{
-    constructor(){
-        super("tienda");
-    }
+export default class Tienda extends Phaser.Scene {
+  constructor() {
+    super("tienda");
+  }
 
-    preload (){
+  preload() {}
 
-    }
+  create() {}
 
-    create(){
-        
-    }
-
-    update(){
-
-    }
+  update() {}
 }

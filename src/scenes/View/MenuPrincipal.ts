@@ -1,18 +1,12 @@
 import Phaser from "phaser";
-export default class MenuPrincipal extends Phaser.Scene{
-    constructor(){
-        super("menuPrincipal");
-    }
+export default class MenuPrincipal extends Phaser.Scene {
+  constructor() {
+    super("menuPrincipal");
+  }
 
-    preload (){
+  preload() {}
 
-    }
+  create() {}
 
-    create(){
-        
-    }
-
-    update(){
-
-    }
+  update() {}
 }

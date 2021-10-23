@@ -4,36 +4,29 @@ import Boton from "../Model/Boton";
 import Particulas from "../Model/Particulas";
 import CTrivia from "../Controller/CTrivia";
 
-export default class Trivia extends Juego{
-    private _controladorTrivia: CTrivia;
+export default class Trivia extends Juego {
+  private _controladorTrivia: CTrivia;
 
-    
-    
-    constructor(){
-        super("trivia");
-    }
+  constructor() {
+    super("trivia");
+  }
 
-    preload (){
-        this.particulasIncorrecta = new Particulas(this.add.particles('cruces'));
-        this.particulasCorrecto = new Particulas(this.add.particles('estrellitas'));
-        this.controladorTrivia.CargarBotones();
-    }
+  preload() {
+    this.particulasIncorrecta = new Particulas(this.add.particles("cruces"));
+    this.particulasCorrecto = new Particulas(this.add.particles("estrellitas"));
+    this.controladorTrivia.CargarBotones();
+  }
 
-    create(){
-        
-    }
+  create() {}
 
-    update(){
-        
-    }
+  update() {}
 
-    //Getters and setters
-    public get controladorTrivia() : CTrivia {
-        return this._controladorTrivia
-    }
-    
-    public set controladorTrivia(v : CTrivia) {
-        this._controladorTrivia = v;
-    }
-    
+  //Getters and setters
+  public get controladorTrivia(): CTrivia {
+    return this._controladorTrivia;
+  }
+
+  public set controladorTrivia(v: CTrivia) {
+    this._controladorTrivia = v;
+  }
 }

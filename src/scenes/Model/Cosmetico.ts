@@ -1,69 +1,74 @@
 export default class Cosmetico {
-    private _sprite: string;
-    private _precio: number;
-    private _estadoDeCompra: boolean;
+  private _sprite: string;
+  private _precio: number;
+  private _estadoDeCompra: boolean;
 
-    constructor(sprite: string, precio: number, estadoDeCompra: boolean) {
-        this._sprite = sprite;
-        this._precio = precio;
-        this._estadoDeCompra = estadoDeCompra;
-    }
+  constructor(sprite: string, precio: number, estadoDeCompra: boolean) {
+    this._sprite = sprite;
+    this._precio = precio;
+    this._estadoDeCompra = estadoDeCompra;
+  }
 
-    public CambiarPrecio(nuevoPrecio: number){
-        try {
-            if (nuevoPrecio >= 0) {
-                this._precio = nuevoPrecio;
-            }else{
-                throw new Error();
-            }
-        } catch (error) {
-            console.error("Error al intentar cambiar el precio, puede que el precio es menor a 0." + error);
-        }
+  public CambiarPrecio(nuevoPrecio: number) {
+    try {
+      if (nuevoPrecio >= 0) {
+        this._precio = nuevoPrecio;
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      console.error(
+        "Error al intentar cambiar el precio, puede que el precio es menor a 0." +
+          error
+      );
     }
+  }
 
-    public ComprarCosmetico():boolean {
-        try {
-            if (this.precio < 0){
-                throw new Error();
-            }
-        } catch (error) {
-            console.error("Error al intentar comprar el cosmetico, puede que el precio no es el correcto." + error);
-            return false;
-        }
-        try {
-            if (!this.estadoDeCompra) {
-                this.estadoDeCompra = true;
-                return true;
-            }
-        } catch (error) {
-            console.error("Error al intentar comprar el cosmetico, puede que ya se encuentre en su inventario." + error);
-        }
-        return false;
+  public ComprarCosmetico(): boolean {
+    try {
+      if (this.precio < 0) {
+        throw new Error();
+      }
+    } catch (error) {
+      console.error(
+        "Error al intentar comprar el cosmetico, puede que el precio no es el correcto." +
+          error
+      );
+      return false;
     }
+    try {
+      if (!this.estadoDeCompra) {
+        this.estadoDeCompra = true;
+        return true;
+      }
+    } catch (error) {
+      console.error(
+        "Error al intentar comprar el cosmetico, puede que ya se encuentre en su inventario." +
+          error
+      );
+    }
+    return false;
+  }
 
-    //Getters and setters
-    
-    public set sprite(v : string) {
-        this._sprite = v;
-    }
-    
-    
-    public get sprite() : string {
-        return this._sprite;
-    }
-    
+  //Getters and setters
 
-    public get precio() : number {
-        return this._precio;
-    }
+  public set sprite(v: string) {
+    this._sprite = v;
+  }
 
+  public get sprite(): string {
+    return this._sprite;
+  }
 
-    public get estadoDeCompra() : boolean {
-        return this._estadoDeCompra;
-    }
-    
-    
-    public set estadoDeCompra(v : boolean) {
-        this._estadoDeCompra = v;
-    }
+  public get precio(): number {
+    return this._precio;
+  }
+
+  public get estadoDeCompra(): boolean {
+    return this._estadoDeCompra;
+  }
+
+  public set estadoDeCompra(v: boolean) {
+    this._estadoDeCompra = v;
+  }
 }

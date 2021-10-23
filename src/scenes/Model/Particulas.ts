@@ -1,28 +1,28 @@
 export default class Particulas {
-    private _particula: any;
+  private _particula: any;
 
-    constructor(particula: any) {
-        this._particula = particula;
-    }
-    
-    public EjecutarParticula(x: number, y: number){
-        let p = this.particula.createEmitter();
-        p.setPosition(x,y);
-        p.setGravityY(-200);
-        p.setSpeed(300);
-        p.setAngle({min: 180, max: 360});
-        p.maxParticles = 5;
-        p.setLifespan(200);
-        p.setScale({ min: 0.1, max: .8 });
-        p.setBlendMode(Phaser.BlendModes.ADD);
-    }
+  constructor(particula: any) {
+    this._particula = particula;
+  }
 
-    //Getters and setters
-    public get particula(): any {
-        return this._particula;
-    }
+  public EjecutarParticula(x: number, y: number) {
+    let p = this.particula.createEmitter();
+    p.setPosition(x, y);
+    p.setGravityY(-200);
+    p.setSpeed(300);
+    p.setAngle({ min: 180, max: 360 });
+    p.maxParticles = 5;
+    p.setLifespan(200);
+    p.setScale({ min: 0.1, max: 0.8 });
+    p.setBlendMode(Phaser.BlendModes.ADD);
+  }
 
-    public set particula(v:any) {
-        this._particula =v;
-    }
+  //Getters and setters
+  public get particula(): any {
+    return this._particula;
+  }
+
+  public set particula(v: any) {
+    this._particula = v;
+  }
 }

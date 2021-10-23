@@ -1,20 +1,13 @@
 import Phaser from "phaser";
 
-export default class Configuracion extends Phaser.Scene{
+export default class Configuracion extends Phaser.Scene {
+  constructor() {
+    super("configuracion");
+  }
 
-    constructor(){
-        super("configuracion");
-    }
+  preload() {}
 
-    preload (){
+  create() {}
 
-    }
-
-    create(){
-        
-    }
-
-    update(){
-
-    }
+  update() {}
 }
