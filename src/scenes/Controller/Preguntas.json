@@ -1,1 +1,102 @@
-[{"Nivel":"lvl1","Pregunta":"Prueba 1","RespuestaCorrecta":"A","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES A!"},{"Nivel":"lvl2","Pregunta":"Prueba 2","RespuestaCorrecta":"B","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES B!"},{"Nivel":"lvl3","Pregunta":"Prueba 3","RespuestaCorrecta":"C","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES C!"},{"Nivel":"lvl4","Pregunta":"Prueba 4","RespuestaCorrecta":"D","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES D!"},{"Nivel":"lvl5","Pregunta":"Prueba 5","RespuestaCorrecta":"E","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES E!"},{"Nivel":"lvl6","Pregunta":"Prueba 6","RespuestaCorrecta":"F","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES F!"},{"Nivel":"lvl7","Pregunta":"Prueba 7","RespuestaCorrecta":"G","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES G!"},{"Nivel":"lvl8","Pregunta":"Prueba 8","RespuestaCorrecta":"H","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES H!"},{"Nivel":"lvl9","Pregunta":"Prueba 9","RespuestaCorrecta":"I","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES I!"},{"Nivel":"lvl10","Pregunta":"Prueba 10","RespuestaCorrecta":"J","RespuestaIncorrecta1":"B","RespuestaIncorrecta2":"V","RespuestaIncorrecta3":"Z","RespuestaDeRisaEnCasoDeSerCorrecta":"A SI!","RespuestaDeRisaEnCasoDeSerIncorrecta":"NO! ES J!"}]
+[
+  {
+    "Nivel": "lvl1",
+    "Pregunta": "Prueba 1",
+    "RespuestaCorrecta": "A",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES A!"
+  },
+  {
+    "Nivel": "lvl2",
+    "Pregunta": "Prueba 2",
+    "RespuestaCorrecta": "B",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES B!"
+  },
+  {
+    "Nivel": "lvl3",
+    "Pregunta": "Prueba 3",
+    "RespuestaCorrecta": "C",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES C!"
+  },
+  {
+    "Nivel": "lvl4",
+    "Pregunta": "Prueba 4",
+    "RespuestaCorrecta": "D",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES D!"
+  },
+  {
+    "Nivel": "lvl5",
+    "Pregunta": "Prueba 5",
+    "RespuestaCorrecta": "E",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES E!"
+  },
+  {
+    "Nivel": "lvl6",
+    "Pregunta": "Prueba 6",
+    "RespuestaCorrecta": "F",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES F!"
+  },
+  {
+    "Nivel": "lvl7",
+    "Pregunta": "Prueba 7",
+    "RespuestaCorrecta": "G",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES G!"
+  },
+  {
+    "Nivel": "lvl8",
+    "Pregunta": "Prueba 8",
+    "RespuestaCorrecta": "H",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES H!"
+  },
+  {
+    "Nivel": "lvl9",
+    "Pregunta": "Prueba 9",
+    "RespuestaCorrecta": "I",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES I!"
+  },
+  {
+    "Nivel": "lvl10",
+    "Pregunta": "Prueba 10",
+    "RespuestaCorrecta": "J",
+    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta2": "V",
+    "RespuestaIncorrecta3": "Z",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES J!"
+  }
+]

@@ -6,14 +6,14 @@ export default class Particulas {
   }
 
   public EjecutarParticula(x: number, y: number) {
-    let p = this.particula.createEmitter();
-    p.setPosition(x, y);
-    p.setGravityY(-200);
-    p.setSpeed(300);
-    p.setAngle({ min: 180, max: 360 });
-    p.maxParticles = 5;
-    p.setLifespan(200);
-    p.setScale({ min: 0.1, max: 0.8 });
+    let p = this.particula.createEmitter(); //Crea una nueva particula
+    p.setPosition(x, y); //Posicion de la particula
+    p.setGravityY(-200); //Gravedad
+    p.setSpeed(300); //Velocidad
+    p.setAngle({ min: 180, max: 360 }); //Angulo
+    p.maxParticles = 10; //Numero de particulas
+    p.setLifespan(200); //Tiempo de vida
+    p.setScale({ min: 0.1, max: 0.8 }); //Escala
     p.setBlendMode(Phaser.BlendModes.ADD);
   }
 

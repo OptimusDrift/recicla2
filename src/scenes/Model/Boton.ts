@@ -4,8 +4,8 @@ import Particulas from "./Particulas";
 export default class Boton {
   private _texto: any;
   private _boton: any;
-  private _particulasCorrecto: Particulas;
-  private _particulasIncorrecta: Particulas;
+  private _particulasCorrecto: Particulas | undefined;
+  private _particulasIncorrecta: Particulas | undefined;
 
   constructor(
     texto: any,
@@ -60,16 +60,20 @@ export default class Boton {
 
   //El color del botón cambia a verde.
   public BotonCorrecto() {
-    this.boton.setTint(0x3a5311);
+    this.CambiarColor(0x3a5311);
     this.particulasCorrecto.EjecutarParticula(this.boton.x, this.boton.y);
     this.PausarBoton();
   }
 
   //El color del botón cambia a rojo.
   public BotonIncorecto() {
-    this.boton.setTint(0xd40032);
+    this.CambiarColor(0xd40032);
     this.particulasIncorrecta.EjecutarParticula(this.boton.x, this.boton.y);
     this.PausarBoton();
+  }
+
+  public CambiarColor(color: any) {
+    this.boton.setTint(color);
   }
 
   //Getters and setters

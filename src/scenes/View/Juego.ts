@@ -6,6 +6,7 @@ export default class Juego extends Phaser.Scene {
   private _controladorNivel: CNivel;
   private _particulasCorrecto: Particulas;
   private _particulasIncorrecta: Particulas;
+  private _particulasBomba: Particulas;
 
   constructor(str: string) {
     super(str);
@@ -41,5 +42,13 @@ export default class Juego extends Phaser.Scene {
 
   public get controladorNivel(): CNivel {
     return this._controladorNivel;
+  }
+
+  public get particulasBomba(): Particulas {
+    return this._particulasBomba;
+  }
+
+  public set particulasBomba(v: Particulas) {
+    this._particulasBomba = v;
   }
 }

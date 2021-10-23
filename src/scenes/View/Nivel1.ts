@@ -66,4 +66,7 @@ export default class Nivel1 extends Juego {
 
     //console.log(this.puntoInicialX);
   }
+
+
+
 }
