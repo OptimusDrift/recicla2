@@ -89,7 +89,8 @@ export default class CMenuPrincipal {
     }); //Cuando se pulsa el boton de creditos
     this.botones[1].boton.on("pointerup", () => {
       this.escena.scene.sleep("MenuPrincipal"); //Pausa la escena
-      this.escena.scene.wake("Trivia"); //Despausa la escena
+      this.escena.scene.wake("Trivia");
+      this.escena.scene.get("Trivia").controladorTrivia.ReiniciarNivel();
     }); //Cuando se pulsa el boton de trivia
     this.botones[2].boton.on("pointerup", () => {
       //this.escena.scene.start("Tienda");

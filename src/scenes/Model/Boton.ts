@@ -51,7 +51,7 @@ export default class Boton {
   }
 
   //Si el botón necesita una funcionalidad se le setean los listeners.
-  private ResetearBoton() {
+  public ResetearBoton() {
     this.boton.setInteractive();
     this.boton.on("pointerover", () => this.PointerOver());
     this.boton.on("pointerout", () => this.PointerOut());

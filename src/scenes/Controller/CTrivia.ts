@@ -182,6 +182,17 @@ export default class CTrivia {
     this.risa.anims.play("risaBomba", true); //Inicia la animación de risa
   }
 
+  public ReiniciarNivel() {
+    this.CargarTrivia();
+    this.botones.forEach((b) => {
+      b.CambiarColor(0xffffff);
+      b.ResetearBoton();
+    });
+    this.botonesMejoras[0].CambiarColor(0xffffff);
+    this.botonesMejoras[0].ResetearBoton();
+    this.risa.anims.play("risaPregunta", true);
+  }
+
   //Metodo para definir la funcion del click, en teste caso, consiste en revisar la respuesta y ver si es correcta.
   private PointerUp(btn: Boton) {
     var a = false;

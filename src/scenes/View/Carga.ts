@@ -115,11 +115,11 @@ export default class Carga extends Phaser.Scene {
       0
     ); //Crea el jugador
     //---------------------CONFIGURACION-----------------------//
-    let config = this.scene.manager.scenes[2]; //Obtiene la escena de la configuracion
+    let config = this.scene.get("Configuracion"); //Obtiene la escena de la configuracion
     this.controladorConfiguracion = new CConfiguracion(config); //Crea el controlador de configuracion
     //-------------NIVELES--------------------//
     this.niveles = new Array<Nivel>();
-    let nvl1 = this.scene.manager.scenes[9];
+    let nvl1 = this.scene.get("Nivel1"); //Obtiene la escena del nivel 1
     this.niveles.push(
       new Nivel(
         nvl1,
@@ -168,12 +168,12 @@ export default class Carga extends Phaser.Scene {
     this.controladorNivel.CargarControlador(); //Carga el controlador de nivel
 
     //--------------------TRIVIA-----------------------//
-    let tri = this.scene.manager.scenes[7]; //Obtiene la escena de la trivia
+    let tri = this.scene.get("Trivia"); //Obtiene la escena de la trivia
     this.controladorTrivia = new CTrivia(tri, this.controladorConfiguracion); //Crea el controlador de trivia
     this.controladorTrivia.CargarControlador(); //Carga el controlador de trivia
 
     //---------------------MENU-----------------------//
-    let menu = this.scene.manager.scenes[5]; //Obtiene la escena del menu
+    let menu = this.scene.get("MenuPrincipal"); //Obtiene la escena del menu
     this.controladorMenuPrincipal = new CMenuPrincipal(
       menu,
       this.controladorConfiguracion
