@@ -47,7 +47,8 @@ export default class CTrivia {
     this._cConfiguracion = cConfiguracion; //Asigna el controlador de configuración
     this.escena.add.image(1920 / 2, 1080 / 2, "fondoTrivia").setDepth(-20); //Agrega el fondo
     this.escena.add.image(225 + 556, 100 + 205, "cuadroDeDialogo"); //Agrega el cuadro de dialogo
-    this.escena.add.image(700, 1030, "moneda"); //Agrega la moneda
+    this.escena.add.image(700, 1015, "moneda"); //Agrega la moneda
+    this.escena.add.image(730, 1015, "moneda"); //Agrega la moneda
     //Animación para Risa
     this.escena.anims.create({
       key: "risaPregunta",
@@ -139,9 +140,11 @@ export default class CTrivia {
     let i = 0;
     this.botones.forEach((b) => {
       b.texto.text = this.preguntas[this.preguntaActual].respuestas[i];
+      b.boton.off("pointerup");
       b.boton.on("pointerup", () => this.PointerUp(b));
       i++;
     });
+    this.botonesMejoras[0].boton.off("pointerup");
     this.botonesMejoras[0].boton.on("pointerup", () =>
       this.BuscarBotonesIncorrectos()
     );
@@ -175,22 +178,28 @@ export default class CTrivia {
         i.push(b);
       }
     }); //Recorre el arreglo de botones y agrega los botones que no son la respuesta correcta
-    i.pop(); //Elimina el último botón
+    console.log(i);
+    while (i.length > 2) {
+      i.pop(); //Elimina el último botón
+    } //Mientras el arreglo de botones sea mayor a 2, elimina el último botón
     this.mejoraBomba.EfectoMejora(i); //Ejecuta el efecto de mejora
-    this.botonesMejoras[0].CambiarColor(0x808080); //Cambia el color del botón
+    this.botonesMejoras[0].boton.setAlpha(0.5); //Pone el botón de mejora en gris
     this.botonesMejoras[0].PausarBoton(); //Pausa el botón
     this.risa.anims.play("risaBomba", true); //Inicia la animación de risa
   }
 
   public ReiniciarNivel() {
-    this.CargarTrivia();
+    this.CargarTrivia();  //Carga las preguntas
     this.botones.forEach((b) => {
-      b.CambiarColor(0xffffff);
-      b.ResetearBoton();
+      b.CambiarColor(0xffffff); //Cambia el color de los botones a blanco
+      b.ResetearBoton();  //Resetea el botón
     });
-    this.botonesMejoras[0].CambiarColor(0xffffff);
-    this.botonesMejoras[0].ResetearBoton();
-    this.risa.anims.play("risaPregunta", true);
+    this.botonesMejoras.forEach((b) => {
+      b.CambiarColor(0xffffff); //Cambia el color de los botones a blanco
+      b.ResetearBoton();  //Resetea el botón
+      b.boton.setAlpha(1);  //Pone el botón en 1 (opacidad)
+    });
+    this.risa.anims.play("risaPregunta", true); //Inicia la animación de risa
   }
 
   //Metodo para definir la funcion del click, en teste caso, consiste en revisar la respuesta y ver si es correcta.

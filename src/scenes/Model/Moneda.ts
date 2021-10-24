@@ -3,19 +3,22 @@ export default class Moneda {
   private _physics: any;
   private _valor: number;
   private _cuerpo: any;
+  private _particulas: any;
 
   constructor(
     sprite: string,
     physics: any,
     valor: number,
     x: number,
-    y: number
+    y: number,
+    particulas: any
   ) {
     this._sprite = sprite;
     this._physics = physics;
     this._valor = valor;
     this._cuerpo = this.physics.add.sprite(x, y, this.sprite);
     this._cuerpo.body.setAllowGravity(false);
+    this._particulas = particulas;
   }
 
   public OcultarMoneda() {
@@ -32,6 +35,10 @@ export default class Moneda {
     } catch (error) {
       console.error("Error al intentar ocultar la moneda." + error);
     }
+  }
+
+  public DesaparecerMoneda() {
+    this.cuerpo.setVisible(false);
   }
 
   //Getters and setters
@@ -60,11 +67,19 @@ export default class Moneda {
     this._valor = v;
   }
 
-  public get cuerpo(): number {
+  public get cuerpo(): any {
     return this._cuerpo;
   }
 
-  public set vacuerpolor(v: number) {
+  public set cuerpo(v: any) {
     this._cuerpo = v;
+  }
+
+  public get particulas(): number {
+    return this._particulas;
+  }
+
+  public set particulas(v: number) {
+    this._particulas = v;
   }
 }

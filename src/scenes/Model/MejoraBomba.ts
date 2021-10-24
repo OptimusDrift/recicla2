@@ -12,6 +12,7 @@ export default class MejoraBomba extends Mejora {
 
   public EfectoMejora(botones: Array<Boton>) {
     botones.forEach((boton) => {
+      console.log(boton);
       boton.PausarBoton();
       boton.CambiarColor(0x2980a4);
       this.particulas.EjecutarParticula(boton.boton.x, boton.boton.y);
