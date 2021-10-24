@@ -19,6 +19,8 @@ export default class CNivel {
   private PUNTO_INICIAL_Y = 920;
   private DISTANCIA_MINIMA = 100;
   private DISTANCIA_MAXIMA = 800;
+  private BOTON_CONFIGURACION_POSICION_X = 1862;
+  private BOTON_CONFIGURACION_POSICION_Y = 64;
 
   constructor(niveles: Array<Nivel>, nivelActual: number) {
     //Setea las variables por defecto

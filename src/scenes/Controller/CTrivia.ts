@@ -3,15 +3,18 @@ import Pregunta from "../Model/Pregunta";
 import Mejora from "../Model/Mejora";
 import MejoraBomba from "../Model/MejoraBomba";
 import preguntas from "./Preguntas.json";
+import CConfiguracion from "./CConfiguracion";
 
 export default class CTrivia {
   //Atributos de la trivia
   private _escena: any;
   private _botones: Array<Boton>;
   private _botonesMejoras: Array<Boton>;
+  private _botonConfiguracion: Boton;
   private _mejoraBomba: Mejora;
   private _preguntas: Array<Pregunta>;
   private _preguntaActual: number;
+  private _cConfiguracion: CConfiguracion;
 
   //Constantes de la trivia
   private BOTON_0_POSICION_X = 478;
@@ -24,6 +27,8 @@ export default class CTrivia {
   private BOTON_3_POSICION_Y = 824;
   private BOTON_MEJORA_BOMBA_POSICION_X = 600;
   private BOTON_MEJORA_BOMBA_POSICION_Y = 1000;
+  private BOTON_CONFIGURACION_POSICION_X = 1862;
+  private BOTON_CONFIGURACION_POSICION_Y = 64;
 
   //Estilo del texto
   private style = {
@@ -37,8 +42,9 @@ export default class CTrivia {
   private _risa: any;
 
   //Constructor
-  constructor(escena: any) {
+  constructor(escena: any, cConfiguracion: CConfiguracion) {
     this._escena = escena; //Asigna la escena
+    this._cConfiguracion = cConfiguracion; //Asigna el controlador de configuración
     this.escena.add.image(1920 / 2, 1080 / 2, "fondoTrivia").setDepth(-20); //Agrega el fondo
     this.escena.add.image(225 + 556, 100 + 205, "cuadroDeDialogo"); //Agrega el cuadro de dialogo
     this.escena.add.image(700, 1030, "moneda"); //Agrega la moneda
@@ -88,6 +94,20 @@ export default class CTrivia {
     this._preguntas = new Array<Pregunta>(); //Crea un array de preguntas
     this._preguntaActual = 0;
     this.CargarPreguntas(); //Carga las preguntas
+    this._botonConfiguracion = new Boton(
+      this.escena.add.text(0, 0, "", this.style),
+      this.escena.add.image(
+        this.BOTON_CONFIGURACION_POSICION_X,
+        this.BOTON_CONFIGURACION_POSICION_Y,
+        "configuracion"
+      ),
+      undefined,
+      undefined
+    ); //Crea el botón de configuración
+    this.botonConfiguracion.boton.setDepth(0); //Pone el boton de configuracion en la capa 0
+    this.botonConfiguracion.boton.on("pointerup", () => {
+      this.cConfiguracion.CambiarAVentanaConfiguracion("Trivia", true); //Cambia a la ventana de configuración
+    }); //Evento para el botón de configuración
   }
 
   //Carga las preguntas desde un JSON
@@ -330,5 +350,21 @@ export default class CTrivia {
 
   public get botonesMejoras(): Array<Boton> {
     return this._botonesMejoras;
+  }
+
+  public get cConfiguracion(): CConfiguracion {
+    return this._cConfiguracion;
+  }
+
+  public set cConfiguracion(v: CConfiguracion) {
+    this._cConfiguracion = v;
+  }
+
+  public get botonConfiguracion(): Boton {
+    return this._botonConfiguracion;
+  }
+
+  public set botonConfiguracion(v: Boton) {
+    this._botonConfiguracion = v;
   }
 }

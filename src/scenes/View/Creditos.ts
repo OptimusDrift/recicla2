@@ -31,6 +31,7 @@ export default class Creditos extends Phaser.Scene {
     this._botonVolver.boton.on("pointerup", () => {
       this.scene.moveBelow("Creditos", "MenuPrincipal");
       this.scene.wake("MenuPrincipal");
+      this.scene.sleep("Creditos");
     });
   }
 

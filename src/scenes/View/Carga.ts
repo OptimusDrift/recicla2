@@ -49,6 +49,7 @@ export default class Carga extends Phaser.Scene {
     this.load.image("botonX", "assets/Botones/BotonX.png");
     this.load.image("bomba", "assets/Botones/Bomba.png");
     this.load.image("volver", "assets/Botones/Volver.png");
+    this.load.image("menuPrincipal", "assets/Botones/MenuPrincipal.png");
     //-------In-Game---------\\
     this.load.image("papel", "assets/Basura/Papel.png");
     this.load.image("moneda", "assets/Moneda/Moneda.png");
@@ -113,6 +114,9 @@ export default class Carga extends Phaser.Scene {
       0,
       0
     ); //Crea el jugador
+    //---------------------CONFIGURACION-----------------------//
+    let config = this.scene.manager.scenes[2]; //Obtiene la escena de la configuracion
+    this.controladorConfiguracion = new CConfiguracion(config); //Crea el controlador de configuracion
     //-------------NIVELES--------------------//
     this.niveles = new Array<Nivel>();
     let nvl1 = this.scene.manager.scenes[9];
@@ -150,14 +154,14 @@ export default class Carga extends Phaser.Scene {
     ); //Añade los obstaculos al nivel 1
     this.niveles[0].obstaculos.push(
       new Obstaculo("mesa", nvl1.physics, 980, 780)
-    );
+    ); //Añade los obstaculos al nivel 1
 
     this.niveles[0].recipientes.push(
       new RecipienteVerde("recipienteAzul", nvl1.physics, 2500, 980)
     ); //Añade los recipientes al nivel 1
     this.niveles[0].recipientes.push(
       new RecipienteAzul("recipienteAzul", nvl1.physics, 2000, 980)
-    );
+    ); //Añade los recipientes al nivel 1
 
     this.controladorNivel = new CNivel(this.niveles, 0); //Crea el controlador de nivel
 
@@ -165,16 +169,15 @@ export default class Carga extends Phaser.Scene {
 
     //--------------------TRIVIA-----------------------//
     let tri = this.scene.manager.scenes[7]; //Obtiene la escena de la trivia
-    this.controladorTrivia = new CTrivia(tri); //Crea el controlador de trivia
+    this.controladorTrivia = new CTrivia(tri, this.controladorConfiguracion); //Crea el controlador de trivia
     this.controladorTrivia.CargarControlador(); //Carga el controlador de trivia
 
     //---------------------MENU-----------------------//
     let menu = this.scene.manager.scenes[5]; //Obtiene la escena del menu
-    this.controladorMenuPrincipal = new CMenuPrincipal(menu); //Crea el controlador del menu
-
-    //---------------------CONFIGURACION-----------------------//
-    let config = this.scene.manager.scenes[2]; //Obtiene la escena de la configuracion
-    this.controladorConfiguracion = new CConfiguracion(config); //Crea el controlador de configuracion
+    this.controladorMenuPrincipal = new CMenuPrincipal(
+      menu,
+      this.controladorConfiguracion
+    ); //Crea el controlador del menu principal y le pasa el controlador de configuracion
 
     this.scene.launch("Configuracion"); //Lanza la escena de configuracion
     this.scene.sleep("Configuracion"); //Oculta la escena de configuracion
