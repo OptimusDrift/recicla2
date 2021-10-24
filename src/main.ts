@@ -1,15 +1,15 @@
 import Phaser from "phaser";
-//import HelloWorldScene from './scenes/HelloWorldScene';
-import Carga from "./scenes/View/Carga";
-import Configuracion from "./scenes/View/Configuracion";
-import Cargando from "./scenes/View/Cargando";
-import Creditos from "./scenes/View/Creditos";
-import Juego from "./scenes/View/Juego";
-import MenuPrincipal from "./scenes/View/MenuPrincipal";
-import Tienda from "./scenes/View/Tienda";
-import Trivia from "./scenes/View/Trivia";
-import Pruebas from "./scenes/View/Pruebas";
-import Nivel1 from "./scenes/View/Nivel1";
+//import HelloWorldScene from './HelloWorldScene';
+import Carga from "./View/Carga";
+import Configuracion from "./View/Configuracion";
+import Cargando from "./View/Cargando";
+import Creditos from "./View/Creditos";
+import Juego from "./View/Juego";
+import MenuPrincipal from "./View/MenuPrincipal";
+import Tienda from "./View/Tienda";
+import Trivia from "./View/Trivia";
+import Pruebas from "./View/Pruebas";
+import Nivel1 from "./View/Nivel1";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
