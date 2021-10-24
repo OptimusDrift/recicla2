@@ -84,7 +84,7 @@ export default class CMenuPrincipal {
   private FuncionalidadBotones() {
     this.botones[0].boton.on("pointerup", () => {
       this.escena.scene.pause("MenuPrincipal"); //Pausa la escena
-      this.escena.scene.moveAbove("Creditos"); //Pone la escena de creditos por encima de la actual
+      this.escena.scene.moveBelow("Creditos"); //Mueve la escena a la capa inferior
       this.escena.scene.wake("Creditos"); //Despausa la escena
     }); //Cuando se pulsa el boton de creditos
     this.botones[1].boton.on("pointerup", () => {
