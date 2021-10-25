@@ -1,6 +1,9 @@
 import Dialogo from "../Model/Dialogo";
 import Pregunta from "../Model/Pregunta";
-export default class Juego extends Phaser.Scene {
+import Particulas from "../Model/Particulas";
+import Juego from "./Juego";
+
+export default class Pruebas extends Juego {
   constructor() {
     super("pruebas");
   }
@@ -12,6 +15,13 @@ export default class Juego extends Phaser.Scene {
   create() {
     const mapa = this.make.tilemap({ key: "mapa" });
     const tileset = mapa.addTilesetImage("Atlas", "atlas");
-    mapa.createLayer("ejemplo", tileset);
+
+    const m = mapa.createLayer("ejemplo", tileset);
+
+    m.setCollisionByProperty({ collides: true });
+  }
+
+  update() {
+    this.controladorNivel.PrepararLanzamiento();
   }
 }

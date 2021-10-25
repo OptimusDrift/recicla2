@@ -1,7 +1,7 @@
 export default class Cargando extends Phaser.Scene {
   private flechas: any;
   constructor() {
-    super("cargando");
+    super("Cargando");
   }
 
   preload() {

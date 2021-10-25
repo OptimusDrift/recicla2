@@ -185,7 +185,7 @@ export default class Carga extends Phaser.Scene {
     this.scene.sleep("Creditos"); //Oculta la escena de creditos
     this.scene.launch("Trivia"); //Lanza la escena de trivia
     this.scene.sleep("Trivia"); //Oculta la escena de trivia
-    this.scene.stop("cargando"); //Oculta la escena de carga
-    this.scene.start("pruebas"); //Lanza la escena del menu principal
+    this.scene.stop("Cargando"); //Oculta la escena de carga
+    this.scene.start("Nivel1"); //Lanza la escena del menu principal
   }
 }
