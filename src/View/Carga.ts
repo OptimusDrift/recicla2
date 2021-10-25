@@ -81,6 +81,7 @@ export default class Carga extends Phaser.Scene {
     //------------FONDOS------------\\
     this.load.image("fondoTrivia", "assets/Pantallas/FondoTrivia.png");
     this.load.image("fondoMenu", "assets/Pantallas/MenuPrincipal.png");
+    this.load.image("fondoNivel", "assets/Pantallas/FondoNivel.png");
     this.load.image("fondoCreditos", "assets/Pantallas/Creditos.png"); //TEMPORAL
     //---------POP UPS----------\\
     this.load.image("fondoRosa", "assets/PopUps/FondoRosa.png");
@@ -101,6 +102,9 @@ export default class Carga extends Phaser.Scene {
       "assets/Sonidos/RespuestaIncorrecta.wav"
     );
     this.load.audio("RisaRie", "assets/Sonidos/RisaRie.wav");
+    //----------------ATLAS------------------\\
+    this.load.image("atlas", "assets/Tiled/Atlas.png");
+    this.load.tilemapTiledJSON("mapaNivel1", "assets/Tiled/Nivel_1.json");
   }
 
   create() {
@@ -120,10 +124,13 @@ export default class Carga extends Phaser.Scene {
     //-------------NIVELES--------------------//
     this.niveles = new Array<Nivel>();
     let nvl1 = this.scene.get("Nivel1"); //Obtiene la escena del nivel 1
+    const mapa = nvl1.make.tilemap({ key: "mapaNivel1" });
+    const tileset = mapa.addTilesetImage("Atlas", "atlas");
+
     this.niveles.push(
       new Nivel(
         nvl1,
-        "fondo",
+        "fondoNivel",
         this.player,
         0,
         new Array<Moneda>(),
@@ -132,6 +139,8 @@ export default class Carga extends Phaser.Scene {
         new Array<Residuo>(),
         0,
         0,
+        mapa,
+        tileset,
         new Musica("")
       )
     ); //Crea el nivel 1
@@ -149,12 +158,12 @@ export default class Carga extends Phaser.Scene {
       new Moneda("moneda", nvl1.physics, 0, 1900, 880)
     );
 
-    this.niveles[0].obstaculos.push(
+    /*this.niveles[0].obstaculos.push(
       new Obstaculo("mesa", nvl1.physics, 980, 980)
     ); //Añade los obstaculos al nivel 1
     this.niveles[0].obstaculos.push(
       new Obstaculo("mesa", nvl1.physics, 980, 780)
-    ); //Añade los obstaculos al nivel 1
+    ); //Añade los obstaculos al nivel 1*/
 
     this.niveles[0].recipientes.push(
       new RecipienteVerde("recipienteAzul", nvl1.physics, 2500, 980)
@@ -186,6 +195,6 @@ export default class Carga extends Phaser.Scene {
     this.scene.launch("Trivia"); //Lanza la escena de trivia
     this.scene.sleep("Trivia"); //Oculta la escena de trivia
     this.scene.stop("Cargando"); //Oculta la escena de carga
-    this.scene.start("Nivel1"); //Lanza la escena del menu principal
+    this.scene.start("MenuPrincipal"); //Lanza la escena del menu principal
   }
 }

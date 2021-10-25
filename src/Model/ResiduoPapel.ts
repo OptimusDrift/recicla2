@@ -14,7 +14,6 @@ export default class ResiduoPapel extends Residuo {
 
   public setFriccion(residuo: any, obstaculo: any) {
     //Se setea una friccion
-    console.log(residuo);
     residuo.body.setDragX(600);
     //Pequenno tiempo antes de volver la friccion 0 (para que no caiga de manera brusca)
     residuo.scene.time.addEvent({

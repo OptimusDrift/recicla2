@@ -18,7 +18,7 @@ export default class CNivel {
   private PUNTO_INICIAL_X = 300; //Son los puntos desde donde se lanza el residuo
   private PUNTO_INICIAL_Y = 920;
   private DISTANCIA_MINIMA = 100;
-  private DISTANCIA_MAXIMA = 800;
+  private DISTANCIA_MAXIMA = 400;
   private BOTON_CONFIGURACION_POSICION_X = 1862;
   private BOTON_CONFIGURACION_POSICION_Y = 64;
 
@@ -73,6 +73,8 @@ export default class CNivel {
   public CargarColisionesNivel() {
     //Recorre los niveles
     this.niveles.forEach((nivel) => {
+      const layer = nivel.mapa.createLayer("Nivel1", nivel.tileset);
+      layer.setCollisionByProperty({ collides: true });
       //Recorre los residuos del nivel
       nivel.residuos.forEach((residuo) => {
         //Recorre los recipientes del nivel
@@ -98,14 +100,19 @@ export default class CNivel {
           );
         });
         //Recorre todos los obstaculos del nivel
-        nivel.obstaculos.forEach((obstaculo) => {
+        /*nivel.obstaculos.forEach((obstaculo) => {
           //Annade la colision entre los residuos y los obstaculos
           nivel.pantallaDeJuego.physics.add.collider(
             residuo.cuerpo,
             obstaculo.cuerpo,
             residuo.setFriccion
           );
-        });
+        });*/
+        nivel.pantallaDeJuego.physics.add.collider(
+          residuo.cuerpo,
+          layer,
+          residuo.setFriccion
+        );
       });
     });
   }
@@ -225,11 +232,10 @@ export default class CNivel {
   }
 
   private Velocidad(distancia: number): number {
-    let porcentaje = 0;
     if (this.DISTANCIA_MAXIMA <= distancia) {
-      return 6;
+      return 0.8;
     }
-    return ((100 * distancia) / this.DISTANCIA_MAXIMA / 100) * 6;
+    return ((100 * distancia) / this.DISTANCIA_MAXIMA / 100) * 0.8;
   }
   //--------------Pruebas de lineas en pantalla----------------------//
   public curve;
