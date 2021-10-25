@@ -12,13 +12,23 @@ export default class Nivel1 extends Juego {
   }
   preload() {
     this.load.image("Atlas", "assets/Atlas-0.png");
-
     this.load.tilemapTiledJSON("Nivel1TileMap", "assets/Nivel1.json");
+
+    this.load.image("Atlas", "assets/Atlas.png");
+    this.load.tilemapTiledJSON("nivel1", "assets/PNIVEL1.json");
   }
 
   create() {
     this.particulasIncorrecta = new Particulas(this.add.particles("cruces"));
     this.particulasCorrecto = new Particulas(this.add.particles("estrellitas"));
+
+    //cargar tilemap con tiled
+    const map1 = this.make.tilemap({ key: "nivel1" });
+    const tileset1 = map1.addTilesetImage("tileset", "Atlas");
+    const layer1 = map1.createStaticLayer("Capa de Patrones", tileset1, 0, 0);
+    layer1.setCollisionByProperty({ collides: true });
+    this.matter.world.convertTilemapLayer(layer1);
+
 
     const map = this.make.tilemap({ key: "Nivel1TileMap" });
 
@@ -66,7 +76,4 @@ export default class Nivel1 extends Juego {
 
     //console.log(this.puntoInicialX);
   }
-
-
-
 }
