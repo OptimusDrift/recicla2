@@ -154,22 +154,15 @@ export default class Carga extends Phaser.Scene {
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
 
-    const objetosLayer = mapa.getObjectLayer("ObjetosNivel1");
+    const objetosLayer = mapa.getObjectLayer("ObjetosNivel1"); //Obtiene la capa de objetos del nivel 1
     objetosLayer.objects.forEach((objeto) => {
       this.CargarObjetosLayer(this.niveles[0], objeto);
-    });
+    }); //Carga los objetos de la capa de objetos del nivel 1
 
-    const obstaculos = mapa.createLayer("Nivel1", tileset);
+    const obstaculos = mapa.createLayer("Nivel1", tileset); //Crea la capa de obstaculos
     obstaculos.setCollisionByProperty({ collides: true });
 
-    this.niveles[0].obstaculos = obstaculos;
-
-    /*this.niveles[0].obstaculos.push(
-      new Obstaculo("mesa", nvl1.physics, 980, 980)
-    ); //Añade los obstaculos al nivel 1
-    this.niveles[0].obstaculos.push(
-      new Obstaculo("mesa", nvl1.physics, 980, 780)
-    ); //Añade los obstaculos al nivel 1*/
+    this.niveles[0].obstaculos = obstaculos; //Añade los obstaculos al nivel 1
 
     this.niveles[0].recipientes.push(
       new RecipienteVerde("recipienteAzul", nvl1.physics, 2500, 980)
@@ -204,8 +197,9 @@ export default class Carga extends Phaser.Scene {
     this.scene.start("Nivel1"); //Lanza la escena del menu principal
   }
 
+  //Carga los objetos de la capa de objetos del nivel 1
   public CargarObjetosLayer(nivel: any, objeto: any) {
-    const { x = 0, y = 0, name, width = 0, height = 0 } = objeto;
+    const { x = 0, y = 0, name, width = 0, height = 0 } = objeto; //Obtiene las propiedades del objeto
     switch (name) {
       case "moneda":
         nivel.monedas.push(
@@ -217,7 +211,7 @@ export default class Carga extends Phaser.Scene {
             y + height / 2,
             nivel.pantallaDeJuego.particulasMoneda
           )
-        );
+        ); //Añade la moneda al nivel
         break;
 
       case "papel":
@@ -238,7 +232,7 @@ export default class Carga extends Phaser.Scene {
             x + width / 2,
             y + height / 2
           )
-        );
+        ); //Añade el recipiente al nivel
         break;
       case "vidrio":
         nivel.recipientes.push(
@@ -248,7 +242,7 @@ export default class Carga extends Phaser.Scene {
             x + width / 2,
             y + height / 2
           )
-        );
+        ); //Añade el recipiente al nivel
         break;
       case "bateria":
         nivel.recipientes.push(
@@ -258,7 +252,7 @@ export default class Carga extends Phaser.Scene {
             x + width / 2,
             y + height / 2
           )
-        );
+        ); //Añade el recipiente al nivel
         break;
       default:
         break;

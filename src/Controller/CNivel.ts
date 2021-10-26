@@ -1,6 +1,5 @@
 import Nivel from "../Model/Nivel";
 import Residuo from "../Model/Residuo";
-import Moneda from "../Model/Moneda";
 
 export default class CNivel {
   //Niveles
@@ -85,7 +84,7 @@ export default class CNivel {
             recipiente.CompararRecipiente,
             null,
             nivel.pantallaDeJuego
-          );
+          ); 
         });
         //Recorre todas las monedas del nivel
         nivel.monedas.forEach((moneda) => {
@@ -102,7 +101,7 @@ export default class CNivel {
           residuo.cuerpo,
           nivel.obstaculos,
           residuo.setFriccion
-        );
+        ); //Colision entre los residuos y los obstaculos
       });
     });
   }
@@ -119,7 +118,7 @@ export default class CNivel {
         this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.x;
       this.puntoInicialY =
         this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y;
-      this.onClick = true;
+      this.onClick = true; //Actualiza el valor del click
     }
   }
 
