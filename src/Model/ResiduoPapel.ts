@@ -1,7 +1,7 @@
 import Residuo from "./Residuo";
 export default class ResiduoPapel extends Residuo {
   constructor(physics: any) {
-    super("papel", physics, 0, 600);
+    super("papelResiduo", physics, 0, 600);
   }
 
   public OcultarResiduo(): void {

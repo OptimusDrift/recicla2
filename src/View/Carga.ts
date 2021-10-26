@@ -51,11 +51,15 @@ export default class Carga extends Phaser.Scene {
     this.load.image("volver", "assets/Botones/Volver.png");
     this.load.image("menuPrincipal", "assets/Botones/MenuPrincipal.png");
     //-------In-Game---------\\
-    this.load.image("papel", "assets/Basura/Papel.png");
+    this.load.image("papelResiduo", "assets/Basura/Papel.png");
     this.load.image("moneda", "assets/Moneda/Moneda.png");
-    this.load.image("recipienteAzul", "assets/Recipiente/RecipienteAzul.png");
     this.load.image("mesa", "assets/Obstaculos/Mesa.png");
     this.load.image("cuadroDeDialogo", "assets/Cuadro/CuadroDeDialogo.png");
+    //--------Recipientes---------\\
+    this.load.image("papel", "assets/Recipiente/Papel_Azul.png");
+    this.load.image("bateria", "assets/Recipiente/Pilas_Rojo.png");
+    this.load.image("plastico", "assets/Recipiente/Plastico_Amarillo.png");
+    this.load.image("vidrio", "assets/Recipiente/Vidrio_Verde.png");
     //------------PARTICULAS-------------\\
     this.load.image("estrellitas", "assets/Particulas/Estrellas.png");
     this.load.image("cruces", "assets/Particulas/Cruces.png");
@@ -148,6 +152,15 @@ export default class Carga extends Phaser.Scene {
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
 
+    const obstaculos = mapa.createLayer("Nivel1", tileset);
+    //console.log(obstaculos);
+    obstaculos.setCollisionByProperty({ collides: true });
+    const objetosLayer = mapa.getObjectLayer("ObjetosNivel1");
+    objetosLayer.objects.forEach((objeto) => {
+      this.CargarObjetosLayer(objeto);
+    });
+
+
     this.niveles[0].monedas.push(
       new Moneda("moneda", nvl1.physics, 0, 780, 250)
     ); //Añade las monedas al nivel 1
@@ -196,5 +209,22 @@ export default class Carga extends Phaser.Scene {
     this.scene.sleep("Trivia"); //Oculta la escena de trivia
     this.scene.stop("Cargando"); //Oculta la escena de carga
     this.scene.start("Nivel1"); //Lanza la escena del menu principal
+  }
+
+  public CargarObjetosLayer(nivel: any, objeto: any) {
+    const { x = 0, y = 0, name, width = 0, height = 0 } = objeto;
+    switch (name) {
+      case "moneda":
+        nivel.monedas.push(new Moneda(name, nivel.pantallaDeJuego, x, y,));
+        break;
+      default:
+        break;
+    }
+    let o = this.niveles[this.nivelActual].pantallaDeJuego.physics.add.sprite(
+      x + width / 2,
+      y + height / 2,
+      name
+    );
+    o.body.allowGravity = false;
   }
 }

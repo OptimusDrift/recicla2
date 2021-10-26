@@ -1,5 +1,6 @@
 import Nivel from "../Model/Nivel";
 import Residuo from "../Model/Residuo";
+import Moneda from "../Model/Moneda";
 
 export default class CNivel {
   //Niveles
@@ -73,9 +74,6 @@ export default class CNivel {
   public CargarColisionesNivel() {
     //Recorre los niveles
     this.niveles.forEach((nivel) => {
-      const obstaculos = nivel.mapa.createLayer("Nivel1", nivel.tileset);
-      //console.log(obstaculos);
-      obstaculos.setCollisionByProperty({ collides: true });
       //Recorre los residuos del nivel
       nivel.residuos.forEach((residuo) => {
         //Recorre los recipientes del nivel
