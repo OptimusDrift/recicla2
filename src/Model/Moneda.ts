@@ -30,6 +30,7 @@ export default class Moneda {
 
   public TomarMoneda(residuo: any, moneda: any) {
     try {
+      this.particulasMoneda.EjecutarParticula(moneda.x, moneda.y);
       moneda.body.x = -500;
       moneda.body.y = -500;
     } catch (error) {
@@ -75,11 +76,11 @@ export default class Moneda {
     this._cuerpo = v;
   }
 
-  public get particulas(): number {
+  public get particulas(): any {
     return this._particulas;
   }
 
-  public set particulas(v: number) {
+  public set particulas(v: any) {
     this._particulas = v;
   }
 }

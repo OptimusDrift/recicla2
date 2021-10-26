@@ -13,7 +13,7 @@ export default class Nivel {
   private _player: Player;
   private _residuos: Array<Residuo>;
   private _monedas: Array<Moneda>;
-  private _obstaculos: Array<Obstaculo>;
+  private _obstaculos: any;
   private _recipientes: Array<Recipiente>;
   private _puntajeNecesario: number;
   private _puntajeActual: number;
@@ -30,7 +30,7 @@ export default class Nivel {
     player: Player,
     puntajeNecesario: number,
     monedas: Array<Moneda>,
-    obstaculos: Array<Obstaculo>,
+    obstaculos: any,
     recipientes: Array<Recipiente>,
     residuos: Array<Residuo>,
     estadoDelNivel: number,
@@ -103,11 +103,11 @@ export default class Nivel {
     this._monedas = v;
   }
 
-  public get obstaculos(): Array<Obstaculo> {
+  public get obstaculos(): any {
     return this._obstaculos;
   }
 
-  public set obstaculos(v: Array<Obstaculo>) {
+  public set obstaculos(v: any) {
     this._obstaculos = v;
   }
 

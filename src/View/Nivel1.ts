@@ -13,6 +13,7 @@ export default class Nivel1 extends Juego {
   create() {
     this.particulasIncorrecta = new Particulas(this.add.particles("cruces"));
     this.particulasCorrecto = new Particulas(this.add.particles("estrellitas"));
+    this.particulasMoneda = new Particulas(this.add.particles("cruces"));
   }
 
   update() {

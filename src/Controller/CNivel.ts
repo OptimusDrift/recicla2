@@ -98,18 +98,9 @@ export default class CNivel {
             nivel.pantallaDeJuego
           );
         });
-        //Recorre todos los obstaculos del nivel
-        /*nivel.obstaculos.forEach((obstaculo) => {
-          //Annade la colision entre los residuos y los obstaculos
-          nivel.pantallaDeJuego.physics.add.collider(
-            residuo.cuerpo,
-            obstaculo.cuerpo,
-            residuo.setFriccion
-          );
-        });*/
         nivel.pantallaDeJuego.physics.add.collider(
           residuo.cuerpo,
-          obstaculos,
+          nivel.obstaculos,
           residuo.setFriccion
         );
       });

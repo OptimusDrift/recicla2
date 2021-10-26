@@ -7,6 +7,7 @@ export default class Juego extends Phaser.Scene {
   private _particulasCorrecto: Particulas;
   private _particulasIncorrecta: Particulas;
   private _particulasBomba: Particulas;
+  private _particulasMoneda: Particulas;
 
   constructor(str: string) {
     super(str);
@@ -50,5 +51,13 @@ export default class Juego extends Phaser.Scene {
 
   public set particulasBomba(v: Particulas) {
     this._particulasBomba = v;
+  }
+
+  public get particulasMoneda(): Particulas {
+    return this._particulasMoneda;
+  }
+
+  public set particulasMoneda(v: Particulas) {
+    this._particulasMoneda = v;
   }
 }

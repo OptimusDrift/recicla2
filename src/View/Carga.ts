@@ -12,6 +12,8 @@ import Obstaculo from "../Model/Obstaculo";
 import Recipiente from "../Model/Recipiente";
 import RecipienteVerde from "../Model/RecipienteVerde";
 import RecipienteAzul from "../Model/RecipienteAzul";
+import RecipienteRojo from "../Model/RecipienteRojo";
+import RecipienteAmarillo from "../Model/RecipienteAmarillo";
 import Pregunta from "../Model/Pregunta";
 import Player from "../Model/Player";
 import Boton from "../Model/Boton";
@@ -152,24 +154,15 @@ export default class Carga extends Phaser.Scene {
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
 
-    const obstaculos = mapa.createLayer("Nivel1", tileset);
-    //console.log(obstaculos);
-    obstaculos.setCollisionByProperty({ collides: true });
     const objetosLayer = mapa.getObjectLayer("ObjetosNivel1");
     objetosLayer.objects.forEach((objeto) => {
-      this.CargarObjetosLayer(objeto);
+      this.CargarObjetosLayer(this.niveles[0], objeto);
     });
 
+    const obstaculos = mapa.createLayer("Nivel1", tileset);
+    obstaculos.setCollisionByProperty({ collides: true });
 
-    this.niveles[0].monedas.push(
-      new Moneda("moneda", nvl1.physics, 0, 780, 250)
-    ); //Añade las monedas al nivel 1
-    this.niveles[0].monedas.push(
-      new Moneda("moneda", nvl1.physics, 0, 650, 150)
-    );
-    this.niveles[0].monedas.push(
-      new Moneda("moneda", nvl1.physics, 0, 1900, 880)
-    );
+    this.niveles[0].obstaculos = obstaculos;
 
     /*this.niveles[0].obstaculos.push(
       new Obstaculo("mesa", nvl1.physics, 980, 980)
@@ -215,16 +208,60 @@ export default class Carga extends Phaser.Scene {
     const { x = 0, y = 0, name, width = 0, height = 0 } = objeto;
     switch (name) {
       case "moneda":
-        nivel.monedas.push(new Moneda(name, nivel.pantallaDeJuego, x, y,));
+        nivel.monedas.push(
+          new Moneda(
+            name,
+            nivel.pantallaDeJuego.physics,
+            0,
+            x + width / 2,
+            y + height / 2,
+            nivel.pantallaDeJuego.particulasMoneda
+          )
+        );
+        break;
+
+      case "papel":
+        nivel.recipientes.push(
+          new RecipienteAzul(
+            name,
+            nivel.pantallaDeJuego.physics,
+            x + width / 2,
+            y + height / 2
+          )
+        );
+        break;
+      case "plastico":
+        nivel.recipientes.push(
+          new RecipienteAmarillo(
+            name,
+            nivel.pantallaDeJuego.physics,
+            x + width / 2,
+            y + height / 2
+          )
+        );
+        break;
+      case "vidrio":
+        nivel.recipientes.push(
+          new RecipienteVerde(
+            name,
+            nivel.pantallaDeJuego.physics,
+            x + width / 2,
+            y + height / 2
+          )
+        );
+        break;
+      case "bateria":
+        nivel.recipientes.push(
+          new RecipienteRojo(
+            name,
+            nivel.pantallaDeJuego.physics,
+            x + width / 2,
+            y + height / 2
+          )
+        );
         break;
       default:
         break;
     }
-    let o = this.niveles[this.nivelActual].pantallaDeJuego.physics.add.sprite(
-      x + width / 2,
-      y + height / 2,
-      name
-    );
-    o.body.allowGravity = false;
   }
 }
