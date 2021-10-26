@@ -189,15 +189,15 @@ export default class CTrivia {
   }
 
   public ReiniciarNivel() {
-    this.CargarTrivia();  //Carga las preguntas
+    this.CargarTrivia(); //Carga las preguntas
     this.botones.forEach((b) => {
       b.CambiarColor(0xffffff); //Cambia el color de los botones a blanco
-      b.ResetearBoton();  //Resetea el botón
+      b.ResetearBoton(); //Resetea el botón
     });
     this.botonesMejoras.forEach((b) => {
       b.CambiarColor(0xffffff); //Cambia el color de los botones a blanco
-      b.ResetearBoton();  //Resetea el botón
-      b.boton.setAlpha(1);  //Pone el botón en 1 (opacidad)
+      b.ResetearBoton(); //Resetea el botón
+      b.boton.setAlpha(1); //Pone el botón en 1 (opacidad)
     });
     this.risa.anims.play("risaPregunta", true); //Inicia la animación de risa
   }

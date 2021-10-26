@@ -3,7 +3,7 @@
  "infinite":false,
  "layers":[
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 24, 0, 62, 63, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 35, 0, 73, 74, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 46, 0, 84, 85, 86, 23, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 34, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 13, 14, 15, 16, 17, 45, 46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 11, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 22, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 33, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 24, 0, 62, 63, 64, 0, 0, 0, 0, 0, 43, 44, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, 35, 0, 73, 74, 75, 0, 0, 0, 0, 0, 54, 55, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 46, 0, 84, 85, 86, 23, 24, 56, 57, 58, 65, 66, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 34, 35, 67, 68, 69, 76, 77, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 13, 14, 15, 16, 17, 45, 46, 78, 79, 80, 87, 88, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26, 26],
          "height":17,
          "id":1,
          "name":"Nivel1",
@@ -14,8 +14,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":2,
- "nextobjectid":1,
+ "nextlayerid":3,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
@@ -91,7 +91,32 @@
                  "id":6,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -100,7 +125,32 @@
                  "id":7,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -109,9 +159,52 @@
                  "id":8,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":9,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":10,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
@@ -172,7 +265,32 @@
                  "id":17,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -181,7 +299,32 @@
                  "id":18,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -190,9 +333,52 @@
                  "id":19,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":20,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":21,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
@@ -217,6 +403,11 @@
                  "id":24,
                  "properties":[
                         {
+                         "name":"coin",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
@@ -228,7 +419,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -253,7 +444,32 @@
                  "id":28,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -262,7 +478,32 @@
                  "id":29,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -271,9 +512,52 @@
                  "id":30,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":31,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":32,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
@@ -358,6 +642,24 @@
                         }]
                 }, 
                 {
+                 "id":42,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":43,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
                  "id":44,
                  "properties":[
                         {
@@ -439,10 +741,53 @@
                         }]
                 }, 
                 {
-                 "id":55,
+                 "id":53,
                  "properties":[
                         {
                          "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":54,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":55,
+                 "properties":[
+                        {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -451,7 +796,32 @@
                  "id":56,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -460,7 +830,32 @@
                  "id":57,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -469,34 +864,134 @@
                  "id":58,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":59,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":60,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":61,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -505,7 +1000,32 @@
                  "id":62,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -514,16 +1034,84 @@
                  "id":63,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":64,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":65,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":66,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -532,7 +1120,32 @@
                  "id":67,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -541,7 +1154,32 @@
                  "id":68,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -550,34 +1188,134 @@
                  "id":69,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":70,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":71,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":72,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -586,7 +1324,32 @@
                  "id":73,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -595,16 +1358,84 @@
                  "id":74,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":75,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":76,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":77,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -613,7 +1444,32 @@
                  "id":78,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -622,7 +1478,32 @@
                  "id":79,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -631,34 +1512,134 @@
                  "id":80,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":81,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":82,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
                  "id":83,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -667,7 +1648,32 @@
                  "id":84,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
                          "type":"bool",
                          "value":false
                         }]
@@ -676,9 +1682,52 @@
                  "id":85,
                  "properties":[
                         {
+                         "name":"baterias",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
                          "name":"collides",
                          "type":"bool",
                          "value":false
+                        }, 
+                        {
+                         "name":"papel",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"plastico",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"recipiente",
+                         "type":"bool",
+                         "value":true
+                        }, 
+                        {
+                         "name":"vidrio",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":86,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":87,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }],
          "tilewidth":64

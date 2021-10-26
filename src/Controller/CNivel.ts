@@ -16,9 +16,9 @@ export default class CNivel {
 
   //Constantes del nivel
   private PUNTO_INICIAL_X = 300; //Son los puntos desde donde se lanza el residuo
-  private PUNTO_INICIAL_Y = 920;
+  private PUNTO_INICIAL_Y = 820;
   private DISTANCIA_MINIMA = 100;
-  private DISTANCIA_MAXIMA = 400;
+  private DISTANCIA_MAXIMA = 200;
   private BOTON_CONFIGURACION_POSICION_X = 1862;
   private BOTON_CONFIGURACION_POSICION_Y = 64;
 
@@ -73,8 +73,9 @@ export default class CNivel {
   public CargarColisionesNivel() {
     //Recorre los niveles
     this.niveles.forEach((nivel) => {
-      const layer = nivel.mapa.createLayer("Nivel1", nivel.tileset);
-      layer.setCollisionByProperty({ collides: true });
+      const obstaculos = nivel.mapa.createLayer("Nivel1", nivel.tileset);
+      //console.log(obstaculos);
+      obstaculos.setCollisionByProperty({ collides: true });
       //Recorre los residuos del nivel
       nivel.residuos.forEach((residuo) => {
         //Recorre los recipientes del nivel
@@ -110,7 +111,7 @@ export default class CNivel {
         });*/
         nivel.pantallaDeJuego.physics.add.collider(
           residuo.cuerpo,
-          layer,
+          obstaculos,
           residuo.setFriccion
         );
       });
@@ -173,8 +174,8 @@ export default class CNivel {
     this.OnClickPress();
     //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
     if (this.OnClickRelease()) {
-      this.residuoSeleccionado?.cuerpo.setX(this.puntoFinalX);
-      this.residuoSeleccionado?.cuerpo.setY(this.puntoFinalY);
+      this.residuoSeleccionado?.cuerpo.setX(this.puntoInicialX);
+      this.residuoSeleccionado?.cuerpo.setY(this.puntoInicialY);
       this.residuoSeleccionado?.cuerpo.setVelocity(0);
       const dx = this.puntoInicialX - this.puntoFinalX;
       const dy = this.puntoInicialY - this.puntoFinalY;
