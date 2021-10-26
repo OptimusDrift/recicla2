@@ -1,6 +1,3 @@
-import Dialogo from "../Model/Dialogo";
-import Pregunta from "../Model/Pregunta";
-import Particulas from "../Model/Particulas";
 import Juego from "./Juego";
 
 export default class Pruebas extends Juego {

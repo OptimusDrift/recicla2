@@ -4,7 +4,6 @@ import CTrivia from "../Controller/CTrivia";
 import CMenuPrincipal from "../Controller/CMenuPrincipal";
 import CConfiguracion from "../Controller/CConfiguracion";
 import Nivel from "../Model/Nivel";
-import Juego from "./Juego";
 import Residuo from "../Model/Residuo";
 import Moneda from "../Model/Moneda";
 import Musica from "../Model/Musica";
@@ -14,13 +13,9 @@ import RecipienteVerde from "../Model/RecipienteVerde";
 import RecipienteAzul from "../Model/RecipienteAzul";
 import RecipienteRojo from "../Model/RecipienteRojo";
 import RecipienteAmarillo from "../Model/RecipienteAmarillo";
-import Pregunta from "../Model/Pregunta";
 import Player from "../Model/Player";
-import Boton from "../Model/Boton";
-import Dialogo from "../Model/Dialogo";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
-import Particulas from "../Model/Particulas";
 import ResiduoPapel from "../Model/ResiduoPapel";
 
 export default class Carga extends Phaser.Scene {

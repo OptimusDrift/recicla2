@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 import Particulas from "../Model/Particulas";
 import Juego from "./Juego";
 

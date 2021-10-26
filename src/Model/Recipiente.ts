@@ -1,6 +1,3 @@
-import Residuo from "./Residuo";
-import Particulas from "./Particulas";
-
 export default class Recipiente {
   private _sprite: string;
   private _physics: any;

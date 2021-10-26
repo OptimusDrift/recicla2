@@ -2,7 +2,6 @@ import Residuo from "../Model/Residuo";
 import Player from "../Model/Player";
 import Musica from "../Model/Musica";
 import Moneda from "../Model/Moneda";
-import Obstaculo from "../Model/Obstaculo";
 import Recipiente from "../Model/Recipiente";
 
 export default class Nivel {

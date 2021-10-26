@@ -1,4 +1,3 @@
-import Phaser from "phaser";
 import Particulas from "./Particulas";
 
 export default class Boton {
