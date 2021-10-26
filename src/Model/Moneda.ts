@@ -31,6 +31,7 @@ export default class Moneda {
   public TomarMoneda(residuo: any, moneda: any) {
     try {
       this.particulasMoneda.EjecutarParticula(moneda.x, moneda.y);
+      this.controladorNivel.cHud.ActualizarMonedas(1);
       moneda.body.x = -500;
       moneda.body.y = -500;
     } catch (error) {

@@ -1,10 +1,13 @@
 import Nivel from "../Model/Nivel";
 import Residuo from "../Model/Residuo";
+import CHud from "./CHud";
 
 export default class CNivel {
   //Niveles
   private _niveles: Array<Nivel>;
   private _nivelActual: number;
+  private _cHud: CHud;
+
   //Atributos del nivel
   private _onClick: boolean;
   private _puntoInicialX: number;
@@ -13,10 +16,11 @@ export default class CNivel {
   private _puntoFinalX: number;
   private _puntoFinalY: number;
   private _residuoSeleccionado: Residuo | undefined;
+  private _gomera: any;
 
   //Constantes del nivel
-  private PUNTO_INICIAL_X = 300; //Son los puntos desde donde se lanza el residuo
-  private PUNTO_INICIAL_Y = 820;
+  private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
+  private PUNTO_INICIAL_Y = 896;
   private DISTANCIA_MINIMA = 100;
   private DISTANCIA_MAXIMA = 200;
   private BOTON_CONFIGURACION_POSICION_X = 1862;
@@ -34,10 +38,45 @@ export default class CNivel {
     this._puntoFinalY = 0;
     //Carga las colisiones
     this.CargarColisionesNivel();
+    this.niveles[this.nivelActual].pantallaDeJuego.anims.create({
+      key: "gomeraIdle",
+      frames: this.niveles[
+        this.nivelActual
+      ].pantallaDeJuego.anims.generateFrameNumbers("gomeraPlayer", {
+        start: 0,
+        end: 0,
+      }),
+    });
+    this.niveles[this.nivelActual].pantallaDeJuego.anims.create({
+      key: "gomeraMedia",
+      frames: this.niveles[
+        this.nivelActual
+      ].pantallaDeJuego.anims.generateFrameNumbers("gomeraPlayer", {
+        start: 1,
+        end: 1,
+      }),
+    });
+    this.niveles[this.nivelActual].pantallaDeJuego.anims.create({
+      key: "gomeraFull",
+      frames: this.niveles[
+        this.nivelActual
+      ].pantallaDeJuego.anims.generateFrameNumbers("gomeraPlayer", {
+        start: 2,
+        end: 2,
+      }),
+    });
+
+    this._gomera = this.niveles[this.nivelActual].pantallaDeJuego.add.sprite(
+      192 + 64,
+      1024 - 64,
+      "gomeraPlayer"
+    ); //Crea el sprite de la gomera
+    this.gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
+
+    this._residuoSeleccionado = this.niveles[this.nivelActual].residuos.shift(); //Obtiene el primer residuo
     //PRUEBAS/
 
     //-------------------PRUEBAS TOMA DE RESIDUO----------------//
-    this._residuoSeleccionado = this.niveles[this.nivelActual].residuos.shift();
 
     //PRUEBAS GRAFICOS
     this._graphics =
@@ -84,7 +123,7 @@ export default class CNivel {
             recipiente.CompararRecipiente,
             null,
             nivel.pantallaDeJuego
-          ); 
+          );
         });
         //Recorre todas las monedas del nivel
         nivel.monedas.forEach((moneda) => {
@@ -119,6 +158,7 @@ export default class CNivel {
       this.puntoInicialY =
         this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y;
       this.onClick = true; //Actualiza el valor del click
+      this.gomera.anims.play("gomeraMedia", true); //Inicia la animacion de la gomera
     }
   }
 
@@ -140,6 +180,7 @@ export default class CNivel {
         this.niveles[
           this.nivelActual
         ].pantallaDeJuego.input.activePointer.getDistanceY();
+      this.gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
       //Pregunta si la distancia entre el punto inicial y el punto final es una distancia minima
       if (this.distancia > this.DISTANCIA_MINIMA) {
         //Si es verdadero entonces devuelve el valor del punto final
@@ -157,9 +198,25 @@ export default class CNivel {
     return false;
   }
 
+  OnClickDrag() {
+    if (
+      this.niveles[
+        this.nivelActual
+      ].pantallaDeJuego.input.activePointer.getDistanceX() +
+        this.niveles[
+          this.nivelActual
+        ].pantallaDeJuego.input.activePointer.getDistanceY() >
+        this.DISTANCIA_MINIMA &&
+      this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.isDown
+    ) {
+      this.gomera.anims.play("gomeraFull", true); //Inicia la animacion de la gomera
+    }
+  }
+
   public PrepararLanzamiento() {
     //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
     this.OnClickPress();
+    this.OnClickDrag();
     //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
     if (this.OnClickRelease()) {
       this.residuoSeleccionado?.cuerpo.setX(this.puntoInicialX);
@@ -311,5 +368,21 @@ export default class CNivel {
 
   public set residuoSeleccionado(value: Residuo | undefined) {
     this._residuoSeleccionado = value;
+  }
+
+  public get cHud(): CHud {
+    return this._cHud;
+  }
+
+  public set cHud(value: CHud) {
+    this._cHud = value;
+  }
+
+  public get gomera(): any {
+    return this._gomera;
+  }
+
+  public set gomera(value: any) {
+    this._gomera = value;
   }
 }

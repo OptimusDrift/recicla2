@@ -90,6 +90,7 @@ export default class CMenuPrincipal {
     this.botones[1].boton.on("pointerup", () => {
       this.escena.scene.sleep("MenuPrincipal"); //Pausa la escena
       this.escena.scene.get("Trivia").controladorTrivia.ReiniciarNivel(); //Reinicia el nivel
+      this.escena.scene.get("Trivia").controladorTrivia.cHud.CargarHud();
       this.escena.scene.wake("Trivia");
     }); //Cuando se pulsa el boton de trivia
     this.botones[2].boton.on("pointerup", () => {

@@ -8,7 +8,10 @@ export default class RecipienteAmarillo extends Recipiente {
   public CompararRecipiente(residuo: any, recipiente: any) {
     try {
       super.CompararRecipiente(residuo, recipiente);
-      super.Retroalimentacion(residuo.texture.key == "plastico", recipiente);
+      super.Retroalimentacion(
+        residuo.texture.key == "plasticoResiduo",
+        recipiente
+      );
     } catch (error) {
       console.error("Error al intentar comprar el residuo." + error);
     }

@@ -1,7 +1,8 @@
 import Residuo from "./Residuo";
-export default class ResiduoPapel extends Residuo {
+export default class ResiduoVidrio extends Residuo {
   constructor(physics: any) {
-    super("papelResiduo", physics, 0, 600);
+    super("vidrioResiduo", physics, 0, 800);
+    this.cuerpo.body.setDragX(100);
   }
 
   public OcultarResiduo(): void {

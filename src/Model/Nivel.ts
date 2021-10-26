@@ -17,6 +17,7 @@ export default class Nivel {
   private _puntajeNecesario: number;
   private _puntajeActual: number;
   private _estadoDelNivel: number;
+  private _puntajeMaximo: number;
   //Tiled
   private _mapa: Phaser.Tilemaps.Tilemap;
   private _tileset: Phaser.Tilemaps.Tileset;
@@ -29,11 +30,12 @@ export default class Nivel {
     player: Player,
     puntajeNecesario: number,
     monedas: Array<Moneda>,
+    puntajeeMaximo: number,
     obstaculos: any,
     recipientes: Array<Recipiente>,
     residuos: Array<Residuo>,
     estadoDelNivel: number,
-    monedasRecogidas: number,
+    puntajeActual: number,
     mapa: Phaser.Tilemaps.Tilemap,
     tileset: Phaser.Tilemaps.Tileset,
     musica: Musica
@@ -43,12 +45,13 @@ export default class Nivel {
     this.pantallaDeJuego.add.image(1920 / 2, 1080 / 2, this.fondo).setDepth(-5);
     this._player = player;
     this._puntajeNecesario = puntajeNecesario;
+    this._puntajeMaximo = puntajeeMaximo;
+    this._puntajeActual = puntajeActual;
     this._musica = musica;
     this._residuos = residuos;
     this._monedas = monedas;
     this._obstaculos = obstaculos;
     this._recipientes = recipientes;
-    this._puntajeActual = 0;
     this._mapa = mapa;
     this._tileset = tileset;
     this._estadoDelNivel = estadoDelNivel;
@@ -156,5 +159,13 @@ export default class Nivel {
 
   public set tileset(value: Phaser.Tilemaps.Tileset) {
     this._tileset = value;
+  }
+
+  public get puntajeMaximo(): number {
+    return this._puntajeMaximo;
+  }
+
+  public set puntajeMaximo(value: number) {
+    this._puntajeMaximo = value;
   }
 }

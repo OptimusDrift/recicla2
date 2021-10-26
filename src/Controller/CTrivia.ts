@@ -4,6 +4,8 @@ import Mejora from "../Model/Mejora";
 import MejoraBomba from "../Model/MejoraBomba";
 import preguntas from "./Preguntas.json";
 import CConfiguracion from "./CConfiguracion";
+import CNivel from "./CNivel";
+import CHud from "./CHud";
 
 export default class CTrivia {
   //Atributos de la trivia
@@ -15,6 +17,8 @@ export default class CTrivia {
   private _preguntas: Array<Pregunta>;
   private _preguntaActual: number;
   private _cConfiguracion: CConfiguracion;
+  private _cNivel: CNivel;
+  private _cHud: CHud;
 
   //Constantes de la trivia
   private BOTON_0_POSICION_X = 478;
@@ -42,49 +46,49 @@ export default class CTrivia {
   private _risa: any;
 
   //Constructor
-  constructor(escena: any, cConfiguracion: CConfiguracion) {
+  constructor(escena: any, cNivel: CNivel, cConfiguracion: CConfiguracion) {
     this._escena = escena; //Asigna la escena
     this._cConfiguracion = cConfiguracion; //Asigna el controlador de configuración
+    this._cNivel = cNivel; //Asigna el controlador de nivel
     this.escena.add.image(1920 / 2, 1080 / 2, "fondoTrivia").setDepth(-20); //Agrega el fondo
     this.escena.add.image(225 + 556, 100 + 205, "cuadroDeDialogo"); //Agrega el cuadro de dialogo
     this.escena.add.image(700, 1015, "moneda"); //Agrega la moneda
     this.escena.add.image(730, 1015, "moneda"); //Agrega la moneda
-    //Animación para Risa
     this.escena.anims.create({
       key: "risaPregunta",
       frames: this.escena.anims.generateFrameNumbers("risa", {
         start: 4,
         end: 4,
       }),
-    }); //Animación para Risa
+    }); //Crea la animación de Risa
     this.escena.anims.create({
       key: "risaCambioDePregunta",
       frames: this.escena.anims.generateFrameNumbers("risa", {
         start: 0,
         end: 0,
       }),
-    }); //Animación para Risa
+    }); //Crea la animación de Risa
     this.escena.anims.create({
       key: "risaBomba",
       frames: this.escena.anims.generateFrameNumbers("risa", {
         start: 2,
         end: 2,
       }),
-    }); //Animación para Risa
+    }); //Crea la animación de Risa
     this.escena.anims.create({
       key: "risaRespuestaCorrecta",
       frames: this.escena.anims.generateFrameNumbers("risa", {
         start: 3,
         end: 3,
       }),
-    }); //Animación para Risa
+    }); //Crea la animación de Risa
     this.escena.anims.create({
       key: "risaRespuestaIncorrecta",
       frames: this.escena.anims.generateFrameNumbers("risa", {
         start: 1,
         end: 1,
       }),
-    }); //Animación para Risa
+    }); //Crea la animación de Risa
     //Crear Personaje
     this._risa = this.escena.physics.add.sprite(1410 + 206, 100 + 434, "risa"); //Agrega a risa
     this.risa.body.allowGravity = false; //No afecta a la gravedad
@@ -386,5 +390,21 @@ export default class CTrivia {
 
   public set botonConfiguracion(v: Boton) {
     this._botonConfiguracion = v;
+  }
+
+  public get cNivel(): CNivel {
+    return this._cNivel;
+  }
+
+  public set cNivel(v: CNivel) {
+    this._cNivel = v;
+  }
+
+  public get cHud(): CHud {
+    return this._cHud;
+  }
+
+  public set cHud(v: CHud) {
+    this._cHud = v;
   }
 }

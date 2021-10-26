@@ -17,6 +17,10 @@ import Player from "../Model/Player";
 import Cosmetico from "../Model/Cosmetico";
 import Mejora from "../Model/Mejora";
 import ResiduoPapel from "../Model/ResiduoPapel";
+import CHud from "../Controller/CHud";
+import ResiduoBateria from "~/Model/ResiduoBateria";
+import ResiduoVidrio from "~/Model/ResiduoVidrio";
+import ResiduoPlastico from "~/Model/ResiduoPlastico";
 
 export default class Carga extends Phaser.Scene {
   //Controladores
@@ -24,6 +28,7 @@ export default class Carga extends Phaser.Scene {
   public controladorTrivia: CTrivia;
   public controladorMenuPrincipal: CMenuPrincipal;
   public controladorConfiguracion: CConfiguracion;
+  public controladorHud: CHud;
   public niveles: Array<Nivel>;
   public player: Player;
   public p: any;
@@ -48,10 +53,21 @@ export default class Carga extends Phaser.Scene {
     this.load.image("volver", "assets/Botones/Volver.png");
     this.load.image("menuPrincipal", "assets/Botones/MenuPrincipal.png");
     //-------In-Game---------\\
-    this.load.image("papelResiduo", "assets/Basura/Papel.png");
     this.load.image("moneda", "assets/Moneda/Moneda.png");
     this.load.image("mesa", "assets/Obstaculos/Mesa.png");
     this.load.image("cuadroDeDialogo", "assets/Cuadro/CuadroDeDialogo.png");
+    this.load.spritesheet("gomeraPlayer", "assets/Gomera/Gomera.png", {
+      frameWidth: 128,
+      frameHeight: 146,
+    }); //Carga la animacion de la gomera
+    //------------Residuos------------\\
+    this.load.image("papelResiduo", "assets/Basura/Papel.png");
+    this.load.image("vidrioResiduo", "assets/Basura/Vidrio.png");
+    this.load.image("bateriaResiduo", "assets/Basura/Bateria.png");
+    this.load.image("plasticoResiduo", "assets/Basura/Plastico.png");
+    this.load.image("papelResiduo", "assets/Basura/Papel.png");
+    this.load.image("papelResiduo", "assets/Basura/Papel.png");
+
     //--------Recipientes---------\\
     this.load.image("papel", "assets/Recipiente/Papel_Azul.png");
     this.load.image("bateria", "assets/Recipiente/Pilas_Rojo.png");
@@ -65,20 +81,7 @@ export default class Carga extends Phaser.Scene {
     this.load.spritesheet("risa", "assets/Risa/RisaSprites.png", {
       frameWidth: 411,
       frameHeight: 868,
-    });
-    this.load.image("risaPregunta", "assets/Risa/RisaSprites.png");
-    this.load.image(
-      "risaCambioDePregunta",
-      "assets/Risa/RisaCambioDePregunta.png"
-    );
-    this.load.image(
-      "risaRespuestaCorrecta",
-      "assets/Risa/RisaRespuestaCorrecta.png"
-    );
-    this.load.image(
-      "risaRespuestaIncorrecta",
-      "assets/Risa/RisaRespuestaIncorrecta.png"
-    );
+    }); //Carga la animacion de la risa
     //------------FONDOS------------\\
     this.load.image("fondoTrivia", "assets/Pantallas/FondoTrivia.png");
     this.load.image("fondoMenu", "assets/Pantallas/MenuPrincipal.png");
@@ -133,38 +136,32 @@ export default class Carga extends Phaser.Scene {
         nvl1,
         "fondoNivel",
         this.player,
-        0,
+        10,
         new Array<Moneda>(),
+        10,
         new Array<Obstaculo>(),
         new Array<Recipiente>(),
         new Array<Residuo>(),
         0,
-        0,
+        4,
         mapa,
         tileset,
         new Musica("")
       )
     ); //Crea el nivel 1
-    this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
-    this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoVidrio(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoBateria(nvl1.physics)); //Añade los residuos al nivel 1
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
 
     const objetosLayer = mapa.getObjectLayer("ObjetosNivel1"); //Obtiene la capa de objetos del nivel 1
     objetosLayer.objects.forEach((objeto) => {
       this.CargarObjetosLayer(this.niveles[0], objeto);
     }); //Carga los objetos de la capa de objetos del nivel 1
-
     const obstaculos = mapa.createLayer("Nivel1", tileset); //Crea la capa de obstaculos
     obstaculos.setCollisionByProperty({ collides: true });
 
     this.niveles[0].obstaculos = obstaculos; //Añade los obstaculos al nivel 1
-
-    this.niveles[0].recipientes.push(
-      new RecipienteVerde("recipienteAzul", nvl1.physics, 2500, 980)
-    ); //Añade los recipientes al nivel 1
-    this.niveles[0].recipientes.push(
-      new RecipienteAzul("recipienteAzul", nvl1.physics, 2000, 980)
-    ); //Añade los recipientes al nivel 1
 
     this.controladorNivel = new CNivel(this.niveles, 0); //Crea el controlador de nivel
 
@@ -172,7 +169,11 @@ export default class Carga extends Phaser.Scene {
 
     //--------------------TRIVIA-----------------------//
     let tri = this.scene.get("Trivia"); //Obtiene la escena de la trivia
-    this.controladorTrivia = new CTrivia(tri, this.controladorConfiguracion); //Crea el controlador de trivia
+    this.controladorTrivia = new CTrivia(
+      tri,
+      this.controladorNivel,
+      this.controladorConfiguracion
+    ); //Crea el controlador de trivia
     this.controladorTrivia.CargarControlador(); //Carga el controlador de trivia
 
     //---------------------MENU-----------------------//
@@ -182,6 +183,16 @@ export default class Carga extends Phaser.Scene {
       this.controladorConfiguracion
     ); //Crea el controlador del menu principal y le pasa el controlador de configuracion
 
+    //--------HUD----------\\
+    this.controladorHud = new CHud(
+      this.controladorNivel,
+      this.scene.get("Hud")
+    );
+
+    this.controladorTrivia.cHud = this.controladorHud;
+    this.controladorNivel.cHud = this.controladorHud;
+
+    this.controladorNivel.cHud.CargarHud();
     this.scene.launch("Configuracion"); //Lanza la escena de configuracion
     this.scene.sleep("Configuracion"); //Oculta la escena de configuracion
     this.scene.launch("Creditos"); //Lanza la escena de creditos

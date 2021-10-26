@@ -29,11 +29,13 @@ export default class Recipiente {
           recipiente.body.x + 100,
           recipiente.body.y
         );
+        this.controladorNivel.cHud.ActualizarMonedas(1);
       } else {
         recipiente.scene.particulasIncorrecta.EjecutarParticula(
           recipiente.body.x + 100,
           recipiente.body.y
         );
+        this.controladorNivel.cHud.ActualizarMonedas(-1);
       }
     } catch (error) {}
   }
