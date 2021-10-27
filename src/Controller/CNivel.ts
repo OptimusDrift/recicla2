@@ -16,7 +16,6 @@ export default class CNivel {
   private _puntoFinalX: number;
   private _puntoFinalY: number;
   private _residuoSeleccionado: Residuo | undefined;
-  private _gomera: any;
 
   //Constantes del nivel
   private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
@@ -72,6 +71,7 @@ export default class CNivel {
 
   private CargarAnimacionDeLaGomera() {
     this.niveles.forEach((nivel) => {
+      console.log(nivel.pantallaDeJuego);
       nivel.pantallaDeJuego.anims.create({
         key: "gomeraIdle",
         frames: nivel.pantallaDeJuego.anims.generateFrameNumbers(
@@ -103,7 +103,7 @@ export default class CNivel {
         ),
       });
 
-      this._gomera = nivel.pantallaDeJuego.add.sprite(
+      nivel.gomera = nivel.pantallaDeJuego.add.sprite(
         192 + 64,
         1024 - 64,
         "gomeraPlayer"
@@ -115,6 +115,7 @@ export default class CNivel {
   public CargarColisionesNivel() {
     //Recorre los niveles
     this.niveles.forEach((nivel) => {
+      nivel.IniciarElNivel();
       //Recorre los residuos del nivel
       nivel.residuos.forEach((residuo) => {
         //Recorre los recipientes del nivel
@@ -161,7 +162,7 @@ export default class CNivel {
       this.puntoInicialY =
         this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y;
       this.onClick = true; //Actualiza el valor del click
-      this.gomera.anims.play("gomeraMedia", true); //Inicia la animacion de la gomera
+      this.niveles[this.nivelActual].gomera.anims.play("gomeraMedia", true); //Inicia la animacion de la gomera
     }
   }
 
@@ -183,7 +184,7 @@ export default class CNivel {
         this.niveles[
           this.nivelActual
         ].pantallaDeJuego.input.activePointer.getDistanceY();
-      this.gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
+      this.niveles[this.nivelActual].gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
       //Pregunta si la distancia entre el punto inicial y el punto final es una distancia minima
       if (this.distancia > this.DISTANCIA_MINIMA) {
         //Si es verdadero entonces devuelve el valor del punto final
@@ -212,7 +213,7 @@ export default class CNivel {
         this.DISTANCIA_MINIMA &&
       this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.isDown
     ) {
-      this.gomera.anims.play("gomeraFull", true); //Inicia la animacion de la gomera
+      this.niveles[this.nivelActual].gomera.anims.play("gomeraFull", true); //Inicia la animacion de la gomera
     }
   }
 
@@ -238,6 +239,7 @@ export default class CNivel {
         dx * this.Velocidad(this.distancia),
         dy * this.Velocidad(this.distancia)
       );
+      this.residuoSeleccionado = undefined;
 
       //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
       //            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
@@ -318,13 +320,12 @@ export default class CNivel {
 
   //Es un set del controlador de este nivel en la vista para cada nivel, tienen todos la misma instancia de la clase
   public CargarControlador() {
-    this.niveles.forEach((element) => {
-      element.pantallaDeJuego.controladorNivel = this;
+    this.niveles.forEach((nivel) => {
+      nivel.pantallaDeJuego.controladorNivel = this;
     });
     this.CargarColisionesNivel();
     this.CargarAnimacionDeLaGomera();
-
-    this.gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
+    this.niveles[this.nivelActual].gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
   }
   SiguienteNivel() {
     try {
@@ -338,6 +339,9 @@ export default class CNivel {
     } catch (error) {
       this.nivelActual = 0;
       console.log("Nivel" + (this.nivelActual + 1));
+      this.niveles.forEach((nivel) => {
+        nivel.ReiniciarNivel();
+      });
       this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
         "Nivel" + (this.nivelActual + 1)
       );
@@ -414,13 +418,5 @@ export default class CNivel {
 
   public set cHud(value: CHud) {
     this._cHud = value;
-  }
-
-  public get gomera(): any {
-    return this._gomera;
-  }
-
-  public set gomera(value: any) {
-    this._gomera = value;
   }
 }

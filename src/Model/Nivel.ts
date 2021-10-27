@@ -11,13 +11,16 @@ export default class Nivel {
   //Contenido del nivel
   private _player: Player;
   private _residuos: Array<Residuo>;
+  private _residuosBackUp: Array<Residuo>;
   private _monedas: Array<Moneda>;
   private _obstaculos: any;
   private _recipientes: Array<Recipiente>;
   private _puntajeNecesario: number;
   private _puntajeActual: number;
+  private _puntajeInicial: number;
   private _estadoDelNivel: number;
   private _puntajeMaximo: number;
+  private _gomera: any;
   //Tiled
   private _mapa: Phaser.Tilemaps.Tilemap;
   private _tileset: Phaser.Tilemaps.Tileset;
@@ -35,7 +38,7 @@ export default class Nivel {
     recipientes: Array<Recipiente>,
     residuos: Array<Residuo>,
     estadoDelNivel: number,
-    puntajeActual: number,
+    puntajeInicial: number,
     mapa: Phaser.Tilemaps.Tilemap,
     tileset: Phaser.Tilemaps.Tileset,
     musica: Musica
@@ -46,15 +49,26 @@ export default class Nivel {
     this._player = player;
     this._puntajeNecesario = puntajeNecesario;
     this._puntajeMaximo = puntajeeMaximo;
-    this._puntajeActual = puntajeActual;
+    this._puntajeInicial = puntajeInicial;
+    this._puntajeActual = puntajeInicial;
     this._musica = musica;
     this._residuos = residuos;
+    this.IniciarElNivel();
     this._monedas = monedas;
     this._obstaculos = obstaculos;
     this._recipientes = recipientes;
     this._mapa = mapa;
     this._tileset = tileset;
     this._estadoDelNivel = estadoDelNivel;
+  }
+
+  public ReiniciarNivel() {
+    this.residuos = this.residuosBackUp.slice();
+    this.puntajeActual = this.puntajeInicial;
+  }
+
+  public IniciarElNivel() {
+    this.residuosBackUp = this.residuos.slice();
   }
 
   //Getters and setters
@@ -167,5 +181,29 @@ export default class Nivel {
 
   public set puntajeMaximo(value: number) {
     this._puntajeMaximo = value;
+  }
+
+  public get residuosBackUp(): Array<Residuo> {
+    return this._residuosBackUp;
+  }
+
+  public set residuosBackUp(value: Array<Residuo>) {
+    this._residuosBackUp = value;
+  }
+
+  public get puntajeInicial(): number {
+    return this._puntajeInicial;
+  }
+
+  public set puntajeInicial(value: number) {
+    this._puntajeInicial = value;
+  }
+
+  public get gomera(): any {
+    return this._gomera;
+  }
+
+  public set gomera(value: any) {
+    this._gomera = value;
   }
 }
