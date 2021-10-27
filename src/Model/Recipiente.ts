@@ -16,8 +16,8 @@ export default class Recipiente {
   }
 
   public CompararRecipiente(residuo: any, recipiente: any) {
-    residuo.body.x = 500;
-    residuo.body.y = 500;
+    residuo.body.x = -500;
+    residuo.body.y = -500;
     residuo.body.setAllowGravity(false);
     residuo.body.setVelocity(0);
   }

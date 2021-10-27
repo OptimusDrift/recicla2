@@ -32,13 +32,12 @@ export default class Moneda {
     try {
       this.particulasMoneda.EjecutarParticula(moneda.x, moneda.y);
       this.controladorNivel.cHud.ActualizarMonedas(1);
-      moneda.body.x = -500;
-      moneda.body.y = -500;
+      moneda.body.x = -800;
+      moneda.body.y = -800;
     } catch (error) {
       console.error("Error al intentar ocultar la moneda." + error);
     }
   }
-
 
   public DesaparecerMoneda() {
     this.cuerpo.setVisible(false);

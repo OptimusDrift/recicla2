@@ -214,6 +214,8 @@ export default class CNivel {
       this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.isDown
     ) {
       this.niveles[this.nivelActual].gomera.anims.play("gomeraFull", true); //Inicia la animacion de la gomera
+    } else if (this.onClick) {
+      this.niveles[this.nivelActual].gomera.anims.play("gomeraMedia", true); //Inicia la animacion de la gomera
     }
   }
 
