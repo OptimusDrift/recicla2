@@ -126,6 +126,7 @@ export default class Carga extends Phaser.Scene {
     let config = this.scene.get("Configuracion"); //Obtiene la escena de la configuracion
     this.controladorConfiguracion = new CConfiguracion(config); //Crea el controlador de configuracion
     //-------------NIVELES--------------------//
+    //-----------------NIVEL 1-----------------//
     this.niveles = new Array<Nivel>();
     let nvl1 = this.scene.get("Nivel1"); //Obtiene la escena del nivel 1
     const mapa = nvl1.make.tilemap({ key: "mapaNivel1" });
@@ -165,6 +166,43 @@ export default class Carga extends Phaser.Scene {
 
     this.controladorNivel = new CNivel(this.niveles, 0); //Crea el controlador de nivel
 
+    //-----------------NIVEL 2-----------------//
+    let nvl2 = this.scene.get("Nivel2"); //Obtiene la escena del nivel 2
+    const mapa2 = nvl2.make.tilemap({ key: "mapaNivel1" });
+    const tileset2 = mapa2.addTilesetImage("Atlas", "atlas");
+
+    this.niveles.push(
+      new Nivel(
+        nvl2,
+        "fondoNivel",
+        this.player,
+        10,
+        new Array<Moneda>(),
+        10,
+        new Array<Obstaculo>(),
+        new Array<Recipiente>(),
+        new Array<Residuo>(),
+        0,
+        4,
+        mapa2,
+        tileset2,
+        new Musica("")
+      )
+    ); //Crea el nivel 2
+    this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
+
+    const objetosLayer2 = mapa2.getObjectLayer("ObjetosNivel2"); //Obtiene la capa de objetos del nivel 2
+    objetosLayer2.objects.forEach((objeto) => {
+      this.CargarObjetosLayer(this.niveles[1], objeto);
+    }); //Carga los objetos de la capa de objetos del nivel 2
+    const obstaculos2 = mapa2.createLayer("Nivel2", tileset2); //Crea la capa de obstaculos
+    obstaculos2.setCollisionByProperty({ collides: true });
+
+    this.niveles[1].obstaculos = obstaculos2; //Añade los obstaculos al nivel 2
+
     this.controladorNivel.CargarControlador(); //Carga el controlador de nivel
 
     //--------------------TRIVIA-----------------------//
@@ -192,7 +230,7 @@ export default class Carga extends Phaser.Scene {
     this.controladorTrivia.cHud = this.controladorHud;
     this.controladorNivel.cHud = this.controladorHud;
 
-    this.controladorNivel.cHud.CargarHud();
+    //this.controladorNivel.cHud.CargarHud();
     this.scene.launch("Configuracion"); //Lanza la escena de configuracion
     this.scene.sleep("Configuracion"); //Oculta la escena de configuracion
     this.scene.launch("Creditos"); //Lanza la escena de creditos
@@ -201,6 +239,8 @@ export default class Carga extends Phaser.Scene {
     this.scene.sleep("Trivia"); //Oculta la escena de trivia
     this.scene.stop("Cargando"); //Oculta la escena de carga
     this.scene.start("Nivel1"); //Lanza la escena del menu principal
+    this.scene.start("Nivel2"); //Lanza la escena del menu principal
+    this.scene.sleep("Nivel2"); //Lanza la escena del menu principal
   }
 
   //Carga los objetos de la capa de objetos del nivel 1

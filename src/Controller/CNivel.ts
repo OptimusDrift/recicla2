@@ -36,44 +36,6 @@ export default class CNivel {
     this._distancia = 0;
     this._puntoFinalX = 0;
     this._puntoFinalY = 0;
-    //Carga las colisiones
-    this.CargarColisionesNivel();
-    this.niveles[this.nivelActual].pantallaDeJuego.anims.create({
-      key: "gomeraIdle",
-      frames: this.niveles[
-        this.nivelActual
-      ].pantallaDeJuego.anims.generateFrameNumbers("gomeraPlayer", {
-        start: 0,
-        end: 0,
-      }),
-    });
-    this.niveles[this.nivelActual].pantallaDeJuego.anims.create({
-      key: "gomeraMedia",
-      frames: this.niveles[
-        this.nivelActual
-      ].pantallaDeJuego.anims.generateFrameNumbers("gomeraPlayer", {
-        start: 1,
-        end: 1,
-      }),
-    });
-    this.niveles[this.nivelActual].pantallaDeJuego.anims.create({
-      key: "gomeraFull",
-      frames: this.niveles[
-        this.nivelActual
-      ].pantallaDeJuego.anims.generateFrameNumbers("gomeraPlayer", {
-        start: 2,
-        end: 2,
-      }),
-    });
-
-    this._gomera = this.niveles[this.nivelActual].pantallaDeJuego.add.sprite(
-      192 + 64,
-      1024 - 64,
-      "gomeraPlayer"
-    ); //Crea el sprite de la gomera
-    this.gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
-
-    this._residuoSeleccionado = this.niveles[this.nivelActual].residuos.shift(); //Obtiene el primer residuo
     //PRUEBAS/
 
     //-------------------PRUEBAS TOMA DE RESIDUO----------------//
@@ -106,6 +68,47 @@ export default class CNivel {
       new Phaser.Math.Vector2(500, 200),
       new Phaser.Math.Vector2(300, 300)
     );
+  }
+
+  private CargarAnimacionDeLaGomera() {
+    this.niveles.forEach((nivel) => {
+      nivel.pantallaDeJuego.anims.create({
+        key: "gomeraIdle",
+        frames: nivel.pantallaDeJuego.anims.generateFrameNumbers(
+          "gomeraPlayer",
+          {
+            start: 0,
+            end: 0,
+          }
+        ),
+      });
+      nivel.pantallaDeJuego.anims.create({
+        key: "gomeraMedia",
+        frames: nivel.pantallaDeJuego.anims.generateFrameNumbers(
+          "gomeraPlayer",
+          {
+            start: 1,
+            end: 1,
+          }
+        ),
+      });
+      nivel.pantallaDeJuego.anims.create({
+        key: "gomeraFull",
+        frames: nivel.pantallaDeJuego.anims.generateFrameNumbers(
+          "gomeraPlayer",
+          {
+            start: 2,
+            end: 2,
+          }
+        ),
+      });
+
+      this._gomera = nivel.pantallaDeJuego.add.sprite(
+        192 + 64,
+        1024 - 64,
+        "gomeraPlayer"
+      ); //Crea el sprite de la gomera
+    });
   }
 
   //La clase toma todos los elementos de los niveles y carga las colisiones
@@ -219,6 +222,7 @@ export default class CNivel {
     this.OnClickDrag();
     //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
     if (this.OnClickRelease()) {
+      this.SiguienteReciduo();
       this.residuoSeleccionado?.cuerpo.setX(this.puntoInicialX);
       this.residuoSeleccionado?.cuerpo.setY(this.puntoInicialY);
       this.residuoSeleccionado?.cuerpo.setVelocity(0);
@@ -299,11 +303,45 @@ export default class CNivel {
     this._niveles = value;
   }
 
+  private SiguienteReciduo() {
+    try {
+      if (this.niveles[this.nivelActual].residuos.length > 0) {
+        this._residuoSeleccionado =
+          this.niveles[this.nivelActual].residuos.shift(); //Obtiene el primer residuo del array de residuos
+      } else {
+        throw new Error("No hay residuos para seleccionar");
+      }
+    } catch (error) {
+      this.SiguienteNivel();
+    }
+  }
+
   //Es un set del controlador de este nivel en la vista para cada nivel, tienen todos la misma instancia de la clase
   public CargarControlador() {
     this.niveles.forEach((element) => {
       element.pantallaDeJuego.controladorNivel = this;
     });
+    this.CargarColisionesNivel();
+    this.CargarAnimacionDeLaGomera();
+
+    this.gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
+  }
+  SiguienteNivel() {
+    try {
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
+        "Nivel" + (this.nivelActual + 1)
+      );
+      this.nivelActual++;
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
+        "Nivel" + (this.nivelActual + 1)
+      );
+    } catch (error) {
+      this.nivelActual = 0;
+      console.log("Nivel" + (this.nivelActual + 1));
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
+        "Nivel" + (this.nivelActual + 1)
+      );
+    }
   }
 
   public get nivelActual(): number {

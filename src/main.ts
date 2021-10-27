@@ -11,6 +11,7 @@ import Trivia from "./View/Trivia";
 import Pruebas from "./View/Pruebas";
 import Hud from "./View/Hud";
 import Nivel1 from "./View/Nivel1";
+import Nivel2 from "./View/Nivel2";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -39,6 +40,7 @@ const config: Phaser.Types.Core.GameConfig = {
     Trivia,
     Pruebas,
     Nivel1,
+    Nivel2,
     Hud,
   ],
 };

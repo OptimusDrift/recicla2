@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="26">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="6" nextobjectid="39">
  <editorsettings>
   <export target="Nivel_1.json" format="json"/>
  </editorsettings>
@@ -627,7 +627,7 @@
    </properties>
   </tile>
  </tileset>
- <layer id="1" name="Nivel1" width="30" height="17">
+ <layer id="1" name="Nivel1" width="30" height="17" visible="0">
   <data encoding="csv">
 0,0,0,24,0,0,0,24,24,0,0,0,0,24,0,0,0,24,24,0,24,24,24,24,24,24,24,24,24,24,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
@@ -648,16 +648,47 @@
 26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
 </data>
  </layer>
- <objectgroup id="3" name="ObjetosNivel1">
+ <layer id="4" name="Nivel2" width="30" height="17">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,2147483672,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,11,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2684354572,2684354561,0,0,0,0,0,32,33,
+0,0,0,0,0,0,0,0,0,0,0,0,2147483672,2147483672,2147483671,0,0,0,0,0,0,2684354573,2684354562,0,0,0,0,0,43,44,
+0,0,0,0,0,0,0,0,0,0,0,0,0,2147483683,2147483682,0,0,0,0,0,0,2684354574,2684354563,0,0,0,0,0,54,55,
+0,0,0,0,0,0,0,0,0,0,0,0,0,2147483694,2147483693,2147483672,2147483672,2147483671,0,0,0,3758096398,3758096387,0,0,0,2147483672,2147483671,65,66,
+0,0,0,0,0,0,0,0,0,0,0,0,0,3758096430,3758096419,3758096408,2147483683,2147483682,0,0,0,3758096397,3758096386,0,0,0,2147483683,2147483682,76,77,
+0,0,0,0,0,0,0,0,0,0,0,0,0,3758096429,3758096418,3758096407,2147483694,2147483693,0,0,0,3758096396,3758096385,0,0,0,2147483694,2147483693,87,88,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
+</data>
+ </layer>
+ <objectgroup id="3" name="ObjetosNivel1" visible="0">
   <object id="11" name="papel" x="1216" y="704" width="192" height="192"/>
   <object id="16" name="moneda" x="-384" y="64" width="64" height="64"/>
   <object id="18" name="plastico" x="1600" y="832" width="192" height="192"/>
-  <object id="19" name="vidrio" x="576" y="832" width="192" height="192"/>
-  <object id="20" name="bateria" x="832" y="832" width="192" height="192"/>
+  <object id="19" name="vidrio" x="-192" y="640" width="192" height="192"/>
+  <object id="20" name="bateria" x="-192" y="448" width="192" height="192"/>
   <object id="21" name="moneda" x="-384" y="256" width="64" height="64"/>
   <object id="22" name="moneda" x="960" y="448" width="64" height="64"/>
   <object id="23" name="moneda" x="-384" y="192" width="64" height="64"/>
   <object id="24" name="moneda" x="1280" y="384" width="64" height="64"/>
   <object id="25" name="moneda" x="-384" y="128" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="5" name="ObjetosNivel2">
+  <object id="31" name="papel" x="-199.152" y="545.455" width="192" height="192"/>
+  <object id="32" name="plastico" x="1472" y="832" width="192" height="192"/>
+  <object id="33" name="vidrio" x="1152" y="832" width="192" height="192"/>
+  <object id="34" name="bateria" x="-192" y="320" width="192" height="192"/>
+  <object id="35" name="moneda" x="-153.333" y="840.606" width="64" height="64"/>
+  <object id="36" name="moneda" x="896" y="640" width="64" height="64"/>
+  <object id="37" name="moneda" x="1216" y="128" width="64" height="64"/>
+  <object id="38" name="moneda" x="1728" y="640" width="64" height="64"/>
  </objectgroup>
 </map>

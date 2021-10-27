@@ -39,6 +39,7 @@ export default class Moneda {
     }
   }
 
+
   public DesaparecerMoneda() {
     this.cuerpo.setVisible(false);
   }
