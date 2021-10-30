@@ -10,12 +10,14 @@ export default class CNivel {
 
   //Atributos del nivel
   private _onClick: boolean;
+  private _preparadoParaLanzar: boolean;
   private _puntoInicialX: number;
   private _puntoInicialY: number;
   private _distancia: number;
   private _puntoFinalX: number;
   private _puntoFinalY: number;
   private _residuoSeleccionado: Residuo | undefined;
+  private _residuoAnterior: Residuo | undefined;
 
   //Constantes del nivel
   private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
@@ -71,7 +73,6 @@ export default class CNivel {
 
   private CargarAnimacionDeLaGomera() {
     this.niveles.forEach((nivel) => {
-      console.log(nivel.pantallaDeJuego);
       nivel.pantallaDeJuego.anims.create({
         key: "gomeraIdle",
         frames: nivel.pantallaDeJuego.anims.generateFrameNumbers(
@@ -109,6 +110,8 @@ export default class CNivel {
         "gomeraPlayer"
       ); //Crea el sprite de la gomera
     });
+
+    this._preparadoParaLanzar = true;
   }
 
   //La clase toma todos los elementos de los niveles y carga las colisiones
@@ -118,6 +121,11 @@ export default class CNivel {
       nivel.IniciarElNivel();
       //Recorre los residuos del nivel
       nivel.residuos.forEach((residuo) => {
+        nivel.pantallaDeJuego.physics.add.collider(
+          residuo.cuerpo,
+          nivel.escapes,
+          residuo.ResiduoFueraDeLaPantalla
+        );
         //Recorre los recipientes del nivel
         nivel.recipientes.forEach((recipiente) => {
           //Annade la colision entre los residuos y los recipientes
@@ -220,52 +228,56 @@ export default class CNivel {
   }
 
   public PrepararLanzamiento() {
-    //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
-    this.OnClickPress();
-    this.OnClickDrag();
-    //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
-    if (this.OnClickRelease()) {
-      this.SiguienteReciduo();
-      this.residuoSeleccionado?.cuerpo.setX(this.puntoInicialX);
-      this.residuoSeleccionado?.cuerpo.setY(this.puntoInicialY);
-      this.residuoSeleccionado?.cuerpo.setVelocity(0);
-      const dx = this.puntoInicialX - this.puntoFinalX;
-      const dy = this.puntoInicialY - this.puntoFinalY;
-      console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
-      console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
-      console.log("pendiente: " + dx / dy);
-      //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a actuvar
-      this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
-      //Annade la velocidad del residuo seleccionado
-      this.residuoSeleccionado?.cuerpo.setVelocity(
-        dx * this.Velocidad(this.distancia),
-        dy * this.Velocidad(this.distancia)
-      );
-      this.residuoSeleccionado = undefined;
+    if (this.preparadoParaLanzar) {
+      //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
+      this.OnClickPress();
+      this.OnClickDrag();
+      //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
+      if (this.OnClickRelease()) {
+        this.DesactivarLanzamiento();
+        this.SiguienteReciduo();
+        this.residuoAnterior = this.residuoSeleccionado;
+        this.residuoSeleccionado?.cuerpo.setX(this.puntoInicialX);
+        this.residuoSeleccionado?.cuerpo.setY(this.puntoInicialY);
+        this.residuoSeleccionado?.cuerpo.setVelocity(0);
+        const dx = this.puntoInicialX - this.puntoFinalX;
+        const dy = this.puntoInicialY - this.puntoFinalY;
+        console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
+        console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
+        console.log("pendiente: " + dx / dy);
+        //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a actuvar
+        this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
+        //Annade la velocidad del residuo seleccionado
+        this.residuoSeleccionado?.cuerpo.setVelocity(
+          dx * this.Velocidad(this.distancia),
+          dy * this.Velocidad(this.distancia)
+        );
+        this.residuoSeleccionado = undefined;
 
-      //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
-      //            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
-      //x.setAcceleration(this.puntoFinalX,this.puntoFinalY);
-      //x.setVelocity(0,this.puntoFinalY);
-      //this._graphics.clear();
+        //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
+        //            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
+        //x.setAcceleration(this.puntoFinalX,this.puntoFinalY);
+        //x.setVelocity(0,this.puntoFinalY);
+        //this._graphics.clear();
 
-      //------------------------Pruebas de lineas en pantalla-----------------------//
-      /*this._graphics.lineStyle(6, 0xababab, 1);
-            this._graphics.lineBetween(this.puntoInicialX, this.puntoInicialY, this.puntoFinalX, this.puntoFinalY);
-            
-            
-            this.curve.getPoint(this.path.t, this.path.vec);
-
-            this._graphics.fillStyle(0xff0000, 1);
-            this._graphics.fillCircle(this.path.vec.x, this.path.vec.y, 8);
-
-            this.drawGraphics.clear();
-
-            this.drawGraphics.fillStyle(0xff0000, 0.1);
-            this.drawGraphics.fillCircle(this.path.vec.x, this.path.vec.y, 4);
-
-            this.drawGraphics.generateTexture('curve', 800, 600);*/
-      this.drawBezier(1, 1);
+        //------------------------Pruebas de lineas en pantalla-----------------------//
+        /*this._graphics.lineStyle(6, 0xababab, 1);
+              this._graphics.lineBetween(this.puntoInicialX, this.puntoInicialY, this.puntoFinalX, this.puntoFinalY);
+              
+              
+              this.curve.getPoint(this.path.t, this.path.vec);
+  
+              this._graphics.fillStyle(0xff0000, 1);
+              this._graphics.fillCircle(this.path.vec.x, this.path.vec.y, 8);
+  
+              this.drawGraphics.clear();
+  
+              this.drawGraphics.fillStyle(0xff0000, 0.1);
+              this.drawGraphics.fillCircle(this.path.vec.x, this.path.vec.y, 4);
+  
+              this.drawGraphics.generateTexture('curve', 800, 600);*/
+        this.drawBezier(1, 1);
+      }
     }
   }
 
@@ -298,6 +310,16 @@ export default class CNivel {
   public _graphics;
   //AAAAAAAAAAAAAAAAAAAAAAAA
 
+  public NivelTerminado() {}
+
+  public GanarNivel() {
+    console.log("Perdisten't");
+  }
+
+  public PerderNivel() {
+    console.log("Perdiste");
+  }
+
   //Getters and setters
   public get niveles(): Array<Nivel> {
     return this._niveles;
@@ -310,7 +332,7 @@ export default class CNivel {
   private SiguienteReciduo() {
     try {
       if (this.niveles[this.nivelActual].residuos.length > 0) {
-        this._residuoSeleccionado =
+        this.residuoSeleccionado =
           this.niveles[this.nivelActual].residuos.shift(); //Obtiene el primer residuo del array de residuos
       } else {
         throw new Error("No hay residuos para seleccionar");
@@ -318,6 +340,18 @@ export default class CNivel {
     } catch (error) {
       this.SiguienteNivel();
     }
+  }
+
+  public ActivarLanzamiento() {
+    this.preparadoParaLanzar = true;
+  }
+
+  public DesactivarLanzamiento() {
+    this.preparadoParaLanzar = false;
+  }
+
+  public AgregarResiduos(reciduo: Residuo) {
+    this.niveles[this.nivelActual].residuos.push(reciduo);
   }
 
   //Es un set del controlador de este nivel en la vista para cada nivel, tienen todos la misma instancia de la clase
@@ -420,5 +454,21 @@ export default class CNivel {
 
   public set cHud(value: CHud) {
     this._cHud = value;
+  }
+
+  public get residuoAnterior(): Residuo | undefined {
+    return this._residuoAnterior;
+  }
+
+  public set residuoAnterior(value: Residuo | undefined) {
+    this._residuoAnterior = value;
+  }
+
+  public get preparadoParaLanzar(): boolean {
+    return this._preparadoParaLanzar;
+  }
+
+  public set preparadoParaLanzar(value: boolean) {
+    this._preparadoParaLanzar = value;
   }
 }

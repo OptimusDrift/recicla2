@@ -3,22 +3,30 @@ import Boton from "../Model/Boton";
 export default class CConfiguracion {
   // Variables
   private _escena: any;
+  private _escenaVolver: any;
   private _escenaActual: string;
   //Botones
   private _boton: Boton;
   private _botonMenuPrincipal: Boton;
+  private _botonSi: Boton;
+  private _botonNo: Boton;
 
   //Constantes del menu
   private BOTON_CERRAR_POSICION_X = 1400;
   private BOTON_CERRAR_POSICION_Y = 317;
   private BOTON_MENUPRINCIPAL_POSICION_X = 862;
   private BOTON_MENUPRINCIPAL_POSICION_Y = 164;
+  private BOTON_SI_POSICION_X = 602 + 171;
+  private BOTON_SI_POSICION_Y = 576 + 76;
+  private BOTON_NO_POSICION_X = 971 + 171;
+  private BOTON_NO_POSICION_Y = 576 + 76;
 
   //Estilo del texto
   private style = { font: "20x Arial", fill: "#fff" };
   //Constructor
-  constructor(escena: any) {
+  constructor(escena: any, escenaVolver: any) {
     this._escena = escena; //Asigna la escena
+    this._escenaVolver = escenaVolver; //Asigna la escena
     this._boton = new Boton(
       this.escena.add.text(0, 0, "", this.style),
       this.escena.add.image(
@@ -42,6 +50,37 @@ export default class CConfiguracion {
     ); //Crea el botón de configuración
     this.botonMenuPrincipal.boton.setDepth(2); //Establece la profundidad
     this._escenaActual = "";
+    this._botonSi = new Boton(
+      this.escenaVolver.add.text(0, 0, "", this.style),
+      this.escenaVolver.add.image(
+        this.BOTON_SI_POSICION_X,
+        this.BOTON_SI_POSICION_Y,
+        "boton2"
+      ),
+      undefined,
+      undefined
+    ); //Crea el botón de cerrar
+    this.botonSi.boton.setDepth(2); //Establece la profundidad
+    this.botonSi.boton.setVisible(false); //Establece la visibilidad
+    this.botonSi.boton.setTint(0x3a5311); //Establece el color
+    this._botonNo = new Boton(
+      this.escenaVolver.add.text(0, 0, "", this.style),
+      this.escenaVolver.add.image(
+        this.BOTON_NO_POSICION_X,
+        this.BOTON_NO_POSICION_Y,
+        "boton2"
+      ),
+      undefined,
+      undefined
+    ); //Crea el botón de cerrar
+    this.botonNo.boton.setDepth(2); //Establece la profundidad
+    this.botonNo.boton.setVisible(false); //Establece la visibilidad
+    this.botonNo.boton.setTint(0xd40032); //Establece el color
+    this.botonNo.boton.on("pointerup", () => {
+      this.escena.scene.sleep("Volver"); //Resume la escena
+      this.escena.scene.moveAbove("Configuracion"); //Mueve la escena
+      this.escena.scene.resume("Configuracion"); //Pausa la escena
+    });
   }
 
   public CambiarAVentanaConfiguracion(
@@ -62,6 +101,7 @@ export default class CConfiguracion {
 
   private QuitarFuncionalidadAlBoton() {
     this.boton.boton.off("pointerup"); //Quita la funcionalidad del botón
+    this.botonSi.boton.off("pointerup"); //Quita la funcionalidad del botón
   }
 
   private setVisibleBotonMenuPrincipal(estadoMenu: boolean) {
@@ -72,14 +112,21 @@ export default class CConfiguracion {
       this.BotonMenuPrincipal(this.escenaActual);
     }
   }
-
   private BotonMenuPrincipal(ventanaAVolver: string) {
     this.botonMenuPrincipal.boton.on("pointerup", () => {
-      this.escena.scene.wake("MenuPrincipal"); //Resume la escena
-      this.escena.scene.moveAbove("MenuPrincipal"); //Mueve la escena
-      this.escena.scene.sleep(ventanaAVolver); //Pausa la escena
-      this.escena.scene.setActive(false, ventanaAVolver); //Mueve la escenaPausa la escena
-      this.escena.scene.sleep("Configuracion"); //Pausa la escena
+      this.escena.scene.wake("Volver"); //Resume la escena
+      this.escena.scene.moveUp("Volver"); //Mueve la escena
+      this.botonNo.boton.setVisible(true);
+      this.botonSi.boton.setVisible(true);
+      this.escena.scene.pause("Configuracion"); //Pausa la escena
+      this.botonSi.boton.on("pointerup", () => {
+        this.escena.scene.wake("MenuPrincipal"); //Resume la escena
+        this.escena.scene.moveAbove("MenuPrincipal"); //Mueve la escena
+        this.escena.scene.sleep(ventanaAVolver); //Pausa la escena
+        this.escena.scene.setActive(false, ventanaAVolver); //Mueve la escenaPausa la escena
+        this.escena.scene.sleep("Configuracion"); //Pausa la escena
+        this.escena.scene.sleep("Volver"); //Pausa la escena
+      });
     });
   }
 
@@ -113,5 +160,29 @@ export default class CConfiguracion {
 
   public set escenaActual(value: string) {
     this._escenaActual = value;
+  }
+
+  public get escenaVolver(): any {
+    return this._escenaVolver;
+  }
+
+  public set escenaVolver(value: any) {
+    this._escenaVolver = value;
+  }
+
+  public get botonSi(): Boton {
+    return this._botonSi;
+  }
+
+  public set botonSi(value: Boton) {
+    this._botonSi = value;
+  }
+
+  public get botonNo(): Boton {
+    return this._botonNo;
+  }
+
+  public set botonNo(value: Boton) {
+    this._botonNo = value;
   }
 }

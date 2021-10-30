@@ -2,6 +2,7 @@ import Particulas from "../Model/Particulas";
 import Juego from "./Juego";
 
 export default class Nivel1 extends Juego {
+  x;
   constructor() {
     super("Nivel1");
   }

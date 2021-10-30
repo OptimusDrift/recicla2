@@ -14,6 +14,7 @@ export default class Nivel {
   private _residuosBackUp: Array<Residuo>;
   private _monedas: Array<Moneda>;
   private _obstaculos: any;
+  private _escapes: any;
   private _recipientes: Array<Recipiente>;
   private _puntajeNecesario: number;
   private _puntajeActual: number;
@@ -33,10 +34,11 @@ export default class Nivel {
     player: Player,
     puntajeNecesario: number,
     monedas: Array<Moneda>,
-    puntajeeMaximo: number,
+    puntajeMaximo: number,
     obstaculos: any,
     recipientes: Array<Recipiente>,
     residuos: Array<Residuo>,
+    escapes: any,
     estadoDelNivel: number,
     puntajeInicial: number,
     mapa: Phaser.Tilemaps.Tilemap,
@@ -48,9 +50,10 @@ export default class Nivel {
     this.pantallaDeJuego.add.image(1920 / 2, 1080 / 2, this.fondo).setDepth(-5);
     this._player = player;
     this._puntajeNecesario = puntajeNecesario;
-    this._puntajeMaximo = puntajeeMaximo;
+    this._puntajeMaximo = puntajeMaximo;
     this._puntajeInicial = puntajeInicial;
     this._puntajeActual = puntajeInicial;
+    this._escapes = escapes;
     this._musica = musica;
     this._residuos = residuos;
     this.IniciarElNivel();
@@ -205,5 +208,13 @@ export default class Nivel {
 
   public set gomera(value: any) {
     this._gomera = value;
+  }
+
+  public get escapes(): any {
+    return this._escapes;
+  }
+
+  public set escapes(value: any) {
+    this._escapes = value;
   }
 }

@@ -15,6 +15,7 @@ export default class ResiduoBateria extends Residuo {
   }
 
   public setFriccion(residuo: any, obstaculo: any) {
+    super.setFriccion(residuo, obstaculo);
     //Se setea una friccion
     residuo.body.setDragX(600);
     //Pequenno tiempo antes de volver la friccion 0 (para que no caiga de manera brusca)

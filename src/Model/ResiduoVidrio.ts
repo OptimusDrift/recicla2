@@ -15,6 +15,7 @@ export default class ResiduoVidrio extends Residuo {
   }
 
   public setFriccion(residuo: any, obstaculo: any) {
+    super.setFriccion(residuo, obstaculo);
     //Se setea una friccion
     residuo.body.setDragX(550);
     //Pequenno tiempo antes de volver la friccion 0 (para que no caiga de manera brusca)

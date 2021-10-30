@@ -14,7 +14,11 @@ export default class Residuo {
     this._gravedad = gravedad;
     this._physics = physics;
     this._sprite = sprite;
-    this._cuerpo = this.physics.add.sprite(100, 100, this.sprite);
+    this._cuerpo = this.physics.add.sprite(-100, -100, this.sprite);
+    this._cuerpo.body.x = -500;
+    this._cuerpo.body.y = -500;
+    this._cuerpo.body.setAllowGravity(false);
+    this._cuerpo.body.setVelocity(0);
     this._cuerpo.depth = -2;
     this._cuerpo.setBounce(0.4);
     this._friccion = friccion;
@@ -28,7 +32,35 @@ export default class Residuo {
     }
   }
 
+  public ResiduoFueraDeLaPantalla(residuo: any, borde: any) {
+    residuo.body.world.scene.controladorNivel.AgregarResiduos(
+      residuo.body.world.scene.controladorNivel.residuoAnterior
+    );
+    residuo.body.x = -500;
+    residuo.body.y = -500;
+    residuo.body.setAllowGravity(false);
+    residuo.body.setVelocity(0);
+    residuo.body.world.scene.controladorNivel.ActivarLanzamiento();
+    residuo.body.world.scene.controladorNivel.cHud.ActualizarMonedas(-1);
+  }
+
   public setFriccion(residuo: any, obstaculo: any) {
+    if (
+      residuo.body.velocity.x <= 2 &&
+      residuo.body.velocity.x > -2 &&
+      residuo.body.velocity.y <= 2 &&
+      residuo.body.velocity.y > -2
+    ) {
+      residuo.body.world.scene.controladorNivel.AgregarResiduos(
+        residuo.body.world.scene.controladorNivel.residuoAnterior
+      );
+      residuo.body.x = -500;
+      residuo.body.y = -500;
+      residuo.body.setAllowGravity(false);
+      residuo.body.setVelocity(0);
+      residuo.body.world.scene.controladorNivel.ActivarLanzamiento();
+      residuo.body.world.scene.controladorNivel.cHud.ActualizarMonedas(-1);
+    }
     //Se setea una ficcion
   }
 

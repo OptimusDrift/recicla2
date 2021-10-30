@@ -20,6 +20,7 @@ export default class Recipiente {
     residuo.body.y = -500;
     residuo.body.setAllowGravity(false);
     residuo.body.setVelocity(0);
+    residuo.body.world.scene.controladorNivel.ActivarLanzamiento();
   }
 
   protected Retroalimentacion(rta: Boolean, recipiente: any) {

@@ -187,12 +187,14 @@ export default class CTrivia {
       i.pop(); //Elimina el último botón
     } //Mientras el arreglo de botones sea mayor a 2, elimina el último botón
     this.mejoraBomba.EfectoMejora(i); //Ejecuta el efecto de mejora
+    this.cHud.ActualizarMonedas(-2); //Actualiza las monedas
     this.botonesMejoras[0].boton.setAlpha(0.5); //Pone el botón de mejora en gris
     this.botonesMejoras[0].PausarBoton(); //Pausa el botón
     this.risa.anims.play("risaBomba", true); //Inicia la animación de risa
   }
 
   public ReiniciarNivel() {
+    //this.cHud.ReiniciarHud();
     this.CargarTrivia(); //Carga las preguntas
     this.botones.forEach((b) => {
       b.CambiarColor(0xffffff); //Cambia el color de los botones a blanco
@@ -217,9 +219,11 @@ export default class CTrivia {
     if (a) {
       btn.BotonCorrecto();
       this.risa.anims.play("risaRespuestaCorrecta", true);
+      this.cHud.ActualizarMonedas(1); //Actualiza las monedas
     } else {
       btn.BotonIncorecto();
       this.risa.anims.play("risaRespuestaIncorrecta", true);
+      this.cHud.ActualizarMonedas(-1); //Actualiza las monedas
     } //Revisa si la respuesta es correcta
     this.botones.forEach((b) => b.PausarBoton()); //Pausa todos los botones
     this.botonesMejoras.forEach((b) => b.PausarBoton()); //Pausa todos los botones de mejoras
@@ -295,11 +299,7 @@ export default class CTrivia {
       )
     ); //Agrega el botón 3
     //PRUEBAS
-    this._mejoraBomba = new MejoraBomba(
-      "Bomba",
-      0,
-      this.escena.particulasBomba
-    );
+    this.mejoraBomba = new MejoraBomba("Bomba", 0, this.escena.particulasBomba);
     this.botonesMejoras.push(
       new Boton(
         this.escena.add.text(0, 0, "", this.style),
@@ -314,6 +314,12 @@ export default class CTrivia {
     ); //Agrega el botón de mejora
     this.CargarTrivia(); //Carga la trivia
   }
+
+  public MostrarCartelDeCorrecto() {}
+
+  public MostrarCartelDeIncorrecto() {}
+
+  public IniciarNivel() {}
 
   //Getters and setters
   public get escena(): any {

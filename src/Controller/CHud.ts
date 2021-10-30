@@ -23,62 +23,272 @@ export default class CHud {
       x += this.DISTANCIA_ENTRE_MONEDAS;
     }
     this.ReiniciarHud();
-    this.puntero = this.cNivel.niveles[0].puntajeActual - 1;
   }
 
   public ReiniciarHud() {
+    this.puntero = this.cNivel.niveles[0].puntajeInicial - 1;
     for (
       let index = this.monedas.length - 1;
-      index >= this._cNivel.niveles[this._cNivel.nivelActual].puntajeActual;
+      index >= this._cNivel.niveles[this._cNivel.nivelActual].puntajeInicial;
       index--
     ) {
       this.monedas[index].setVisible(false);
     }
+    this.hud.scene.moveAbove("Hud");
+  }
+
+  public MostrarTodasLasMonedas() {
+    this.monedas.forEach((moneda) => {
+      moneda.setVisible(true).setScale(1);
+    });
+  }
+
+  //A falta de tiempo, bucles y recursividad el ctrl + c y ctrl + v son tus amiwis, quien te conoce optimizacion de codigo
+  private MostrarAnimacionSuma(moneda: any, x: number) {
+    moneda.setScale(0);
+    this.hud.time.addEvent({
+      delay: x,
+      callback: () => {
+        this.hud.time.addEvent({
+          delay: 50,
+          callback: () => {
+            moneda.setScale(0.1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 100,
+          callback: () => {
+            moneda.setScale(0.2);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 150,
+          callback: () => {
+            moneda.setScale(0.3);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 200,
+          callback: () => {
+            moneda.setScale(0.4);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 250,
+          callback: () => {
+            moneda.setScale(0.5);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 300,
+          callback: () => {
+            moneda.setScale(0.6);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 350,
+          callback: () => {
+            moneda.setScale(0.7);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 400,
+          callback: () => {
+            moneda.setScale(0.8);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 450,
+          callback: () => {
+            moneda.setScale(0.9);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 500,
+          callback: () => {
+            moneda.setScale(1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 550,
+          callback: () => {
+            moneda.setScale(1.1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 600,
+          callback: () => {
+            moneda.setScale(1.2);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 650,
+          callback: () => {
+            moneda.setScale(1.1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 700,
+          callback: () => {
+            moneda.setScale(1);
+          },
+        });
+      },
+    });
+  }
+
+  private MostrarAnimacionResta(moneda: any, x: number) {
+    moneda.setScale(1);
+    this.hud.time.addEvent({
+      delay: x,
+      callback: () => {
+        this.hud.time.addEvent({
+          delay: 50,
+          callback: () => {
+            moneda.setScale(1.1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 150,
+          callback: () => {
+            moneda.setScale(1.2);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 200,
+          callback: () => {
+            moneda.setScale(1.1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 250,
+          callback: () => {
+            moneda.setScale(1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 300,
+          callback: () => {
+            moneda.setScale(0.9);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 350,
+          callback: () => {
+            moneda.setScale(0.8);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 400,
+          callback: () => {
+            moneda.setScale(0.7);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 450,
+          callback: () => {
+            moneda.setScale(0.6);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 500,
+          callback: () => {
+            moneda.setScale(0.5);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 550,
+          callback: () => {
+            moneda.setScale(0.4);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 600,
+          callback: () => {
+            moneda.setScale(0.3);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 650,
+          callback: () => {
+            moneda.setScale(0.2);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 700,
+          callback: () => {
+            moneda.setScale(0.1);
+          },
+        });
+        this.hud.time.addEvent({
+          delay: 750,
+          callback: () => {
+            moneda.setVisible(false);
+          },
+        });
+      },
+    });
   }
 
   private SumarMonedas(n: number) {
-    console.log(this._cNivel.niveles[this._cNivel.nivelActual].puntajeMaximo);
     if (
       this.puntero + 1 >=
       this._cNivel.niveles[this._cNivel.nivelActual].puntajeMaximo
     ) {
       throw new Error("No se puede sumar mas monedas");
     }
-    for (let index = this.puntero; index <= this.puntero + n; index++) {
-      this.monedas[Phaser.Math.Clamp(index, 0, 40)].setVisible(true);
+    let x = 0;
+    for (let index = this.puntero + 1; index <= this.puntero + n; index++) {
+      let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
+      moneda.setVisible(true);
+      this.MostrarAnimacionSuma(moneda, x);
+      x += 100;
     }
   }
 
   private RestarMonedas(n: number) {
+    let x = 0;
     for (let index = this.puntero; index > this.puntero + n; index--) {
-      this.monedas[index].setVisible(false);
+      this.MostrarAnimacionResta(this.monedas[index], x);
+      x += 100;
     }
   }
 
   public ActualizarMonedas(n: number): boolean {
-    console.log(this.puntero);
     try {
       if (n >= 0) {
+        console.log(this.puntero);
         this.SumarMonedas(n);
       } else {
         this.RestarMonedas(n);
       }
       this.puntero += n;
+      this.ControlarMonedas();
       return true;
     } catch (error) {
       console.log(error);
-      return false;
     }
+    return false;
   }
 
   public CargarHud() {
-    this.cNivel.niveles[0].pantallaDeJuego.scene.launch("Hud");
+    this.cNivel.niveles[0].pantallaDeJuego.scene.wake("Hud");
     this.cNivel.niveles[0].pantallaDeJuego.scene.moveUp(
       this.cNivel.niveles[0].pantallaDeJuego.scene.get("Hud")
     ); //Lanza la escena de configuracion
+    this.MostrarTodasLasMonedas();
+    this.ReiniciarHud();
   }
 
-  public ActualizarHud() {}
+  public ControlarMonedas() {
+    if (this.puntero < 0) {
+      this.cNivel.PerderNivel();
+    } else if (
+      this.puntero >= this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo
+    ) {
+      this.cNivel.GanarNivel();
+    }
+  }
 
   public get cNivel(): CNivel {
     return this._cNivel;

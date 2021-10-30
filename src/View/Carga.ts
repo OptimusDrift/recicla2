@@ -44,6 +44,7 @@ export default class Carga extends Phaser.Scene {
     //---------------Sprites---------------------\\
     //--------Botones--------------\\
     this.load.image("boton", "assets/Botones/Boton.png");
+    this.load.image("boton2", "assets/Botones/Boton2.png");
     this.load.image("creditos", "assets/Botones/Creditos.png");
     this.load.image("gomera", "assets/Botones/Gomera.png");
     this.load.image("tienda", "assets/Botones/Tienda.png");
@@ -86,9 +87,11 @@ export default class Carga extends Phaser.Scene {
     this.load.image("fondoTrivia", "assets/Pantallas/FondoTrivia.png");
     this.load.image("fondoMenu", "assets/Pantallas/MenuPrincipal.png");
     this.load.image("fondoNivel", "assets/Pantallas/FondoNivel.png");
+    this.load.image("escapeVertical", "assets/Pantallas/EscapeVertical.png");
     this.load.image("fondoCreditos", "assets/Pantallas/Creditos.png"); //TEMPORAL
     //---------POP UPS----------\\
     this.load.image("fondoRosa", "assets/PopUps/FondoRosa.png");
+    this.load.image("fondoVolver", "assets/PopUps/Seguro.png");
     //--------------Musica Y FX--------------------\\
     this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
     this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");
@@ -124,13 +127,18 @@ export default class Carga extends Phaser.Scene {
     ); //Crea el jugador
     //---------------------CONFIGURACION-----------------------//
     let config = this.scene.get("Configuracion"); //Obtiene la escena de la configuracion
-    this.controladorConfiguracion = new CConfiguracion(config); //Crea el controlador de configuracion
+    let volver = this.scene.get("Volver"); //Obtiene la escena de la configuracion
+    this.controladorConfiguracion = new CConfiguracion(config, volver); //Crea el controlador de configuracion
     //-------------NIVELES--------------------//
     //-----------------NIVEL 1-----------------//
     this.niveles = new Array<Nivel>();
     let nvl1 = this.scene.get("Nivel1"); //Obtiene la escena del nivel 1
     const mapa = nvl1.make.tilemap({ key: "mapaNivel1" });
     const tileset = mapa.addTilesetImage("Atlas", "atlas");
+
+    let escapes = nvl1.physics.add.staticGroup();
+    escapes.create(1952, 0, "escapeVertical"); //Añade los escapes al nivel 1
+    escapes.create(-32, 0, "escapeVertical"); //Añade los escapes al nivel 1
 
     this.niveles.push(
       new Nivel(
@@ -143,6 +151,7 @@ export default class Carga extends Phaser.Scene {
         new Array<Obstaculo>(),
         new Array<Recipiente>(),
         new Array<Residuo>(),
+        escapes,
         0,
         4,
         mapa,
@@ -171,6 +180,10 @@ export default class Carga extends Phaser.Scene {
     const mapa2 = nvl2.make.tilemap({ key: "mapaNivel1" });
     const tileset2 = mapa2.addTilesetImage("Atlas", "atlas");
 
+    let escapes2 = nvl2.physics.add.staticGroup();
+    escapes2.create(1520, 0, "escapeVertical"); //Añade los escapes al nivel 1
+    escapes2.create(1220, 0, "escapeVertical"); //Añade los escapes al nivel 1
+
     this.niveles.push(
       new Nivel(
         nvl2,
@@ -182,6 +195,7 @@ export default class Carga extends Phaser.Scene {
         new Array<Obstaculo>(),
         new Array<Recipiente>(),
         new Array<Residuo>(),
+        escapes2,
         0,
         4,
         mapa2,
@@ -238,9 +252,14 @@ export default class Carga extends Phaser.Scene {
     this.scene.launch("Trivia"); //Lanza la escena de trivia
     this.scene.sleep("Trivia"); //Oculta la escena de trivia
     this.scene.stop("Cargando"); //Oculta la escena de carga
-    this.scene.start("Nivel1"); //Lanza la escena del menu principal
-    this.scene.start("Nivel2"); //Lanza la escena del menu principal
-    this.scene.sleep("Nivel2"); //Lanza la escena del menu principal
+    this.scene.start("Nivel2"); //Lanza el nivel 2
+    this.scene.sleep("Nivel2"); //Oculta el nivel 2
+    this.scene.start("Hud"); //Lanza el nivel 2
+    this.scene.sleep("Hud"); //Oculta el nivel 2
+    this.scene.start("Volver"); //Lanza el nivel 2
+    this.scene.sleep("Volver"); //Oculta el nivel 2
+
+    this.scene.start("MenuPrincipal"); //Lanza la escena del menu principal
   }
 
   //Carga los objetos de la capa de objetos del nivel 1
