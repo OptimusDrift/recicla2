@@ -18,6 +18,7 @@ export default class CNivel {
   private _puntoFinalY: number;
   private _residuoSeleccionado: Residuo | undefined;
   private _residuoAnterior: Residuo | undefined;
+  private _sinReciduo: boolean;
 
   //Constantes del nivel
   private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
@@ -37,6 +38,7 @@ export default class CNivel {
     this._distancia = 0;
     this._puntoFinalX = 0;
     this._puntoFinalY = 0;
+    this._sinReciduo = false;
     //PRUEBAS/
 
     //-------------------PRUEBAS TOMA DE RESIDUO----------------//
@@ -228,6 +230,7 @@ export default class CNivel {
   }
 
   public PrepararLanzamiento() {
+    this.cHud.ControlarMonedas();
     if (this.preparadoParaLanzar) {
       //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
       this.OnClickPress();
@@ -245,7 +248,7 @@ export default class CNivel {
         console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
         console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
         console.log("pendiente: " + dx / dy);
-        //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a actuvar
+        //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a activar
         this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
         //Annade la velocidad del residuo seleccionado
         this.residuoSeleccionado?.cuerpo.setVelocity(
@@ -313,20 +316,43 @@ export default class CNivel {
   public NivelTerminado() {}
 
   public GanarNivel() {
-    console.log("Perdisten't");
+    try {
+      this.sinReciduo = false;
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
+        this.niveles[this.nivelActual].pantallaDeJuego.scene.key
+      ); //Pausa la escena
+      this.nivelActual++;
+      this.niveles[this.nivelActual].pantallaDeJuego.scene
+        .get("Trivia")
+        .controladorTrivia.ReiniciarNivel(); //Reinicia el nivel
+      this.niveles[this.nivelActual].pantallaDeJuego.scene
+        .get("Trivia")
+        .controladorTrivia.CambiarNivel();
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.wake("Trivia");
+    } catch (error) {
+      this.nivelActual = 0;
+      this.niveles.forEach((nivel) => {
+        nivel.ReiniciarNivel();
+      });
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
+        "Nivel" + this.nivelActual
+      );
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.wake("Creditos");
+    }
+    //this.SiguienteNivel();
   }
 
   public PerderNivel() {
-    console.log("Perdiste");
-  }
-
-  //Getters and setters
-  public get niveles(): Array<Nivel> {
-    return this._niveles;
-  }
-
-  public set niveles(value: Array<Nivel>) {
-    this._niveles = value;
+    //mostrar Derrota
+    this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.key
+    ); //Pausa la escena
+    this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep("Hud"); //Pausa la escena
+    this.nivelActual = 0;
+    this.niveles.forEach((nivel) => {
+      nivel.ReiniciarNivel();
+    });
+    this.niveles[this.nivelActual].pantallaDeJuego.scene.wake("MenuPrincipal"); //Resume la escena
   }
 
   private SiguienteReciduo() {
@@ -337,9 +363,7 @@ export default class CNivel {
       } else {
         throw new Error("No hay residuos para seleccionar");
       }
-    } catch (error) {
-      this.SiguienteNivel();
-    }
+    } catch (error) {}
   }
 
   public ActivarLanzamiento() {
@@ -363,7 +387,22 @@ export default class CNivel {
     this.CargarAnimacionDeLaGomera();
     this.niveles[this.nivelActual].gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
   }
-  SiguienteNivel() {
+
+  public LanzarNivel() {
+    try {
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep("Trivia");
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
+        "Nivel" + (this.nivelActual + 1)
+      );
+    } catch (error) {
+      console.error(error);
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep("Trivia");
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
+        "MenuPrincipal"
+      );
+    }
+  }
+  public SiguienteNivel() {
     try {
       this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
         "Nivel" + (this.nivelActual + 1)
@@ -374,7 +413,7 @@ export default class CNivel {
       );
     } catch (error) {
       this.nivelActual = 0;
-      console.log("Nivel" + (this.nivelActual + 1));
+      this._sinReciduo = false;
       this.niveles.forEach((nivel) => {
         nivel.ReiniciarNivel();
       });
@@ -382,6 +421,15 @@ export default class CNivel {
         "Nivel" + (this.nivelActual + 1)
       );
     }
+  }
+
+  //Getters and setters
+  public get niveles(): Array<Nivel> {
+    return this._niveles;
+  }
+
+  public set niveles(value: Array<Nivel>) {
+    this._niveles = value;
   }
 
   public get nivelActual(): number {
@@ -470,5 +518,13 @@ export default class CNivel {
 
   public set preparadoParaLanzar(value: boolean) {
     this._preparadoParaLanzar = value;
+  }
+
+  public get sinReciduo(): boolean {
+    return this._sinReciduo;
+  }
+
+  public set sinReciduo(value: boolean) {
+    this._sinReciduo = value;
   }
 }

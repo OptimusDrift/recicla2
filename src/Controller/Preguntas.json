@@ -1,6 +1,6 @@
 [
   {
-    "Nivel": "lvl1",
+    "Nivel": 0,
     "Pregunta": "Prueba 1",
     "RespuestaCorrecta": "A",
     "RespuestaIncorrecta1": "B",
@@ -10,17 +10,17 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES A!"
   },
   {
-    "Nivel": "lvl2",
+    "Nivel": 0,
     "Pregunta": "Prueba 2",
     "RespuestaCorrecta": "B",
-    "RespuestaIncorrecta1": "B",
+    "RespuestaIncorrecta1": "A",
     "RespuestaIncorrecta2": "V",
     "RespuestaIncorrecta3": "Z",
     "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES B!"
   },
   {
-    "Nivel": "lvl3",
+    "Nivel": 0,
     "Pregunta": "Prueba 3",
     "RespuestaCorrecta": "C",
     "RespuestaIncorrecta1": "B",
@@ -30,7 +30,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES C!"
   },
   {
-    "Nivel": "lvl4",
+    "Nivel": 1,
     "Pregunta": "Prueba 4",
     "RespuestaCorrecta": "D",
     "RespuestaIncorrecta1": "B",
@@ -40,7 +40,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES D!"
   },
   {
-    "Nivel": "lvl5",
+    "Nivel": 1,
     "Pregunta": "Prueba 5",
     "RespuestaCorrecta": "E",
     "RespuestaIncorrecta1": "B",
@@ -50,7 +50,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES E!"
   },
   {
-    "Nivel": "lvl6",
+    "Nivel": 1,
     "Pregunta": "Prueba 6",
     "RespuestaCorrecta": "F",
     "RespuestaIncorrecta1": "B",
@@ -60,7 +60,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES F!"
   },
   {
-    "Nivel": "lvl7",
+    "Nivel": 2,
     "Pregunta": "Prueba 7",
     "RespuestaCorrecta": "G",
     "RespuestaIncorrecta1": "B",
@@ -70,7 +70,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES G!"
   },
   {
-    "Nivel": "lvl8",
+    "Nivel": 2,
     "Pregunta": "Prueba 8",
     "RespuestaCorrecta": "H",
     "RespuestaIncorrecta1": "B",
@@ -80,7 +80,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES H!"
   },
   {
-    "Nivel": "lvl9",
+    "Nivel": 2,
     "Pregunta": "Prueba 9",
     "RespuestaCorrecta": "I",
     "RespuestaIncorrecta1": "B",
@@ -90,7 +90,7 @@
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES I!"
   },
   {
-    "Nivel": "lvl10",
+    "Nivel": 3,
     "Pregunta": "Prueba 10",
     "RespuestaCorrecta": "J",
     "RespuestaIncorrecta1": "B",
@@ -98,5 +98,65 @@
     "RespuestaIncorrecta3": "Z",
     "RespuestaDeRisaEnCasoDeSerCorrecta": "A SI!",
     "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! ES J!"
+  },
+  {
+    "Nivel": 3,
+    "Pregunta": "¿Cual de los siguientes tipos de plástico es reciclable?",
+    "RespuestaCorrecta": "Ambos",
+    "RespuestaIncorrecta1": "Ninguno",
+    "RespuestaIncorrecta2": "PVC",
+    "RespuestaIncorrecta3": "Poliestireno",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "Correcto! Todos los tipos de plastico son reciclables.",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! Todos los tipos de plastico son reciclables."
+  },
+  {
+    "Nivel": 3,
+    "Pregunta": "¿De que color es el tacho de reciclaje de plásticos?",
+    "RespuestaCorrecta": "Amarillo",
+    "RespuestaIncorrecta1": "Verde",
+    "RespuestaIncorrecta2": "Rojo",
+    "RespuestaIncorrecta3": "Azul",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "Correcto! Es amarillo.",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! Es amarillo."
+  },
+  {
+    "Nivel": 4,
+    "Pregunta": "¿Cual es la finalidad de reciclar plástico?",
+    "RespuestaCorrecta": "Todas son correctas",
+    "RespuestaIncorrecta1": "Reutilización",
+    "RespuestaIncorrecta2": "Fabricación de nuevos productos",
+    "RespuestaIncorrecta3": "Conversión a productos quimicos",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "Correcto! Todas son correctas.",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! Todas son correctas."
+  },
+  {
+    "Nivel": 4,
+    "Pregunta": "¿Cual de los siguientes tipos de vidrio es reciclable?",
+    "RespuestaCorrecta": "Botellas de vidrio",
+    "RespuestaIncorrecta1": "Cerámica",
+    "RespuestaIncorrecta2": "Porcelana",
+    "RespuestaIncorrecta3": "Espejos",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "Correcto! Las botellas de vidrio.",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! Son las botellas de vidrio, Los otros poseen componentes contaminantes."
+  },
+  {
+    "Nivel": 4,
+    "Pregunta": "¿De que color es el tacho de reciclaje de vidrios?",
+    "RespuestaCorrecta": "Verde",
+    "RespuestaIncorrecta1": "Amarillo",
+    "RespuestaIncorrecta2": "Azul",
+    "RespuestaIncorrecta3": "Rojo",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "Correcto! Es verde.",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! Es verde."
+  },
+  {
+    "Nivel": 4,
+    "Pregunta": "¿Cuantas veces puede ser reciclado un vidrio?",
+    "RespuestaCorrecta": "Ilimitadas veces",
+    "RespuestaIncorrecta1": "Una vez",
+    "RespuestaIncorrecta2": "Dos veces",
+    "RespuestaIncorrecta3": "Ninguna vez",
+    "RespuestaDeRisaEnCasoDeSerCorrecta": "Correcto! Ilimitadas veces.",
+    "RespuestaDeRisaEnCasoDeSerIncorrecta": "NO! Ilimitadas veces."
   }
 ]

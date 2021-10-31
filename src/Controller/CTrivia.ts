@@ -2,7 +2,8 @@ import Boton from "../Model/Boton";
 import Pregunta from "../Model/Pregunta";
 import Mejora from "../Model/Mejora";
 import MejoraBomba from "../Model/MejoraBomba";
-import preguntas from "./Preguntas.json";
+import MejoraCambio from "../Model/MejoraCambio";
+import PreguntasJson from "./Preguntas.json";
 import CConfiguracion from "./CConfiguracion";
 import CNivel from "./CNivel";
 import CHud from "./CHud";
@@ -14,11 +15,14 @@ export default class CTrivia {
   private _botonesMejoras: Array<Boton>;
   private _botonConfiguracion: Boton;
   private _mejoraBomba: Mejora;
+  private _mejoraCambio: Mejora;
   private _preguntas: Array<Pregunta>;
-  private _preguntaActual: number;
+  private _preguntasBackUp: Array<Pregunta>;
+  private _preguntaActual: Pregunta;
   private _cConfiguracion: CConfiguracion;
   private _cNivel: CNivel;
   private _cHud: CHud;
+  private _ventanaCorrecto: any;
 
   //Constantes de la trivia
   private BOTON_0_POSICION_X = 478;
@@ -31,6 +35,8 @@ export default class CTrivia {
   private BOTON_3_POSICION_Y = 824;
   private BOTON_MEJORA_BOMBA_POSICION_X = 600;
   private BOTON_MEJORA_BOMBA_POSICION_Y = 1000;
+  private BOTON_MEJORA_CAMBIO_POSICION_X = 900;
+  private BOTON_MEJORA_CAMBIO_POSICION_Y = 1000;
   private BOTON_CONFIGURACION_POSICION_X = 1862;
   private BOTON_CONFIGURACION_POSICION_Y = 64;
 
@@ -51,9 +57,15 @@ export default class CTrivia {
     this._cConfiguracion = cConfiguracion; //Asigna el controlador de configuración
     this._cNivel = cNivel; //Asigna el controlador de nivel
     this.escena.add.image(1920 / 2, 1080 / 2, "fondoTrivia").setDepth(-20); //Agrega el fondo
+    this._ventanaCorrecto = this.escena.add
+      .image(1920 / 2, 1080 / 2, "correcto")
+      .setDepth(2); //Agrega la ventana de correcto
+    this.ventanaCorrecto.setInteractive(); //Hace que sea interactiva
+    this.ventanaCorrecto.on("pointerup", () => this.cNivel.LanzarNivel()); //Cuando se hace click, se carga la trivia
     this.escena.add.image(225 + 556, 100 + 205, "cuadroDeDialogo"); //Agrega el cuadro de dialogo
     this.escena.add.image(700, 1015, "moneda"); //Agrega la moneda
     this.escena.add.image(730, 1015, "moneda"); //Agrega la moneda
+    this.escena.add.image(1000, 1015, "moneda"); //Agrega la moneda
     this.escena.anims.create({
       key: "risaPregunta",
       frames: this.escena.anims.generateFrameNumbers("risa", {
@@ -97,7 +109,7 @@ export default class CTrivia {
     this._botones = new Array<Boton>(); //Crea un array de botones
     this._botonesMejoras = new Array<Boton>(); //Crea un array de botones de mejoras
     this._preguntas = new Array<Pregunta>(); //Crea un array de preguntas
-    this._preguntaActual = 0;
+    this._preguntasBackUp = new Array<Pregunta>(); //Crea un array de preguntas
     this.CargarPreguntas(); //Carga las preguntas
     this._botonConfiguracion = new Boton(
       this.escena.add.text(0, 0, "", this.style),
@@ -117,9 +129,10 @@ export default class CTrivia {
 
   //Carga las preguntas desde un JSON
   public CargarPreguntas() {
-    preguntas.forEach((p) => {
-      this.preguntas.push(
+    PreguntasJson.forEach((p) => {
+      this.preguntasBackUp.push(
         new Pregunta(
+          p["Nivel"],
           p["Pregunta"],
           p["RespuestaCorrecta"],
           new Array<string>(
@@ -133,30 +146,53 @@ export default class CTrivia {
         )
       ); //Agrega las preguntas
     }); //Recorre el array de preguntas
+    this.CambiarNivel();
   }
 
+  public CambiarPregunta() {
+    this.preguntas = this.shuffle(this.preguntas);
+    this.preguntaActual = this.preguntas.pop();
+    this.cHud.ActualizarMonedas(-1); //Actualiza las monedas
+    this.botonesMejoras[1].boton.setAlpha(0.5); //Pone el botón de mejora en gris
+    this.botonesMejoras[1].PausarBoton(); //Pausa el botón
+    this.risa.anims.play("risaCambioDePregunta", true); //Inicia la animación de risa
+    this.mejoraCambio.EfectoMejora(this.botones);
+    this.CargarTrivia(true);
+  }
+
+  public CambiarNivel() {
+    this.preguntasBackUp.forEach((p) => {
+      if (p.numeroNivel == this._cNivel.nivelActual) {
+        this.preguntas.push(p); //Agrega las preguntas
+      }
+    }); //Recorre el array de preguntas
+    this.preguntaActual = this.preguntas.pop(); //Asigna la pregunta actual
+  }
   //Carga las variables (pregunta y respuestas) desde un JSON del nivel actual.
-  public CargarTrivia() {
-    this.preguntaActual = Math.floor(Math.random() * this.preguntas.length); //PRUEBAS
-    //Prinero randomiza las preguntas
-    this.preguntas[this.preguntaActual].RandomizarRerspuestas();
-    console.log(this.preguntas[this.preguntaActual].pregunta);
+  public CargarTrivia(b: boolean = false) {
+    this.preguntaActual.RandomizarRerspuestas();
     let i = 0;
     this.botones.forEach((b) => {
-      b.texto.text = this.preguntas[this.preguntaActual].respuestas[i];
+      b.texto.text = this.preguntaActual.respuestas[i];
       b.boton.off("pointerup");
       b.boton.on("pointerup", () => this.PointerUp(b));
       i++;
     });
-    this.botonesMejoras[0].boton.off("pointerup");
-    this.botonesMejoras[0].boton.on("pointerup", () =>
-      this.BuscarBotonesIncorrectos()
-    );
+    if (!b) {
+      this.botonesMejoras[0].boton.off("pointerup");
+      this.botonesMejoras[0].boton.on("pointerup", () =>
+        this.BuscarBotonesIncorrectos()
+      );
+      this.botonesMejoras[1].boton.off("pointerup");
+      this.botonesMejoras[1].boton.on("pointerup", () =>
+        this.CambiarPregunta()
+      );
+    }
   }
 
-  public shuffle(array) {
+  public shuffle(array: any[]): any[] {
     let currentIndex = array.length,
-      randomIndex;
+      randomIndex: number;
 
     while (currentIndex != 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -176,9 +212,7 @@ export default class CTrivia {
     let x = this.shuffle(this.botones.slice()); //Copia el arreglo de botones y lo randomiza
     let i = new Array<Boton>(); //Crea un array de botones
     x.forEach((b) => {
-      if (
-        b.texto.text != this.preguntas[this.preguntaActual].respuestaCorrecta
-      ) {
+      if (b.texto.text != this.preguntaActual.respuestaCorrecta) {
         i.push(b);
       }
     }); //Recorre el arreglo de botones y agrega los botones que no son la respuesta correcta
@@ -194,7 +228,8 @@ export default class CTrivia {
   }
 
   public ReiniciarNivel() {
-    //this.cHud.ReiniciarHud();
+    this.cHud.ReiniciarHud();
+    this.ventanaCorrecto.setVisible(false); //La oculta
     this.CargarTrivia(); //Carga las preguntas
     this.botones.forEach((b) => {
       b.CambiarColor(0xffffff); //Cambia el color de los botones a blanco
@@ -211,15 +246,14 @@ export default class CTrivia {
   //Metodo para definir la funcion del click, en teste caso, consiste en revisar la respuesta y ver si es correcta.
   private PointerUp(btn: Boton) {
     var a = false;
-    if (
-      this.preguntas[this.preguntaActual].respuestaCorrecta == btn.texto.text
-    ) {
+    if (this.preguntaActual.respuestaCorrecta == btn.texto.text) {
       a = true;
     } //Revisa si la respuesta es correcta
     if (a) {
       btn.BotonCorrecto();
       this.risa.anims.play("risaRespuestaCorrecta", true);
       this.cHud.ActualizarMonedas(1); //Actualiza las monedas
+      this.MostrarCartelDeCorrecto();
     } else {
       btn.BotonIncorecto();
       this.risa.anims.play("risaRespuestaIncorrecta", true);
@@ -227,6 +261,7 @@ export default class CTrivia {
     } //Revisa si la respuesta es correcta
     this.botones.forEach((b) => b.PausarBoton()); //Pausa todos los botones
     this.botonesMejoras.forEach((b) => b.PausarBoton()); //Pausa todos los botones de mejoras
+    this.MostrarCartelDeIncorrecto();
   }
 
   public CargarBotones() {
@@ -300,6 +335,11 @@ export default class CTrivia {
     ); //Agrega el botón 3
     //PRUEBAS
     this.mejoraBomba = new MejoraBomba("Bomba", 0, this.escena.particulasBomba);
+    this.mejoraCambio = new MejoraCambio(
+      "Cambio",
+      0,
+      this.escena.particulasBomba
+    );
     this.botonesMejoras.push(
       new Boton(
         this.escena.add.text(0, 0, "", this.style),
@@ -312,12 +352,42 @@ export default class CTrivia {
         undefined
       )
     ); //Agrega el botón de mejora
+    this.botonesMejoras.push(
+      new Boton(
+        this.escena.add.text(0, 0, "", this.style),
+        this.escena.add.image(
+          this.BOTON_MEJORA_CAMBIO_POSICION_X,
+          this.BOTON_MEJORA_CAMBIO_POSICION_Y,
+          "cambio"
+        ),
+        undefined,
+        undefined
+      )
+    ); //Agrega el botón de mejora
     this.CargarTrivia(); //Carga la trivia
   }
 
-  public MostrarCartelDeCorrecto() {}
+  Temporizador() {
+    this.escena.time.addEvent({
+      delay: 5000,
+      callback: () => {
+        this.cNivel.LanzarNivel();
+      },
+      loop: false,
+    });
+  }
 
-  public MostrarCartelDeIncorrecto() {}
+  public MostrarCartelDeCorrecto() {
+    this.ventanaCorrecto.clearTint(); //Quita el tint
+    this.ventanaCorrecto.setVisible(true); //La muestra
+    //this.Temporizador();
+  }
+
+  public MostrarCartelDeIncorrecto() {
+    this.ventanaCorrecto.clearTint(); //Quita el tint
+    this.ventanaCorrecto.setVisible(true); //La muestra
+    //this.Temporizador();
+  }
 
   public IniciarNivel() {}
 
@@ -350,11 +420,11 @@ export default class CTrivia {
     this._preguntas = v;
   }
 
-  public get preguntaActual(): number {
+  public get preguntaActual(): Pregunta {
     return this._preguntaActual;
   }
 
-  public set preguntaActual(v: number) {
+  public set preguntaActual(v: Pregunta) {
     this._preguntaActual = v;
   }
 
@@ -412,5 +482,29 @@ export default class CTrivia {
 
   public set cHud(v: CHud) {
     this._cHud = v;
+  }
+
+  public get ventanaCorrecto(): any {
+    return this._ventanaCorrecto;
+  }
+
+  public set ventanaCorrecto(v: any) {
+    this._ventanaCorrecto = v;
+  }
+
+  public get preguntasBackUp(): Array<Pregunta> {
+    return this._preguntasBackUp;
+  }
+
+  public set preguntasBackUp(v: Array<Pregunta>) {
+    this._preguntasBackUp = v;
+  }
+
+  public get mejoraCambio(): Mejora {
+    return this._mejoraCambio;
+  }
+
+  public set mejoraCambio(v: Mejora) {
+    this._mejoraCambio = v;
   }
 }

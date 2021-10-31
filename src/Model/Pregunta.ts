@@ -1,6 +1,7 @@
 import arrayShuffle from "array-shuffle";
 
 export default class Pregunta {
+  private _numeroNivel: number;
   private _pregunta: string;
   private _respuestaCorrecta: string;
   private _respuestas: Array<string>;
@@ -8,12 +9,14 @@ export default class Pregunta {
   private _mensajeRespuestaIncorrecta: string;
 
   constructor(
+    numeroNivel: number,
     pregunta: string,
     respuestaCorrecta: string,
     respuestas: Array<string>,
     mensajeRespuestaCorrecta: string,
     mensajeRespuestaIncorrecta: string
   ) {
+    this._numeroNivel = numeroNivel;
     this._pregunta = pregunta;
     this._respuestaCorrecta = respuestaCorrecta;
     this._respuestas = respuestas;
@@ -69,5 +72,13 @@ export default class Pregunta {
 
   public get mensajeRespuestaIncorrecta(): string {
     return this._mensajeRespuestaIncorrecta;
+  }
+
+  public set numeroNivel(v: number) {
+    this._numeroNivel = v;
+  }
+
+  public get numeroNivel(): number {
+    return this._numeroNivel;
   }
 }

@@ -123,7 +123,7 @@ export default class CConfiguracion {
         this.escena.scene.wake("MenuPrincipal"); //Resume la escena
         this.escena.scene.moveAbove("MenuPrincipal"); //Mueve la escena
         this.escena.scene.sleep(ventanaAVolver); //Pausa la escena
-        this.escena.scene.setActive(false, ventanaAVolver); //Mueve la escenaPausa la escena
+        this.escena.scene.setActive(false, ventanaAVolver); //Pausa la escena
         this.escena.scene.sleep("Configuracion"); //Pausa la escena
         this.escena.scene.sleep("Volver"); //Pausa la escena
       });

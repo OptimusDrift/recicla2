@@ -26,7 +26,9 @@ export default class CHud {
   }
 
   public ReiniciarHud() {
-    this.puntero = this.cNivel.niveles[0].puntajeInicial - 1;
+    this.MostrarTodasLasMonedas();
+    this.puntero =
+      this.cNivel.niveles[this.cNivel.nivelActual].puntajeInicial - 1;
     for (
       let index = this.monedas.length - 1;
       index >= this._cNivel.niveles[this._cNivel.nivelActual].puntajeInicial;
@@ -266,6 +268,7 @@ export default class CHud {
       this.ControlarMonedas();
       return true;
     } catch (error) {
+      this.cNivel.PerderNivel();
       console.log(error);
     }
     return false;
@@ -281,11 +284,16 @@ export default class CHud {
   }
 
   public ControlarMonedas() {
-    if (this.puntero < 0) {
+    if (this.puntero < -1) {
       this.cNivel.PerderNivel();
     } else if (
-      this.puntero >= this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo
+      this.puntero >=
+        this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo ||
+      this.cNivel.sinReciduo
     ) {
+      console.log("Nivel completado");
+      console.log(this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo);
+      console.log(this.cNivel.sinReciduo);
       this.cNivel.GanarNivel();
     }
   }

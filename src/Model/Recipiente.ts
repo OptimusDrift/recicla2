@@ -37,6 +37,16 @@ export default class Recipiente {
           recipiente.body.y
         );
         this.controladorNivel.cHud.ActualizarMonedas(-1);
+        recipiente.body.world.scene.controladorNivel.AgregarResiduos(
+          recipiente.body.world.scene.controladorNivel.residuoAnterior
+        );
+      }
+      if (
+        recipiente.body.world.scene.controladorNivel.niveles[
+          recipiente.body.world.scene.controladorNivel.nivelActual
+        ].residuos.length <= 0
+      ) {
+        recipiente.body.world.scene.controladorNivel.sinReciduo = true;
       }
     } catch (error) {}
   }

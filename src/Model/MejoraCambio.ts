@@ -1,8 +1,9 @@
 import Mejora from "./Mejora";
 import Boton from "./Boton";
 import Particulas from "./Particulas";
+import CTrivia from "~/Controller/CTrivia";
 
-export default class MejoraBomba extends Mejora {
+export default class MejoraCambio extends Mejora {
   private _particulas: Particulas;
 
   constructor(nombre: string, precio: number, particula: Particulas) {
@@ -12,9 +13,7 @@ export default class MejoraBomba extends Mejora {
 
   public EfectoMejora(botones: Array<Boton>) {
     botones.forEach((boton) => {
-      boton.PausarBoton();
-      boton.CambiarColor(0x2980a4);
-      this.particulas.EjecutarParticula(boton.boton.x, boton.boton.y);
+      boton.ResetearBoton();
     });
   }
 

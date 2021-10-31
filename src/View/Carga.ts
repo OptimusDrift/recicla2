@@ -51,6 +51,7 @@ export default class Carga extends Phaser.Scene {
     this.load.image("configuracion", "assets/Botones/Tuerca.png");
     this.load.image("botonX", "assets/Botones/BotonX.png");
     this.load.image("bomba", "assets/Botones/Bomba.png");
+    this.load.image("cambio", "assets/Botones/Cambio.png");
     this.load.image("volver", "assets/Botones/Volver.png");
     this.load.image("menuPrincipal", "assets/Botones/MenuPrincipal.png");
     //-------In-Game---------\\
@@ -92,6 +93,7 @@ export default class Carga extends Phaser.Scene {
     //---------POP UPS----------\\
     this.load.image("fondoRosa", "assets/PopUps/FondoRosa.png");
     this.load.image("fondoVolver", "assets/PopUps/Seguro.png");
+    this.load.image("correcto", "assets/PopUps/Correcto.png");
     //--------------Musica Y FX--------------------\\
     this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
     this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");
@@ -258,6 +260,8 @@ export default class Carga extends Phaser.Scene {
     this.scene.sleep("Hud"); //Oculta el nivel 2
     this.scene.start("Volver"); //Lanza el nivel 2
     this.scene.sleep("Volver"); //Oculta el nivel 2
+    this.scene.start("Nivel1"); //Lanza el nivel 2
+    this.scene.sleep("Nivel1"); //Oculta el nivel 2
 
     this.scene.start("MenuPrincipal"); //Lanza la escena del menu principal
   }
