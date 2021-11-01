@@ -126,6 +126,7 @@ export default class CConfiguracion {
         this.escena.scene.setActive(false, ventanaAVolver); //Pausa la escena
         this.escena.scene.sleep("Configuracion"); //Pausa la escena
         this.escena.scene.sleep("Volver"); //Pausa la escena
+        this.escena.scene.sleep("Hud"); //Pausa la escena
       });
     });
   }

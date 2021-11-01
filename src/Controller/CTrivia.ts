@@ -170,6 +170,7 @@ export default class CTrivia {
   }
   //Carga las variables (pregunta y respuestas) desde un JSON del nivel actual.
   public CargarTrivia(b: boolean = false) {
+    this.CambiarNivel();
     this.preguntaActual.RandomizarRerspuestas();
     let i = 0;
     this.botones.forEach((b) => {

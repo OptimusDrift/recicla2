@@ -13,6 +13,7 @@ import Hud from "./View/Hud";
 import Nivel1 from "./View/Nivel1";
 import Nivel2 from "./View/Nivel2";
 import VentanaVolver from "./View/VentanaVolver";
+import FinDelJuego from "./View/FinDelJuego";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -44,6 +45,7 @@ const config: Phaser.Types.Core.GameConfig = {
     Nivel2,
     Hud,
     VentanaVolver,
+    FinDelJuego,
   ],
 };
 export default new Phaser.Game(config);

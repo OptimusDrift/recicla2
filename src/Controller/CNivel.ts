@@ -1,5 +1,7 @@
+import Boton from "~/Model/Boton";
 import Nivel from "../Model/Nivel";
 import Residuo from "../Model/Residuo";
+import CConfiguracion from "./CConfiguracion";
 import CHud from "./CHud";
 
 export default class CNivel {
@@ -19,6 +21,8 @@ export default class CNivel {
   private _residuoSeleccionado: Residuo | undefined;
   private _residuoAnterior: Residuo | undefined;
   private _sinReciduo: boolean;
+  private _botonConfiguracion: Boton;
+  private _cConfiguracion: CConfiguracion;
 
   //Constantes del nivel
   private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
@@ -28,10 +32,23 @@ export default class CNivel {
   private BOTON_CONFIGURACION_POSICION_X = 1862;
   private BOTON_CONFIGURACION_POSICION_Y = 64;
 
-  constructor(niveles: Array<Nivel>, nivelActual: number) {
+  //Estilo del texto
+  private style = {
+    font: "bold 30px Arial",
+    fill: "#fff",
+    boundsAlignH: "center",
+    boundsAlignV: "middle",
+  };
+
+  constructor(
+    niveles: Array<Nivel>,
+    nivelActual: number,
+    cConfiguracion: CConfiguracion
+  ) {
     //Setea las variables por defecto
     this._niveles = niveles;
     this._nivelActual = nivelActual;
+    this._cConfiguracion = cConfiguracion;
     this._onClick = false;
     this._puntoInicialX = 0;
     this._puntoInicialY = 0;
@@ -39,6 +56,29 @@ export default class CNivel {
     this._puntoFinalX = 0;
     this._puntoFinalY = 0;
     this._sinReciduo = false;
+
+    this._botonConfiguracion = new Boton(
+      this.niveles[this.nivelActual].pantallaDeJuego.add.text(
+        0,
+        0,
+        "",
+        this.style
+      ),
+      this.niveles[this.nivelActual].pantallaDeJuego.add.image(
+        this.BOTON_CONFIGURACION_POSICION_X,
+        this.BOTON_CONFIGURACION_POSICION_Y,
+        "configuracion"
+      ),
+      undefined,
+      undefined
+    ); //Crea el botón de configuración
+    this.botonConfiguracion.boton.setDepth(0); //Pone el boton de configuracion en la capa 0
+    this.botonConfiguracion.boton.on("pointerup", () => {
+      this.cConfiguracion.CambiarAVentanaConfiguracion(
+        "Nivel" + (this.nivelActual + 1),
+        true
+      ); //Cambia a la ventana de configuración
+    }); //Evento para el botón de configuración
     //PRUEBAS/
 
     //-------------------PRUEBAS TOMA DE RESIDUO----------------//
@@ -230,6 +270,12 @@ export default class CNivel {
   }
 
   public PrepararLanzamiento() {
+    try {
+      this.niveles[this.nivelActual].residuos[0].cuerpo.x =
+        this.PUNTO_INICIAL_X;
+      this.niveles[this.nivelActual].residuos[0].cuerpo.y =
+        this.PUNTO_INICIAL_Y;
+    } catch (error) {}
     this.cHud.ControlarMonedas();
     if (this.preparadoParaLanzar) {
       //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
@@ -317,7 +363,6 @@ export default class CNivel {
 
   public GanarNivel() {
     try {
-      this.sinReciduo = false;
       this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
         this.niveles[this.nivelActual].pantallaDeJuego.scene.key
       ); //Pausa la escena
@@ -338,6 +383,7 @@ export default class CNivel {
         "Nivel" + this.nivelActual
       );
       this.niveles[this.nivelActual].pantallaDeJuego.scene.wake("Creditos");
+      this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep("Hud");
     }
     //this.SiguienteNivel();
   }
@@ -526,5 +572,21 @@ export default class CNivel {
 
   public set sinReciduo(value: boolean) {
     this._sinReciduo = value;
+  }
+
+  public get cConfiguracion(): CConfiguracion {
+    return this._cConfiguracion;
+  }
+
+  public set cConfiguracion(value: CConfiguracion) {
+    this._cConfiguracion = value;
+  }
+
+  public get botonConfiguracion(): Boton {
+    return this._botonConfiguracion;
+  }
+
+  public set botonConfiguracion(value: Boton) {
+    this._botonConfiguracion = value;
   }
 }

@@ -1,3 +1,4 @@
+import CFinDelJuego from "./CFinDelJuego";
 import CNivel from "./CNivel";
 
 export default class CHud {
@@ -5,6 +6,7 @@ export default class CHud {
   private _hud: any;
   private _monedas: Array<any>;
   private _puntero: number;
+  private _cFinDelJuego: CFinDelJuego;
 
   private UBICACION_PRIMERA_MONEDA_X: number = 105;
   private UBICACION_PRIMERA_MONEDA_Y: number = 125;
@@ -23,6 +25,10 @@ export default class CHud {
       x += this.DISTANCIA_ENTRE_MONEDAS;
     }
     this.ReiniciarHud();
+  }
+
+  public CargarControlador(controladorFinDelJuego: CFinDelJuego) {
+    this._cFinDelJuego = controladorFinDelJuego;
   }
 
   public ReiniciarHud() {
@@ -46,90 +52,90 @@ export default class CHud {
   }
 
   //A falta de tiempo, bucles y recursividad el ctrl + c y ctrl + v son tus amiwis, quien te conoce optimizacion de codigo
-  private MostrarAnimacionSuma(moneda: any, x: number) {
+  public MostrarAnimacionSuma(moneda: any, x: number, escena: any) {
     moneda.setScale(0);
-    this.hud.time.addEvent({
+    escena.time.addEvent({
       delay: x,
       callback: () => {
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 50,
           callback: () => {
             moneda.setScale(0.1);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 100,
           callback: () => {
             moneda.setScale(0.2);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 150,
           callback: () => {
             moneda.setScale(0.3);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 200,
           callback: () => {
             moneda.setScale(0.4);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 250,
           callback: () => {
             moneda.setScale(0.5);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 300,
           callback: () => {
             moneda.setScale(0.6);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 350,
           callback: () => {
             moneda.setScale(0.7);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 400,
           callback: () => {
             moneda.setScale(0.8);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 450,
           callback: () => {
             moneda.setScale(0.9);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 500,
           callback: () => {
             moneda.setScale(1);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 550,
           callback: () => {
             moneda.setScale(1.1);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 600,
           callback: () => {
             moneda.setScale(1.2);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 650,
           callback: () => {
             moneda.setScale(1.1);
           },
         });
-        this.hud.time.addEvent({
+        escena.time.addEvent({
           delay: 700,
           callback: () => {
             moneda.setScale(1);
@@ -243,7 +249,7 @@ export default class CHud {
     for (let index = this.puntero + 1; index <= this.puntero + n; index++) {
       let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
       moneda.setVisible(true);
-      this.MostrarAnimacionSuma(moneda, x);
+      this.MostrarAnimacionSuma(moneda, x, this.hud);
       x += 100;
     }
   }
@@ -259,7 +265,6 @@ export default class CHud {
   public ActualizarMonedas(n: number): boolean {
     try {
       if (n >= 0) {
-        console.log(this.puntero);
         this.SumarMonedas(n);
       } else {
         this.RestarMonedas(n);
@@ -268,7 +273,7 @@ export default class CHud {
       this.ControlarMonedas();
       return true;
     } catch (error) {
-      this.cNivel.PerderNivel();
+      this.ControlarMonedas();
       console.log(error);
     }
     return false;
@@ -284,8 +289,8 @@ export default class CHud {
   }
 
   public ControlarMonedas() {
-    if (this.puntero < -1) {
-      this.cNivel.PerderNivel();
+    if (this.puntero <= -1) {
+      this.cFinDelJuego.Derrota();
     } else if (
       this.puntero >=
         this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo ||
@@ -294,7 +299,10 @@ export default class CHud {
       console.log("Nivel completado");
       console.log(this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo);
       console.log(this.cNivel.sinReciduo);
-      this.cNivel.GanarNivel();
+      this.cNivel.sinReciduo = false;
+      this.cFinDelJuego.Victoria();
+      console.log(this.cFinDelJuego);
+      ////////////////this.cNivel.GanarNivel();
     }
   }
 
@@ -328,5 +336,13 @@ export default class CHud {
 
   public set puntero(value: number) {
     this._puntero = value;
+  }
+
+  public get cFinDelJuego(): CFinDelJuego {
+    return this._cFinDelJuego;
+  }
+
+  public set cFinDelJuego(value: CFinDelJuego) {
+    this._cFinDelJuego = value;
   }
 }

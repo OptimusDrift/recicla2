@@ -21,6 +21,7 @@ import CHud from "../Controller/CHud";
 import ResiduoBateria from "~/Model/ResiduoBateria";
 import ResiduoVidrio from "~/Model/ResiduoVidrio";
 import ResiduoPlastico from "~/Model/ResiduoPlastico";
+import CFinDelJuego from "~/Controller/CFinDelJuego";
 
 export default class Carga extends Phaser.Scene {
   //Controladores
@@ -31,6 +32,7 @@ export default class Carga extends Phaser.Scene {
   public controladorHud: CHud;
   public niveles: Array<Nivel>;
   public player: Player;
+  public controladorFinDelJuego: CFinDelJuego;
   public p: any;
 
   constructor() {
@@ -163,8 +165,8 @@ export default class Carga extends Phaser.Scene {
     ); //Crea el nivel 1
     this.niveles[0].residuos.push(new ResiduoVidrio(nvl1.physics)); //Añade los residuos al nivel 1
     this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
-    this.niveles[0].residuos.push(new ResiduoBateria(nvl1.physics)); //Añade los residuos al nivel 1
-    this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
+    //this.niveles[0].residuos.push(new ResiduoBateria(nvl1.physics)); //Añade los residuos al nivel 1
+    //this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
 
     const objetosLayer = mapa.getObjectLayer("ObjetosNivel1"); //Obtiene la capa de objetos del nivel 1
     objetosLayer.objects.forEach((objeto) => {
@@ -175,7 +177,11 @@ export default class Carga extends Phaser.Scene {
 
     this.niveles[0].obstaculos = obstaculos; //Añade los obstaculos al nivel 1
 
-    this.controladorNivel = new CNivel(this.niveles, 0); //Crea el controlador de nivel
+    this.controladorNivel = new CNivel(
+      this.niveles,
+      0,
+      this.controladorConfiguracion
+    ); //Crea el controlador de nivel
 
     //-----------------NIVEL 2-----------------//
     let nvl2 = this.scene.get("Nivel2"); //Obtiene la escena del nivel 2
@@ -183,8 +189,8 @@ export default class Carga extends Phaser.Scene {
     const tileset2 = mapa2.addTilesetImage("Atlas", "atlas");
 
     let escapes2 = nvl2.physics.add.staticGroup();
-    escapes2.create(1520, 0, "escapeVertical"); //Añade los escapes al nivel 1
-    escapes2.create(1220, 0, "escapeVertical"); //Añade los escapes al nivel 1
+    escapes2.create(1952, 0, "escapeVertical"); //Añade los escapes al nivel 1
+    escapes2.create(-32, 0, "escapeVertical"); //Añade los escapes al nivel 1
 
     this.niveles.push(
       new Nivel(
@@ -205,9 +211,9 @@ export default class Carga extends Phaser.Scene {
         new Musica("")
       )
     ); //Crea el nivel 2
-    this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
-    this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
-    this.niveles[1].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 2
+    //this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
+    //this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
+    //this.niveles[1].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 2
     this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
 
     const objetosLayer2 = mapa2.getObjectLayer("ObjetosNivel2"); //Obtiene la capa de objetos del nivel 2
@@ -243,6 +249,16 @@ export default class Carga extends Phaser.Scene {
       this.scene.get("Hud")
     );
 
+    //--------------------------FIN DEL JUEGO--------------------------\\
+    this.controladorFinDelJuego = new CFinDelJuego(
+      this.scene.get("FinDelJuego")
+    );
+    this.controladorFinDelJuego.CargarControladores(
+      this.controladorNivel,
+      this.controladorHud
+    );
+    this.controladorHud.CargarControlador(this.controladorFinDelJuego);
+
     this.controladorTrivia.cHud = this.controladorHud;
     this.controladorNivel.cHud = this.controladorHud;
 
@@ -254,16 +270,20 @@ export default class Carga extends Phaser.Scene {
     this.scene.launch("Trivia"); //Lanza la escena de trivia
     this.scene.sleep("Trivia"); //Oculta la escena de trivia
     this.scene.stop("Cargando"); //Oculta la escena de carga
-    this.scene.start("Nivel2"); //Lanza el nivel 2
+    this.scene.launch("Nivel2"); //Lanza el nivel 2
     this.scene.sleep("Nivel2"); //Oculta el nivel 2
-    this.scene.start("Hud"); //Lanza el nivel 2
-    this.scene.sleep("Hud"); //Oculta el nivel 2
-    this.scene.start("Volver"); //Lanza el nivel 2
-    this.scene.sleep("Volver"); //Oculta el nivel 2
-    this.scene.start("Nivel1"); //Lanza el nivel 2
-    this.scene.sleep("Nivel1"); //Oculta el nivel 2
+    this.scene.launch("Hud"); //Lanza el HUD
+    this.scene.sleep("Hud"); //Oculta el HUD
+    this.scene.launch("Volver"); //Lanza la escena de volver
+    this.scene.sleep("Volver"); //Oculta la escena de volver
+    this.scene.launch("Nivel1"); //Lanza el nivel 1
+    this.scene.sleep("Nivel1"); //Oculta el nivel 1
+    this.scene.launch("FinDelJuego"); //Lanza la escena de fin del juego
+    this.scene.sleep("FinDelJuego"); //Oculta la escena de fin del juego
 
-    this.scene.start("MenuPrincipal"); //Lanza la escena del menu principal
+    //this.scene.sleep("Nivel1");
+
+    this.scene.launch("MenuPrincipal"); //Lanza la escena del menu principal
   }
 
   //Carga los objetos de la capa de objetos del nivel 1
