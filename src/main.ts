@@ -13,6 +13,8 @@ import Nivel1 from "./View/Nivel1";
 import Nivel2 from "./View/Nivel2";
 import VentanaVolver from "./View/VentanaVolver";
 import FinDelJuego from "./View/FinDelJuego";
+import Nivel4 from "./View/Nivel4";
+import Nivel3 from "./View/Nivel3";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -41,6 +43,8 @@ const config: Phaser.Types.Core.GameConfig = {
     Trivia,
     Nivel1,
     Nivel2,
+    Nivel3,
+    Nivel4,
     Hud,
     VentanaVolver,
     FinDelJuego,

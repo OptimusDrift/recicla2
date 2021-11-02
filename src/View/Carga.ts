@@ -154,7 +154,7 @@ export default class Carga extends Phaser.Scene {
         this.player,
         10,
         new Array<Moneda>(),
-        10,
+        12,
         new Array<Obstaculo>(),
         new Array<Recipiente>(),
         new Array<Residuo>(),
@@ -166,10 +166,11 @@ export default class Carga extends Phaser.Scene {
         new Musica("")
       )
     ); //Crea el nivel 1
-    this.niveles[0].residuos.push(new ResiduoVidrio(nvl1.physics)); //Añade los residuos al nivel 1
-    this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
-    //this.niveles[0].residuos.push(new ResiduoBateria(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
     //this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
+    //this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
+    //this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
+    //this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
 
     const objetosLayer = mapa.getObjectLayer("ObjetosNivel1"); //Obtiene la capa de objetos del nivel 1
     objetosLayer.objects.forEach((objeto) => {
@@ -202,7 +203,7 @@ export default class Carga extends Phaser.Scene {
         this.player,
         10,
         new Array<Moneda>(),
-        10,
+        15,
         new Array<Obstaculo>(),
         new Array<Recipiente>(),
         new Array<Residuo>(),
@@ -214,10 +215,10 @@ export default class Carga extends Phaser.Scene {
         new Musica("")
       )
     ); //Crea el nivel 2
-    //this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
     //this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
     //this.niveles[1].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 2
-    this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
+    //this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
 
     const objetosLayer2 = mapa2.getObjectLayer("ObjetosNivel2"); //Obtiene la capa de objetos del nivel 2
     objetosLayer2.objects.forEach((objeto) => {
@@ -228,9 +229,87 @@ export default class Carga extends Phaser.Scene {
 
     this.niveles[1].obstaculos = obstaculos2; //Añade los obstaculos al nivel 2
 
-    this.controladorNivel.CargarControlador(); //Carga el controlador de nivel
+    //-----------------NIVEL 3-----------------//
+    let nvl3 = this.scene.get("Nivel3"); //Obtiene la escena del nivel 1
+    const mapa3 = nvl3.make.tilemap({ key: "mapaNivel1" });
+    const tileset3 = mapa3.addTilesetImage("Atlas", "atlas");
+
+    let escapes3 = nvl3.physics.add.staticGroup();
+    escapes3.create(1952, 0, "escapeVertical"); //Añade los escapes al nivel 1
+    escapes3.create(-32, 0, "escapeVertical"); //Añade los escapes al nivel 1
+
+    this.niveles.push(
+      new Nivel(
+        nvl3,
+        "fondoNivel",
+        this.player,
+        10,
+        new Array<Moneda>(),
+        12,
+        new Array<Obstaculo>(),
+        new Array<Recipiente>(),
+        new Array<Residuo>(),
+        escapes3,
+        0,
+        4,
+        mapa3,
+        tileset3,
+        new Musica("")
+      )
+    ); //Crea el nivel 4
+    this.niveles[2].residuos.push(new ResiduoPapel(nvl3.physics)); //Añade los residuos al nivel 1
+
+    console.log(mapa3);
+    const objetosLayer3 = mapa3.getObjectLayer("ObjetosNivel3"); //Obtiene la capa de objetos del nivel 1
+    objetosLayer3.objects.forEach((objeto) => {
+      this.CargarObjetosLayer(this.niveles[2], objeto);
+    }); //Carga los objetos de la capa de objetos del nivel 1
+    const obstaculos3 = mapa3.createLayer("Nivel3", tileset3); //Crea la capa de obstaculos
+    obstaculos3.setCollisionByProperty({ collides: true });
+
+    this.niveles[2].obstaculos = obstaculos3; //Añade los obstaculos al nivel 1
+
+    //-----------------NIVEL 4-----------------//
+    let nvl4 = this.scene.get("Nivel4"); //Obtiene la escena del nivel 1
+    const mapa4 = nvl4.make.tilemap({ key: "mapaNivel1" });
+    const tileset4 = mapa4.addTilesetImage("Atlas", "atlas");
+
+    let escapes4 = nvl4.physics.add.staticGroup();
+    escapes4.create(1952, 0, "escapeVertical"); //Añade los escapes al nivel 1
+    escapes4.create(-32, 0, "escapeVertical"); //Añade los escapes al nivel 1
+
+    this.niveles.push(
+      new Nivel(
+        nvl4,
+        "fondoNivel",
+        this.player,
+        10,
+        new Array<Moneda>(),
+        12,
+        new Array<Obstaculo>(),
+        new Array<Recipiente>(),
+        new Array<Residuo>(),
+        escapes4,
+        0,
+        4,
+        mapa4,
+        tileset4,
+        new Musica("")
+      )
+    ); //Crea el nivel 4
+    this.niveles[3].residuos.push(new ResiduoPapel(nvl4.physics)); //Añade los residuos al nivel 1
+
+    const objetosLayer4 = mapa4.getObjectLayer("ObjetosNivel4"); //Obtiene la capa de objetos del nivel 1
+    objetosLayer4.objects.forEach((objeto) => {
+      this.CargarObjetosLayer(this.niveles[3], objeto);
+    }); //Carga los objetos de la capa de objetos del nivel 1
+    const obstaculos4 = mapa4.createLayer("Nivel4", tileset4); //Crea la capa de obstaculos
+    obstaculos4.setCollisionByProperty({ collides: true });
+
+    this.niveles[3].obstaculos = obstaculos4; //Añade los obstaculos al nivel 1
 
     //--------------------TRIVIA-----------------------//
+    this.controladorNivel.CargarControlador(); //Carga el controlador de nivel
     let tri = this.scene.get("Trivia"); //Obtiene la escena de la trivia
     this.controladorTrivia = new CTrivia(
       tri,
@@ -281,6 +360,10 @@ export default class Carga extends Phaser.Scene {
     this.scene.sleep("Volver"); //Oculta la escena de volver
     this.scene.launch("Nivel1"); //Lanza el nivel 1
     this.scene.sleep("Nivel1"); //Oculta el nivel 1
+    this.scene.launch("Nivel3"); //Lanza el nivel 1
+    this.scene.sleep("Nivel3"); //Oculta el nivel 1
+    this.scene.launch("Nivel4"); //Lanza el nivel 1
+    this.scene.sleep("Nivel4"); //Oculta el nivel 1
     this.scene.launch("FinDelJuego"); //Lanza la escena de fin del juego
     this.scene.sleep("FinDelJuego"); //Oculta la escena de fin del juego
 
