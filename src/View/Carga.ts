@@ -47,6 +47,8 @@ export default class Carga extends Phaser.Scene {
     //--------Botones--------------\\
     this.load.image("boton", "assets/Botones/Boton.png");
     this.load.image("boton2", "assets/Botones/Boton2.png");
+    this.load.image("boton3", "assets/Botones/Boton3.png");
+    this.load.image("boton4", "assets/Botones/Boton4.png");
     this.load.image("creditos", "assets/Botones/Creditos.png");
     this.load.image("gomera", "assets/Botones/Gomera.png");
     this.load.image("tienda", "assets/Botones/Tienda.png");
@@ -71,7 +73,6 @@ export default class Carga extends Phaser.Scene {
     this.load.image("plasticoResiduo", "assets/Basura/Plastico.png");
     this.load.image("papelResiduo", "assets/Basura/Papel.png");
     this.load.image("papelResiduo", "assets/Basura/Papel.png");
-
     //--------Recipientes---------\\
     this.load.image("papel", "assets/Recipiente/Papel_Azul.png");
     this.load.image("bateria", "assets/Recipiente/Pilas_Rojo.png");
@@ -86,6 +87,8 @@ export default class Carga extends Phaser.Scene {
       frameWidth: 411,
       frameHeight: 868,
     }); //Carga la animacion de la risa
+    this.load.image("risaVaquita", "assets/Risa/RisaVaquita.png");
+    this.load.image("dehaka", "assets/Risa/Dehaka.png");
     //------------FONDOS------------\\
     this.load.image("fondoTrivia", "assets/Pantallas/FondoTrivia.png");
     this.load.image("fondoMenu", "assets/Pantallas/MenuPrincipal.png");
