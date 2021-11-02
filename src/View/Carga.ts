@@ -308,6 +308,8 @@ export default class Carga extends Phaser.Scene {
 
     this.niveles[3].obstaculos = obstaculos4; //Añade los obstaculos al nivel 1
 
+    //(Si se que podia hacerlo mejor, pero ¡¡¡SE ACABA EL TIEMPO BOB ESPONJA!!!)
+    
     //--------------------TRIVIA-----------------------//
     this.controladorNivel.CargarControlador(); //Carga el controlador de nivel
     let tri = this.scene.get("Trivia"); //Obtiene la escena de la trivia

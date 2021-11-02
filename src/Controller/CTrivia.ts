@@ -182,6 +182,7 @@ export default class CTrivia {
       }
     }); //Recorre el array de preguntas
     this.preguntaActual = this.preguntas.pop(); //Asigna la pregunta actual
+    this.MostrarPregunta();
   }
 
   public MostrarPregunta() {

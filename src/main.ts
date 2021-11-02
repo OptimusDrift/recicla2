@@ -1,5 +1,4 @@
 import Phaser from "phaser";
-//import HelloWorldScene from './HelloWorldScene';
 import Carga from "./View/Carga";
 import Configuracion from "./View/Configuracion";
 import Cargando from "./View/Cargando";

@@ -292,6 +292,14 @@ export default class CNivel {
         const dx = this.puntoInicialX - this.puntoFinalX;
         const dy = this.puntoInicialY - this.puntoFinalY;
         console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
+        //Phaser.Math.Angle.WrapDegrees(2);
+        let x = new Phaser.Math.Vector2(1, 1);
+        let y = new Phaser.Math.Vector2(0, 0);
+
+        const ddx = x.x - x.y;
+        const ddy = y.x - y.y;
+        console.log("rad" + new Phaser.Math.Vector2(ddx, ddy).angle());
+        console.log("grad" + new Phaser.Math.Vector2(ddx, ddy).angle() * 57.29);
         console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
         console.log("pendiente: " + dx / dy);
         //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a activar
