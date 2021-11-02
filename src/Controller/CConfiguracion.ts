@@ -4,6 +4,7 @@ export default class CConfiguracion {
   // Variables
   private _escena: any;
   private _escenaVolver: any;
+  private _idioma: string;
   private _escenaActual: string;
   //Botones
   private _boton: Boton;
@@ -27,6 +28,7 @@ export default class CConfiguracion {
   constructor(escena: any, escenaVolver: any) {
     this._escena = escena; //Asigna la escena
     this._escenaVolver = escenaVolver; //Asigna la escena
+    this._idioma = "Ingles"; //Asigna el idioma 50salto
     this._boton = new Boton(
       this.escena.add.text(0, 0, "", this.style),
       this.escena.add.image(
@@ -185,5 +187,13 @@ export default class CConfiguracion {
 
   public set botonNo(value: Boton) {
     this._botonNo = value;
+  }
+
+  public get idioma(): string {
+    return this._idioma;
+  }
+
+  public set idioma(value: string) {
+    this._idioma = value;
   }
 }

@@ -16,7 +16,7 @@ export default class Boton {
     this.texto.setDepth(0);
     this._boton = boton;
     this.boton.setDepth(-1);
-    this.texto.setFontSize(20);
+    this.texto.setFontSize(50);
     this.texto.setOrigin(0.5);
     this._particulasCorrecto = particulasCorrecto;
     this._particulasIncorrecta = particulasIncorrecta;
@@ -26,25 +26,25 @@ export default class Boton {
   //Al pasar el mouse por arriba el boton y el texto se agranda.
   private PointerOver() {
     this.boton.setScale(1.02);
-    this.texto.setFontSize(21);
+    this.texto.setFontSize(51);
   }
 
   //Cuando el mouse sale del objeto el botón y el texto vuelve a su escala original.
   private PointerOut() {
     this.boton.setScale(1);
-    this.texto.setFontSize(20);
+    this.texto.setFontSize(50);
   }
 
   //Cuando el mouse es precionado el botón y el texto se encogen.
   private PointerDown() {
     this.boton.setScale(0.98);
-    this.texto.setFontSize(19);
+    this.texto.setFontSize(49);
   }
 
   //Cuando el botón queda sin una funcionalidad, es pausado, quitando su listener.
   public PausarBoton() {
     this.boton.setScale(1);
-    this.texto.setFontSize(20);
+    this.texto.setFontSize(50);
     this.boton.setInteractive(false);
     this.boton.removeAllListeners();
   }

@@ -23,8 +23,11 @@ export default class CTrivia {
   private _cNivel: CNivel;
   private _cHud: CHud;
   private _ventanaCorrecto: any;
+  private _cuadroDeDialogo: any;
 
   //Constantes de la trivia
+  private POSICION_PREGUNTA_X = 295;
+  private POSICION_PREGUNTA_Y = 125;
   private BOTON_0_POSICION_X = 478;
   private BOTON_0_POSICION_Y = 628;
   private BOTON_1_POSICION_X = 478;
@@ -42,7 +45,8 @@ export default class CTrivia {
 
   //Estilo del texto
   private style = {
-    font: "bold 30px Arial",
+    fontFamily: "Indie Flower",
+    fontSize: "50px",
     fill: "#fff",
     boundsAlignH: "center",
     boundsAlignV: "middle",
@@ -55,6 +59,13 @@ export default class CTrivia {
   constructor(escena: any, cNivel: CNivel, cConfiguracion: CConfiguracion) {
     this._escena = escena; //Asigna la escena
     this._cConfiguracion = cConfiguracion; //Asigna el controlador de configuración
+    this._cuadroDeDialogo = this.escena.add.text(
+      this.POSICION_PREGUNTA_X,
+      this.POSICION_PREGUNTA_Y,
+      "Si estas viendo este mensaje, algo salio mal xD",
+      this.style
+    ); //Agrega la Pregunta
+    this.cuadroDeDialogo.setDepth(1); //Pone la pregunta en la capa 1
     this._cNivel = cNivel; //Asigna el controlador de nivel
     this.escena.add.image(1920 / 2, 1080 / 2, "fondoTrivia").setDepth(-20); //Agrega el fondo
     this._ventanaCorrecto = this.escena.add
@@ -134,6 +145,7 @@ export default class CTrivia {
         new Pregunta(
           p["Nivel"],
           p["Pregunta"],
+          p["Idioma"],
           p["RespuestaCorrecta"],
           new Array<string>(
             p["RespuestaCorrecta"],
@@ -162,15 +174,27 @@ export default class CTrivia {
 
   public CambiarNivel() {
     this.preguntasBackUp.forEach((p) => {
-      if (p.numeroNivel == this._cNivel.nivelActual) {
+      if (
+        this.cConfiguracion.idioma == p.idioma &&
+        p.numeroNivel == this._cNivel.nivelActual
+      ) {
         this.preguntas.push(p); //Agrega las preguntas
       }
     }); //Recorre el array de preguntas
     this.preguntaActual = this.preguntas.pop(); //Asigna la pregunta actual
   }
+
+  public MostrarPregunta() {
+    this.cuadroDeDialogo.setText(this.preguntaActual.pregunta); //Asigna la pregunta
+  }
+
   //Carga las variables (pregunta y respuestas) desde un JSON del nivel actual.
   public CargarTrivia(b: boolean = false) {
-    this.CambiarNivel();
+    this.preguntas = new Array<Pregunta>(); //Reinicia las preguntas
+    this.MostrarPregunta(); //Muestra la pregunta
+    if (!b) {
+      this.CambiarNivel();
+    }
     this.preguntaActual.RandomizarRerspuestas();
     let i = 0;
     this.botones.forEach((b) => {
@@ -259,10 +283,10 @@ export default class CTrivia {
       btn.BotonIncorecto();
       this.risa.anims.play("risaRespuestaIncorrecta", true);
       this.cHud.ActualizarMonedas(-1); //Actualiza las monedas
+      this.MostrarCartelDeIncorrecto();
     } //Revisa si la respuesta es correcta
     this.botones.forEach((b) => b.PausarBoton()); //Pausa todos los botones
     this.botonesMejoras.forEach((b) => b.PausarBoton()); //Pausa todos los botones de mejoras
-    this.MostrarCartelDeIncorrecto();
   }
 
   public CargarBotones() {
@@ -379,12 +403,14 @@ export default class CTrivia {
   }
 
   public MostrarCartelDeCorrecto() {
+    this.cuadroDeDialogo.text = this.preguntaActual.mensajeRespuestaCorrecta;
     this.ventanaCorrecto.clearTint(); //Quita el tint
     this.ventanaCorrecto.setVisible(true); //La muestra
-    //this.Temporizador();
   }
 
   public MostrarCartelDeIncorrecto() {
+    console.log("Mostrar cartel de incorrecto");
+    this.cuadroDeDialogo.text = this.preguntaActual.mensajeRespuestaIncorrecta;
     this.ventanaCorrecto.clearTint(); //Quita el tint
     this.ventanaCorrecto.setVisible(true); //La muestra
     //this.Temporizador();
@@ -507,5 +533,13 @@ export default class CTrivia {
 
   public set mejoraCambio(v: Mejora) {
     this._mejoraCambio = v;
+  }
+
+  public get cuadroDeDialogo(): any {
+    return this._cuadroDeDialogo;
+  }
+
+  public set cuadroDeDialogo(v: any) {
+    this._cuadroDeDialogo = v;
   }
 }

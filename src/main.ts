@@ -8,7 +8,6 @@ import Juego from "./View/Juego";
 import MenuPrincipal from "./View/MenuPrincipal";
 import Tienda from "./View/Tienda";
 import Trivia from "./View/Trivia";
-import Pruebas from "./View/Pruebas";
 import Hud from "./View/Hud";
 import Nivel1 from "./View/Nivel1";
 import Nivel2 from "./View/Nivel2";
@@ -40,7 +39,6 @@ const config: Phaser.Types.Core.GameConfig = {
     MenuPrincipal,
     Tienda,
     Trivia,
-    Pruebas,
     Nivel1,
     Nivel2,
     Hud,

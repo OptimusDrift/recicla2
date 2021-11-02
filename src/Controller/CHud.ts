@@ -273,7 +273,7 @@ export default class CHud {
       this.ControlarMonedas();
       return true;
     } catch (error) {
-      this.ControlarMonedas();
+      this.puntero += n;
       console.log(error);
     }
     return false;
@@ -289,20 +289,16 @@ export default class CHud {
   }
 
   public ControlarMonedas() {
-    if (this.puntero <= -1) {
+    if (this.puntero < -1) {
+      this.puntero = -1;
       this.cFinDelJuego.Derrota();
     } else if (
       this.puntero >=
         this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo ||
       this.cNivel.sinReciduo
     ) {
-      console.log("Nivel completado");
-      console.log(this.cNivel.niveles[this.cNivel.nivelActual].puntajeMaximo);
-      console.log(this.cNivel.sinReciduo);
       this.cNivel.sinReciduo = false;
       this.cFinDelJuego.Victoria();
-      console.log(this.cFinDelJuego);
-      ////////////////this.cNivel.GanarNivel();
     }
   }
 

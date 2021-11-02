@@ -16,6 +16,15 @@ export default class CFinDelJuego {
   private DISTANCIA_ENTRE_MONEDAS: number = 35;
   private CANTIDAD_MAXIMA_MONEDAS: number = 40;
 
+  //Estilo del texto
+  private style = {
+    fontFamily: "Indie Flower",
+    fontSize: "72px",
+    fill: "#000",
+    boundsAlignH: "center",
+    boundsAlignV: "middle",
+  };
+
   // Constructor
   constructor(escena: any) {
     this._escena = escena;
@@ -56,11 +65,7 @@ export default class CFinDelJuego {
       this.UBICACION_PRIMERA_MONEDA_X + this.DISTANCIA_ENTRE_MONEDAS * 0.75,
       550,
       "¡Victoria!",
-      {
-        font: "bold 65px Arial",
-        fill: "#000000",
-        align: "center",
-      }
+      this.style
     );
   }
 
@@ -75,22 +80,23 @@ export default class CFinDelJuego {
     this.cHud = cHud;
   }
 
-  MostrarFinDelJuego() {
+  MostrarFinDelJuego(b: boolean = false) {
     console.log(this.escena.scene.get("FinDelJuego"));
     this.escena.scene.pause("Nivel" + (this.cNivel.nivelActual + 1));
+    this.OcultarMonedas(this.monedas);
     this.escena.scene.wake("FinDelJuego");
     this.escena.scene.moveAbove("FinDelJuego");
-    this.OcultarMonedas(this.monedas);
     this.LimpiarListeners();
     let x = 0;
-    console.log("x+" + this.cHud.puntero);
-    for (let index = 0; index <= this.cHud.puntero; index++) {
-      let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
-      moneda.setVisible(true);
-      this.cHud.MostrarAnimacionSuma(moneda, x, this.escena);
-      moneda.setAlpha(1);
-      moneda.setDepth(1);
-      x += 400;
+    if (!b) {
+      for (let index = 0; index <= this.cHud.puntero; index++) {
+        let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
+        this.cHud.MostrarAnimacionSuma(moneda, x, this.escena);
+        moneda.setVisible(true);
+        moneda.setAlpha(1);
+        moneda.setDepth(1);
+        x += 400;
+      }
     }
     for (
       let index = this.cHud.puntero + 1;
@@ -98,8 +104,8 @@ export default class CFinDelJuego {
       index++
     ) {
       let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
-      moneda.setVisible(true);
       moneda.setAlpha(0.3);
+      moneda.setVisible(true);
       moneda.setDepth(1);
       this.cHud.MostrarAnimacionSuma(moneda, x, this.escena);
       x += 400;
@@ -116,16 +122,14 @@ export default class CFinDelJuego {
   }
 
   public Victoria() {
-    console.log("Victoria");
     this.txt.setText("¡Victoria!");
     this.MostrarFinDelJuego();
     this.ventanaCorrecto.on("pointerup", () => this.cNivel.GanarNivel()); //Cuando se hace click, se carga la trivia
   }
 
   public Derrota() {
-    console.log("Derrota");
     this.txt.setText("¡Derrota!");
-    this.MostrarFinDelJuego();
+    this.MostrarFinDelJuego(true);
     this.ventanaCorrecto.on("pointerup", () => this.cNivel.PerderNivel()); //Cuando se hace click, se carga la trivia
   }
 

@@ -3,6 +3,7 @@ import arrayShuffle from "array-shuffle";
 export default class Pregunta {
   private _numeroNivel: number;
   private _pregunta: string;
+  private _idioma: string;
   private _respuestaCorrecta: string;
   private _respuestas: Array<string>;
   private _mensajeRespuestaCorrecta: string;
@@ -11,17 +12,23 @@ export default class Pregunta {
   constructor(
     numeroNivel: number,
     pregunta: string,
+    idioma: string,
     respuestaCorrecta: string,
     respuestas: Array<string>,
     mensajeRespuestaCorrecta: string,
     mensajeRespuestaIncorrecta: string
   ) {
     this._numeroNivel = numeroNivel;
-    this._pregunta = pregunta;
+    this._pregunta = this.FormatearTexto(pregunta);
+    this._idioma = idioma;
     this._respuestaCorrecta = respuestaCorrecta;
     this._respuestas = respuestas;
-    this._mensajeRespuestaCorrecta = mensajeRespuestaCorrecta;
-    this._mensajeRespuestaIncorrecta = mensajeRespuestaIncorrecta;
+    this._mensajeRespuestaCorrecta = this.FormatearTexto(
+      mensajeRespuestaCorrecta
+    );
+    this._mensajeRespuestaIncorrecta = this.FormatearTexto(
+      mensajeRespuestaIncorrecta
+    );
   }
 
   //Randomiza las preguntas(?
@@ -31,6 +38,23 @@ export default class Pregunta {
     } catch (error) {
       console.error("Error al intentar randomizar las respuestas" + error);
     }
+  }
+
+  //Nueva linea al caracter numero 50
+  public FormatearTexto(texto: string): string {
+    let textoFormateado: string = "";
+    let x = 0,
+      y = 43;
+    textoFormateado += texto.substring(x, y);
+    try {
+      while (texto.length > y) {
+        textoFormateado += "\n";
+        x = y;
+        y += 42;
+        textoFormateado += texto.substring(x, y);
+      }
+    } catch (error) {}
+    return textoFormateado;
   }
 
   //Getters and setters
@@ -80,5 +104,13 @@ export default class Pregunta {
 
   public get numeroNivel(): number {
     return this._numeroNivel;
+  }
+
+  public set idioma(v: string) {
+    this._idioma = v;
+  }
+
+  public get idioma(): string {
+    return this._idioma;
   }
 }
