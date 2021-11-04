@@ -19,7 +19,7 @@ export default class CFinDelJuego {
   //Estilo del texto
   private style = {
     fontFamily: "Indie Flower",
-    fontSize: "72px",
+    fontSize: "120px",
     fill: "#000",
     boundsAlignH: "center",
     boundsAlignV: "middle",
@@ -50,7 +50,7 @@ export default class CFinDelJuego {
         end: 1,
       }),
     }); //Crea la animación de Risa
-    this._risa = this.escena.physics.add.sprite(1000 + 206, 100 + 434, "risa"); //Agrega a risa
+    this._risa = this.escena.physics.add.sprite(1000 + 306, 100 + 434, "risa"); //Agrega a risa
     this.risa.body.allowGravity = false; //No afecta a la gravedad
     this.risa.anims.play("risaVictoria", true); //Inicia la animación de risa
     let x = this.UBICACION_PRIMERA_MONEDA_X;
@@ -62,8 +62,8 @@ export default class CFinDelJuego {
       x += this.DISTANCIA_ENTRE_MONEDAS;
     }
     this._txt = escena.add.text(
-      this.UBICACION_PRIMERA_MONEDA_X + this.DISTANCIA_ENTRE_MONEDAS * 0.75,
-      550,
+      this.UBICACION_PRIMERA_MONEDA_X + this.DISTANCIA_ENTRE_MONEDAS * 0.85,
+      530,
       "¡Victoria!",
       this.style
     );

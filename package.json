@@ -31,7 +31,8 @@
 		"asset": "^0.4.13",
 		"csv": "^5.5.3",
 		"phaser": "^3.55.2",
-		"public": "^0.1.5"
+		"public": "^0.1.5",
+		"webfontloader": "^1.6.28"
 	},
 	"parcelCleanPaths": [
 		"dist"

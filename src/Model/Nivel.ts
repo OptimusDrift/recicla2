@@ -22,6 +22,7 @@ export default class Nivel {
   private _estadoDelNivel: number;
   private _puntajeMaximo: number;
   private _gomera: any;
+  private _bezierGraphics;
   //Tiled
   private _mapa: Phaser.Tilemaps.Tilemap;
   private _tileset: Phaser.Tilemaps.Tileset;
@@ -52,6 +53,7 @@ export default class Nivel {
     this._puntajeNecesario = puntajeNecesario;
     this._puntajeMaximo = puntajeMaximo;
     this._puntajeInicial = puntajeInicial;
+    this._bezierGraphics = this.pantallaDeJuego.add.graphics();
     this._puntajeActual = puntajeInicial;
     this._escapes = escapes;
     this._musica = musica;
@@ -216,5 +218,13 @@ export default class Nivel {
 
   public set escapes(value: any) {
     this._escapes = value;
+  }
+
+  public get bezierGraphics(): any {
+    return this._bezierGraphics;
+  }
+
+  public set bezierGraphics(value: any) {
+    this._bezierGraphics = value;
   }
 }

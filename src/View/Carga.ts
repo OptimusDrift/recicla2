@@ -167,10 +167,10 @@ export default class Carga extends Phaser.Scene {
       )
     ); //Crea el nivel 1
     this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
-    //this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
-    //this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
-    //this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
-    //this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoPapel(nvl1.physics)); //Añade los residuos al nivel 1
+    this.niveles[0].residuos.push(new ResiduoPlastico(nvl1.physics)); //Añade los residuos al nivel 1
 
     const objetosLayer = mapa.getObjectLayer("ObjetosNivel1"); //Obtiene la capa de objetos del nivel 1
     objetosLayer.objects.forEach((objeto) => {
@@ -216,9 +216,12 @@ export default class Carga extends Phaser.Scene {
       )
     ); //Crea el nivel 2
     this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
-    //this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 2
     //this.niveles[1].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 2
-    //this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
+    this.niveles[1].residuos.push(new ResiduoPapel(nvl2.physics)); //Añade los residuos al nivel 2
 
     const objetosLayer2 = mapa2.getObjectLayer("ObjetosNivel2"); //Obtiene la capa de objetos del nivel 2
     objetosLayer2.objects.forEach((objeto) => {
@@ -309,7 +312,7 @@ export default class Carga extends Phaser.Scene {
     this.niveles[3].obstaculos = obstaculos4; //Añade los obstaculos al nivel 1
 
     //(Si se que podia hacerlo mejor, pero ¡¡¡SE ACABA EL TIEMPO BOB ESPONJA!!!)
-    
+
     //--------------------TRIVIA-----------------------//
     this.controladorNivel.CargarControlador(); //Carga el controlador de nivel
     let tri = this.scene.get("Trivia"); //Obtiene la escena de la trivia

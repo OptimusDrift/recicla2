@@ -104,12 +104,11 @@ export default class CNivel {
       yoyo: true,
       repeat: -1,
     });
-    this.bezierGraphics = this.niveles[0].pantallaDeJuego.add.graphics();
     this.bezierCurve = new Phaser.Curves.CubicBezier(
-      new Phaser.Math.Vector2(300, 900),
-      new Phaser.Math.Vector2(1500, 100),
-      new Phaser.Math.Vector2(500, 200),
-      new Phaser.Math.Vector2(300, 300)
+      new Phaser.Math.Vector2(0, 0),
+      new Phaser.Math.Vector2(0, 0),
+      new Phaser.Math.Vector2(0, 0),
+      new Phaser.Math.Vector2(0, 0)
     );
   }
 
@@ -217,6 +216,7 @@ export default class CNivel {
   }
 
   private OnClickRelease(): boolean {
+    //this.bezierGraphics.clear();
     //Pregunta si el click fue soltado
     if (
       this.niveles[
@@ -252,6 +252,89 @@ export default class CNivel {
     return false;
   }
 
+  private puntoFinalXDibujo;
+  private puntoFinalYDibujo;
+  private DistanciaDibujo;
+
+  Dibujar() {
+    if (
+      this.niveles[
+        this.nivelActual
+      ].pantallaDeJuego.input.activePointer.getDistanceX() +
+        this.niveles[
+          this.nivelActual
+        ].pantallaDeJuego.input.activePointer.getDistanceY() >
+        this.DISTANCIA_MINIMA &&
+      this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.isDown
+    ) {
+      this.DistanciaDibujo =
+        this.niveles[
+          this.nivelActual
+        ].pantallaDeJuego.input.activePointer.getDistanceX();
+      this.distancia +=
+        this.niveles[
+          this.nivelActual
+        ].pantallaDeJuego.input.activePointer.getDistanceY();
+      this.puntoFinalXDibujo =
+        this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.x -
+        (this.puntoInicialX - this.PUNTO_INICIAL_X);
+      this.puntoFinalYDibujo =
+        this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.y -
+        (this.puntoInicialY - this.PUNTO_INICIAL_Y);
+      const dx = this.puntoInicialX - this.puntoFinalXDibujo;
+      const dy = this.puntoInicialY - this.puntoFinalYDibujo;
+
+      let z = new Phaser.Math.Vector2(
+        this.PUNTO_INICIAL_X + dx * this.Velocidad(this.DistanciaDibujo) * 0.2,
+        this.PUNTO_INICIAL_Y +
+          dy * this.Velocidad(this.DistanciaDibujo) * 0.2 -
+          (1 / 2) * 250 * 0.2
+      );
+      this.bezierCurve = new Phaser.Curves.CubicBezier(
+        new Phaser.Math.Vector2(this.PUNTO_INICIAL_X, this.PUNTO_INICIAL_Y),
+        z,
+        z,
+        z
+      );
+      /*
+      this.bezierCurve = new Phaser.Curves.CubicBezier(
+        new Phaser.Math.Vector2(this.PUNTO_INICIAL_X, this.PUNTO_INICIAL_Y),
+        new Phaser.Math.Vector2(
+          this.PUNTO_INICIAL_X +
+            dx * this.Velocidad(this.DistanciaDibujo) * 0.5,
+          this.PUNTO_INICIAL_Y +
+            dy * this.Velocidad(this.DistanciaDibujo) * 0.5 -
+            (1 / 2) * 250 * (0.5 * 0.5)
+        ),
+        new Phaser.Math.Vector2(
+          this.PUNTO_INICIAL_X +
+            dx * this.Velocidad(this.DistanciaDibujo) * 1.5,
+          this.PUNTO_INICIAL_Y +
+            dy * this.Velocidad(this.DistanciaDibujo) * 1.5 -
+            (1 / 2) * 250 * (1.5 * 1.5)
+        ),
+        new Phaser.Math.Vector2(
+          this.PUNTO_INICIAL_X + dx * this.Velocidad(this.DistanciaDibujo) * 2,
+          896
+        )
+      );*/
+      console.log(
+        this.PUNTO_INICIAL_Y +
+          dy * this.Velocidad(this.DistanciaDibujo) * 2 -
+          (1 / 2) * 250 * 2
+      );
+      //console.log((2 * dx * this.Velocidad(this.distancia)) / 250);
+    } else {
+      this.bezierCurve = new Phaser.Curves.CubicBezier(
+        new Phaser.Math.Vector2(0, 0),
+        new Phaser.Math.Vector2(0, 0),
+        new Phaser.Math.Vector2(0, 0),
+        new Phaser.Math.Vector2(0, 0)
+      );
+      this.drawBezier();
+    }
+  }
+
   OnClickDrag() {
     if (
       this.niveles[
@@ -270,6 +353,8 @@ export default class CNivel {
   }
 
   public PrepararLanzamiento() {
+    this.Dibujar();
+    this.drawBezier();
     try {
       this.niveles[this.nivelActual].residuos[0].cuerpo.x =
         this.PUNTO_INICIAL_X;
@@ -286,22 +371,21 @@ export default class CNivel {
         this.DesactivarLanzamiento();
         this.SiguienteReciduo();
         this.residuoAnterior = this.residuoSeleccionado;
-        this.residuoSeleccionado?.cuerpo.setX(this.puntoInicialX);
-        this.residuoSeleccionado?.cuerpo.setY(this.puntoInicialY);
-        this.residuoSeleccionado?.cuerpo.setVelocity(0);
+        this.residuoSeleccionado.cuerpo.setX(this.puntoInicialX);
+        this.residuoSeleccionado.cuerpo.setY(this.puntoInicialY);
+        this.residuoSeleccionado.cuerpo.setVelocity(0);
         const dx = this.puntoInicialX - this.puntoFinalX;
         const dy = this.puntoInicialY - this.puntoFinalY;
-        console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
-        //Phaser.Math.Angle.WrapDegrees(2);
-        let x = new Phaser.Math.Vector2(1, 1);
-        let y = new Phaser.Math.Vector2(0, 0);
 
-        const ddx = x.x - x.y;
-        const ddy = y.x - y.y;
-        console.log("rad" + new Phaser.Math.Vector2(ddx, ddy).angle());
-        console.log("grad" + new Phaser.Math.Vector2(ddx, ddy).angle() * 57.29);
+        const ddx = this.puntoFinalX - this.puntoInicialX;
+        const ddy = this.puntoFinalY - this.puntoInicialY;
+
+        console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
         console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
+        console.log("dx :" + dx + " dy :" + dy);
         console.log("pendiente: " + dx / dy);
+        console.log("Angulo" + Math.atan(ddy / ddx) * 57.2958);
+
         //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a activar
         this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
         //Annade la velocidad del residuo seleccionado
@@ -309,49 +393,56 @@ export default class CNivel {
           dx * this.Velocidad(this.distancia),
           dy * this.Velocidad(this.distancia)
         );
+        console.log(this.residuoSeleccionado?.cuerpo.body.velocity);
+        console.log(
+          "Punto Inicial: x" +
+            this.PUNTO_INICIAL_X +
+            " y" +
+            this.PUNTO_INICIAL_Y
+        );
+
+        console.log(
+          "Punto 1: X" +
+            (this.PUNTO_INICIAL_X + dx * this.Velocidad(this.distancia) * 0.1) +
+            " Y" +
+            (this.PUNTO_INICIAL_Y +
+              dy * this.Velocidad(this.distancia) * 0.1 -
+              (1 / 2) * 9 * (0.1 * 0.1))
+        );
+
+        console.log(
+          "Punto 2: x" +
+            (this.PUNTO_INICIAL_X + dx * this.Velocidad(this.distancia) * 0.2) +
+            " Y" +
+            (this.PUNTO_INICIAL_Y +
+              dy * this.Velocidad(this.distancia) * 0.2 -
+              (1 / 2) * 9 * (0.2 * 0.2))
+        );
+
+        console.log(
+          "Punto Final: x" +
+            (this.PUNTO_INICIAL_X + dx * this.Velocidad(this.distancia) * 2) +
+            " y" +
+            (this.PUNTO_INICIAL_Y +
+              dy * this.Velocidad(this.distancia) * 0.3 -
+              (1 / 2) * 250 * (0.3 * 0.3))
+        );
+
         this.residuoSeleccionado = undefined;
-
-        //this.residuoSeleccionado?.physics.setY(-this.puntoFinalY);
-        //            var x = this.physics.add.sprite(this.puntoFinalX,-this.puntoFinalY,"boton");
-        //x.setAcceleration(this.puntoFinalX,this.puntoFinalY);
-        //x.setVelocity(0,this.puntoFinalY);
-        //this._graphics.clear();
-
-        //------------------------Pruebas de lineas en pantalla-----------------------//
-        /*this._graphics.lineStyle(6, 0xababab, 1);
-              this._graphics.lineBetween(this.puntoInicialX, this.puntoInicialY, this.puntoFinalX, this.puntoFinalY);
-              
-              
-              this.curve.getPoint(this.path.t, this.path.vec);
-  
-              this._graphics.fillStyle(0xff0000, 1);
-              this._graphics.fillCircle(this.path.vec.x, this.path.vec.y, 8);
-  
-              this.drawGraphics.clear();
-  
-              this.drawGraphics.fillStyle(0xff0000, 0.1);
-              this.drawGraphics.fillCircle(this.path.vec.x, this.path.vec.y, 4);
-  
-              this.drawGraphics.generateTexture('curve', 800, 600);*/
-        this.drawBezier(1, 1);
       }
     }
   }
 
-  private bezierGraphics;
+  LimpiarDrawBezier() {
+    this.niveles[this.nivelActual].bezierGraphics.clear();
+    this.bezierCurve.draw(this.niveles[this.nivelActual].bezierGraphics);
+  }
+
   private bezierCurve;
-  private drawBezier(x, y) {
-    this.bezierGraphics.clear();
-    this.bezierGraphics.lineStyle(4, 0xffffff);
-    this.bezierCurve.draw(this.bezierGraphics);
-    this.bezierGraphics.lineStyle(2, 0x00ff00);
-    this.bezierGraphics.beginPath();
-    this.bezierGraphics.moveTo(x, y);
-    this.bezierGraphics.lineTo(x + 100, y + 100);
-    this.bezierGraphics.strokePath();
-    this.bezierGraphics.lineStyle(2, 0xff0000);
-    this.bezierGraphics.beginPath();
-    this.bezierGraphics.strokePath();
+  private drawBezier() {
+    this.niveles[this.nivelActual].bezierGraphics.clear();
+    this.niveles[this.nivelActual].bezierGraphics.lineStyle(4, 0xffffff);
+    this.bezierCurve.draw(this.niveles[this.nivelActual].bezierGraphics);
   }
 
   private Velocidad(distancia: number): number {
@@ -360,6 +451,7 @@ export default class CNivel {
     }
     return ((100 * distancia) / this.DISTANCIA_MAXIMA / 100) * 0.8;
   }
+
   //--------------Pruebas de lineas en pantalla----------------------//
   public curve;
   public drawGraphics;
