@@ -36,20 +36,17 @@ export default class Moneda {
     try {
       this.particulasMoneda.EjecutarParticula(moneda.x, moneda.y);
       this.controladorNivel.cHud.ActualizarMonedas(1);
-      moneda.body.x = 0;
-      moneda.body.y = 0;
+      moneda.body.x = -800;
+      moneda.body.y = -800;
     } catch (error) {
       console.error("Error al intentar ocultar la moneda." + error);
     }
   }
 
   public ReiniciarMoneda() {
-    console.log("Reiniciando monedas x1" + this.cuerpo.body.x + " y" + this.cuerpo.body.y);
-    console.log("Reiniciando monedas x" + this.x + " y"+this.y);
     this.cuerpo.setVisible(true);
     this.cuerpo.x = this.x;
     this.cuerpo.y = this.y;
-    console.log("Reiniciando monedas x2" + this.cuerpo.body.x + " y" + this.cuerpo.body.y);
   }
   //Getters and setters
 

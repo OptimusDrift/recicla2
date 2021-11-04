@@ -18,8 +18,8 @@ export default class CConfiguracion {
   //Constantes del menu
   private BOTON_CERRAR_POSICION_X = 1400;
   private BOTON_CERRAR_POSICION_Y = 317;
-  private BOTON_MENUPRINCIPAL_POSICION_X = 862;
-  private BOTON_MENUPRINCIPAL_POSICION_Y = 164;
+  private BOTON_MENUPRINCIPAL_POSICION_X = 960;
+  private BOTON_MENUPRINCIPAL_POSICION_Y = 576 + 76;
   private BOTON_SI_POSICION_X = 602 + 171;
   private BOTON_SI_POSICION_Y = 576 + 76;
   private BOTON_NO_POSICION_X = 971 + 171;
@@ -63,7 +63,7 @@ export default class CConfiguracion {
         "menuPrincipal"
       ),
       undefined,
-      undefined
+      undefined,1.4
     ); //Crea el botón de configuración
     this.botonMenuPrincipal.boton.setDepth(2); //Establece la profundidad
     this._escenaActual = "";
