@@ -488,6 +488,14 @@ export default class CNivel {
     //this.SiguienteNivel();
   }
 
+  public ReiniciarMonedas(){
+    console.log("Reiniciando monedas");
+    this.niveles[this.nivelActual].monedas.forEach((moneda)=>{
+      moneda.ReiniciarMoneda();
+    });
+
+  }
+
   public PerderNivel() {
     //mostrar Derrota
     this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
@@ -547,6 +555,7 @@ export default class CNivel {
         "MenuPrincipal"
       );
     }
+    this.ReiniciarMonedas();
   }
   public SiguienteNivel() {
     try {
@@ -567,6 +576,7 @@ export default class CNivel {
         "Nivel" + (this.nivelActual + 1)
       );
     }
+    this.ReiniciarMonedas();
   }
 
   //Getters and setters

@@ -3,6 +3,7 @@ import Particulas from "./Particulas";
 export default class Boton {
   private _texto: any;
   private _boton: any;
+  private _escala: number;
   private _particulasCorrecto: Particulas | undefined;
   private _particulasIncorrecta: Particulas | undefined;
 
@@ -10,11 +11,13 @@ export default class Boton {
     texto: any,
     boton: any,
     particulasCorrecto: any,
-    particulasIncorrecta: any
+    particulasIncorrecta: any, escala: number = 1
   ) {
     this._texto = texto;
     this.texto.setDepth(0);
     this._boton = boton;
+    this._escala = escala;
+    this.boton.setScale(escala);
     this.boton.setDepth(-1);
     this.texto.setFontSize(50);
     this.texto.setOrigin(0.5);
@@ -25,25 +28,25 @@ export default class Boton {
 
   //Al pasar el mouse por arriba el boton y el texto se agranda.
   private PointerOver() {
-    this.boton.setScale(1.02);
+    this.boton.setScale(this.escala + 0.02);
     this.texto.setFontSize(51);
   }
 
   //Cuando el mouse sale del objeto el botón y el texto vuelve a su escala original.
   private PointerOut() {
-    this.boton.setScale(1);
+    this.boton.setScale(this.escala);
     this.texto.setFontSize(50);
   }
 
   //Cuando el mouse es precionado el botón y el texto se encogen.
   private PointerDown() {
-    this.boton.setScale(0.98);
+    this.boton.setScale(this.escala - 0.02);
     this.texto.setFontSize(49);
   }
 
   //Cuando el botón queda sin una funcionalidad, es pausado, quitando su listener.
   public PausarBoton() {
-    this.boton.setScale(1);
+    this.boton.setScale(this.escala);
     this.texto.setFontSize(50);
     this.boton.setInteractive(false);
     this.boton.removeAllListeners();
@@ -70,6 +73,16 @@ export default class Boton {
     this.CambiarColor(0xd40032);
     this.particulasIncorrecta.EjecutarParticula(this.boton.x, this.boton.y);
     this.PausarBoton();
+  }
+
+  //Ocultar Botón
+  public OcultarBoton(valor : boolean) {
+    this.texto.setVisible(valor);
+    this.boton.setVisible(valor);
+  }
+
+  public LimpiarColor() {
+    this.boton.clearTint();
   }
 
   public CambiarColor(color: any) {
@@ -107,5 +120,13 @@ export default class Boton {
 
   public set particulasIncorrecta(v: any) {
     this._particulasIncorrecta = v;
+  }
+
+  public get escala(): number {
+    return this._escala;
+  }
+
+  public set escala(v: number) {
+    this._escala = v;
   }
 }
