@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="30" height="17" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="65">
+ <editorsettings>
+  <export target="Nivel_1.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="Atlas" tilewidth="64" tileheight="64" tilecount="88" columns="11">
+  <image source="Atlas.png" width="704" height="512"/>
+  <tile id="0">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="coin" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="baterias" type="bool" value="true"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="49">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="collides" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="72">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="73">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="74">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="75">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="79">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="true"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="82">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="false"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="baterias" type="bool" value="false"/>
+    <property name="collides" type="bool" value="false"/>
+    <property name="papel" type="bool" value="true"/>
+    <property name="plastico" type="bool" value="false"/>
+    <property name="recipiente" type="bool" value="true"/>
+    <property name="vidrio" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <objectgroup id="3" name="ObjetosNivel1" visible="0">
+  <object id="11" name="papel" x="1216" y="694.667" width="192" height="192"/>
+  <object id="18" name="plastico" x="1600" y="822.667" width="192" height="192"/>
+  <object id="19" name="vidrio" x="-670.788" y="609.697" width="192" height="192"/>
+  <object id="20" name="bateria" x="-667.758" y="408.606" width="192" height="192"/>
+  <object id="21" name="moneda" x="-599.152" y="871.152" width="64" height="64"/>
+  <object id="22" name="moneda" x="960" y="512" width="64" height="64"/>
+  <object id="24" name="moneda" x="1664" y="640" width="64" height="64"/>
+ </objectgroup>
+ <layer id="1" name="Nivel1" width="30" height="17" visible="0">
+  <data encoding="csv">
+0,0,0,24,0,0,0,24,24,0,0,0,0,24,0,0,0,24,24,0,24,24,24,24,24,24,24,24,24,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,11,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,22,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,33,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,24,0,0,0,0,0,0,0,0,0,43,44,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,35,0,0,0,0,0,0,0,0,0,54,55,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,46,0,0,0,0,23,24,0,0,0,65,66,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,6,34,35,0,0,0,76,77,
+24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,13,14,15,16,17,45,46,0,0,0,87,88,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
+</data>
+ </layer>
+ <group id="6" name="Nivel1" visible="0" locked="1"/>
+ <objectgroup id="5" name="ObjetosNivel2" visible="0">
+  <object id="31" name="papel" x="1024" y="822" width="192" height="192"/>
+  <object id="32" name="plastico" x="1472" y="819" width="192" height="192"/>
+  <object id="33" name="vidrio" x="1600" y="51" width="192" height="192"/>
+  <object id="34" name="bateria" x="-543.515" y="320" width="192" height="192"/>
+  <object id="35" name="moneda" x="-480.606" y="861.818" width="64" height="64"/>
+  <object id="36" name="moneda" x="832" y="832" width="64" height="64"/>
+  <object id="37" name="moneda" x="1408" y="512" width="64" height="64"/>
+  <object id="38" name="moneda" x="1664" y="512" width="64" height="64"/>
+  <object id="39" name="moneda" x="1152" y="320" width="64" height="64"/>
+  <object id="40" name="moneda" x="1408" y="128" width="64" height="64"/>
+ </objectgroup>
+ <layer id="4" name="Nivel2" width="30" height="17" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,6,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,2684354572,2684354561,0,17,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2684354573,2684354562,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2684354574,2684354563,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483671,0,0,0,0,3758096398,3758096387,10,11,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483683,2147483682,0,0,0,0,3758096397,3758096386,21,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483694,2147483693,0,0,0,0,3758096396,3758096385,32,33,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073741869,1073741870,3221225518,3221225517,0,0,0,536870913,536870924,43,44,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073741858,1073741859,3221225507,3221225506,0,0,0,536870914,536870925,54,55,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073741847,2147483671,23,3221225495,0,0,0,536870915,536870926,65,66,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483683,2147483682,34,35,0,0,0,1610612738,1610612749,76,77,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483694,2147483693,45,46,0,0,0,1610612737,1610612748,87,88,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
+</data>
+ </layer>
+ <group id="7" name="Nivel2" visible="0"/>
+ <objectgroup id="10" name="ObjetosNivel3" visible="0">
+  <object id="41" name="papel" x="1280" y="699" width="192" height="192"/>
+  <object id="42" name="plastico" x="1597.27" y="693.818" width="192" height="192"/>
+  <object id="43" name="vidrio" x="-169.697" y="1320.7" width="192" height="192"/>
+  <object id="44" name="bateria" x="1600" y="56" width="192" height="192"/>
+  <object id="45" name="moneda" x="-480.606" y="861.818" width="64" height="64"/>
+  <object id="46" name="moneda" x="1799" y="64" width="64" height="64"/>
+  <object id="47" name="moneda" x="-158.667" y="469.576" width="64" height="64"/>
+  <object id="48" name="moneda" x="-192" y="640" width="64" height="64"/>
+  <object id="49" name="moneda" x="1536" y="448" width="64" height="64"/>
+  <object id="50" name="moneda" x="1152" y="704" width="64" height="64"/>
+ </objectgroup>
+ <layer id="9" name="Nivel3" width="30" height="17" visible="0">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483671,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483683,2147483682,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483694,2147483693,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483654,2147483653,2147483652,2147483651,2147483650,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483665,0,3758096401,3758096390,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3758096389,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3758096388,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,23,0,0,0,0,0,3758096387,11,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,35,34,35,0,0,0,0,3758096386,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,46,45,46,0,0,0,3758096396,3758096385,33,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3221225518,3221225517,0,0,0,0,0,0,23,0,0,0,0,43,44,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3221225507,3221225506,0,0,0,0,0,0,34,35,0,0,0,54,55,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,3221225495,0,0,0,0,0,0,45,46,0,0,0,65,66,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,34,35,1,2,3,4,5,6,1,2,3,4,5,6,77,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,46,12,0,0,0,0,17,12,0,0,0,0,17,88,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
+</data>
+ </layer>
+ <group id="11" name="Nivel3" visible="0"/>
+ <layer id="12" name="Nivel4" width="30" height="17">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,6,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,17,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,6,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,17,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,5,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,3,4,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,10,11,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,22,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,33,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,43,44,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073741869,1073741870,0,0,0,0,0,0,0,0,0,0,0,54,55,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1073741858,1073741859,0,0,0,2147483671,0,0,0,0,0,0,0,65,66,
+0,0,0,0,0,0,0,0,0,0,0,0,0,3758096430,3758096419,1073741847,2684354605,2684354594,2684354583,2147483683,2147483682,0,0,0,0,0,0,0,76,77,
+0,0,0,0,0,0,0,0,0,0,0,0,0,3758096429,3758096418,3758096407,2684354606,2684354595,0,2147483694,2147483693,0,0,0,0,0,0,0,87,88,
+26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
+</data>
+ </layer>
+ <objectgroup id="13" name="ObjetosNivel4">
+  <object id="53" name="papel" x="1088" y="704" width="192" height="192"/>
+  <object id="54" name="plastico" x="1355" y="823" width="192" height="192"/>
+  <object id="55" name="vidrio" x="1344" y="-128" width="192" height="192"/>
+  <object id="56" name="bateria" x="1596" y="823" width="192" height="192"/>
+  <object id="57" name="moneda" x="-480.606" y="861.818" width="64" height="64"/>
+  <object id="58" name="moneda" x="1514.15" y="1515.52" width="64" height="64"/>
+  <object id="59" name="moneda" x="-158.667" y="469.576" width="64" height="64"/>
+  <object id="60" name="moneda" x="-192" y="640" width="64" height="64"/>
+  <object id="61" name="moneda" x="1152" y="512" width="64" height="64" rotation="180"/>
+  <object id="62" name="moneda" x="1536" y="640" width="64" height="64"/>
+ </objectgroup>
+ <group id="14" name="Grupo 4" visible="0"/>
+</map>
