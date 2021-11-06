@@ -81,7 +81,6 @@ export default class CFinDelJuego {
   }
 
   MostrarFinDelJuego(b: boolean = false) {
-    console.log(this.escena.scene.get("FinDelJuego"));
     this.escena.scene.pause("Nivel" + (this.cNivel.nivelActual + 1));
     this.OcultarMonedas(this.monedas);
     this.escena.scene.wake("FinDelJuego");

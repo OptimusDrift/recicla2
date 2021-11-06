@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { getTranslations } from "~/Services/Translation";
 import CMenuPrincipal from "../Controller/CMenuPrincipal";
 
 export default class MenuPrincipal extends Phaser.Scene {
@@ -15,5 +16,8 @@ export default class MenuPrincipal extends Phaser.Scene {
     this.add.image(1920 / 2, 1080 / 2, "fondoMenu").setDepth(-1);
   }
 
-  update() {}
+
+  update() {
+
+  }
 }
