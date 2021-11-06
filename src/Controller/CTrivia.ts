@@ -3,7 +3,7 @@ import Pregunta from "../Model/Pregunta";
 import Mejora from "../Model/Mejora";
 import MejoraBomba from "../Model/MejoraBomba";
 import MejoraCambio from "../Model/MejoraCambio";
-import PreguntasJson from "./Preguntas.json";
+import { preg } from "~/Model/BDD";
 import CConfiguracion from "./CConfiguracion";
 import CNivel from "./CNivel";
 import CHud from "./CHud";
@@ -121,7 +121,17 @@ export default class CTrivia {
     this._botonesMejoras = new Array<Boton>(); //Crea un array de botones de mejoras
     this._preguntas = new Array<Pregunta>(); //Crea un array de preguntas
     this._preguntasBackUp = new Array<Pregunta>(); //Crea un array de preguntas
-    this.CargarPreguntas(); //Carga las preguntas
+    //this.CargarPreguntas(); //Carga las preguntas
+
+    preg()
+      .then((response) => {
+        this._preguntasBackUp = response;
+        this.CambiarNivel();
+      })
+      .catch((error) => {
+        console.log("Nooo! " + error);
+      });
+
     this._botonConfiguracion = new Boton(
       this.escena.add.text(0, 0, "", this.style),
       this.escena.add.image(
@@ -139,8 +149,10 @@ export default class CTrivia {
   }
 
   //Carga las preguntas desde un JSON
-  public CargarPreguntas() {
-    PreguntasJson.forEach((p) => {
+
+  CargarPreguntas = async () => {
+    await console.log("Cargando preguntas...");
+    /*await preg.forEach((p) => {
       this.preguntasBackUp.push(
         new Pregunta(
           p["Nivel"],
@@ -157,9 +169,9 @@ export default class CTrivia {
           p["RespuestaDeRisaEnCasoDeSerIncorrecta"]
         )
       ); //Agrega las preguntas
-    }); //Recorre el array de preguntas
-    this.CambiarNivel();
-  }
+    }); //Recorre el array de preguntas*/
+    //this.CambiarNivel();
+  };
 
   public CambiarPregunta() {
     this.preguntas = this.shuffle(this.preguntas);
@@ -390,7 +402,11 @@ export default class CTrivia {
         undefined
       )
     ); //Agrega el botón de mejora
-    this.CargarTrivia(); //Carga la trivia
+    try {
+      this.CargarTrivia(); //Carga la trivia
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   Temporizador() {
