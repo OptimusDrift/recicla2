@@ -15,6 +15,12 @@ export default class CConfiguracion {
   private _botonSi: Boton;
   private _botonNo: Boton;
 
+  //Texto botones
+  private _textoSalir: any;
+  private _textoAyuda: any;
+  private _btnNo: any;
+  private _btnSi: any;
+
   //Constantes del menu
   private BOTON_CERRAR_POSICION_X = 1400;
   private BOTON_CERRAR_POSICION_Y = 317;
@@ -63,12 +69,19 @@ export default class CConfiguracion {
         "menuPrincipal"
       ),
       undefined,
-      undefined,1.4
+      undefined,
+      1.4
     ); //Crea el botón de configuración
     this.botonMenuPrincipal.boton.setDepth(2); //Establece la profundidad
     this._escenaActual = "";
+    this._btnSi = this.escenaVolver.add.text(
+      this.BOTON_SI_POSICION_X,
+      this.BOTON_SI_POSICION_Y,
+      "Si",
+      this.style
+    );
     this._botonSi = new Boton(
-      this.escenaVolver.add.text(0, 0, "", this.style),
+      this.btnSi,
       this.escenaVolver.add.image(
         this.BOTON_SI_POSICION_X,
         this.BOTON_SI_POSICION_Y,
@@ -77,11 +90,35 @@ export default class CConfiguracion {
       undefined,
       undefined
     ); //Crea el botón de cerrar
+    this.btnSi.setDepth(3);
     this.botonSi.boton.setDepth(2); //Establece la profundidad
     this.botonSi.boton.setVisible(false); //Establece la visibilidad
     this.botonSi.boton.setTint(0x3a5311); //Establece el color
+    this._btnNo = this.escenaVolver.add.text(
+      this.BOTON_NO_POSICION_X,
+      this.BOTON_NO_POSICION_Y,
+      "No",
+      this.style
+    );
+    this._textoSalir = this.escenaVolver.add.text(
+      615,
+      410,
+      "¿Quieres volver al menú principal?",
+      this.style
+    );
+    this.textoSalir.setDepth(3);
+    this.textoSalir.setVisible(false);
+    this._textoAyuda = this.escenaVolver.add.text(
+      700,
+      400,
+      "¡Puedes apoyarme\ncomprando un cafecito!",
+      this.style
+    );
+    this.textoAyuda.setDepth(3);
+    this.textoAyuda.setVisible(false);
+    console.log(this._btnNo.text);
     this._botonNo = new Boton(
-      this.escenaVolver.add.text(0, 0, "", this.style),
+      this.btnNo,
       this.escenaVolver.add.image(
         this.BOTON_NO_POSICION_X,
         this.BOTON_NO_POSICION_Y,
@@ -90,53 +127,84 @@ export default class CConfiguracion {
       undefined,
       undefined
     ); //Crea el botón de cerrar
+    this.btnNo.setDepth(3);
     //_botonEspañol
-    let e = this.escena.add.text(this.BOTON_ESPAÑOL_POSICION_X, this.BOTON_ESPAÑOL_POSICION_Y, "Español", this.style);
+    let e = this.escena.add.text(
+      this.BOTON_ESPAÑOL_POSICION_X,
+      this.BOTON_ESPAÑOL_POSICION_Y,
+      "Español",
+      this.style
+    );
     this._botonEspañol = new Boton(
       e,
       this.escena.add.image(
         this.BOTON_ESPAÑOL_POSICION_X,
         this.BOTON_ESPAÑOL_POSICION_Y,
-        "boton2",
+        "boton2"
       ),
       undefined,
-      undefined,.85
+      undefined,
+      0.85
     ); //Crea el boton de español
     this.botonEspañol.boton.on("pointerup", () => {
       this.idioma = "Español";
+      this.textoSalir.setText("¿Quieres volver al menú principal?");
+      this.textoAyuda.setText("¡Puedes apoyarme\ncomprando un cafecito!");
+      this.btnSi.setText("Si");
+      this.btnNo.setText("No");
       this.ReiniciarBotones();
       this.botonEspañol.CambiarColor(0x3a5311);
     });
     this.botonEspañol.CambiarColor(0x3a5311);
-    let i = this.escena.add.text(this.BOTON_INGLES_POSICION_X, this.BOTON_INGLES_POSICION_Y, "English", this.style)  ;
+    let i = this.escena.add.text(
+      this.BOTON_INGLES_POSICION_X,
+      this.BOTON_INGLES_POSICION_Y,
+      "English",
+      this.style
+    );
     this._botonIngles = new Boton(
       i,
       this.escena.add.image(
         this.BOTON_INGLES_POSICION_X,
         this.BOTON_INGLES_POSICION_Y,
-        "boton2",
+        "boton2"
       ),
       undefined,
-      undefined,.85
+      undefined,
+      0.85
     ); //Crea el boton de ingles
     this.botonIngles.boton.on("pointerup", () => {
       this.idioma = "Ingles";
+      this.textoSalir.setText("Do you want to go back to the\nmain menu?");
+      this.textoAyuda.setText("You can support me by\nbuying a coffee!");
+      this.btnSi.setText("Yes");
+      this.btnNo.setText("No");
       this.ReiniciarBotones();
       this.botonIngles.CambiarColor(0x3a5311);
     });
-    let p = this.escena.add.text(this.BOTON_PORTUGUES_POSICION_X, this.BOTON_PORTUGUES_POSICION_Y, "Português", this.style);
+    let p = this.escena.add.text(
+      this.BOTON_PORTUGUES_POSICION_X,
+      this.BOTON_PORTUGUES_POSICION_Y,
+      "Português",
+      this.style
+    );
     this._botonPortugues = new Boton(
       p,
       this.escena.add.image(
         this.BOTON_PORTUGUES_POSICION_X,
         this.BOTON_PORTUGUES_POSICION_Y,
-        "boton2",
+        "boton2"
       ),
       undefined,
-      undefined,.85
+      undefined,
+      0.85
     ); //Crea el boton de portugues
     this.botonPortugues.boton.on("pointerup", () => {
       this.idioma = "Portugues";
+      this.textoSalir.setText("  Quer voltar ao menu principal?");
+      this.textoAyuda.setText("Você pode me apoiar\ncomprando um café!");
+      this.btnSi.setText("Sim");
+      this.btnNo.setText("Não");
       this.ReiniciarBotones();
       this.botonPortugues.CambiarColor(0x3a5311);
     });
@@ -149,14 +217,9 @@ export default class CConfiguracion {
     this.botonNo.boton.setDepth(2); //Establece la profundidad
     this.botonNo.boton.setVisible(false); //Establece la visibilidad
     this.botonNo.boton.setTint(0xd40032); //Establece el color
-    this.botonNo.boton.on("pointerup", () => {
-      this.escena.scene.sleep("Volver"); //Resume la escena
-      this.escena.scene.moveAbove("Configuracion"); //Mueve la escena
-      this.escena.scene.resume("Configuracion"); //Pausa la escena
-    });
   }
 
-  ReiniciarBotones(){
+  ReiniciarBotones() {
     this.botonEspañol.LimpiarColor();
     this.botonIngles.LimpiarColor();
     this.botonPortugues.LimpiarColor();
@@ -181,6 +244,9 @@ export default class CConfiguracion {
   private QuitarFuncionalidadAlBoton() {
     this.boton.boton.off("pointerup"); //Quita la funcionalidad del botón
     this.botonSi.boton.off("pointerup"); //Quita la funcionalidad del botón
+    this.botonNo.boton.off("pointerup"); //Quita la funcionalidad del botón
+    this.textoAyuda.setVisible(false); //Quita la visibilidad del texto
+    this.textoSalir.setVisible(false); //Quita la visibilidad del texto
   }
 
   private setVisibleBotonMenuPrincipal(estadoMenu: boolean) {
@@ -190,6 +256,7 @@ export default class CConfiguracion {
     this.botonPortugues.OcultarBoton(!estadoMenu);
     if (estadoMenu) {
       this.botonMenuPrincipal.boton.off("pointerup"); //Quita la funcionalidad del botón
+      this.textoSalir.setVisible(true);
       this.botonMenuPrincipal.boton.setDepth(2); //Establece la profundidad
       this.BotonMenuPrincipal(this.escenaActual);
     }
@@ -210,6 +277,28 @@ export default class CConfiguracion {
         this.escena.scene.sleep("Volver"); //Pausa la escena
         this.escena.scene.sleep("Hud"); //Pausa la escena
       });
+      this.botonNo.boton.on("pointerup", () => {
+        this.escena.scene.sleep("Volver"); //Resume la escena
+        this.escena.scene.moveAbove("Configuracion"); //Mueve la escena
+        this.escena.scene.resume("Configuracion"); //Pausa la escena
+      });
+    });
+  }
+
+  public BotonComprarCafe() {
+    this.QuitarFuncionalidadAlBoton();
+    this.escena.scene.wake("Volver"); //Resume la escena
+    this.escena.scene.moveUp("Volver"); //Mueve la escena
+    this.botonNo.boton.setVisible(true);
+    this.botonSi.boton.setVisible(true);
+    this.textoAyuda.setVisible(true);
+    this.escena.scene.pause("MenuPrincipal"); //Pausa la escena
+    this.botonSi.boton.on("pointerup", () => {
+      window.location.href = "https://ko-fi.com/optimusdrift";
+    });
+    this.botonNo.boton.on("pointerup", () => {
+      this.escena.scene.sleep("Volver"); //Resume la escena
+      this.escena.scene.resume("MenuPrincipal");
     });
   }
 
@@ -299,5 +388,37 @@ export default class CConfiguracion {
 
   public set botonPortugues(value: Boton) {
     this._botonPortugues = value;
+  }
+
+  public get btnSi(): any {
+    return this._btnSi;
+  }
+
+  public set btnSi(value: any) {
+    this._btnSi = value;
+  }
+
+  public get btnNo(): any {
+    return this._btnNo;
+  }
+
+  public set btnNo(value: any) {
+    this._btnNo = value;
+  }
+
+  public get textoSalir(): any {
+    return this._textoSalir;
+  }
+
+  public set textoSalir(value: any) {
+    this._textoSalir = value;
+  }
+
+  public get textoAyuda(): any {
+    return this._textoAyuda;
+  }
+
+  public set textoAyuda(value: any) {
+    this._textoAyuda = value;
   }
 }

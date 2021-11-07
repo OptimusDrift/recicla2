@@ -129,7 +129,7 @@ export default class CTrivia {
         this.CambiarNivel();
       })
       .catch((error) => {
-        console.log("Nooo! " + error);
+        console.log("Algo salio mal! " + error);
       });
 
     this._botonConfiguracion = new Boton(

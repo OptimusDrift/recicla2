@@ -95,7 +95,8 @@ export default class CMenuPrincipal {
       this.escena.scene.wake("Trivia");
     }); //Cuando se pulsa el boton de trivia
     this.botones[2].boton.on("pointerup", () => {
-      //this.escena.scene.start("Tienda");
+      //this.escena.scene.start("Tienda"); https://ko-fi.com/optimusdrift
+      this.cConfiguracion.BotonComprarCafe();
     }); //Cuando se pulsa el boton de tienda
     this.botones[3].boton.on("pointerup", () => {
       this.cConfiguracion.CambiarAVentanaConfiguracion("MenuPrincipal"); //Cambia a la ventana de configuracion

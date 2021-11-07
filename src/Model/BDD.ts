@@ -17,34 +17,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// Get a reference to the database service
 const bd = ref(getDatabase());
-/*get(bd).then((snapshot) => {
-    if (snapshot.exists()) {
-      snapshot.val().forEach((p) => {
-        preg.push(
-          new Pregunta(
-            p["Nivel"],
-            p["Pregunta"],
-            p["Idioma"],
-            p["RespuestaCorrecta"],
-            new Array<string>(
-              p["RespuestaCorrecta"],
-              p["RespuestaIncorrecta1"],
-              p["RespuestaIncorrecta2"],
-              p["RespuestaIncorrecta3"]
-            ),
-            p["RespuestaDeRisaEnCasoDeSerCorrecta"],
-            p["RespuestaDeRisaEnCasoDeSerIncorrecta"]
-          )
-        );
-      });
-      console.log(preg);
-    } else {
-      console.log("No data available");
-    }
-  });
-  return preg; */
 
 export const preg = () =>
   new Promise((resolve, reject) => {
@@ -80,16 +53,3 @@ export const preg = () =>
       reject("¡Error!");
     }, 250);
   });
-/*export const preg = () =>
-  new Promise((resolveCallback) => LeerPregunta().then(resolveCallback));*/
-
-const LeerPregunta = async () => {
-  await get(bd).then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-      return snapshot.val();
-    } else {
-      console.log("No data available");
-    }
-  });
-};
