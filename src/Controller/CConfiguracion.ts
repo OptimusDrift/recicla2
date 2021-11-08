@@ -107,6 +107,7 @@ export default class CConfiguracion {
       this.style
     );
     this.textoSalir.setDepth(3);
+    this.textoSalir.setColor("#4a241e");
     this.textoSalir.setVisible(false);
     this._textoAyuda = this.escenaVolver.add.text(
       700,
@@ -115,6 +116,7 @@ export default class CConfiguracion {
       this.style
     );
     this.textoAyuda.setDepth(3);
+    this.textoAyuda.setColor("#4a241e");
     this.textoAyuda.setVisible(false);
     console.log(this._btnNo.text);
     this._botonNo = new Boton(

@@ -44,7 +44,7 @@ export default class CFinDelJuego {
       }),
     }); //Crea la animación de Risa
     this.escena.anims.create({
-      key: "risaSerrota",
+      key: "risaDerrota",
       frames: this.escena.anims.generateFrameNumbers("risa", {
         start: 1,
         end: 1,
@@ -122,12 +122,14 @@ export default class CFinDelJuego {
 
   public Victoria() {
     this.txt.setText("¡Victoria!");
+    this.risa.anims.play("risaVictoria", true); //Inicia la animación de risa
     this.MostrarFinDelJuego();
     this.ventanaCorrecto.on("pointerup", () => this.cNivel.GanarNivel()); //Cuando se hace click, se carga la trivia
   }
 
   public Derrota() {
     this.txt.setText("¡Derrota!");
+    this.risa.anims.play("risaDerrota", true); //Inicia la animación de risa
     this.MostrarFinDelJuego(true);
     this.ventanaCorrecto.on("pointerup", () => this.cNivel.PerderNivel()); //Cuando se hace click, se carga la trivia
   }
