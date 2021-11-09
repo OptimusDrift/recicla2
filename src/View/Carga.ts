@@ -94,7 +94,7 @@ export default class Carga extends Phaser.Scene {
     this.load.image("fondoMenu", "assets/Pantallas/MenuPrincipal.png");
     this.load.image("fondoNivel", "assets/Pantallas/FondoNivel.png");
     this.load.image("escapeVertical", "assets/Pantallas/EscapeVertical.png");
-    this.load.image("fondoCreditos", "assets/Pantallas/Creditos.png"); //TEMPORAL
+    this.load.image("fondoCreditos", "assets/Pantallas/Creditos.png");
     //---------POP UPS----------\\
     this.load.image("fondoRosa", "assets/PopUps/FondoRosa.png");
     this.load.image("fondoVolver", "assets/PopUps/Seguro.png");
