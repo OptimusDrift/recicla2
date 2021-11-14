@@ -261,14 +261,14 @@ export default class Carga extends Phaser.Scene {
       )
     ); //Crea el nivel 3
     this.niveles[2].residuos.push(new ResiduoPapel(nvl3.physics)); //Añade los residuos al nivel 3
-    this.niveles[2].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 3
-    this.niveles[2].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 3
-    this.niveles[2].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 3
+    this.niveles[2].residuos.push(new ResiduoPlastico(nvl3.physics)); //Añade los residuos al nivel 3
+    this.niveles[2].residuos.push(new ResiduoBateria(nvl3.physics)); //Añade los residuos al nivel 3
+    this.niveles[2].residuos.push(new ResiduoPlastico(nvl3.physics)); //Añade los residuos al nivel 3
     this.niveles[2].residuos.push(new ResiduoPapel(nvl3.physics)); //Añade los residuos al nivel 3
-    this.niveles[2].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 3
+    this.niveles[2].residuos.push(new ResiduoBateria(nvl3.physics)); //Añade los residuos al nivel 3
     this.niveles[2].residuos.push(new ResiduoPapel(nvl3.physics)); //Añade los residuos al nivel 3
-    this.niveles[2].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 3
-    this.niveles[2].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 3
+    this.niveles[2].residuos.push(new ResiduoPlastico(nvl3.physics)); //Añade los residuos al nivel 3
+    this.niveles[2].residuos.push(new ResiduoBateria(nvl3.physics)); //Añade los residuos al nivel 3
 
     console.log(mapa3);
     const objetosLayer3 = mapa3.getObjectLayer("ObjetosNivel3"); //Obtiene la capa de objetos del nivel 1
@@ -309,16 +309,16 @@ export default class Carga extends Phaser.Scene {
       )
     ); //Crea el nivel 4
     this.niveles[3].residuos.push(new ResiduoPapel(nvl4.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoBateria(nvl4.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoVidrio(nvl4.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoVidrio(nvl4.physics)); //Añade los residuos al nivel 4
     this.niveles[3].residuos.push(new ResiduoPapel(nvl4.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoBateria(nvl2.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoPlastico(nvl4.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoBateria(nvl4.physics)); //Añade los residuos al nivel 4
     this.niveles[3].residuos.push(new ResiduoPapel(nvl4.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoVidrio(nvl2.physics)); //Añade los residuos al nivel 4
-    this.niveles[3].residuos.push(new ResiduoPlastico(nvl2.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoVidrio(nvl4.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoVidrio(nvl4.physics)); //Añade los residuos al nivel 4
+    this.niveles[3].residuos.push(new ResiduoPlastico(nvl4.physics)); //Añade los residuos al nivel 4
 
     const objetosLayer4 = mapa4.getObjectLayer("ObjetosNivel4"); //Obtiene la capa de objetos del nivel 1
     objetosLayer4.objects.forEach((objeto) => {
