@@ -22,6 +22,7 @@ import ResiduoBateria from "~/Model/ResiduoBateria";
 import ResiduoVidrio from "~/Model/ResiduoVidrio";
 import ResiduoPlastico from "~/Model/ResiduoPlastico";
 import CFinDelJuego from "~/Controller/CFinDelJuego";
+import { preg } from "~/Model/BDD";
 
 export default class Carga extends Phaser.Scene {
   //Controladores
@@ -269,8 +270,6 @@ export default class Carga extends Phaser.Scene {
     this.niveles[2].residuos.push(new ResiduoPapel(nvl3.physics)); //Añade los residuos al nivel 3
     this.niveles[2].residuos.push(new ResiduoPlastico(nvl3.physics)); //Añade los residuos al nivel 3
     this.niveles[2].residuos.push(new ResiduoBateria(nvl3.physics)); //Añade los residuos al nivel 3
-
-    console.log(mapa3);
     const objetosLayer3 = mapa3.getObjectLayer("ObjetosNivel3"); //Obtiene la capa de objetos del nivel 1
     objetosLayer3.objects.forEach((objeto) => {
       this.CargarObjetosLayer(this.niveles[2], objeto);
@@ -340,6 +339,14 @@ export default class Carga extends Phaser.Scene {
       this.controladorConfiguracion
     ); //Crea el controlador de trivia
     this.controladorTrivia.CargarControlador(); //Carga el controlador de trivia
+    preg()
+      .then((response) => {
+        this.controladorTrivia.preguntasBackUp = response;
+        this.controladorTrivia.CambiarNivel();
+      })
+      .catch((error) => {
+        console.log("Algo salio mal! " + error);
+      });
 
     //---------------------MENU-----------------------//
     let menu = this.scene.get("MenuPrincipal"); //Obtiene la escena del menu

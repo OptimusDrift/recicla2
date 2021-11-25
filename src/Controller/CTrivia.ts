@@ -3,7 +3,6 @@ import Pregunta from "../Model/Pregunta";
 import Mejora from "../Model/Mejora";
 import MejoraBomba from "../Model/MejoraBomba";
 import MejoraCambio from "../Model/MejoraCambio";
-import { preg } from "~/Model/BDD";
 import CConfiguracion from "./CConfiguracion";
 import CNivel from "./CNivel";
 import CHud from "./CHud";
@@ -122,15 +121,6 @@ export default class CTrivia {
     this._preguntas = new Array<Pregunta>(); //Crea un array de preguntas
     this._preguntasBackUp = new Array<Pregunta>(); //Crea un array de preguntas
     //this.CargarPreguntas(); //Carga las preguntas
-
-    preg()
-      .then((response) => {
-        this._preguntasBackUp = response;
-        this.CambiarNivel();
-      })
-      .catch((error) => {
-        console.log("Algo salio mal! " + error);
-      });
 
     this._botonConfiguracion = new Boton(
       this.escena.add.text(0, 0, "", this.style),
@@ -404,9 +394,7 @@ export default class CTrivia {
     ); //Agrega el botón de mejora
     try {
       this.CargarTrivia(); //Carga la trivia
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   Temporizador() {

@@ -118,7 +118,6 @@ export default class CConfiguracion {
     this.textoAyuda.setDepth(3);
     this.textoAyuda.setColor("#4a241e");
     this.textoAyuda.setVisible(false);
-    console.log(this._btnNo.text);
     this._botonNo = new Boton(
       this.btnNo,
       this.escenaVolver.add.image(

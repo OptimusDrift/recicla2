@@ -297,34 +297,6 @@ export default class CNivel {
         z,
         z
       );
-      /*
-      this.bezierCurve = new Phaser.Curves.CubicBezier(
-        new Phaser.Math.Vector2(this.PUNTO_INICIAL_X, this.PUNTO_INICIAL_Y),
-        new Phaser.Math.Vector2(
-          this.PUNTO_INICIAL_X +
-            dx * this.Velocidad(this.DistanciaDibujo) * 0.5,
-          this.PUNTO_INICIAL_Y +
-            dy * this.Velocidad(this.DistanciaDibujo) * 0.5 -
-            (1 / 2) * 250 * (0.5 * 0.5)
-        ),
-        new Phaser.Math.Vector2(
-          this.PUNTO_INICIAL_X +
-            dx * this.Velocidad(this.DistanciaDibujo) * 1.5,
-          this.PUNTO_INICIAL_Y +
-            dy * this.Velocidad(this.DistanciaDibujo) * 1.5 -
-            (1 / 2) * 250 * (1.5 * 1.5)
-        ),
-        new Phaser.Math.Vector2(
-          this.PUNTO_INICIAL_X + dx * this.Velocidad(this.DistanciaDibujo) * 2,
-          896
-        )
-      );*/
-      console.log(
-        this.PUNTO_INICIAL_Y +
-          dy * this.Velocidad(this.DistanciaDibujo) * 2 -
-          (1 / 2) * 250 * 2
-      );
-      //console.log((2 * dx * this.Velocidad(this.distancia)) / 250);
     } else {
       this.bezierCurve = new Phaser.Curves.CubicBezier(
         new Phaser.Math.Vector2(0, 0),
@@ -352,10 +324,8 @@ export default class CNivel {
       this.niveles[this.nivelActual].gomera.anims.play("gomeraMedia", true); //Inicia la animacion de la gomera
     }
   }
-
+  private lanzar = true;
   public PrepararLanzamiento() {
-    this.Dibujar();
-    this.drawBezier();
     try {
       this.niveles[this.nivelActual].residuos[0].cuerpo.x =
         this.PUNTO_INICIAL_X;
@@ -364,73 +334,47 @@ export default class CNivel {
     } catch (error) {}
     this.cHud.ControlarMonedas();
     if (this.preparadoParaLanzar) {
-      //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
-      this.OnClickPress();
-      this.OnClickDrag();
-      //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
-      if (this.OnClickRelease()) {
-        this.DesactivarLanzamiento();
-        this.SiguienteReciduo();
-        this.residuoAnterior = this.residuoSeleccionado;
-        this.residuoSeleccionado.cuerpo.setX(this.puntoInicialX);
-        this.residuoSeleccionado.cuerpo.setY(this.puntoInicialY);
-        this.residuoSeleccionado.cuerpo.setVelocity(0);
-        const dx = this.puntoInicialX - this.puntoFinalX;
-        const dy = this.puntoInicialY - this.puntoFinalY;
+      if (this.lanzar) {
+        this.Dibujar();
+        this.drawBezier();
+        //Todas las llamadas revisa si el mouse se presiona, cuando lo hace guarda la posicion inicial de la x e y
+        this.OnClickPress();
+        this.OnClickDrag();
+        //Cuando el mouse se suelta guarda la posicion del punto final de la x e y
+        if (this.OnClickRelease()) {
+          this.DesactivarLanzamiento();
+          this.SiguienteReciduo();
+          this.residuoAnterior = this.residuoSeleccionado;
+          this.residuoSeleccionado.cuerpo.setX(this.puntoInicialX);
+          this.residuoSeleccionado.cuerpo.setY(this.puntoInicialY);
+          this.residuoSeleccionado.cuerpo.setVelocity(0);
+          const dx = this.puntoInicialX - this.puntoFinalX;
+          const dy = this.puntoInicialY - this.puntoFinalY;
 
-        const ddx = this.puntoFinalX - this.puntoInicialX;
-        const ddy = this.puntoFinalY - this.puntoInicialY;
+          const ddx = this.puntoFinalX - this.puntoInicialX;
+          const ddy = this.puntoFinalY - this.puntoInicialY;
 
-        console.log("x1 :" + this.puntoFinalX + " y1 :" + this.puntoFinalY);
-        console.log("x2 :" + this.puntoInicialX + " y2 :" + this.puntoInicialY);
-        console.log("dx :" + dx + " dy :" + dy);
-        console.log("pendiente: " + dx / dy);
-        console.log("Angulo" + Math.atan(ddy / ddx) * 57.2958);
+          //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a activar
+          this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
+          //Annade la velocidad del residuo seleccionado
+          this.residuoSeleccionado?.cuerpo.setVelocity(
+            dx * this.Velocidad(this.distancia),
+            dy * this.Velocidad(this.distancia)
+          );
 
-        //Los residuos no se eliminan, se ocultan, para no calcular su caida se pausa su gravedad, aca se vuelve a activar
-        this.residuoSeleccionado?.cuerpo.body.setAllowGravity(true);
-        //Annade la velocidad del residuo seleccionado
-        this.residuoSeleccionado?.cuerpo.setVelocity(
-          dx * this.Velocidad(this.distancia),
-          dy * this.Velocidad(this.distancia)
-        );
-        console.log(this.residuoSeleccionado?.cuerpo.body.velocity);
-        console.log(
-          "Punto Inicial: x" +
-            this.PUNTO_INICIAL_X +
-            " y" +
-            this.PUNTO_INICIAL_Y
-        );
-
-        console.log(
-          "Punto 1: X" +
-            (this.PUNTO_INICIAL_X + dx * this.Velocidad(this.distancia) * 0.1) +
-            " Y" +
-            (this.PUNTO_INICIAL_Y +
-              dy * this.Velocidad(this.distancia) * 0.1 -
-              (1 / 2) * 9 * (0.1 * 0.1))
-        );
-
-        console.log(
-          "Punto 2: x" +
-            (this.PUNTO_INICIAL_X + dx * this.Velocidad(this.distancia) * 0.2) +
-            " Y" +
-            (this.PUNTO_INICIAL_Y +
-              dy * this.Velocidad(this.distancia) * 0.2 -
-              (1 / 2) * 9 * (0.2 * 0.2))
-        );
-
-        console.log(
-          "Punto Final: x" +
-            (this.PUNTO_INICIAL_X + dx * this.Velocidad(this.distancia) * 2) +
-            " y" +
-            (this.PUNTO_INICIAL_Y +
-              dy * this.Velocidad(this.distancia) * 0.3 -
-              (1 / 2) * 250 * (0.3 * 0.3))
-        );
-
-        this.residuoSeleccionado = undefined;
+          this.residuoSeleccionado = undefined;
+        }
+      } else {
+        if (
+          !this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer
+            .isDown
+        ) {
+          this.lanzar = true;
+          console.log("Lanzar");
+        }
       }
+    } else {
+      this.lanzar = false;
     }
   }
 
@@ -490,7 +434,6 @@ export default class CNivel {
   }
 
   public ReiniciarMonedas() {
-    console.log("Reiniciando monedas");
     this.niveles[this.nivelActual].monedas.forEach((moneda) => {
       moneda.ReiniciarMoneda();
     });
