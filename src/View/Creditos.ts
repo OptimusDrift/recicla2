@@ -73,8 +73,8 @@ export default class Creditos extends Phaser.Scene {
     btnDana.setDepth(2);
     btnDana.setInteractive();
     btnDana.on("pointerup", () => {
-      this.add.image(1920 / 2, 1080 / 2, "risaVaquita").setDepth(10);
-      this.time.delayedCall(1000, () => {
+      //this.add.image(1920 / 2, 1080 / 2, "risaVaquita").setDepth(10);
+      this.time.delayedCall(200, () => {
         window.location.href = "https://twitter.com/sassy_kujo";
       });
     });
