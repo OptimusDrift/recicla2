@@ -34,7 +34,8 @@ export default class CNivel {
 
   //Estilo del texto
   private style = {
-    font: "bold 30px Arial",
+    fontFamily: "Indie Flower",
+    fontSize: "50px",
     fill: "#fff",
     boundsAlignH: "center",
     boundsAlignV: "middle",
@@ -488,12 +489,11 @@ export default class CNivel {
     //this.SiguienteNivel();
   }
 
-  public ReiniciarMonedas(){
+  public ReiniciarMonedas() {
     console.log("Reiniciando monedas");
-    this.niveles[this.nivelActual].monedas.forEach((moneda)=>{
+    this.niveles[this.nivelActual].monedas.forEach((moneda) => {
       moneda.ReiniciarMoneda();
     });
-
   }
 
   public PerderNivel() {

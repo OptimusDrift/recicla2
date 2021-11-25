@@ -18,4 +18,9 @@ export default class MenuPrincipal extends Phaser.Scene {
   }
 
   update() {}
+
+  //Getters y Setters
+  public controladorMenuPrincipal(): CMenuPrincipal {
+    return this._controladorMenuPrincipal;
+  }
 }

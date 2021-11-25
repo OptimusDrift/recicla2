@@ -11,10 +11,11 @@ export default class Boton {
     texto: any,
     boton: any,
     particulasCorrecto: any,
-    particulasIncorrecta: any, escala: number = 1
+    particulasIncorrecta: any,
+    escala: number = 1
   ) {
     this._texto = texto;
-    this.texto.setDepth(0);
+    this.texto.setDepth(1);
     this._boton = boton;
     this._escala = escala;
     this.boton.setScale(escala);
@@ -76,7 +77,7 @@ export default class Boton {
   }
 
   //Ocultar Botón
-  public OcultarBoton(valor : boolean) {
+  public OcultarBoton(valor: boolean) {
     this.texto.setVisible(valor);
     this.boton.setVisible(valor);
   }

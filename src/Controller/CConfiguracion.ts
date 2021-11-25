@@ -156,6 +156,15 @@ export default class CConfiguracion {
       this.btnNo.setText("No");
       this.ReiniciarBotones();
       this.botonEspañol.CambiarColor(0x3a5311);
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[0].texto.setText("Créditos");
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[1].texto.setText("Jugar");
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[2].texto.setText("Tienda");
     });
     this.botonEspañol.CambiarColor(0x3a5311);
     let i = this.escena.add.text(
@@ -183,6 +192,15 @@ export default class CConfiguracion {
       this.btnNo.setText("No");
       this.ReiniciarBotones();
       this.botonIngles.CambiarColor(0x3a5311);
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[0].texto.setText("Credits");
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[1].texto.setText("Play");
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[2].texto.setText("Shop");
     });
     let p = this.escena.add.text(
       this.BOTON_PORTUGUES_POSICION_X,
@@ -209,6 +227,15 @@ export default class CConfiguracion {
       this.btnNo.setText("Não");
       this.ReiniciarBotones();
       this.botonPortugues.CambiarColor(0x3a5311);
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[0].texto.setText("Créditos");
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[1].texto.setText("Toque");
+      this.escena.scene
+        .get("pantallaDeCarga")
+        .controladorMenuPrincipal.botones[2].texto.setText("Comprar");
     });
     this.botonEspañol.boton.setDepth(2); //Establece la profundidad
     this.botonIngles.boton.setDepth(2); //Establece la profundidad

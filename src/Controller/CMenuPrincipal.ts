@@ -20,7 +20,13 @@ export default class CMenuPrincipal {
   private BOTON_CONFIGURACION_POSICION_Y = 64;
 
   //Estilo del texto
-  private style = { font: "20x Arial", fill: "#fff" };
+  private style = {
+    fontFamily: "Indie Flower",
+    fontSize: "50px",
+    fill: "#fff",
+    boundsAlignH: "center",
+    boundsAlignV: "middle",
+  };
 
   //Constructor
   constructor(escena: any, cConfiguracion: CConfiguracion) {
@@ -28,17 +34,27 @@ export default class CMenuPrincipal {
     this.cConfiguracion = cConfiguracion; //Asignamos la configuracion
     this._botones = new Array<Boton>(); //Inicializa el array de botones
     let botonCreditos = new Boton(
-      this.escena.add.text(0, 0, "", this.style),
-      this.escena.add.image(
+      this.escena.add.text(
         this.BOTON_CREDITOS_POSICION_X,
         this.BOTON_CREDITOS_POSICION_Y,
+        "Créditos",
+        this.style
+      ),
+      this.escena.add.image(
+        this.BOTON_CREDITOS_POSICION_X,
+        this.BOTON_CREDITOS_POSICION_Y - 1,
         "creditos"
       ),
       undefined,
       undefined
     ); //Crea el boton de creditos
     let botonGomera = new Boton(
-      this.escena.add.text(0, 0, "", this.style),
+      this.escena.add.text(
+        this.BOTON_GOMERA_POSICION_X + 10,
+        this.BOTON_GOMERA_POSICION_Y + 122,
+        "Jugar",
+        this.style
+      ),
       this.escena.add.image(
         this.BOTON_GOMERA_POSICION_X,
         this.BOTON_GOMERA_POSICION_Y,
@@ -48,7 +64,12 @@ export default class CMenuPrincipal {
       undefined
     ); //Crea el boton de gomera
     let botonTienda = new Boton(
-      this.escena.add.text(0, 0, "", this.style),
+      this.escena.add.text(
+        this.BOTON_TIENDA_POSICION_X,
+        this.BOTON_TIENDA_POSICION_Y + 45,
+        "Tienda",
+        this.style
+      ),
       this.escena.add.image(
         this.BOTON_TIENDA_POSICION_X,
         this.BOTON_TIENDA_POSICION_Y,
