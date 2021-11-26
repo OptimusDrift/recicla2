@@ -297,6 +297,7 @@ export default class CConfiguracion {
       this.botonSi.boton.setVisible(true);
       this.escena.scene.pause("Configuracion"); //Pausa la escena
       this.botonSi.boton.on("pointerup", () => {
+        this.escena.scene.get(ventanaAVolver).controladorNivel.PerderNivel();
         this.escena.scene.wake("MenuPrincipal"); //Resume la escena
         this.escena.scene.moveAbove("MenuPrincipal"); //Mueve la escena
         this.escena.scene.sleep(ventanaAVolver); //Pausa la escena

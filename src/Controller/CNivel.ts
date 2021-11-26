@@ -27,7 +27,7 @@ export default class CNivel {
   //Constantes del nivel
   private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
   private PUNTO_INICIAL_Y = 896;
-  private DISTANCIA_MINIMA = 100;
+  private DISTANCIA_MINIMA = 120;
   private DISTANCIA_MAXIMA = 200;
   private BOTON_CONFIGURACION_POSICION_X = 1862;
   private BOTON_CONFIGURACION_POSICION_Y = 64;
@@ -326,6 +326,18 @@ export default class CNivel {
   }
   private lanzar = true;
   public PrepararLanzamiento() {
+    if (this.nextFrame == 1) {
+      this.nextFrame++;
+      this.niveles[this.nivelActual].residuos.forEach((residuo) => {
+        residuo.cuerpo.body.x = -500;
+        residuo.cuerpo.body.y = -500;
+        residuo.cuerpo.body.setAllowGravity(false);
+        residuo.cuerpo.body.setVelocity(0);
+      });
+      this.ActivarLanzamiento();
+    } else if (this.nextFrame < 1) {
+      this.nextFrame++;
+    }
     try {
       this.niveles[this.nivelActual].residuos[0].cuerpo.x =
         this.PUNTO_INICIAL_X;
@@ -370,7 +382,6 @@ export default class CNivel {
             .isDown
         ) {
           this.lanzar = true;
-          console.log("Lanzar");
         }
       }
     } else {
@@ -484,15 +495,16 @@ export default class CNivel {
     this.CargarAnimacionDeLaGomera();
     this.niveles[this.nivelActual].gomera.anims.play("gomeraIdle", true); //Inicia la animacion de la gomera
   }
-
+  private nextFrame = 0;
   public LanzarNivel() {
     try {
       this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep("Trivia");
       this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
         "Nivel" + (this.nivelActual + 1)
       );
+      this.nextFrame = 0;
     } catch (error) {
-      console.error(error);
+      //console.error(error);
       this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep("Trivia");
       this.niveles[this.nivelActual].pantallaDeJuego.scene.wake(
         "MenuPrincipal"
@@ -500,6 +512,7 @@ export default class CNivel {
     }
     this.ReiniciarMonedas();
   }
+
   public SiguienteNivel() {
     try {
       this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
