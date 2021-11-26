@@ -636,7 +636,7 @@
   <object id="22" name="moneda" x="960" y="512" width="64" height="64"/>
   <object id="24" name="moneda" x="1664" y="640" width="64" height="64"/>
  </objectgroup>
- <layer id="1" name="Nivel1" width="30" height="17" visible="0">
+ <layer id="1" name="Nivel1" width="30" height="17">
   <data encoding="csv">
 0,0,0,24,0,0,0,24,24,0,0,0,0,24,0,0,0,24,24,0,24,24,24,24,24,24,24,24,24,24,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,
@@ -657,8 +657,8 @@
 26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26
 </data>
  </layer>
- <group id="6" name="Nivel1" visible="0" locked="1"/>
- <objectgroup id="5" name="ObjetosNivel2">
+ <group id="6" name="Nivel1" locked="1"/>
+ <objectgroup id="5" name="ObjetosNivel2" visible="0">
   <object id="31" name="papel" x="1024" y="822" width="192" height="192"/>
   <object id="32" name="plastico" x="1472" y="819" width="192" height="192"/>
   <object id="33" name="vidrio" x="1600" y="51" width="192" height="192"/>
@@ -670,7 +670,7 @@
   <object id="39" name="moneda" x="1152" y="320" width="64" height="64"/>
   <object id="40" name="moneda" x="1408" y="128" width="64" height="64"/>
  </objectgroup>
- <layer id="4" name="Nivel2" width="30" height="17">
+ <layer id="4" name="Nivel2" width="30" height="17" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

@@ -50,7 +50,7 @@ export default class CFinDelJuego {
         end: 1,
       }),
     }); //Crea la animación de Risa
-    this._risa = this.escena.physics.add.sprite(1000 + 306, 100 + 434, "risa"); //Agrega a risa
+    this._risa = this.escena.physics.add.sprite(1100 + 306, 100 + 434, "risa"); //Agrega a risa
     this.risa.body.allowGravity = false; //No afecta a la gravedad
     this.risa.anims.play("risaVictoria", true); //Inicia la animación de risa
     let x = this.UBICACION_PRIMERA_MONEDA_X;
@@ -85,15 +85,18 @@ export default class CFinDelJuego {
     this.OcultarMonedas(this.monedas);
     this.escena.scene.wake("FinDelJuego");
     this.escena.scene.moveAbove("FinDelJuego");
+    this.escena.time.removeAllEvents();
     this.LimpiarListeners();
     let x = 0;
+    let z = 0;
     if (!b) {
       for (let index = 0; index <= this.cHud.puntero; index++) {
         let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
         this.cHud.MostrarAnimacionSuma(moneda, x, this.escena);
         moneda.setVisible(true);
         moneda.setAlpha(1);
-        moneda.setDepth(1);
+        moneda.setDepth(z + 1);
+        z++;
         x += 400;
       }
     }
@@ -105,7 +108,8 @@ export default class CFinDelJuego {
       let moneda = this.monedas[Phaser.Math.Clamp(index, 0, 40)];
       moneda.setAlpha(0.3);
       moneda.setVisible(true);
-      moneda.setDepth(1);
+      moneda.setDepth(z + 1);
+      z++;
       this.cHud.MostrarAnimacionSuma(moneda, x, this.escena);
       x += 400;
     }
