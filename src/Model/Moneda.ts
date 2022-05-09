@@ -1,3 +1,5 @@
+import Musica from "./Musica";
+
 export default class Moneda {
   private _sprite: string;
   private _physics: any;
@@ -6,6 +8,7 @@ export default class Moneda {
   private _particulas: any;
   private _x: number;
   private _y: number;
+  private _AgarrarMoneda: Musica;
 
   constructor(
     sprite: string,
@@ -15,6 +18,7 @@ export default class Moneda {
     y: number,
     particulas: any
   ) {
+    this._AgarrarMoneda = new Musica("AgarrarMoneda", physics.scene);
     this._sprite = sprite;
     this._physics = physics;
     this._valor = valor;
@@ -35,6 +39,7 @@ export default class Moneda {
   public TomarMoneda(residuo: any, moneda: any) {
     try {
       this.particulasMoneda.EjecutarParticula(moneda.x, moneda.y);
+      this._AgarrarMoneda.Play();
       this.controladorNivel.cHud.ActualizarMonedas(1);
       moneda.body.x = -800;
       moneda.body.y = -800;

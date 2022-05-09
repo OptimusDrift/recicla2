@@ -56,3 +56,4 @@ const config: Phaser.Types.Core.GameConfig = {
 export default new Phaser.Game(config);
 
 //npm run start
+//npm build start

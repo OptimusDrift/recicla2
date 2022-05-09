@@ -123,6 +123,7 @@ export default class Carga extends Phaser.Scene {
     );
     this.load.audio("Botonoff", "assets/Sonidos/Sfx/Botonoff.mp3");
     this.load.audio("Botonon", "assets/Sonidos/Sfx/Botonon.mp3");
+    this.load.audio("AgarrarMoneda", "assets/Sonidos/Sfx/AgarrarMoneda.mp3");
     //----------------ATLAS------------------\\
     this.load.image("atlas", "assets/Tiled/Atlas.png");
     this.load.tilemapTiledJSON("mapaNivel1", "assets/Tiled/Nivel_1.json");
