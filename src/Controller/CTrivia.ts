@@ -55,9 +55,15 @@ export default class CTrivia {
   private _risa: any;
 
   //Constructor
-  constructor(escena: any, cNivel: CNivel, cConfiguracion: CConfiguracion) {
+  constructor(
+    escena: any,
+    cNivel: CNivel,
+    cConfiguracion: CConfiguracion,
+    cMusica: CMusica
+  ) {
     this._escena = escena; //Asigna la escena
     this._cConfiguracion = cConfiguracion; //Asigna el controlador de configuración
+    this._cMusica = cMusica; //Asigna el controlador de música
     this._cuadroDeDialogo = this.escena.add.text(
       this.POSICION_PREGUNTA_X,
       this.POSICION_PREGUNTA_Y,
@@ -130,7 +136,8 @@ export default class CTrivia {
         "configuracion"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el botón de configuración
     this.botonConfiguracion.boton.setDepth(0); //Pone el boton de configuracion en la capa 0
     this.botonConfiguracion.boton.on("pointerup", () => {
@@ -307,7 +314,8 @@ export default class CTrivia {
           "boton"
         ),
         this.escena.particulasCorrecto,
-        this.escena.particulasIncorrecta
+        this.escena.particulasIncorrecta,
+        this.escena
       )
     ); //Agrega el botón 0
     this.botones.push(
@@ -324,7 +332,8 @@ export default class CTrivia {
           "boton"
         ),
         this.escena.particulasCorrecto,
-        this.escena.particulasIncorrecta
+        this.escena.particulasIncorrecta,
+        this.escena
       )
     ); //Agrega el botón 1
     this.botones.push(
@@ -341,7 +350,8 @@ export default class CTrivia {
           "boton"
         ),
         this.escena.particulasCorrecto,
-        this.escena.particulasIncorrecta
+        this.escena.particulasIncorrecta,
+        this.escena
       )
     ); //Agrega el botón 2
     this.botones.push(
@@ -358,7 +368,8 @@ export default class CTrivia {
           "boton"
         ),
         this.escena.particulasCorrecto,
-        this.escena.particulasIncorrecta
+        this.escena.particulasIncorrecta,
+        this.escena
       )
     ); //Agrega el botón 3
     //PRUEBAS
@@ -377,7 +388,8 @@ export default class CTrivia {
           "bomba"
         ),
         undefined,
-        undefined
+        undefined,
+        this.escena
       )
     ); //Agrega el botón de mejora
     this.botonesMejoras.push(
@@ -389,7 +401,8 @@ export default class CTrivia {
           "cambio"
         ),
         undefined,
-        undefined
+        undefined,
+        this.escena
       )
     ); //Agrega el botón de mejora
     try {

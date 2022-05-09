@@ -1,4 +1,5 @@
 import Particulas from "./Particulas";
+import Musica from "./Musica";
 
 export default class Boton {
   private _texto: any;
@@ -6,15 +7,24 @@ export default class Boton {
   private _escala: number;
   private _particulasCorrecto: Particulas | undefined;
   private _particulasIncorrecta: Particulas | undefined;
+  private _SFXCorrecto: Musica;
+  private _SFXIncorrecto: Musica;
+  private _SFXOn: Musica;
+  private _SFXOff: Musica;
 
   constructor(
     texto: any,
     boton: any,
     particulasCorrecto: any,
     particulasIncorrecta: any,
+    scene: any,
     escala: number = 1
   ) {
     this._texto = texto;
+    this._SFXCorrecto = new Musica("RespuestaCorrecta", scene);
+    this._SFXIncorrecto = new Musica("RespuestaIncorrecta", scene);
+    this._SFXOn = new Musica("Botonon", scene);
+    this._SFXOff = new Musica("Botonoff", scene);
     this.texto.setDepth(1);
     this._boton = boton;
     this._escala = escala;
@@ -31,12 +41,14 @@ export default class Boton {
   private PointerOver() {
     this.boton.setScale(this.escala + 0.02);
     this.texto.setFontSize(51);
+    this._SFXOn.Play();
   }
 
   //Cuando el mouse sale del objeto el botón y el texto vuelve a su escala original.
   private PointerOut() {
     this.boton.setScale(this.escala);
     this.texto.setFontSize(50);
+    this._SFXOff.Play();
   }
 
   //Cuando el mouse es precionado el botón y el texto se encogen.
@@ -65,6 +77,7 @@ export default class Boton {
   //El color del botón cambia a verde.
   public BotonCorrecto() {
     this.CambiarColor(0x3a5311);
+    this._SFXCorrecto.Play();
     this.particulasCorrecto.EjecutarParticula(this.boton.x, this.boton.y);
     this.PausarBoton();
   }
@@ -72,6 +85,7 @@ export default class Boton {
   //El color del botón cambia a rojo.
   public BotonIncorecto() {
     this.CambiarColor(0xd40032);
+    this._SFXIncorrecto.Play();
     this.particulasIncorrecta.EjecutarParticula(this.boton.x, this.boton.y);
     this.PausarBoton();
   }

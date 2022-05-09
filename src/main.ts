@@ -15,6 +15,7 @@ import FinDelJuego from "./View/FinDelJuego";
 import Nivel4 from "./View/Nivel4";
 import Nivel3 from "./View/Nivel3";
 import Logo from "./View/Logo";
+import Musica from "./View/Musica";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -49,6 +50,7 @@ const config: Phaser.Types.Core.GameConfig = {
     Hud,
     VentanaVolver,
     FinDelJuego,
+    Musica,
   ],
 };
 export default new Phaser.Game(config);

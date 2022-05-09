@@ -1,28 +1,33 @@
 export default class Musica {
-  private _nombre: string;
+  private _audio: any;
+  private _scene: any;
 
-  constructor(nombre: string) {
-    this._nombre = nombre;
+  constructor(audio: any, scene: any) {
+    this._audio = audio;
+    this._scene = scene;
   }
 
   public Play() {
     //Reproducir el tema
+    this._scene.sound.play(this.audio);
   }
 
   public Pausa() {
     //Pausar el tema
+    this.audio.pause();
   }
 
   public Stop() {
     //Parar el tema
+    this.audio.stop();
   }
 
   //Getters and setters
-  public get nombre(): string {
-    return this._nombre;
+  public get audio(): any {
+    return this._audio;
   }
 
-  public set nombre(value: string) {
-    this._nombre = value;
+  public set nombre(value: any) {
+    this._audio = value;
   }
 }

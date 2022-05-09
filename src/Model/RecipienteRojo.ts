@@ -1,8 +1,11 @@
 import Recipiente from "./Recipiente";
+import Musica from "./Musica";
 
 export default class RecipienteRojo extends Recipiente {
   constructor(sprite: string, physics: any, x: number, y: number) {
     super(sprite, physics, x, y);
+    this._correcto = new Musica("RespuestaCorrecta", physics.scene);
+    this._incorrecto = new Musica("RespuestaIncorrecta", physics.scene);
   }
 
   public CompararRecipiente(residuo: any, recipiente: any) {

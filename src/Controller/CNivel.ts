@@ -3,6 +3,7 @@ import Nivel from "../Model/Nivel";
 import Residuo from "../Model/Residuo";
 import CConfiguracion from "./CConfiguracion";
 import CHud from "./CHud";
+import Musica from "../Model/Musica";
 
 export default class CNivel {
   //Niveles
@@ -23,6 +24,8 @@ export default class CNivel {
   private _sinReciduo: boolean;
   private _botonConfiguracion: Boton;
   private _cConfiguracion: CConfiguracion;
+  private _gomeraOn: Musica;
+  private _gomeraOff: Musica;
 
   //Constantes del nivel
   private PUNTO_INICIAL_X = 256; //Son los puntos desde donde se lanza el residuo
@@ -49,6 +52,14 @@ export default class CNivel {
     //Setea las variables por defecto
     this._niveles = niveles;
     this._nivelActual = nivelActual;
+    this._gomeraOn = new Musica(
+      "SFXEstirarGomera",
+      niveles[nivelActual].pantallaDeJuego
+    );
+    this._gomeraOff = new Musica(
+      "SFXSoltarGomera",
+      niveles[nivelActual].pantallaDeJuego
+    );
     this._cConfiguracion = cConfiguracion;
     this._onClick = false;
     this._puntoInicialX = 0;
@@ -71,7 +82,8 @@ export default class CNivel {
         "configuracion"
       ),
       undefined,
-      undefined
+      undefined,
+      this.niveles[this.nivelActual].pantallaDeJuego
     ); //Crea el botón de configuración
     this.botonConfiguracion.boton.setDepth(0); //Pone el boton de configuracion en la capa 0
     this.botonConfiguracion.boton.on("pointerup", () => {
@@ -207,6 +219,7 @@ export default class CNivel {
       !this.onClick
     ) {
       //Si es verdadero actualiza los valores iniciales
+      this._gomeraOn.Play();
       this.puntoInicialX =
         this.niveles[this.nivelActual].pantallaDeJuego.input.activePointer.x;
       this.puntoInicialY =
@@ -226,6 +239,7 @@ export default class CNivel {
       this.onClick
     ) {
       //Si es verdadero actualiza el punto final
+      this._gomeraOff.Play();
       this.onClick = false;
       this.distancia =
         this.niveles[
@@ -452,6 +466,7 @@ export default class CNivel {
 
   public PerderNivel() {
     //mostrar Derrota
+    console.log(this.nivelActual);
     this.niveles[this.nivelActual].pantallaDeJuego.scene.sleep(
       this.niveles[this.nivelActual].pantallaDeJuego.scene.key
     ); //Pausa la escena

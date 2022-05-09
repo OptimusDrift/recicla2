@@ -58,7 +58,8 @@ export default class CConfiguracion {
         "botonX"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el boton de cerrar
     this.boton.boton.setDepth(2); //Establece la profundidad
     this._botonMenuPrincipal = new Boton(
@@ -70,6 +71,7 @@ export default class CConfiguracion {
       ),
       undefined,
       undefined,
+      this.escena,
       1.4
     ); //Crea el botón de configuración
     this.botonMenuPrincipal.boton.setDepth(2); //Establece la profundidad
@@ -88,7 +90,8 @@ export default class CConfiguracion {
         "boton2"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el botón de cerrar
     this.btnSi.setDepth(3);
     this.botonSi.boton.setDepth(2); //Establece la profundidad
@@ -126,7 +129,8 @@ export default class CConfiguracion {
         "boton2"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el botón de cerrar
     this.btnNo.setDepth(3);
     //_botonEspañol
@@ -144,6 +148,7 @@ export default class CConfiguracion {
         "boton2"
       ),
       undefined,
+      this.escena,
       undefined,
       0.85
     ); //Crea el boton de español
@@ -181,6 +186,7 @@ export default class CConfiguracion {
       ),
       undefined,
       undefined,
+      this.escena,
       0.85
     ); //Crea el boton de ingles
     this.botonIngles.boton.on("pointerup", () => {
@@ -216,6 +222,7 @@ export default class CConfiguracion {
       ),
       undefined,
       undefined,
+      this.escena,
       0.85
     ); //Crea el boton de portugues
     this.botonPortugues.boton.on("pointerup", () => {
@@ -297,6 +304,7 @@ export default class CConfiguracion {
       this.botonSi.boton.setVisible(true);
       this.escena.scene.pause("Configuracion"); //Pausa la escena
       this.botonSi.boton.on("pointerup", () => {
+        console.log(this.escena.scene.get(ventanaAVolver).controladorNivel);
         this.escena.scene.get(ventanaAVolver).controladorNivel.PerderNivel();
         this.escena.scene.wake("MenuPrincipal"); //Resume la escena
         this.escena.scene.moveAbove("MenuPrincipal"); //Mueve la escena

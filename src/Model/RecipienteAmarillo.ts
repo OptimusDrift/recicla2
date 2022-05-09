@@ -1,4 +1,5 @@
 import Recipiente from "./Recipiente";
+import Musica from "./Musica";
 
 export default class RecipienteAmarillo extends Recipiente {
   constructor(sprite: string, physics: any, x: number, y: number) {

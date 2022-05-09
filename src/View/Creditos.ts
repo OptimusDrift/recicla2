@@ -25,7 +25,8 @@ export default class Creditos extends Phaser.Scene {
         "volver"
       ),
       undefined,
-      undefined
+      undefined,
+      this.scene
     );
     this._botonVolver.boton.setDepth(2);
     this._botonVolver.boton.on("pointerup", () => {

@@ -22,6 +22,7 @@ import ResiduoBateria from "~/Model/ResiduoBateria";
 import ResiduoVidrio from "~/Model/ResiduoVidrio";
 import ResiduoPlastico from "~/Model/ResiduoPlastico";
 import CFinDelJuego from "~/Controller/CFinDelJuego";
+import CMusica from "~/Controller/CMusica";
 import { preg } from "~/Model/BDD";
 
 export default class Carga extends Phaser.Scene {
@@ -30,6 +31,7 @@ export default class Carga extends Phaser.Scene {
   public controladorTrivia: CTrivia;
   public controladorMenuPrincipal: CMenuPrincipal;
   public controladorConfiguracion: CConfiguracion;
+  public controladorMusica: CMusica;
   public controladorHud: CHud;
   public niveles: Array<Nivel>;
   public player: Player;
@@ -101,22 +103,26 @@ export default class Carga extends Phaser.Scene {
     this.load.image("fondoVolver", "assets/PopUps/Seguro.png");
     this.load.image("correcto", "assets/PopUps/Correcto.png");
     //--------------Musica Y FX--------------------\\
-    this.load.audio("CompraRealizada", "assets/Sonidos/CompraRealizada.mp3");
-    this.load.audio("MusicaCreditos", "assets/Sonidos/MusicaCreditos.mp3");
-    this.load.audio("MusicaJuego", "assets/Sonidos/MusicaJuego.mp3");
-    this.load.audio("MusicaMenu", "assets/Sonidos/MusicaMenu.mp3");
-    this.load.audio("MusicaTienda", "assets/Sonidos/MusicaTienda.mp3");
-    this.load.audio("MusicaTrivia", "assets/Sonidos/MusicaTrivia.mp3");
-    this.load.audio("Transicion", "assets/Sonidos/Transicion.mp3");
+    //Copy https://www.youtube.com/watch?v=rUDg0xy-Ais
+    this.load.audio("MusicaJuego", "assets/Sonidos/Musica/MusicaJuego.mp3");
+    this.load.audio(
+      "SFXEstirarGomera",
+      "assets/Sonidos/Sfx/SFXEstirarGomera.mp3"
+    );
+    this.load.audio(
+      "SFXSoltarGomera",
+      "assets/Sonidos/Sfx/SFXSoltarGomera.mp3"
+    );
     this.load.audio(
       "RespuestaCorrecta",
-      "assets/Sonidos/RespuestaCorrecta.wav"
+      "assets/Sonidos/Sfx/RespuestaCorrecta.mp3"
     );
     this.load.audio(
       "RespuestaIncorrecta",
-      "assets/Sonidos/RespuestaIncorrecta.wav"
+      "assets/Sonidos/Sfx/RespuestaIncorrecta.mp3"
     );
-    this.load.audio("RisaRie", "assets/Sonidos/RisaRie.wav");
+    this.load.audio("Botonoff", "assets/Sonidos/Sfx/Botonoff.mp3");
+    this.load.audio("Botonon", "assets/Sonidos/Sfx/Botonon.mp3");
     //----------------ATLAS------------------\\
     this.load.image("atlas", "assets/Tiled/Atlas.png");
     this.load.tilemapTiledJSON("mapaNivel1", "assets/Tiled/Nivel_1.json");
@@ -133,6 +139,11 @@ export default class Carga extends Phaser.Scene {
       0,
       0
     ); //Crea el jugador
+
+    //--------------------------MUSICA--------------------------\\
+    this.controladorMusica = new CMusica(
+      new Musica("MusicaJuego", this.scene.get("Musica"))
+    );
     //---------------------CONFIGURACION-----------------------//
     let config = this.scene.get("Configuracion"); //Obtiene la escena de la configuracion
     let volver = this.scene.get("Volver"); //Obtiene la escena de la configuracion
@@ -336,7 +347,8 @@ export default class Carga extends Phaser.Scene {
     this.controladorTrivia = new CTrivia(
       tri,
       this.controladorNivel,
-      this.controladorConfiguracion
+      this.controladorConfiguracion,
+      this.controladorMusica
     ); //Crea el controlador de trivia
     this.controladorTrivia.CargarControlador(); //Carga el controlador de trivia
     preg()
@@ -347,7 +359,6 @@ export default class Carga extends Phaser.Scene {
       .catch((error) => {
         console.log("Algo salio mal! " + error);
       });
-
     //---------------------MENU-----------------------//
     let menu = this.scene.get("MenuPrincipal"); //Obtiene la escena del menu
     this.controladorMenuPrincipal = new CMenuPrincipal(
@@ -375,6 +386,7 @@ export default class Carga extends Phaser.Scene {
     this.controladorNivel.cHud = this.controladorHud;
 
     //this.controladorNivel.cHud.CargarHud();
+    this.scene.launch("Musica"); //Lanza la escena de configuracion
     this.scene.launch("Configuracion"); //Lanza la escena de configuracion
     this.scene.sleep("Configuracion"); //Oculta la escena de configuracion
     this.scene.launch("Creditos"); //Lanza la escena de creditos

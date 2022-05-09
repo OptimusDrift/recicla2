@@ -1,9 +1,13 @@
+import Musica from "../Model/Musica";
+
 export default class Recipiente {
   private _sprite: string;
   private _physics: any;
   private _cuerpo: any;
   private _x: number;
   private _y: number;
+  protected _correcto: Musica;
+  protected _incorrecto: Musica;
 
   constructor(sprite: string, physics: any, x: number, y: number) {
     this._sprite = sprite;
@@ -24,14 +28,17 @@ export default class Recipiente {
   }
 
   protected Retroalimentacion(rta: Boolean, recipiente: any) {
+    this._correcto.Play();
     try {
       if (rta) {
+        this._correcto.Play();
         recipiente.scene.particulasCorrecto.EjecutarParticula(
           recipiente.body.x + 100,
           recipiente.body.y
         );
         this.controladorNivel.cHud.ActualizarMonedas(1);
       } else {
+        this._incorrecto.Play();
         recipiente.scene.particulasIncorrecta.EjecutarParticula(
           recipiente.body.x + 100,
           recipiente.body.y

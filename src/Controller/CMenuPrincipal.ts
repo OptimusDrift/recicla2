@@ -46,7 +46,8 @@ export default class CMenuPrincipal {
         "creditos"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el boton de creditos
     let botonGomera = new Boton(
       this.escena.add.text(
@@ -61,7 +62,8 @@ export default class CMenuPrincipal {
         "gomera"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el boton de gomera
     let botonTienda = new Boton(
       this.escena.add.text(
@@ -76,7 +78,8 @@ export default class CMenuPrincipal {
         "tienda"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el boton de tienda
     let botonConfiguracion = new Boton(
       this.escena.add.text(0, 0, "", this.style),
@@ -86,7 +89,8 @@ export default class CMenuPrincipal {
         "configuracion"
       ),
       undefined,
-      undefined
+      undefined,
+      this.escena
     ); //Crea el boton de configuracion
     botonCreditos.boton.setDepth(0); //Pone el boton de creditos en la capa 0
     botonGomera.boton.setDepth(0); //Pone el boton de gomera en la capa 0
