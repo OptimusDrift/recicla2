@@ -8,8 +8,12 @@ export default class Recipiente {
   private _y: number;
   protected _correcto: Musica;
   protected _incorrecto: Musica;
+  protected _scene: any;
 
-  constructor(sprite: string, physics: any, x: number, y: number) {
+  constructor(sprite: string, physics: any, x: number, y: number, scene: any) {
+    this._scene = scene;
+    this._correcto = new Musica("RespuestaCorrecta", this._scene);
+    this._incorrecto = new Musica("RespuestaIncorrecta", this._scene);
     this._sprite = sprite;
     this._physics = physics;
     this._x = x;
@@ -28,17 +32,16 @@ export default class Recipiente {
   }
 
   protected Retroalimentacion(rta: Boolean, recipiente: any) {
-    this._correcto.Play();
     try {
       if (rta) {
-        this._correcto.Play();
+        recipiente.scene.sound.play("RespuestaCorrecta");
         recipiente.scene.particulasCorrecto.EjecutarParticula(
           recipiente.body.x + 100,
           recipiente.body.y
         );
         this.controladorNivel.cHud.ActualizarMonedas(1);
       } else {
-        this._incorrecto.Play();
+        recipiente.scene.sound.play("RespuestaIncorrecta");
         recipiente.scene.particulasIncorrecta.EjecutarParticula(
           recipiente.body.x + 100,
           recipiente.body.y

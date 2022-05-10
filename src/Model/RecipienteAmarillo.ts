@@ -2,13 +2,15 @@ import Recipiente from "./Recipiente";
 import Musica from "./Musica";
 
 export default class RecipienteAmarillo extends Recipiente {
-  constructor(sprite: string, physics: any, x: number, y: number) {
-    super(sprite, physics, x, y);
+  
+  constructor(sprite: string, physics: any, x: number, y: number, scene: any) {
+    super(sprite, physics, x, y, scene);
   }
 
   public CompararRecipiente(residuo: any, recipiente: any) {
     try {
       super.CompararRecipiente(residuo, recipiente);
+      console.log(this._scene);
       super.Retroalimentacion(
         residuo.texture.key == "plasticoResiduo",
         recipiente

@@ -39,7 +39,7 @@ export default class Moneda {
   public TomarMoneda(residuo: any, moneda: any) {
     try {
       this.particulasMoneda.EjecutarParticula(moneda.x, moneda.y);
-      this._AgarrarMoneda.Play();
+      moneda.scene.sound.play("AgarrarMoneda");
       this.controladorNivel.cHud.ActualizarMonedas(1);
       moneda.body.x = -800;
       moneda.body.y = -800;

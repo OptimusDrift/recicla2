@@ -438,7 +438,8 @@ export default class Carga extends Phaser.Scene {
             name,
             nivel.pantallaDeJuego.physics,
             x + width / 2,
-            y + height / 2
+            y + height / 2,
+            nivel
           )
         );
         break;
@@ -448,7 +449,8 @@ export default class Carga extends Phaser.Scene {
             name,
             nivel.pantallaDeJuego.physics,
             x + width / 2,
-            y + height / 2
+            y + height / 2,
+            nivel
           )
         ); //Añade el recipiente al nivel
         break;
@@ -458,7 +460,8 @@ export default class Carga extends Phaser.Scene {
             name,
             nivel.pantallaDeJuego.physics,
             x + width / 2,
-            y + height / 2
+            y + height / 2,
+            nivel
           )
         ); //Añade el recipiente al nivel
         break;
@@ -468,7 +471,8 @@ export default class Carga extends Phaser.Scene {
             name,
             nivel.pantallaDeJuego.physics,
             x + width / 2,
-            y + height / 2
+            y + height / 2,
+            nivel
           )
         ); //Añade el recipiente al nivel
         break;
